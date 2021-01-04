@@ -2,7 +2,7 @@
   <b>aoe2netwrapper</b>
 </h1>
 
-A simple typed wrapper to interact with the APIs provided by `aoe2.net`.
+A simple typed wrapper to interact with the APIs provided by `https://aoe2.net`.
 
 ## Install
 
@@ -14,7 +14,7 @@ pip install aoe2netwrapper
 ## Quick Start
 
 The package provides a simple, fully-typed high-level object to interact with each API provided by `aoe2.net`.
-Each exposed endpoint from the API can be queried with a method named after it:
+Each exposed endpoint from the APIs can be queried with a method named after it:
 
 Complete data API:
 ```python
@@ -39,6 +39,8 @@ nightbot = AoE2NightbotAPI()
 viper_details = nightbot.rank(leaderboard_id=3, search="GL.TheViper")
 print(viper_details) # -> '🇳🇴 GL.TheViper (2501) Rank #1, has played 762 games with a 69% winrate, -1 streak, and 2 drops'
 ```
+
+The full documentation for the API endpoints can be found at `https://aoe2.net/#api` and `https://aoe2.net/#nightbot`, but is also included in the methods' docstrings for convenience.
 
 ## License
 
