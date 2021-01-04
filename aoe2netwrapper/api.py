@@ -391,5 +391,8 @@ def _get_request_response_json(
 
     response = session.get(url, params=params, headers=default_headers)
     if response.status_code != 200:
+        logger.error(
+            f"GET request at '{response.url}' returned a {response.status_code} status code"
+        )
         raise Aoe2NetException(f"Expected status code 200 - got {response.status_code} instead.")
     return response.json()
