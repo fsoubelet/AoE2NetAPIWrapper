@@ -31,7 +31,16 @@ class AoE2NightbotAPI:
     def __repr__(self) -> str:
         return f"Client for <{self.NIGHTBOT_BASE_URL}>"
 
-    def rank(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
+    def rank(
+        self,
+        game: str = "aoe2de",
+        leaderboard_id: int = 3,
+        language: str = "en",
+        flag: str = "true",
+        search: str = None,
+        steam_id: int = None,
+        profile_id: int = None,
+    ) -> str:
         """
         Request rank details about a player. Either 'search', 'steam_id' or 'profile_id' required.
 
@@ -42,8 +51,6 @@ class AoE2NightbotAPI:
             leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
                 1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
                 Defaults to 3.
-
-        Keyword Args:
             language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
                 'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
                 Defaults to 'en'.
@@ -73,11 +80,11 @@ class AoE2NightbotAPI:
         query_params = {
             "game": game,
             "leaderboard_id": leaderboard_id,
-            "language": kwargs.get("language", "en"),
-            "flag": kwargs.get("flag", "true"),
-            "search": kwargs.get("search", None),
-            "steam_id": kwargs.get("steam_id", None),
-            "profile_id": kwargs.get("profile_id", None),
+            "language": language,
+            "flag": flag,
+            "search": search,
+            "steam_id": steam_id,
+            "profile_id": profile_id,
         }
 
         return _get_request_text_response_decoded(
@@ -87,7 +94,16 @@ class AoE2NightbotAPI:
             timeout=self.timeout,
         )
 
-    def opponent(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
+    def opponent(
+        self,
+        game: str = "aoe2de",
+        leaderboard_id: int = 3,
+        language: str = "en",
+        flag: str = "true",
+        search: str = None,
+        steam_id: int = None,
+        profile_id: int = None,
+    ) -> str:
         """
         Request rank details about a player's most recent opponent (1v1 only). Either 'search',
         'steam_id' or 'profile_id' required.
@@ -99,8 +115,6 @@ class AoE2NightbotAPI:
             leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
                 1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
                 Defaults to 3.
-
-        Keyword Args:
             language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
                 'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
                 Defaults to 'en'.
@@ -120,7 +134,7 @@ class AoE2NightbotAPI:
             The text content of the response, as a decoded unicode string, with a quick sentence
             of information about the player's last opponent.
         """
-        if not any(required in kwargs.keys() for required in ("search", "steam_id", "profile_id")):
+        if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
             raise NightBotException(
                 "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
@@ -130,11 +144,11 @@ class AoE2NightbotAPI:
         query_params = {
             "game": game,
             "leaderboard_id": leaderboard_id,
-            "language": kwargs.get("language", "en"),
-            "flag": kwargs.get("flag", "true"),
-            "search": kwargs.get("search", None),
-            "steam_id": kwargs.get("steam_id", None),
-            "profile_id": kwargs.get("profile_id", None),
+            "language": language,
+            "flag": flag,
+            "search": search,
+            "steam_id": steam_id,
+            "profile_id": profile_id,
         }
 
         return _get_request_text_response_decoded(
@@ -144,7 +158,17 @@ class AoE2NightbotAPI:
             timeout=self.timeout,
         )
 
-    def match(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
+    def match(
+        self,
+        game: str = "aoe2de",
+        leaderboard_id: int = 3,
+        language: str = "en",
+        color: str = "true",
+        flag: str = "true",
+        search: str = None,
+        steam_id: int = None,
+        profile_id: int = None,
+    ) -> str:
         """
         Request details about the current or last match. Either 'search', 'steam_id' or
         'profile_id' required.
@@ -156,8 +180,6 @@ class AoE2NightbotAPI:
             leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
                 1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
                 Defaults to 3.
-
-        Keyword Args:
             language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
                 'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
                 Defaults to 'en'.
@@ -179,7 +201,7 @@ class AoE2NightbotAPI:
             The text content of the response, as a decoded unicode string, with a quick sentence
             of information about the players in the match.
         """
-        if not any(required in kwargs.keys() for required in ("search", "steam_id", "profile_id")):
+        if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
             raise NightBotException(
                 "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
@@ -189,12 +211,12 @@ class AoE2NightbotAPI:
         query_params = {
             "game": game,
             "leaderboard_id": leaderboard_id,
-            "language": kwargs.get("language", "en"),
-            "color": kwargs.get("color", "true"),
-            "flag": kwargs.get("flag", "true"),
-            "search": kwargs.get("search", None),
-            "steam_id": kwargs.get("steam_id", None),
-            "profile_id": kwargs.get("profile_id", None),
+            "language": language,
+            "color": color,
+            "flag": flag,
+            "search": search,
+            "steam_id": steam_id,
+            "profile_id": profile_id,
         }
 
         return _get_request_text_response_decoded(
@@ -204,7 +226,15 @@ class AoE2NightbotAPI:
             timeout=self.timeout,
         )
 
-    def civs(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
+    def civs(
+        self,
+        game: str = "aoe2de",
+        leaderboard_id: int = 3,
+        language: str = "en",
+        search: str = None,
+        steam_id: int = None,
+        profile_id: int = None,
+    ) -> str:
         """
         Request civilisations from the current or last match. Either 'search', 'steam_id' or
         'profile_id' required.
@@ -216,8 +246,6 @@ class AoE2NightbotAPI:
             leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
                 1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
                 Defaults to 3.
-
-        Keyword Args:
             language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
                 'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
                 Defaults to 'en'.
@@ -235,7 +263,7 @@ class AoE2NightbotAPI:
             The text content of the response, as a decoded unicode string, with a quick sentence
             of information about the player's last opponent.
         """
-        if not any(required in kwargs.keys() for required in ("search", "steam_id", "profile_id")):
+        if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
             raise NightBotException(
                 "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
@@ -245,10 +273,10 @@ class AoE2NightbotAPI:
         query_params = {
             "game": game,
             "leaderboard_id": leaderboard_id,
-            "language": kwargs.get("language", "en"),
-            "search": kwargs.get("search", None),
-            "steam_id": kwargs.get("steam_id", None),
-            "profile_id": kwargs.get("profile_id", None),
+            "language": language,
+            "search": search,
+            "steam_id": steam_id,
+            "profile_id": profile_id,
         }
 
         return _get_request_text_response_decoded(
@@ -258,7 +286,15 @@ class AoE2NightbotAPI:
             timeout=self.timeout,
         )
 
-    def map(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
+    def map(
+        self,
+        game: str = "aoe2de",
+        leaderboard_id: int = 3,
+        language: str = "en",
+        search: str = None,
+        steam_id: int = None,
+        profile_id: int = None,
+    ) -> str:
         """
         Request civilisations from the current or last match. Either 'search', 'steam_id' or
         'profile_id' required.
@@ -270,8 +306,6 @@ class AoE2NightbotAPI:
             leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
                 1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
                 Defaults to 3.
-
-        Keyword Args:
             language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
                 'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
                 Defaults to 'en'.
@@ -289,7 +323,7 @@ class AoE2NightbotAPI:
             The text content of the response, as a decoded unicode string, with a quick sentence
             of information about the player's last opponent.
         """
-        if not any(required in kwargs.keys() for required in ("search", "steam_id", "profile_id")):
+        if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
             raise NightBotException(
                 "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
@@ -299,10 +333,10 @@ class AoE2NightbotAPI:
         query_params = {
             "game": game,
             "leaderboard_id": leaderboard_id,
-            "language": kwargs.get("language", "en"),
-            "search": kwargs.get("search", None),
-            "steam_id": kwargs.get("steam_id", None),
-            "profile_id": kwargs.get("profile_id", None),
+            "language": language,
+            "search": search,
+            "steam_id": steam_id,
+            "profile_id": profile_id,
         }
 
         return _get_request_text_response_decoded(

@@ -80,7 +80,7 @@ class AoE2NetAPI:
             count (int): Number of leaderboard entries to get (warning: must be 10000 or less).
                 Defaults to 10.
 
-        Keyword Args:
+        Keyword Args (Optionals):
             search (str): To perform the search for a specific player, from their name.
             steam_id (int): To perform the search for a specific player, from their steamID64
                 (ex: 76561199003184910).
@@ -305,7 +305,7 @@ class AoE2NetAPI:
                 Empires 2: Definitive Edition).
             count (int): number of matches to get (must be 1000 or less). Defaults to 10.
 
-        Keyword Args:
+        Keyword Args (Optionals):
             since (int): only show matches starting after 'since' timestamp (epoch).
 
         Raises:
