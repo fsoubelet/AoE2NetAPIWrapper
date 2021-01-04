@@ -23,9 +23,10 @@ class AoE2NightbotAPI:
     CURRENT_CIVS_ENDPOINT = NIGHTBOT_BASE_URL + "/civs"
     CURRENT_MAP_ENDPOINT = NIGHTBOT_BASE_URL + "/map"
 
-    def __init__(self):
+    def __init__(self, timeout: Union[float, Tuple[float, float]] = 5):
         """Creating a Session for connection pooling since we're always querying the same host."""
         self.client = requests.Session()
+        self.timeout = timeout
 
     def __repr__(self) -> str:
         return f"Client for <{self.NIGHTBOT_BASE_URL}>"
@@ -80,7 +81,10 @@ class AoE2NightbotAPI:
         }
 
         return _get_request_text_response_decoded(
-            session=self.client, url=self.RANK_DETAILS_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.RANK_DETAILS_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
     def opponent(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
@@ -134,7 +138,10 @@ class AoE2NightbotAPI:
         }
 
         return _get_request_text_response_decoded(
-            session=self.client, url=self.RECENT_OPPONENT_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.RECENT_OPPONENT_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
     def match(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
@@ -191,7 +198,10 @@ class AoE2NightbotAPI:
         }
 
         return _get_request_text_response_decoded(
-            session=self.client, url=self.CURRENT_MATCH_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.CURRENT_MATCH_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
     def civs(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
@@ -242,7 +252,10 @@ class AoE2NightbotAPI:
         }
 
         return _get_request_text_response_decoded(
-            session=self.client, url=self.CURRENT_CIVS_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.CURRENT_CIVS_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
     def map(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
@@ -293,7 +306,10 @@ class AoE2NightbotAPI:
         }
 
         return _get_request_text_response_decoded(
-            session=self.client, url=self.CURRENT_MAP_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.CURRENT_MAP_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
 
@@ -301,7 +317,10 @@ class AoE2NightbotAPI:
 
 
 def _get_request_text_response_decoded(
-    session: requests.Session, url: str, params: Dict[str, Any] = None
+    session: requests.Session,
+    url: str,
+    params: Dict[str, Any] = None,
+    timeout: Union[float, Tuple[float, float]] = None,
 ) -> str:
     """
     Helper function to handle a GET request to an endpoint and return the response JSON content
@@ -321,7 +340,7 @@ def _get_request_text_response_decoded(
     default_headers = {"content-type": "application/json;charset=UTF-8"}
     logger.debug(f"Sending GET request at '{url}'")
 
-    response = session.get(url, params=params, headers=default_headers)
+    response = session.get(url, params=params, headers=default_headers, timeout=timeout)
     if response.status_code != 200:
         logger.error(
             f"GET request at '{response.url}' returned a {response.status_code} status code"

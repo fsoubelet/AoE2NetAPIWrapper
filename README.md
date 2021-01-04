@@ -20,7 +20,7 @@ Complete data API:
 ```python
 from aoe2netwrapper import AoE2NetAPI
 
-client = AoE2NetAPI()
+client = AoE2NetAPI(timeout=10)
 
 # Get the first 100 ranked accounts in 1v1 Random Map
 top_accounts = client.leaderboard(game="aoe2de", leaderboard_id=3, start=1, count=100)
@@ -33,7 +33,7 @@ Nightbot API:
 ```python
 from aoe2netwrapper import AoE2NightbotAPI
 
-nightbot = AoE2NightbotAPI()
+nightbot = AoE2NightbotAPI(timeout=10)
 
 # Get quick rank information on a specific player in 1v1 Random Map
 viper_details = nightbot.rank(leaderboard_id=3, search="GL.TheViper")

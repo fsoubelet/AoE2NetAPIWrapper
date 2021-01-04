@@ -2,7 +2,7 @@
 Client to query the  API at  https://aoe2.net/#api.
 """
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple, Union
 
 import requests
 from loguru import logger
@@ -26,9 +26,10 @@ class AoE2NetAPI:
     MATCH_ENDPOINT: str = API_BASE_URL + "/match"
     NUMBER_ONLINE_ENDPOINT: str = API_BASE_URL + "/stats/players"
 
-    def __init__(self):
+    def __init__(self, timeout: Union[float, Tuple[float, float]] = 5):
         """Creating a Session for connection pooling since we're always querying the same host."""
         self.client = requests.Session()
+        self.timeout = timeout
 
     def __repr__(self) -> str:
         return f"Client for <{self.API_BASE_URL}>"
@@ -50,7 +51,10 @@ class AoE2NetAPI:
         query_params = {"game": game}
 
         return _get_request_response_json(
-            session=self.client, url=self.STRINGS_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.STRINGS_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
     def leaderboard(
@@ -106,7 +110,10 @@ class AoE2NetAPI:
         }
 
         return _get_request_response_json(
-            session=self.client, url=self.LEADERBOARD_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.LEADERBOARD_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
     def lobbies(self, game: str = "aoe2de") -> List[dict]:
@@ -125,7 +132,10 @@ class AoE2NetAPI:
         query_params = {"game": game}
 
         return _get_request_response_json(
-            session=self.client, url=self.LOBBIES_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.LOBBIES_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
     def last_match(
@@ -160,7 +170,10 @@ class AoE2NetAPI:
         query_params = {"game": game, "steam_id": steam_id, "profile_id": profile_id}
 
         return _get_request_response_json(
-            session=self.client, url=self.LAST_MATCH_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.LAST_MATCH_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
     def match_history(
@@ -211,7 +224,10 @@ class AoE2NetAPI:
         }
 
         return _get_request_response_json(
-            session=self.client, url=self.MATCH_HISTORY_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.MATCH_HISTORY_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
     def rating_history(
@@ -269,7 +285,10 @@ class AoE2NetAPI:
         }
 
         return _get_request_response_json(
-            session=self.client, url=self.RATING_HISTORY_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.RATING_HISTORY_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
     def matches(self, game: str = "aoe2de", count: int = 10, **kwargs) -> List[dict]:
@@ -308,7 +327,10 @@ class AoE2NetAPI:
         }
 
         return _get_request_response_json(
-            session=self.client, url=self.MATCHES_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.MATCHES_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
     def match(self, game: str = "aoe2de", uuid: str = None, match_id: int = None) -> dict:
@@ -340,7 +362,7 @@ class AoE2NetAPI:
         }
 
         return _get_request_response_json(
-            session=self.client, url=self.MATCH_ENDPOINT, params=query_params
+            session=self.client, url=self.MATCH_ENDPOINT, params=query_params, timeout=self.timeout
         )
 
     def num_online(self, game: str = "aoe2de") -> dict:
@@ -361,7 +383,10 @@ class AoE2NetAPI:
         query_params = {"game": game}
 
         return _get_request_response_json(
-            session=self.client, url=self.NUMBER_ONLINE_ENDPOINT, params=query_params
+            session=self.client,
+            url=self.NUMBER_ONLINE_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
 
@@ -369,7 +394,10 @@ class AoE2NetAPI:
 
 
 def _get_request_response_json(
-    session: requests.Session, url: str, params: Dict[str, Any] = None
+    session: requests.Session,
+    url: str,
+    params: Dict[str, Any] = None,
+    timeout: Union[float, Tuple[float, float]] = None,
 ) -> dict:
     """
     Helper function to handle a GET request to an endpoint and return the response JSON content
@@ -389,7 +417,7 @@ def _get_request_response_json(
     default_headers = {"content-type": "application/json;charset=UTF-8"}
     logger.debug(f"Sending GET request at '{url}'")
 
-    response = session.get(url, params=params, headers=default_headers)
+    response = session.get(url, params=params, headers=default_headers, timeout=timeout)
     if response.status_code != 200:
         logger.error(
             f"GET request at '{response.url}' returned a {response.status_code} status code"
