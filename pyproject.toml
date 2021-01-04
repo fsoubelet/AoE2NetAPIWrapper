@@ -29,6 +29,8 @@ requests = "^2.25.1"
 loguru = "^0.5.3"
 
 [tool.poetry.dev-dependencies]
+pytest = "^6.2.1"
+responses = "^0.12.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
