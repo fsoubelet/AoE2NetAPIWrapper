@@ -2,7 +2,12 @@
 Client to query the API at https://aoe2.net/#nightbot.
 """
 
+from typing import Any, Dict
+
 import requests
+from loguru import logger
+
+from aoe2netwrapper.exceptions import NightBotException
 
 
 class AoE2NightbotAPI:
@@ -24,3 +29,302 @@ class AoE2NightbotAPI:
 
     def __repr__(self) -> str:
         return f"Client for <{self.NIGHTBOT_BASE_URL}>"
+
+    def rank(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
+        """
+        Request rank details about a player. Either 'search', 'steam_id' or 'profile_id' required.
+
+        Args:
+            game (str): The game for which to extract the list of strings. Defaults to 'aoe2de'.
+                Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of
+                Empires 2: Definitive Edition).
+            leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
+                1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
+                Defaults to 3.
+
+        Keyword Args:
+            language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
+                'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
+                Defaults to 'en'.
+            flag (str): boolean to show the player flag. Defaults to 'true'. Needs to be a string
+                for now since requests transforms True boolean to 'True' and the API rejects that.
+            search (str): To perform the search for a specific player, from their name. Will
+                return the highest rated player that matches the search.
+            steam_id (int): To perform the search for a specific player, from their steamID64
+                (ex: 76561199003184910).
+            profile_id (int): To perform the search for a specific player, from their profile ID
+                (ex: 459658).
+
+        Raises:
+            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+
+        Returns:
+            The text content of the response, as a decoded unicode string, with a quick sentence
+            of information about the player.
+        """
+        if not any(required in kwargs.keys() for required in ("search", "steam_id", "profile_id")):
+            logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
+            raise NightBotException(
+                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            )
+
+        logger.debug("Preparing parameters for rank details query")
+        query_params = {
+            "game": game,
+            "leaderboard_id": leaderboard_id,
+            "language": kwargs.get("language", "en"),
+            "flag": kwargs.get("flag", "true"),
+            "search": kwargs.get("search", None),
+            "steam_id": kwargs.get("steam_id", None),
+            "profile_id": kwargs.get("profile_id", None),
+        }
+
+        return _get_request_text_response_decoded(
+            session=self.client, url=self.RANK_DETAILS_ENDPOINT, params=query_params
+        )
+
+    def opponent(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
+        """
+        Request rank details about a player's most recent opponent (1v1 only). Either 'search',
+        'steam_id' or 'profile_id' required.
+
+        Args:
+            game (str): The game for which to extract the list of strings. Defaults to 'aoe2de'.
+                Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of
+                Empires 2: Definitive Edition).
+            leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
+                1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
+                Defaults to 3.
+
+        Keyword Args:
+            language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
+                'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
+                Defaults to 'en'.
+            flag (str): boolean to show the player flag. Defaults to 'true'. Needs to be a string
+                for now since requests transforms True boolean to 'True' and the API rejects that.
+            search (str): To perform the search for a specific player, from their name. Will
+                return the highest rated player that matches the search.
+            steam_id (int): To perform the search for a specific player, from their steamID64
+                (ex: 76561199003184910).
+            profile_id (int): To perform the search for a specific player, from their profile ID
+                (ex: 459658).
+
+        Raises:
+            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+
+        Returns:
+            The text content of the response, as a decoded unicode string, with a quick sentence
+            of information about the player's last opponent.
+        """
+        if not any(required in kwargs.keys() for required in ("search", "steam_id", "profile_id")):
+            logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
+            raise NightBotException(
+                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            )
+
+        logger.debug("Preparing parameters for opponent details query")
+        query_params = {
+            "game": game,
+            "leaderboard_id": leaderboard_id,
+            "language": kwargs.get("language", "en"),
+            "flag": kwargs.get("flag", "true"),
+            "search": kwargs.get("search", None),
+            "steam_id": kwargs.get("steam_id", None),
+            "profile_id": kwargs.get("profile_id", None),
+        }
+
+        return _get_request_text_response_decoded(
+            session=self.client, url=self.RECENT_OPPONENT_ENDPOINT, params=query_params
+        )
+
+    def match(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
+        """
+        Request details about the current or last match. Either 'search', 'steam_id' or
+        'profile_id' required.
+
+        Args:
+            game (str): The game for which to extract the list of strings. Defaults to 'aoe2de'.
+                Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of
+                Empires 2: Definitive Edition).
+            leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
+                1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
+                Defaults to 3.
+
+        Keyword Args:
+            language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
+                'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
+                Defaults to 'en'.
+            color (str): boolean to show player colors. Defaults to 'true'. Needs to be a string
+                for now since requests transforms True boolean to 'True' and the API rejects that.
+            flag (str): boolean to show the player flag. Defaults to 'true'. Needs to be a string
+                for now since requests transforms True boolean to 'True' and the API rejects that.
+            search (str): To perform the search for a specific player, from their name. Will
+                return the highest rated player that matches the search.
+            steam_id (int): To perform the search for a specific player, from their steamID64
+                (ex: 76561199003184910).
+            profile_id (int): To perform the search for a specific player, from their profile ID
+                (ex: 459658).
+
+        Raises:
+            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+
+        Returns:
+            The text content of the response, as a decoded unicode string, with a quick sentence
+            of information about the players in the match.
+        """
+        if not any(required in kwargs.keys() for required in ("search", "steam_id", "profile_id")):
+            logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
+            raise NightBotException(
+                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            )
+
+        logger.debug("Preparing parameters for match details query")
+        query_params = {
+            "game": game,
+            "leaderboard_id": leaderboard_id,
+            "language": kwargs.get("language", "en"),
+            "color": kwargs.get("color", "true"),
+            "flag": kwargs.get("flag", "true"),
+            "search": kwargs.get("search", None),
+            "steam_id": kwargs.get("steam_id", None),
+            "profile_id": kwargs.get("profile_id", None),
+        }
+
+        return _get_request_text_response_decoded(
+            session=self.client, url=self.CURRENT_MATCH_ENDPOINT, params=query_params
+        )
+
+    def civs(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
+        """
+        Request civilisations from the current or last match. Either 'search', 'steam_id' or
+        'profile_id' required.
+
+        Args:
+            game (str): The game for which to extract the list of strings. Defaults to 'aoe2de'.
+                Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of
+                Empires 2: Definitive Edition).
+            leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
+                1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
+                Defaults to 3.
+
+        Keyword Args:
+            language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
+                'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
+                Defaults to 'en'.
+            search (str): To perform the search for a specific player, from their name. Will
+                return the highest rated player that matches the search.
+            steam_id (int): To perform the search for a specific player, from their steamID64
+                (ex: 76561199003184910).
+            profile_id (int): To perform the search for a specific player, from their profile ID
+                (ex: 459658).
+
+        Raises:
+            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+
+        Returns:
+            The text content of the response, as a decoded unicode string, with a quick sentence
+            of information about the player's last opponent.
+        """
+        if not any(required in kwargs.keys() for required in ("search", "steam_id", "profile_id")):
+            logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
+            raise NightBotException(
+                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            )
+
+        logger.debug("Preparing parameters for civilisations details query")
+        query_params = {
+            "game": game,
+            "leaderboard_id": leaderboard_id,
+            "language": kwargs.get("language", "en"),
+            "search": kwargs.get("search", None),
+            "steam_id": kwargs.get("steam_id", None),
+            "profile_id": kwargs.get("profile_id", None),
+        }
+
+        return _get_request_text_response_decoded(
+            session=self.client, url=self.CURRENT_CIVS_ENDPOINT, params=query_params
+        )
+
+    def map(self, game: str = "aoe2de", leaderboard_id: int = 3, **kwargs) -> str:
+        """
+        Request civilisations from the current or last match. Either 'search', 'steam_id' or
+        'profile_id' required.
+
+        Args:
+            game (str): The game for which to extract the list of strings. Defaults to 'aoe2de'.
+                Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of
+                Empires 2: Definitive Edition).
+            leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
+                1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
+                Defaults to 3.
+
+        Keyword Args:
+            language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
+                'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
+                Defaults to 'en'.
+            search (str): To perform the search for a specific player, from their name. Will
+                return the highest rated player that matches the search.
+            steam_id (int): To perform the search for a specific player, from their steamID64
+                (ex: 76561199003184910).
+            profile_id (int): To perform the search for a specific player, from their profile ID
+                (ex: 459658).
+
+        Raises:
+            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+
+        Returns:
+            The text content of the response, as a decoded unicode string, with a quick sentence
+            of information about the player's last opponent.
+        """
+        if not any(required in kwargs.keys() for required in ("search", "steam_id", "profile_id")):
+            logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
+            raise NightBotException(
+                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            )
+
+        logger.debug("Preparing parameters for civilisations details query")
+        query_params = {
+            "game": game,
+            "leaderboard_id": leaderboard_id,
+            "language": kwargs.get("language", "en"),
+            "search": kwargs.get("search", None),
+            "steam_id": kwargs.get("steam_id", None),
+            "profile_id": kwargs.get("profile_id", None),
+        }
+
+        return _get_request_text_response_decoded(
+            session=self.client, url=self.CURRENT_MAP_ENDPOINT, params=query_params
+        )
+
+
+# ----- Helpers ----- #
+
+
+def _get_request_text_response_decoded(
+    session: requests.Session, url: str, params: Dict[str, Any] = None
+) -> str:
+    """
+    Helper function to handle a GET request to an endpoint and return the response JSON content
+    as a dictionary.
+
+    Args:
+        session (requests.Session): Session object to use, for connection pooling and performance.
+        url (str): API endpoint to send the request to.
+        params (dict): A dictionary of parameters for the GET request.
+
+    Raises:
+        Aoe2NetException: if the status code returned is not 200.
+
+    Returns:
+        The request's JSON response as a dictionary.
+    """
+    default_headers = {"content-type": "application/json;charset=UTF-8"}
+    logger.debug(f"Sending GET request at '{url}'")
+
+    response = session.get(url, params=params, headers=default_headers)
+    if response.status_code != 200:
+        logger.error(
+            f"GET request at '{response.url}' returned a {response.status_code} status code"
+        )
+        raise NightBotException(f"Expected status code 200 - got {response.status_code} instead.")
+    return response.text
