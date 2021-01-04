@@ -70,7 +70,7 @@ class AoE2NightbotAPI:
             The text content of the response, as a decoded unicode string, with a quick sentence
             of information about the player.
         """
-        if not any(required in kwargs.keys() for required in ("search", "steam_id", "profile_id")):
+        if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
             raise NightBotException(
                 "Either 'search', 'steam_id' or 'profile_id' required, please provide one."

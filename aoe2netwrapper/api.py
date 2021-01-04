@@ -63,7 +63,9 @@ class AoE2NetAPI:
         leaderboard_id: int = 3,
         start: int = 1,
         count: int = 10,
-        **kwargs,
+        search: str = None,
+        steam_id: int = None,
+        profile_id: int = None,
     ) -> dict:
         """
         Request the current leaderboards.
@@ -79,8 +81,6 @@ class AoE2NetAPI:
                 Defaults to 1.
             count (int): Number of leaderboard entries to get (warning: must be 10000 or less).
                 Defaults to 10.
-
-        Keyword Args (Optionals):
             search (str): To perform the search for a specific player, from their name.
             steam_id (int): To perform the search for a specific player, from their steamID64
                 (ex: 76561199003184910).
@@ -104,9 +104,9 @@ class AoE2NetAPI:
             "leaderboard_id": leaderboard_id,
             "start": start,
             "count": count,
-            "search": kwargs.get("search", None),
-            "steam_id": kwargs.get("steam_id", None),
-            "profile_id": kwargs.get("profile_id", None),
+            "search": search,
+            "steam_id": steam_id,
+            "profile_id": profile_id,
         }
 
         return _get_request_response_json(
@@ -291,7 +291,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
 
-    def matches(self, game: str = "aoe2de", count: int = 10, **kwargs) -> List[dict]:
+    def matches(self, game: str = "aoe2de", count: int = 10, since: int = None) -> List[dict]:
         """
         Request matches after a specific time: the match history in an optionally given time
         window.
@@ -304,8 +304,6 @@ class AoE2NetAPI:
                 Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of
                 Empires 2: Definitive Edition).
             count (int): number of matches to get (must be 1000 or less). Defaults to 10.
-
-        Keyword Args (Optionals):
             since (int): only show matches starting after 'since' timestamp (epoch).
 
         Raises:
@@ -323,7 +321,7 @@ class AoE2NetAPI:
         query_params = {
             "game": game,
             "count": count,
-            "since": kwargs.get("since", None),
+            "since": since,
         }
 
         return _get_request_response_json(
