@@ -2,7 +2,7 @@
 Client to query the API at https://aoe2.net/#nightbot.
 """
 
-from typing import Any, Dict
+from typing import Any, Dict, Tuple, Union
 
 import requests
 from loguru import logger
