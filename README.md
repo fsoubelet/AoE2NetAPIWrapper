@@ -38,7 +38,7 @@ nightbot = AoE2NightbotAPI(timeout=10)
 # Get quick rank information on a specific player in 1v1 Random Map
 viper_details = nightbot.rank(leaderboard_id=3, search="GL.TheViper")
 print(viper_details)
-# -> '🇳🇴 GL.TheViper (2501) Rank #1, has played 762 games with a 69% winrate, -1 streak, and 2 drops'
+# '🇳🇴 GL.TheViper (2501) Rank #1, has played 762 games with a 69% winrate, -1 streak, and 2 drops'
 ```
 
 The full documentation for the API endpoints can be found at `https://aoe2.net/#api` and `https://aoe2.net/#nightbot`, but is also included in the methods' docstrings for convenience.
