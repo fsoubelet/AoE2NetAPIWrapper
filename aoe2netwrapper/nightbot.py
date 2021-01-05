@@ -1,10 +1,14 @@
 """
-Client to query the API at https://aoe2.net/#nightbot.
+aoe2netwrapper.nightbot
+-----------------------
+
+This module implements a high-level client to query the API at https://aoe2.net/#nightbot.
 """
 
 from typing import Any, Dict, Tuple, Union
 
 import requests
+
 from loguru import logger
 
 from aoe2netwrapper.exceptions import NightBotException

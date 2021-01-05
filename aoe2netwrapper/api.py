@@ -1,10 +1,14 @@
 """
-Client to query the  API at  https://aoe2.net/#api.
+aoe2netwrapper.api
+------------------
+
+This module implements a high-level client to query the API at https://aoe2.net/#api.
 """
 
 from typing import Any, Dict, List, Tuple, Union
 
 import requests
+
 from loguru import logger
 
 from aoe2netwrapper.exceptions import Aoe2NetException
@@ -360,7 +364,10 @@ class AoE2NetAPI:
         }
 
         return _get_request_response_json(
-            session=self.session, url=self.MATCH_ENDPOINT, params=query_params, timeout=self.timeout
+            session=self.session,
+            url=self.MATCH_ENDPOINT,
+            params=query_params,
+            timeout=self.timeout,
         )
 
     def num_online(self, game: str = "aoe2de") -> dict:
@@ -414,6 +421,7 @@ def _get_request_response_json(
     """
     default_headers = {"content-type": "application/json;charset=UTF-8"}
     logger.debug(f"Sending GET request at '{url}'")
+    logger.trace(f"Parameters are: {str(params)}")
 
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
     if response.status_code != 200:
