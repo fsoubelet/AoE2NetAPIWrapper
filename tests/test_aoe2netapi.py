@@ -104,16 +104,16 @@ class TestMethods:
     client = AoE2NetAPI()
 
     @responses.activate
-    def test_strings_endpoint(self, strings_endpoint_json_payload):
+    def test_strings_endpoint(self, strings_defaults_payload):
         responses.add(
             responses.GET,
             "https://aoe2.net/api/strings",
-            json=strings_endpoint_json_payload,
+            json=strings_defaults_payload,
             status=200,
         )
 
         result = self.client.strings()
-        assert result == strings_endpoint_json_payload
+        assert result == strings_defaults_payload
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {"game": "aoe2de"}
@@ -143,12 +143,37 @@ class TestMethods:
             == "https://aoe2.net/api/leaderboard?game=aoe2de&leaderboard_id=3&start=1&count=10"
         )
 
+    @responses.activate
+    def test_leaderboard_endpoint_with_steamid(self, leaderboard_profileid_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/leaderboard",
+            json=leaderboard_profileid_payload,
+            status=200,
+        )
+
+        result = self.client.leaderboard(profile_id=459658)
+        assert result == leaderboard_profileid_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "leaderboard_id": "3",
+            "start": "1",
+            "count": "10",
+            "profile_id": "459658",
+        }
+        assert (
+            responses.calls[0].request.url
+            == "https://aoe2.net/api/leaderboard?game=aoe2de&leaderboard_id=3&start=1&count=10&profile_id=459658"
+        )
+
 
 # ----- Fixtures ----- #
 
 
 @pytest.fixture()
-def strings_endpoint_json_payload() -> dict:
+def strings_defaults_payload() -> dict:
     strings_response_file = INPUTS_DIR / "strings.json"
     with strings_response_file.open("r") as fileobj:
         payload = json.load(fileobj)
@@ -158,6 +183,30 @@ def strings_endpoint_json_payload() -> dict:
 @pytest.fixture()
 def leaderboard_defaults_payload() -> dict:
     leaderboard_defaults_file = INPUTS_DIR / "leaderboard_defaults.json"
+    with leaderboard_defaults_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def leaderboard_search_payload() -> dict:
+    leaderboard_defaults_file = INPUTS_DIR / "leaderboard_search.json"
+    with leaderboard_defaults_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def leaderboard_steamid_payload() -> dict:
+    leaderboard_defaults_file = INPUTS_DIR / "leaderboard_steamid.json"
+    with leaderboard_defaults_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def leaderboard_profileid_payload() -> dict:
+    leaderboard_defaults_file = INPUTS_DIR / "leaderboard_profileid.json"
     with leaderboard_defaults_file.open("r") as fileobj:
         payload = json.load(fileobj)
     return payload
