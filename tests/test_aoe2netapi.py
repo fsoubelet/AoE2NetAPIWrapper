@@ -81,7 +81,10 @@ class TestExceptions:
     @responses.activate
     def test_raise_on_invalid_status_codes(self, caplog):
         responses.add(
-            responses.GET, "https://local/test/endpoint", json={"error": "not found"}, status=404
+            responses.GET,
+            "https://local/test/endpoint",
+            json={"error": "not found"},
+            status=404,
         )
 
         with pytest.raises(Aoe2NetException):
@@ -113,7 +116,32 @@ class TestMethods:
         assert result == strings_endpoint_json_payload
 
         assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {"game": "aoe2de"}
         assert responses.calls[0].request.url == "https://aoe2.net/api/strings?game=aoe2de"
+
+    @responses.activate
+    def test_leaderboard_endpoint_defaults(self, leaderboard_defaults_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/leaderboard",
+            json=leaderboard_defaults_payload,
+            status=200,
+        )
+
+        result = self.client.leaderboard()
+        assert result == leaderboard_defaults_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "leaderboard_id": "3",
+            "start": "1",
+            "count": "10",
+        }
+        assert (
+            responses.calls[0].request.url
+            == "https://aoe2.net/api/leaderboard?game=aoe2de&leaderboard_id=3&start=1&count=10"
+        )
 
 
 # ----- Fixtures ----- #
@@ -121,7 +149,15 @@ class TestMethods:
 
 @pytest.fixture()
 def strings_endpoint_json_payload() -> dict:
-    strings_response_file = INPUTS_DIR / "strings_response.json"
+    strings_response_file = INPUTS_DIR / "strings.json"
     with strings_response_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def leaderboard_defaults_payload() -> dict:
+    leaderboard_defaults_file = INPUTS_DIR / "leaderboard_defaults.json"
+    with leaderboard_defaults_file.open("r") as fileobj:
         payload = json.load(fileobj)
     return payload
