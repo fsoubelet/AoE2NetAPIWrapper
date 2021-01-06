@@ -16,7 +16,7 @@ pip install aoe2netwrapper
 The package provides a simple, fully-typed high-level object to interact with each API provided by `aoe2.net`.
 Each exposed endpoint from the APIs can be queried with a method named after it:
 
-Complete data API:
+* Complete data API:
 ```python
 from aoe2netwrapper import AoE2NetAPI
 
@@ -29,7 +29,7 @@ top_accounts = client.leaderboard(game="aoe2de", leaderboard_id=3, start=1, coun
 open_lobbies = client.lobbies(game="aoe2de")
 ```
 
-Nightbot API:
+* Nightbot API:
 ```python
 from aoe2netwrapper import AoE2NightbotAPI
 
