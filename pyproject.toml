@@ -42,6 +42,19 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 
+# ----- Testing Configuration ----- #
+
+[tool.pytest.ini_options]
+addopts = "--cov-report=xml --cov-report term-missing --cov-config=pyproject.toml --cov=aoe2netwrapper"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["aoe2netwrapper/"]
+
+[tool.coverage.report]
+ignore_errors = true
+
+
 # ----- Utilities Configuration ----- #
 
 

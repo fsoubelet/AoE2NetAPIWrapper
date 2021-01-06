@@ -59,7 +59,7 @@ lint: format
 	@poetry run pylint aoe2netwrapper/
 
 tests: format clean
-	@poetry run pytest --cov=aoe2netwrapper --cov-report term-missing
+	@poetry run pytest
 	@make clean
 
 type: format
