@@ -64,7 +64,7 @@ class TestExceptions:
 
     def test_matches_invalid_count_parameter(self, caplog):
         with pytest.raises(Aoe2NetException):
-            self.client.match_history(count=2000)
+            self.client.matches(count=2000)
 
         for record in caplog.records:
             assert record.levelname == "ERROR"
@@ -88,9 +88,7 @@ class TestExceptions:
         )
 
         with pytest.raises(Aoe2NetException):
-            result = _get_request_response_json(
-                self.client.session, url="https://local/test/endpoint"
-            )
+            _ = _get_request_response_json(self.client.session, url="https://local/test/endpoint")
 
         for record in caplog.records:
             assert record.levelname == "ERROR"
@@ -98,6 +96,17 @@ class TestExceptions:
                 "GET request at 'https://local/test/endpoint' returned a 404 status code"
                 in caplog.text
             )
+
+
+class TestClientInstantiation:
+    def test_timeout_attribute(self):
+        client = AoE2NetAPI(timeout=1)
+        assert client.timeout == 1
+
+    def test_repr(self):
+        client = AoE2NetAPI()
+        assert str(client) == "Client for <https://aoe2.net/api>"
+        assert repr(client) == "Client for <https://aoe2.net/api>"
 
 
 class TestMethods:
@@ -144,7 +153,59 @@ class TestMethods:
         )
 
     @responses.activate
-    def test_leaderboard_endpoint_with_steamid(self, leaderboard_profileid_payload):
+    def test_leaderboard_endpoint_with_search(self, leaderboard_search_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/leaderboard",
+            json=leaderboard_search_payload,
+            status=200,
+        )
+
+        result = self.client.leaderboard(search="GL.TheViper")
+        assert result == leaderboard_search_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "leaderboard_id": "3",
+            "start": "1",
+            "count": "10",
+            "search": "GL.TheViper",
+        }
+        assert (
+            responses.calls[0].request.url
+            == "https://aoe2.net/api/leaderboard?game=aoe2de&leaderboard_id=3&start=1&count=10&"
+            "search=GL.TheViper"
+        )
+
+    @responses.activate
+    def test_leaderboard_endpoint_with_steamid(self, leaderboard_steamid_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/leaderboard",
+            json=leaderboard_steamid_payload,
+            status=200,
+        )
+
+        result = self.client.leaderboard(steam_id=76561199003184910)
+        assert result == leaderboard_steamid_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "leaderboard_id": "3",
+            "start": "1",
+            "count": "10",
+            "steam_id": "76561199003184910",
+        }
+        assert (
+            responses.calls[0].request.url
+            == "https://aoe2.net/api/leaderboard?game=aoe2de&leaderboard_id=3&start=1&count=10"
+            "&steam_id=76561199003184910"
+        )
+
+    @responses.activate
+    def test_leaderboard_endpoint_with_profileid(self, leaderboard_profileid_payload):
         responses.add(
             responses.GET,
             "https://aoe2.net/api/leaderboard",
@@ -165,8 +226,272 @@ class TestMethods:
         }
         assert (
             responses.calls[0].request.url
-            == "https://aoe2.net/api/leaderboard?game=aoe2de&leaderboard_id=3&start=1&count=10&profile_id=459658"
+            == "https://aoe2.net/api/leaderboard?game=aoe2de&leaderboard_id=3&start=1&count=10&"
+            "profile_id=459658"
         )
+
+    @responses.activate
+    def test_lobbies_endpoint(self, lobbies_defaults_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/lobbies",
+            json=lobbies_defaults_payload,
+            status=200,
+        )
+
+        result = self.client.lobbies()
+        assert result == lobbies_defaults_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {"game": "aoe2de"}
+        assert responses.calls[0].request.url == "https://aoe2.net/api/lobbies?game=aoe2de"
+
+    @responses.activate
+    def test_last_match_endpoint_with_steamid(self, last_match_steamid_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/player/lastmatch",
+            json=last_match_steamid_payload,
+            status=200,
+        )
+
+        result = self.client.last_match(steam_id=76561199003184910)
+        assert result == last_match_steamid_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "steam_id": "76561199003184910",
+        }
+        assert (
+            responses.calls[0].request.url == "https://aoe2.net/api/player/lastmatch?"
+            "game=aoe2de&steam_id=76561199003184910"
+        )
+
+    @responses.activate
+    def test_last_match_endpoint_with_profileid(self, last_match_profileid_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/player/lastmatch",
+            json=last_match_profileid_payload,
+            status=200,
+        )
+
+        result = self.client.last_match(profile_id=459658)
+        assert result == last_match_profileid_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "profile_id": "459658",
+        }
+        assert (
+            responses.calls[0].request.url == "https://aoe2.net/api/player/lastmatch?"
+            "game=aoe2de&profile_id=459658"
+        )
+
+    @responses.activate
+    def test_match_history_endpoint_with_steamid(self, match_history_steamid_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/player/matches",
+            json=match_history_steamid_payload,
+            status=200,
+        )
+
+        result = self.client.match_history(steam_id=76561199003184910)
+        assert result == match_history_steamid_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "start": "0",
+            "count": "10",
+            "steam_id": "76561199003184910",
+        }
+        assert (
+            responses.calls[0].request.url
+            == "https://aoe2.net/api/player/matches?game=aoe2de&start=0&count=10&"
+            "steam_id=76561199003184910"
+        )
+
+    @responses.activate
+    def test_match_history_endpoint_with_profileid(self, match_history_profileid_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/player/matches",
+            json=match_history_profileid_payload,
+            status=200,
+        )
+
+        result = self.client.match_history(profile_id=459658)
+        assert result == match_history_profileid_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "start": "0",
+            "count": "10",
+            "profile_id": "459658",
+        }
+        assert (
+            responses.calls[0].request.url
+            == "https://aoe2.net/api/player/matches?game=aoe2de&start=0&count=10&profile_id=459658"
+        )
+
+    @responses.activate
+    def test_rating_history_endpoint_with_steamid(self, rating_history_steamid_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/player/ratinghistory",
+            json=rating_history_steamid_payload,
+            status=200,
+        )
+
+        result = self.client.rating_history(steam_id=76561199003184910)
+        assert result == rating_history_steamid_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "leaderboard_id": "3",
+            "start": "0",
+            "count": "100",
+            "steam_id": "76561199003184910",
+        }
+        assert (
+            responses.calls[0].request.url
+            == "https://aoe2.net/api/player/ratinghistory?game=aoe2de&leaderboard_id=3&start=0&"
+            "count=100&steam_id=76561199003184910"
+        )
+
+    @responses.activate
+    def test_rating_history_endpoint_with_profileid(self, rating_history_profileid_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/player/ratinghistory",
+            json=rating_history_profileid_payload,
+            status=200,
+        )
+
+        result = self.client.rating_history(profile_id=459658)
+        assert result == rating_history_profileid_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "leaderboard_id": "3",
+            "start": "0",
+            "count": "100",
+            "profile_id": "459658",
+        }
+        assert (
+            responses.calls[0].request.url
+            == "https://aoe2.net/api/player/ratinghistory?game=aoe2de&leaderboard_id=3&start=0&"
+            "count=100&profile_id=459658"
+        )
+
+    @responses.activate
+    def test_matches_endpoint_defaults(self, matches_defaults_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/matches",
+            json=matches_defaults_payload,
+            status=200,
+        )
+
+        result = self.client.matches()
+        assert result == matches_defaults_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "count": "10",
+        }
+        assert responses.calls[0].request.url == "https://aoe2.net/api/matches?game=aoe2de&count=10"
+
+    @responses.activate
+    def test_matches_endpoint_with_since(self, matches_since_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/matches",
+            json=matches_since_payload,
+            status=200,
+        )
+
+        result = self.client.matches(since=1596775000)
+        assert result == matches_since_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "count": "10",
+            "since": "1596775000",
+        }
+        assert (
+            responses.calls[0].request.url
+            == "https://aoe2.net/api/matches?game=aoe2de&count=10&since=1596775000"
+        )
+
+    @responses.activate
+    def test_match_endpoint_with_uuid(self, match_uuid_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/match",
+            json=match_uuid_payload,
+            status=200,
+        )
+
+        result = self.client.match(uuid="66ec2575-5ee4-d241-a1fc-d7ffeffb48b6")
+        assert result == match_uuid_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "uuid": "66ec2575-5ee4-d241-a1fc-d7ffeffb48b6",
+        }
+        assert (
+            responses.calls[0].request.url
+            == "https://aoe2.net/api/match?game=aoe2de&uuid=66ec2575-5ee4-d241-a1fc-d7ffeffb48b6"
+        )
+
+    @responses.activate
+    def test_match_endpoint_with_matchid(self, match_matchid_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/match",
+            json=match_matchid_payload,
+            status=200,
+        )
+
+        result = self.client.match(match_id=32435313)
+        assert result == match_matchid_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {
+            "game": "aoe2de",
+            "match_id": "32435313",
+        }
+        assert (
+            responses.calls[0].request.url
+            == "https://aoe2.net/api/match?game=aoe2de&match_id=32435313"
+        )
+
+    @responses.activate
+    def test_num_online_endpoint(self, num_online_defaults_payload):
+        responses.add(
+            responses.GET,
+            "https://aoe2.net/api/stats/players",
+            json=num_online_defaults_payload,
+            status=200,
+        )
+
+        result = self.client.num_online()
+        assert result == num_online_defaults_payload
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.params == {"game": "aoe2de"}
+        assert responses.calls[0].request.url == "https://aoe2.net/api/stats/players?game=aoe2de"
 
 
 # ----- Fixtures ----- #
@@ -190,23 +515,119 @@ def leaderboard_defaults_payload() -> dict:
 
 @pytest.fixture()
 def leaderboard_search_payload() -> dict:
-    leaderboard_defaults_file = INPUTS_DIR / "leaderboard_search.json"
-    with leaderboard_defaults_file.open("r") as fileobj:
+    leaderboard_search_file = INPUTS_DIR / "leaderboard_search.json"
+    with leaderboard_search_file.open("r") as fileobj:
         payload = json.load(fileobj)
     return payload
 
 
 @pytest.fixture()
 def leaderboard_steamid_payload() -> dict:
-    leaderboard_defaults_file = INPUTS_DIR / "leaderboard_steamid.json"
-    with leaderboard_defaults_file.open("r") as fileobj:
+    leaderboard_steamid_file = INPUTS_DIR / "leaderboard_steamid.json"
+    with leaderboard_steamid_file.open("r") as fileobj:
         payload = json.load(fileobj)
     return payload
 
 
 @pytest.fixture()
 def leaderboard_profileid_payload() -> dict:
-    leaderboard_defaults_file = INPUTS_DIR / "leaderboard_profileid.json"
-    with leaderboard_defaults_file.open("r") as fileobj:
+    leaderboard_profileid_file = INPUTS_DIR / "leaderboard_profileid.json"
+    with leaderboard_profileid_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def lobbies_defaults_payload() -> dict:
+    lobbies_defaults_file = INPUTS_DIR / "lobbies.json"
+    with lobbies_defaults_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def last_match_steamid_payload() -> dict:
+    last_match_steamid_file = INPUTS_DIR / "last_match_steamid.json"
+    with last_match_steamid_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def last_match_profileid_payload() -> dict:
+    last_match_profileid_file = INPUTS_DIR / "last_match_profileid.json"
+    with last_match_profileid_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def match_history_steamid_payload() -> dict:
+    match_history_steamid_file = INPUTS_DIR / "match_history_steamid.json"
+    with match_history_steamid_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def match_history_profileid_payload() -> dict:
+    match_history_profileid_file = INPUTS_DIR / "match_history_profileid.json"
+    with match_history_profileid_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def rating_history_steamid_payload() -> dict:
+    rating_history_steamid_file = INPUTS_DIR / "rating_history_steamid.json"
+    with rating_history_steamid_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def rating_history_profileid_payload() -> dict:
+    rating_history_profileid_file = INPUTS_DIR / "rating_history_profileid.json"
+    with rating_history_profileid_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def matches_defaults_payload() -> dict:
+    matches_defaults_file = INPUTS_DIR / "matches_defaults.json"
+    with matches_defaults_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def matches_since_payload() -> dict:
+    matches_since_file = INPUTS_DIR / "matches_since.json"
+    with matches_since_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def match_uuid_payload() -> dict:
+    match_uuid_file = INPUTS_DIR / "match_uuid.json"
+    with match_uuid_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def match_matchid_payload() -> dict:
+    match_match_id_file = INPUTS_DIR / "match_matchid.json"
+    with match_match_id_file.open("r") as fileobj:
+        payload = json.load(fileobj)
+    return payload
+
+
+@pytest.fixture()
+def num_online_defaults_payload() -> dict:
+    num_online_defaults_file = INPUTS_DIR / "num_online.json"
+    with num_online_defaults_file.open("r") as fileobj:
         payload = json.load(fileobj)
     return payload
