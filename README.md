@@ -2,7 +2,7 @@
   <b>aoe2netwrapper</b>
 </h1>
 
-A simple typed wrapper to interact with the APIs provided by `https://aoe2.net`.
+A simple typed wrapper to interact with the APIs provided by https://aoe2.net.
 
 ## Install
 
