@@ -377,6 +377,7 @@ def _get_request_text_response_decoded(
     """
     default_headers = {"content-type": "application/json;charset=UTF-8"}
     logger.debug(f"Sending GET request at '{url}'")
+    logger.trace(f"Parameters are: {str(params)}")
 
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
     if response.status_code != 200:
