@@ -29,7 +29,7 @@ class AoE2NightbotAPI:
 
     def __init__(self, timeout: Union[float, Tuple[float, float]] = 5):
         """Creating a Session for connection pooling since we're always querying the same host."""
-        self.client = requests.Session()
+        self.session = requests.Session()
         self.timeout = timeout
 
     def __repr__(self) -> str:
@@ -92,7 +92,7 @@ class AoE2NightbotAPI:
         }
 
         return _get_request_text_response_decoded(
-            session=self.client,
+            session=self.session,
             url=self.RANK_DETAILS_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
@@ -156,7 +156,7 @@ class AoE2NightbotAPI:
         }
 
         return _get_request_text_response_decoded(
-            session=self.client,
+            session=self.session,
             url=self.RECENT_OPPONENT_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
@@ -224,7 +224,7 @@ class AoE2NightbotAPI:
         }
 
         return _get_request_text_response_decoded(
-            session=self.client,
+            session=self.session,
             url=self.CURRENT_MATCH_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
@@ -284,7 +284,7 @@ class AoE2NightbotAPI:
         }
 
         return _get_request_text_response_decoded(
-            session=self.client,
+            session=self.session,
             url=self.CURRENT_CIVS_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
@@ -344,7 +344,7 @@ class AoE2NightbotAPI:
         }
 
         return _get_request_text_response_decoded(
-            session=self.client,
+            session=self.session,
             url=self.CURRENT_MAP_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
