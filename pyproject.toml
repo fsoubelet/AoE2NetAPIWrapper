@@ -32,6 +32,13 @@ requests = "^2.25.1"
 loguru = "^0.5.3"
 pydantic = "^1.7.3"
 
+# Defining optional dependencies for extras
+portray = { version = "^1.4.0", optional = true }
+
+# Defining the extras
+[tool.poetry.extras]
+docs = ["portray"]
+
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.1"
 pytest-cov = "^2.10.1"
@@ -59,8 +66,48 @@ source = ["aoe2netwrapper/"]
 ignore_errors = true
 
 
-# ----- Utilities Configuration ----- #
+# ----- Documentation Configuration ----- #
 
+[tool.portray]
+extra_markdown_extensions = [
+    "admonition",
+    "codehilite",
+    "footnotes",
+    "pymdownx.arithmatex",
+    "pymdownx.betterem",
+    "pymdownx.caret",
+    "pymdownx.critic",
+    "pymdownx.details",
+    "pymdownx.inlinehilite",
+    "pymdownx.magiclink",
+    "pymdownx.tabbed",
+    "pymdownx.tasklist",
+    "pymdownx.keys",
+    "pymdownx.mark",
+    "pymdownx.smartsymbols",
+    "pymdownx.superfences",
+    "pymdownx.tasklist",
+    "pymdownx.tilde"
+]
+modules = ["aoe2netwrapper"]
+
+[tool.portray.mkdocs]
+repo_url = "https://github.com/fsoubelet/AoE2NetAPIWrapper"
+repo_name = "AoE2NetAPIWrapper"
+
+[tool.portray.mkdocs.theme]
+name = "material"
+palette = {scheme = "default", primary = "teal", accent = "purple"}
+font = {text = "Ubuntu Mono", code = "Fira Code"}
+
+[[tool.portray.mkdocs.nav]]
+Home = "README.md"
+
+[[tool.portray.mkdocs.nav]]
+"Getting Started" = "docs/Getting_Started.md"
+
+
+# ----- Utilities Configuration ----- #
 
 [tool.isort]
 line_length = 100
