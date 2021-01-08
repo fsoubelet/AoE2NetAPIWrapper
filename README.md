@@ -92,7 +92,7 @@ open_lobbies = client.lobbies(game="aoe2de")
 ```python
 from aoe2netwrapper import AoE2NightbotAPI
 
-nightbot = AoE2NightbotAPI(timeout=10)
+nightbot = AoE2NightbotAPI(timeout=10) # specify timeout limit for ALL requests at instantiation
 
 # Get quick rank information on a specific player in 1v1 Random Map
 viper_details = nightbot.rank(leaderboard_id=3, search="GL.TheViper")
