@@ -5,6 +5,9 @@ description = "My Python wrapper for the aoe2.net data API"
 authors = ["Felix Soubelet <felix.soubelet@liverpool.ac.uk>"]
 license = "MIT"
 
+readme = "README.md"
+repository = "https://github.com/fsoubelet/AoE2NetAPIWrapper"
+
 keywords = ["API", "AoE2", "Utility",]
 classifiers = [
     "Development Status :: 4 - Beta",
