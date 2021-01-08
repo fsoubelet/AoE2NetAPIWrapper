@@ -12,6 +12,14 @@ import requests
 from loguru import logger
 
 from aoe2netwrapper.exceptions import Aoe2NetException
+from aoe2netwrapper.models import (
+    LastMatchResponse,
+    LeaderBoardResponse,
+    MatchLobby,
+    NumOnlineResponse,
+    RatingTimePoint,
+    StringsResponse,
+)
 
 
 class AoE2NetAPI:
@@ -54,12 +62,13 @@ class AoE2NetAPI:
         logger.debug("Preparing parameters for strings query")
         query_params = {"game": game}
 
-        return _get_request_response_json(
+        processed_response = _get_request_response_json(
             session=self.session,
             url=self.STRINGS_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
+        logger.trace("Parsing ")
 
     def leaderboard(
         self,
@@ -374,7 +383,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
 
-    def num_online(self, game: str = "aoe2de") -> dict:
+    def num_online(self, game: str = "aoe2de") -> dict:  # will return a models.NumOnlineResponse
         """
         Number of players in game and an estimate of the number current playing multiplayer.
 

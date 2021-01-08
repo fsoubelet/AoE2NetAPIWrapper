@@ -356,13 +356,13 @@ class TestMethods:
             "game": "aoe2de",
             "leaderboard_id": "3",
             "start": "0",
-            "count": "100",
+            "count": "20",
             "steam_id": "76561199003184910",
         }
         assert (
             responses.calls[0].request.url
             == "https://aoe2.net/api/player/ratinghistory?game=aoe2de&leaderboard_id=3&start=0&"
-            "count=100&steam_id=76561199003184910"
+            "count=20&steam_id=76561199003184910"
         )
 
     @responses.activate
@@ -382,13 +382,13 @@ class TestMethods:
             "game": "aoe2de",
             "leaderboard_id": "3",
             "start": "0",
-            "count": "100",
+            "count": "20",
             "profile_id": "459658",
         }
         assert (
             responses.calls[0].request.url
             == "https://aoe2.net/api/player/ratinghistory?game=aoe2de&leaderboard_id=3&start=0&"
-            "count=100&profile_id=459658"
+            "count=20&profile_id=459658"
         )
 
     @responses.activate
