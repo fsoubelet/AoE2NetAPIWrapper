@@ -64,6 +64,7 @@
 </p>
 
 Link to [documentation][package_doc].
+
 Link to [source code][package_source].
 
 ## License

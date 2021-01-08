@@ -1,0 +1,6 @@
+/* Increasing content body width */
+.md-grid {
+    max-width: 65rem;
+    margin-left: auto;
+    margin-right: auto;
+}
