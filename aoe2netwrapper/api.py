@@ -144,7 +144,7 @@ class AoE2NetAPI:
 
     def last_match(
         self, game: str = "aoe2de", steam_id: int = None, profile_id: int = None
-    ) -> dict:
+    ) -> dict:  # will return a models.LastMatchResponse
         """
         Request the last match the player started playing, this will be the current match if they
         are still in game. Either 'steam_id' or 'profile_id' required.
@@ -187,7 +187,7 @@ class AoE2NetAPI:
         count: int = 10,
         steam_id: int = None,
         profile_id: int = None,
-    ) -> List[dict]:
+    ) -> List[dict]:  # will return a List[models.MatchLobby]
         """
         Request the match history for a player. Either 'steam_id' or 'profile_id' required.
 
@@ -239,10 +239,10 @@ class AoE2NetAPI:
         game: str = "aoe2de",
         leaderboard_id: int = 3,
         start: int = 0,
-        count: int = 100,
+        count: int = 20,
         steam_id: int = None,
         profile_id: int = None,
-    ) -> List[dict]:
+    ) -> List[dict]:  # will return a List[models.RatingTimePoint]
         """
         Requests the rating history for a player. Either 'steam_id' or 'profile_id' required.
 
@@ -295,7 +295,9 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
 
-    def matches(self, game: str = "aoe2de", count: int = 10, since: int = None) -> List[dict]:
+    def matches(
+        self, game: str = "aoe2de", count: int = 10, since: int = None
+    ) -> List[dict]:  # will return a List[models.MatchLobby]
         """
         Request matches after a specific time: the match history in an optionally given time
         window.
@@ -335,7 +337,9 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
 
-    def match(self, game: str = "aoe2de", uuid: str = None, match_id: int = None) -> dict:
+    def match(
+        self, game: str = "aoe2de", uuid: str = None, match_id: int = None
+    ) -> dict:  # will return a models.MatchLobby
         """
         Request details about a match. Either 'uuid' or 'match_id' required.
 
