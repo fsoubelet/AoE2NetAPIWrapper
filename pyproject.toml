@@ -97,7 +97,7 @@ repo_name = "AoE2NetAPIWrapper"
 
 [tool.portray.mkdocs.theme]
 name = "material"
-palette = {scheme = "default", primary = "teal", accent = "purple"}
+palette = {scheme = "default", primary = "purple", accent = "orange"}
 font = {text = "Ubuntu Mono", code = "Fira Code"}
 
 [[tool.portray.mkdocs.nav]]
