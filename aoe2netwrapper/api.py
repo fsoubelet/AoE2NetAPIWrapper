@@ -182,9 +182,7 @@ class AoE2NetAPI:
         """
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetException(
-                "Either 'steam_id' or 'profile_id' required, please provide one."
-            )
+            raise Aoe2NetException("Either 'steam_id' or 'profile_id' required, please provide one.")
 
         logger.debug("Preparing parameters for last match query")
         query_params = {"game": game, "steam_id": steam_id, "profile_id": profile_id}
@@ -232,9 +230,7 @@ class AoE2NetAPI:
 
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetException(
-                "Either 'steam_id' or 'profile_id' required, please provide one."
-            )
+            raise Aoe2NetException("Either 'steam_id' or 'profile_id' required, please provide one.")
 
         logger.debug("Preparing parameters for match history query")
         query_params = {
@@ -294,9 +290,7 @@ class AoE2NetAPI:
 
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetException(
-                "Either 'steam_id' or 'profile_id' required, please provide one."
-            )
+            raise Aoe2NetException("Either 'steam_id' or 'profile_id' required, please provide one.")
 
         logger.debug("Preparing parameters for rating history query")
         query_params = {
@@ -453,8 +447,6 @@ def _get_request_response_json(
 
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
     if response.status_code != 200:
-        logger.error(
-            f"GET request at '{response.url}' returned a {response.status_code} status code"
-        )
+        logger.error(f"GET request at '{response.url}' returned a {response.status_code} status code")
         raise Aoe2NetException(f"Expected status code 200 - got {response.status_code} instead.")
     return response.json()

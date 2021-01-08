@@ -110,7 +110,7 @@ Home = "README.md"
 # ----- Utilities Configuration ----- #
 
 [tool.isort]
-line_length = 100
+line_length = 110
 force_single_line = false
 atomic = true
 include_trailing_comma = true
@@ -122,7 +122,7 @@ known_first_party = "aoe2netwrapper"
 known_third_party = "pytest"
 
 [tool.black]
-line-length = 100
+line-length = 110
 include = '\.pyi?$'
 exclude = '''
 /(
