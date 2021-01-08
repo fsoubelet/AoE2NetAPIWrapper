@@ -93,6 +93,7 @@ modules = ["aoe2netwrapper"]
 
 [tool.portray.mkdocs]
 repo_url = "https://github.com/fsoubelet/AoE2NetAPIWrapper"
+site_url = "https://fsoubelet.github.io/AoE2NetAPIWrapper/"
 repo_name = "AoE2NetAPIWrapper"
 extra_css = ["stylesheets/extra.css"]
 
