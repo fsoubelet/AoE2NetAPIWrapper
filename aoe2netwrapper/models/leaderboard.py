@@ -11,6 +11,8 @@ from pydantic import BaseModel, Field
 
 
 class LeaderBoardSpot(BaseModel):
+    """An object to encapsulate any entry in the leaderboard ranking."""
+
     profile_id: Optional[int] = Field(None, description="The ID attributed to the player by AoE II")
     rank: Optional[int] = Field(None, description="The player's rank on the ladder")
     rating: Optional[int] = Field(None, description="The player's rating in the ELO system")
@@ -33,6 +35,8 @@ class LeaderBoardSpot(BaseModel):
 
 
 class LeaderBoardResponse(BaseModel):
+    """An object to encapsulate the response from the leaderboard API."""
+
     total: Optional[int] = Field(None, description="Total number of entries in the leaderboard")
     leaderboard_id: Optional[int] = Field(None, description="ID of the leaderboard queried, aka game type")
     start: Optional[int] = Field(None, description="Starting rank of the first entry in the response")

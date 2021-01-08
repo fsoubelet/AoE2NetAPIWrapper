@@ -11,6 +11,8 @@ from pydantic import BaseModel, Field
 
 
 class RatingTimePoint(BaseModel):
+    """An object to encapsulate any entry in the list of returned ranking timestamped data points."""
+
     rating: Optional[int] = Field(None, description="The player's rating in the ELO system")
     num_wins: Optional[int] = Field(None, description="Total amount of wins")
     num_losses: Optional[int] = Field(None, description="Total amount of losses")

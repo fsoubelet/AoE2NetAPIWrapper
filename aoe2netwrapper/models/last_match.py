@@ -13,6 +13,8 @@ from aoe2netwrapper.models.lobbies import MatchLobby
 
 
 class LastMatchResponse(BaseModel):
+    """An object to encapsulate the response from the last_match API."""
+
     profile_id: Optional[int] = Field(None, description="The ID attributed to the player by AoE II")
     steam_id: Optional[int] = Field(None, description="ID of the player on the Steam platform")
     name: Optional[str] = Field(None, description="Name of the player the query was made for")

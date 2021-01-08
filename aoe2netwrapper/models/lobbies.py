@@ -11,6 +11,8 @@ from pydantic import BaseModel, Field
 
 
 class LobbyMember(BaseModel):
+    """An object to encapsulate any entry in the leaderboard ranking."""
+
     profile_id: Optional[int] = Field(None, description="The ID attributed to the member by AoE II")
     steam_id: Optional[int] = Field(None, description="ID of the member on the Steam platform")
     name: Optional[str] = Field(None, description="The member's in-game name")
@@ -31,6 +33,8 @@ class LobbyMember(BaseModel):
 
 
 class MatchLobby(BaseModel):
+    """An object to encapsulate any entry in the list of returned lobbies."""
+
     match_id: Optional[int] = Field(None, description="ID attributed to the match this lobby is for")
     lobby_id: Optional[int] = Field(None, description="ID attributed to the lobby itself")
     match_uuid: Optional[str] = Field(None, description="UUID attributed to the match this lobby is for")
