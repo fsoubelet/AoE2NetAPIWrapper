@@ -1,8 +1,8 @@
-<h1 align="center">
+<h1 style="text-align:center">
   <b>aoe2netwrapper</b>
 </h1>
 
-<p align="center">
+<p style="text-align:center">
   <!-- PyPi Version -->
   <a href="https://pypi.org/project/aoe2netwrapper">
     <img alt="PyPI Version" src="https://img.shields.io/pypi/v/aoe2netwrapper?label=PyPI&logo=PyPI">
@@ -53,11 +53,11 @@
   </a>
 </p>
 
-<p align="center">
+<p style="text-align:center">
   A simple typed wrapper to interact with the https://aoe2.net APIs
 </p>
 
-<p align="center">
+<p style="text-align:center">
   <a href="https://www.python.org/">
     <img alt="Made With Python" src="https://forthebadge.com/images/badges/made-with-python.svg">
   </a>
