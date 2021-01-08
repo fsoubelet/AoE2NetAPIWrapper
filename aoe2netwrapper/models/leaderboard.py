@@ -11,30 +11,30 @@ from pydantic import BaseModel, Field
 
 
 class LeaderBoardSpot(BaseModel):
-    profile_id: int
-    rank: int
-    rating: int
-    steam_id: int
+    profile_id: Optional[int] = Field(...)
+    rank: Optional[int] = Field(...)
+    rating: Optional[int] = Field(...)
+    steam_id: Optional[int] = Field(...)
     icon: Any = None
-    name: str
+    name: Optional[str] = Field(...)
     clan: Optional[str] = Field(...)
-    country: str
-    previous_rating: int
-    highest_rating: int
-    streak: int
-    lowest_streak: int
-    highest_streak: int
-    games: int
-    wins: int
-    losses: int
-    drops: int
-    last_match: int
-    last_match_time: int
+    country: Optional[str] = Field(...)
+    previous_rating: Optional[int] = Field(...)
+    highest_rating: Optional[int] = Field(...)
+    streak: Optional[int] = Field(...)
+    lowest_streak: Optional[int] = Field(...)
+    highest_streak: Optional[int] = Field(...)
+    games: Optional[int] = Field(...)
+    wins: Optional[int] = Field(...)
+    losses: Optional[int] = Field(...)
+    drops: Optional[int] = Field(...)
+    last_match: Optional[int] = Field(...)
+    last_match_time: Optional[int] = Field(...)
 
 
 class LeaderBoardResponse(BaseModel):
-    total: int
-    leaderboard_id: int
-    start: int
-    count: int
-    leaderboard: List[LeaderBoardSpot]
+    total: Optional[int] = Field(...)
+    leaderboard_id: Optional[int] = Field(...)
+    start: Optional[int] = Field(...)
+    count: Optional[int] = Field(...)
+    leaderboard: Optional[List[LeaderBoardSpot]] = Field(...)

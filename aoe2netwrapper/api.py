@@ -120,7 +120,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
 
-    def lobbies(self, game: str = "aoe2de") -> List[dict]:  # will return a List[models.Lobby]
+    def lobbies(self, game: str = "aoe2de") -> List[dict]:  # will return a List[models.MatchLobby]
         """
         Request all open lobbies.
 

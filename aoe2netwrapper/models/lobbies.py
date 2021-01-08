@@ -30,7 +30,7 @@ class LobbyMember(BaseModel):
     won: Optional[int] = Field(...)
 
 
-class Lobby(BaseModel):
+class MatchLobby(BaseModel):
     match_id: Optional[int] = Field(...)
     lobby_id: Optional[int] = Field(...)
     match_uuid: Optional[str] = Field(...)

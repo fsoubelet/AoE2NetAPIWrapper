@@ -11,62 +11,62 @@ from pydantic import BaseModel
 
 
 class AgeString(BaseModel):
-    id: int
-    string: str
+    id: Optional[int] = Field(...)
+    string: Optional[str] = Field(...)
 
 
 class CivilizationString(BaseModel):
-    id: int
-    string: str
+    id: Optional[int] = Field(...)
+    string: Optional[str] = Field(...)
 
 
 class GameTypeString(BaseModel):
-    id: int
-    string: str
+    id: Optional[int] = Field(...)
+    string: Optional[str] = Field(...)
 
 
 class LeaderBoardString(BaseModel):
-    id: int
-    string: str
+    id: Optional[int] = Field(...)
+    string: Optional[str] = Field(...)
 
 
 class MapSizeString(BaseModel):
-    id: int
-    string: str
+    id: Optional[int] = Field(...)
+    string: Optional[str] = Field(...)
 
 
 class MapTypeString(BaseModel):
-    id: int
-    string: str
+    id: Optional[int] = Field(...)
+    string: Optional[str] = Field(...)
 
 
 class RatingTypeString(BaseModel):
-    id: int
-    string: str
+    id: Optional[int] = Field(...)
+    string: Optional[str] = Field(...)
 
 
 class ResourcesString(BaseModel):
-    id: int
-    string: str
+    id: Optional[int] = Field(...)
+    string: Optional[str] = Field(...)
 
 
 class SpeedString(BaseModel):
-    id: int
-    string: str
+    id: Optional[int] = Field(...)
+    string: Optional[str] = Field(...)
 
 
 class VictoryString(BaseModel):
-    id: int
-    string: str
+    id: Optional[int] = Field(...)
+    string: Optional[str] = Field(...)
 
 
 class VisibilityString(BaseModel):
-    id: int
-    string: str
+    id: Optional[int] = Field(...)
+    string: Optional[str] = Field(...)
 
 
 class StringsResponse(BaseModel):
-    language: str
+    language: Optional[str] = Field(...)
     age: List[AgeString]
     civ: List[CivilizationString]
     game_type: List[GameTypeString]
