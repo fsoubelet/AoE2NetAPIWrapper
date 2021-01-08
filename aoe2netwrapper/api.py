@@ -38,7 +38,7 @@ class AoE2NetAPI:
     def __repr__(self) -> str:
         return f"Client for <{self.API_BASE_URL}>"
 
-    def strings(self, game: str = "aoe2de") -> dict:
+    def strings(self, game: str = "aoe2de") -> dict:  # will return a models.StringsResponse
         """
         Requests a list of strings used by the API.
 
@@ -70,7 +70,7 @@ class AoE2NetAPI:
         search: str = None,
         steam_id: int = None,
         profile_id: int = None,
-    ) -> dict:
+    ) -> dict:  # will return a models.LeaderBoardResponse
         """
         Request the current leaderboards.
 
@@ -85,11 +85,11 @@ class AoE2NetAPI:
                 Defaults to 1.
             count (int): Number of leaderboard entries to get (warning: must be 10000 or less).
                 Defaults to 10.
-            search (str): To perform the search for a specific player, from their name.
-            steam_id (int): To perform the search for a specific player, from their steamID64
-                (ex: 76561199003184910).
-            profile_id (int): To perform the search for a specific player, from their profile ID
-                (ex: 459658).
+            search (str): Optional. To perform the search for a specific player, from their name.
+            steam_id (int): Optional. To perform the search for a specific player, from their
+                steamID64 (ex: 76561199003184910).
+            profile_id (int): Optional. To perform the search for a specific player, from their
+                profile ID (ex: 459658).
 
         Raises:
             Aoe2NetException: if the 'count' parameter exceeds 10 000.
@@ -120,7 +120,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
 
-    def lobbies(self, game: str = "aoe2de") -> List[dict]:
+    def lobbies(self, game: str = "aoe2de") -> List[dict]:  # will return a List[models.Lobby]
         """
         Request all open lobbies.
 
