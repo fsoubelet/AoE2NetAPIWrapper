@@ -381,8 +381,6 @@ def _get_request_text_response_decoded(
 
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
     if response.status_code != 200:
-        logger.error(
-            f"GET request at '{response.url}' returned a {response.status_code} status code"
-        )
+        logger.error(f"GET request at '{response.url}' returned a {response.status_code} status code")
         raise NightBotException(f"Expected status code 200 - got {response.status_code} instead.")
     return response.text
