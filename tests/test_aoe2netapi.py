@@ -100,10 +100,7 @@ class TestExceptions:
 
         for record in caplog.records:
             assert record.levelname == "ERROR"
-            assert (
-                "GET request at 'https://local/test/endpoint' returned a 404 status code"
-                in caplog.text
-            )
+            assert "GET request at 'https://local/test/endpoint' returned a 404 status code" in caplog.text
 
 
 class TestClientInstantiation:
@@ -504,10 +501,7 @@ class TestMethods:
             "game": "aoe2de",
             "match_id": "32435313",
         }
-        assert (
-            responses.calls[0].request.url
-            == "https://aoe2.net/api/match?game=aoe2de&match_id=32435313"
-        )
+        assert responses.calls[0].request.url == "https://aoe2.net/api/match?game=aoe2de&match_id=32435313"
 
     @responses.activate
     def test_num_online_endpoint(self, num_online_defaults_payload):

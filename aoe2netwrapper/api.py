@@ -10,6 +10,7 @@ from typing import Any, Dict, List, Tuple, Union
 import requests
 
 from loguru import logger
+from pydantic import parse_obj_as
 
 from aoe2netwrapper.exceptions import Aoe2NetException
 from aoe2netwrapper.models import (
@@ -24,7 +25,9 @@ from aoe2netwrapper.models import (
 
 class AoE2NetAPI:
     """
-    The 'AoE2NetAPI' class is a client that encompasses the https://aoe2.net/#api API  functions.
+    The 'AoE2NetAPI' class is a client that encompasses the https://aoe2.net/#api API endpoints.
+    Each method in this class corresponds name for name to an endpoint, and will do the work in querying then
+    parsing and validating the response before returning it.
     """
 
     API_BASE_URL: str = "https://aoe2.net/api"
@@ -155,7 +158,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self.LOBBIES_ENDPOINT}'")
-        return [MatchLobby(**lobby) for lobby in processed_response]
+        return parse_obj_as(List[MatchLobby], processed_response)
 
     def last_match(
         self, game: str = "aoe2de", steam_id: int = None, profile_id: int = None
@@ -181,9 +184,7 @@ class AoE2NetAPI:
         """
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetException(
-                "Either 'steam_id' or 'profile_id' required, please provide one."
-            )
+            raise Aoe2NetException("Either 'steam_id' or 'profile_id' required, please provide one.")
 
         logger.debug("Preparing parameters for last match query")
         query_params = {"game": game, "steam_id": steam_id, "profile_id": profile_id}
@@ -231,9 +232,7 @@ class AoE2NetAPI:
 
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetException(
-                "Either 'steam_id' or 'profile_id' required, please provide one."
-            )
+            raise Aoe2NetException("Either 'steam_id' or 'profile_id' required, please provide one.")
 
         logger.debug("Preparing parameters for match history query")
         query_params = {
@@ -251,7 +250,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self.MATCH_HISTORY_ENDPOINT}'")
-        return [MatchLobby(**lobby) for lobby in processed_response]
+        return parse_obj_as(List[MatchLobby], processed_response)
 
     def rating_history(
         self,
@@ -293,9 +292,7 @@ class AoE2NetAPI:
 
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetException(
-                "Either 'steam_id' or 'profile_id' required, please provide one."
-            )
+            raise Aoe2NetException("Either 'steam_id' or 'profile_id' required, please provide one.")
 
         logger.debug("Preparing parameters for rating history query")
         query_params = {
@@ -314,7 +311,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self.RATING_HISTORY_ENDPOINT}'")
-        return [RatingTimePoint(**rating) for rating in processed_response]
+        return parse_obj_as(List[RatingTimePoint], processed_response)
 
     def matches(self, game: str = "aoe2de", count: int = 10, since: int = None) -> List[MatchLobby]:
         """
@@ -356,7 +353,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self.MATCHES_ENDPOINT}'")
-        return [MatchLobby(**lobby) for lobby in processed_response]
+        return parse_obj_as(List[MatchLobby], processed_response)
 
     def match(self, game: str = "aoe2de", uuid: str = None, match_id: int = None) -> MatchLobby:
         """
@@ -452,8 +449,6 @@ def _get_request_response_json(
 
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
     if response.status_code != 200:
-        logger.error(
-            f"GET request at '{response.url}' returned a {response.status_code} status code"
-        )
+        logger.error(f"GET request at '{response.url}' returned a {response.status_code} status code")
         raise Aoe2NetException(f"Expected status code 200 - got {response.status_code} instead.")
     return response.json()

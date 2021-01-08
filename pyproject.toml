@@ -32,6 +32,13 @@ requests = "^2.25.1"
 loguru = "^0.5.3"
 pydantic = "^1.7.3"
 
+# Defining optional dependencies for extras
+portray = { version = "^1.4.0", optional = true }
+
+# Defining the extras
+[tool.poetry.extras]
+docs = ["portray"]
+
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.1"
 pytest-cov = "^2.10.1"
@@ -59,23 +66,68 @@ source = ["aoe2netwrapper/"]
 ignore_errors = true
 
 
+# ----- Documentation Configuration ----- #
+
+[tool.portray]
+extra_markdown_extensions = [
+    "admonition",
+    "codehilite",
+    "footnotes",
+    "pymdownx.arithmatex",
+    "pymdownx.betterem",
+    "pymdownx.caret",
+    "pymdownx.critic",
+    "pymdownx.details",
+    "pymdownx.inlinehilite",
+    "pymdownx.magiclink",
+    "pymdownx.tabbed",
+    "pymdownx.tasklist",
+    "pymdownx.keys",
+    "pymdownx.mark",
+    "pymdownx.smartsymbols",
+    "pymdownx.superfences",
+    "pymdownx.tasklist",
+    "pymdownx.tilde"
+]
+modules = ["aoe2netwrapper"]
+
+[tool.portray.mkdocs]
+repo_url = "https://github.com/fsoubelet/AoE2NetAPIWrapper"
+repo_name = "AoE2NetAPIWrapper"
+extra_css = ["stylesheets/extra.css"]
+
+[tool.portray.mkdocs.theme]
+name = "material"
+palette = {scheme = "slate", primary = "blue grey", accent = "amber"}
+font = {text = "Ubuntu Mono", code = "Fira Code"}
+
+[[tool.portray.mkdocs.nav]]
+Home = "README.md"
+
+[[tool.portray.mkdocs.nav]]
+"Getting Started" = "docs/Getting_Started.md"
+
+[[tool.portray.mkdocs.nav]]
+"Features" = "docs/Features.md"
+
 # ----- Utilities Configuration ----- #
 
-
 [tool.isort]
-line_length = 100
-force_single_line = false
 atomic = true
-include_trailing_comma = true
-lines_between_types = 1
-use_parentheses = true
-skip_glob = ["*/setup.py"]
+ensure_newline_before_comments = true
 filter_files = true
+force_grid_wrap = 0
+force_single_line = false
+include_trailing_comma = true
 known_first_party = "aoe2netwrapper"
 known_third_party = "pytest"
+line_length = 110
+lines_between_types = 1
+multi_line_output = 3
+use_parentheses = true
 
 [tool.black]
-line-length = 100
+line-length = 110
 include = '\.pyi?$'
 exclude = '''
 /(
@@ -111,15 +163,18 @@ exclude = '''
     extension-pkg-whitelist=""
     exit-zero="no"
     from-stdin="no"
+    extension_pkg_whitelist="pydantic"
 
     [tool.pylint.messages_control]
     disable = [
         "attribute-defined-outside-init",
+        "bad-whitespace",
         "bad-continuation",
         "expression-not-assigned",
         "invalid-name",
         "import-error",
         "logging-format-interpolation",
+        "no-name-in-module",
         "protected-access",
         "too-few-public-methods",
         "too-many-instance-attributes",

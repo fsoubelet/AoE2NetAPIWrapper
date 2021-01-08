@@ -14,8 +14,7 @@ INPUTS_DIR = CURRENT_DIR / "inputs"
 RANKS = {
     "viper_flag": "🇳🇴 GL.TheViper (2501) Rank #1, has played 762 games with a 69% winrate, "
     "-1 streak, and 2 drops",
-    "viper": "GL.TheViper (2501) Rank #1, has played 762 games with a 69% winrate, "
-    "-1 streak, and 2 drops",
+    "viper": "GL.TheViper (2501) Rank #1, has played 762 games with a 69% winrate, " "-1 streak, and 2 drops",
     "hoang_flag": "🇻🇳 DS_HOANG |AOEBuilds.com (2345) Rank #27, has played 2,975 games with a "
     "58% winrate, +7 streak, and 41 drops",
     "hoang": "DS_HOANG |AOEBuilds.com (2345) Rank #27, has played 2,975 games with a "
@@ -103,16 +102,11 @@ class TestExceptions:
         )
 
         with pytest.raises(NightBotException):
-            _ = _get_request_text_response_decoded(
-                self.client.session, url="https://local/test/endpoint"
-            )
+            _ = _get_request_text_response_decoded(self.client.session, url="https://local/test/endpoint")
 
         for record in caplog.records:
             assert record.levelname == "ERROR"
-            assert (
-                "GET request at 'https://local/test/endpoint' returned a 404 status code"
-                in caplog.text
-            )
+            assert "GET request at 'https://local/test/endpoint' returned a 404 status code" in caplog.text
 
 
 class TestClientInstantiation:

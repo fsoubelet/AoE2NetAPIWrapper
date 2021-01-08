@@ -16,8 +16,8 @@ from aoe2netwrapper.exceptions import NightBotException
 
 class AoE2NightbotAPI:
     """
-    The 'AoE2NightbotAPI' class is a client that encompasses the https://aoe2.net/#nightbot
-    Nightbot API functions, which only return their requested data as plain text.
+    The 'AoE2NightbotAPI' class is a client that encompasses the https://aoe2.net/#nightbot API endpoints,
+    which only return their requested data as plain text.
     """
 
     NIGHTBOT_BASE_URL: str = "https://aoe2.net/api/nightbot"
@@ -381,8 +381,6 @@ def _get_request_text_response_decoded(
 
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
     if response.status_code != 200:
-        logger.error(
-            f"GET request at '{response.url}' returned a {response.status_code} status code"
-        )
+        logger.error(f"GET request at '{response.url}' returned a {response.status_code} status code")
         raise NightBotException(f"Expected status code 200 - got {response.status_code} instead.")
     return response.text
