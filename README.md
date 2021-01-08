@@ -54,7 +54,7 @@
 </p>
 
 <p align="center">
-  A simple typed wrapper to interact with the https://aoe2.net APIs
+  A simple, efficient and typed wrapper to interact query the https://aoe2.net APIs with Python 3.6+
 </p>
 
 <p align="center">
@@ -63,45 +63,12 @@
   </a>
 </p>
 
-## Install
-
-This package is compatible with `Python 3.6+`, and can be installed in your virtual enrivonment from PyPI with:
-```bash
-pip install aoe2netwrapper
-```
-
-## Quick Start
-
-The package provides a simple, fully-typed high-level object to interact with each API provided by `aoe2.net`.
-Each exposed endpoint from the APIs can be queried with a method named after it:
-
-* __Complete data API__
-```python
-from aoe2netwrapper import AoE2NetAPI
-
-client = AoE2NetAPI(timeout=10) # specify timeout limit for ALL requests at instantiation
-
-# Get the first 100 ranked accounts in 1v1 Random Map
-top_accounts = client.leaderboard(game="aoe2de", leaderboard_id=3, start=1, count=100)
-
-# Get the list of currently open lobbies
-open_lobbies = client.lobbies(game="aoe2de")
-```
-
-* __Nightbot API__
-```python
-from aoe2netwrapper import AoE2NightbotAPI
-
-nightbot = AoE2NightbotAPI(timeout=10) # specify timeout limit for ALL requests at instantiation
-
-# Get quick rank information on a specific player in 1v1 Random Map
-viper_details = nightbot.rank(leaderboard_id=3, search="GL.TheViper")
-print(viper_details)
-# '🇳🇴 GL.TheViper (2501) Rank #1, has played 762 games with a 69% winrate, -1 streak, and 2 drops'
-```
-
-The full documentation for the API endpoints can be found at https://aoe2.net/#api and https://aoe2.net/#nightbot, but is also included in the methods' docstrings for convenience.
+Link to [documentation][package_doc].
+Link to [source code][package_source].
 
 ## License
 
 Copyright &copy; 2021 Felix Soubelet. [MIT License](LICENSE)
+
+[package_doc]: https://fsoubelet.github.io/AoE2NetAPIWrapper/
+[package_source]: https://github.com/fsoubelet/AoE2NetAPIWrapper
