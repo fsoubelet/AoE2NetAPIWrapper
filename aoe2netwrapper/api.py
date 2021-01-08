@@ -25,7 +25,9 @@ from aoe2netwrapper.models import (
 
 class AoE2NetAPI:
     """
-    The 'AoE2NetAPI' class is a client that encompasses the https://aoe2.net/#api API  functions.
+    The 'AoE2NetAPI' class is a client that encompasses the https://aoe2.net/#api API endpoints.
+    Each method in this class corresponds name for name to an endpoint, and will do the work in querying then
+    parsing and validating the response before returning it.
     """
 
     API_BASE_URL: str = "https://aoe2.net/api"
