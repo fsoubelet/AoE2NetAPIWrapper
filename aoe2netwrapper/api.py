@@ -10,6 +10,7 @@ from typing import Any, Dict, List, Tuple, Union
 import requests
 
 from loguru import logger
+from pydantic import parse_obj_as
 
 from aoe2netwrapper.exceptions import Aoe2NetException
 from aoe2netwrapper.models import (
@@ -155,7 +156,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self.LOBBIES_ENDPOINT}'")
-        return [MatchLobby(**lobby) for lobby in processed_response]
+        return parse_obj_as(List[MatchLobby], processed_response)
 
     def last_match(
         self, game: str = "aoe2de", steam_id: int = None, profile_id: int = None
@@ -251,7 +252,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self.MATCH_HISTORY_ENDPOINT}'")
-        return [MatchLobby(**lobby) for lobby in processed_response]
+        return parse_obj_as(List[MatchLobby], processed_response)
 
     def rating_history(
         self,
@@ -314,7 +315,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self.RATING_HISTORY_ENDPOINT}'")
-        return [RatingTimePoint(**rating) for rating in processed_response]
+        return parse_obj_as(List[RatingTimePoint], processed_response)
 
     def matches(self, game: str = "aoe2de", count: int = 10, since: int = None) -> List[MatchLobby]:
         """
@@ -356,7 +357,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self.MATCHES_ENDPOINT}'")
-        return [MatchLobby(**lobby) for lobby in processed_response]
+        return parse_obj_as(List[MatchLobby], processed_response)
 
     def match(self, game: str = "aoe2de", uuid: str = None, match_id: int = None) -> MatchLobby:
         """
