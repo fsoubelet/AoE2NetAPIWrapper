@@ -1,8 +1,8 @@
-<h1 style="text-align:center">
+<h1 align="center">
   <b>aoe2netwrapper</b>
 </h1>
 
-<p style="text-align:center">
+<p align="center">
   <!-- PyPi Version -->
   <a href="https://pypi.org/project/aoe2netwrapper">
     <img alt="PyPI Version" src="https://img.shields.io/pypi/v/aoe2netwrapper?label=PyPI&logo=PyPI">
@@ -53,11 +53,11 @@
   </a>
 </p>
 
-<p style="text-align:center">
+<p align="center">
   A simple typed wrapper to interact with the https://aoe2.net APIs
 </p>
 
-<p style="text-align:center">
+<p align="center">
   <a href="https://www.python.org/">
     <img alt="Made With Python" src="https://forthebadge.com/images/badges/made-with-python.svg">
   </a>
@@ -79,7 +79,7 @@ Each exposed endpoint from the APIs can be queried with a method named after it:
 ```python
 from aoe2netwrapper import AoE2NetAPI
 
-client = AoE2NetAPI(timeout=10)
+client = AoE2NetAPI(timeout=10) # specify timeout limit for ALL requests at instantiation
 
 # Get the first 100 ranked accounts in 1v1 Random Map
 top_accounts = client.leaderboard(game="aoe2de", leaderboard_id=3, start=1, count=100)
