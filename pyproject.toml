@@ -98,7 +98,7 @@ extra_css = ["stylesheets/extra.css"]
 
 [tool.portray.mkdocs.theme]
 name = "material"
-palette = {scheme = "default", primary = "purple", accent = "orange"}
+palette = {scheme = "slate", primary = "blue grey", accent = "amber"}
 font = {text = "Ubuntu Mono", code = "Fira Code"}
 
 [[tool.portray.mkdocs.nav]]
@@ -107,6 +107,8 @@ Home = "README.md"
 [[tool.portray.mkdocs.nav]]
 "Getting Started" = "docs/Getting_Started.md"
 
+[[tool.portray.mkdocs.nav]]
+"Features" = "docs/Features.md"
 
 # ----- Utilities Configuration ----- #
 
