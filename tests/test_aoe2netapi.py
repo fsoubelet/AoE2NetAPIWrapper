@@ -6,6 +6,14 @@ import responses
 
 from aoe2netwrapper.api import AoE2NetAPI, _get_request_response_json
 from aoe2netwrapper.exceptions import Aoe2NetException
+from aoe2netwrapper.models import (
+    LastMatchResponse,
+    LeaderBoardResponse,
+    MatchLobby,
+    NumOnlineResponse,
+    RatingTimePoint,
+    StringsResponse,
+)
 
 CURRENT_DIR = pathlib.Path(__file__).parent
 INPUTS_DIR = CURRENT_DIR / "inputs"
@@ -122,7 +130,8 @@ class TestMethods:
         )
 
         result = self.client.strings()
-        assert result == strings_defaults_payload
+        assert isinstance(result, StringsResponse)
+        assert result == StringsResponse(**strings_defaults_payload)
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {"game": "aoe2de"}
@@ -138,7 +147,8 @@ class TestMethods:
         )
 
         result = self.client.leaderboard()
-        assert result == leaderboard_defaults_payload
+        assert isinstance(result, LeaderBoardResponse)
+        assert result == LeaderBoardResponse(**leaderboard_defaults_payload)
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
@@ -161,8 +171,10 @@ class TestMethods:
             status=200,
         )
 
+        assert isinstance(leaderboard_search_payload, dict)
         result = self.client.leaderboard(search="GL.TheViper")
-        assert result == leaderboard_search_payload
+        assert isinstance(result, LeaderBoardResponse)
+        assert result == LeaderBoardResponse(**leaderboard_search_payload)
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
@@ -188,7 +200,8 @@ class TestMethods:
         )
 
         result = self.client.leaderboard(steam_id=76561199003184910)
-        assert result == leaderboard_steamid_payload
+        assert isinstance(result, LeaderBoardResponse)
+        assert result == LeaderBoardResponse(**leaderboard_steamid_payload)
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
@@ -214,7 +227,8 @@ class TestMethods:
         )
 
         result = self.client.leaderboard(profile_id=459658)
-        assert result == leaderboard_profileid_payload
+        assert isinstance(result, LeaderBoardResponse)
+        assert result == LeaderBoardResponse(**leaderboard_profileid_payload)
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
@@ -240,7 +254,9 @@ class TestMethods:
         )
 
         result = self.client.lobbies()
-        assert result == lobbies_defaults_payload
+        assert isinstance(result, list)
+        assert isinstance(result[0], MatchLobby)
+        assert result == [MatchLobby(**lobby) for lobby in lobbies_defaults_payload]
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {"game": "aoe2de"}
@@ -256,7 +272,8 @@ class TestMethods:
         )
 
         result = self.client.last_match(steam_id=76561199003184910)
-        assert result == last_match_steamid_payload
+        assert isinstance(result, LastMatchResponse)
+        assert result == LastMatchResponse(**last_match_steamid_payload)
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
@@ -278,7 +295,8 @@ class TestMethods:
         )
 
         result = self.client.last_match(profile_id=459658)
-        assert result == last_match_profileid_payload
+        assert isinstance(result, LastMatchResponse)
+        assert result == LastMatchResponse(**last_match_profileid_payload)
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
@@ -300,7 +318,9 @@ class TestMethods:
         )
 
         result = self.client.match_history(steam_id=76561199003184910)
-        assert result == match_history_steamid_payload
+        assert isinstance(result, list)
+        assert isinstance(result[0], MatchLobby)
+        assert result == [MatchLobby(**lobby) for lobby in match_history_steamid_payload]
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
@@ -325,7 +345,9 @@ class TestMethods:
         )
 
         result = self.client.match_history(profile_id=459658)
-        assert result == match_history_profileid_payload
+        assert isinstance(result, list)
+        assert isinstance(result[0], MatchLobby)
+        assert result == [MatchLobby(**lobby) for lobby in match_history_profileid_payload]
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
@@ -349,20 +371,22 @@ class TestMethods:
         )
 
         result = self.client.rating_history(steam_id=76561199003184910)
-        assert result == rating_history_steamid_payload
+        assert isinstance(result, list)
+        assert isinstance(result[0], RatingTimePoint)
+        assert result == [RatingTimePoint(**rating) for rating in rating_history_steamid_payload]
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
             "game": "aoe2de",
             "leaderboard_id": "3",
             "start": "0",
-            "count": "100",
+            "count": "20",
             "steam_id": "76561199003184910",
         }
         assert (
             responses.calls[0].request.url
             == "https://aoe2.net/api/player/ratinghistory?game=aoe2de&leaderboard_id=3&start=0&"
-            "count=100&steam_id=76561199003184910"
+            "count=20&steam_id=76561199003184910"
         )
 
     @responses.activate
@@ -375,20 +399,22 @@ class TestMethods:
         )
 
         result = self.client.rating_history(profile_id=459658)
-        assert result == rating_history_profileid_payload
+        assert isinstance(result, list)
+        assert isinstance(result[0], RatingTimePoint)
+        assert result == [RatingTimePoint(**rating) for rating in rating_history_profileid_payload]
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
             "game": "aoe2de",
             "leaderboard_id": "3",
             "start": "0",
-            "count": "100",
+            "count": "20",
             "profile_id": "459658",
         }
         assert (
             responses.calls[0].request.url
             == "https://aoe2.net/api/player/ratinghistory?game=aoe2de&leaderboard_id=3&start=0&"
-            "count=100&profile_id=459658"
+            "count=20&profile_id=459658"
         )
 
     @responses.activate
@@ -401,7 +427,9 @@ class TestMethods:
         )
 
         result = self.client.matches()
-        assert result == matches_defaults_payload
+        assert isinstance(result, list)
+        assert isinstance(result[0], MatchLobby)
+        assert result == [MatchLobby(**lobby) for lobby in matches_defaults_payload]
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
@@ -420,7 +448,9 @@ class TestMethods:
         )
 
         result = self.client.matches(since=1596775000)
-        assert result == matches_since_payload
+        assert isinstance(result, list)
+        assert isinstance(result[0], MatchLobby)
+        assert result == [MatchLobby(**lobby) for lobby in matches_since_payload]
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
@@ -443,7 +473,8 @@ class TestMethods:
         )
 
         result = self.client.match(uuid="66ec2575-5ee4-d241-a1fc-d7ffeffb48b6")
-        assert result == match_uuid_payload
+        assert isinstance(result, MatchLobby)
+        assert result == MatchLobby(**match_uuid_payload)
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
@@ -465,7 +496,8 @@ class TestMethods:
         )
 
         result = self.client.match(match_id=32435313)
-        assert result == match_matchid_payload
+        assert isinstance(result, MatchLobby)
+        assert result == MatchLobby(**match_matchid_payload)
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {
@@ -487,7 +519,8 @@ class TestMethods:
         )
 
         result = self.client.num_online()
-        assert result == num_online_defaults_payload
+        assert isinstance(result, NumOnlineResponse)
+        assert result == NumOnlineResponse(**num_online_defaults_payload)
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.params == {"game": "aoe2de"}

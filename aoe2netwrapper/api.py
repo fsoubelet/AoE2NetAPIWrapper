@@ -12,6 +12,14 @@ import requests
 from loguru import logger
 
 from aoe2netwrapper.exceptions import Aoe2NetException
+from aoe2netwrapper.models import (
+    LastMatchResponse,
+    LeaderBoardResponse,
+    MatchLobby,
+    NumOnlineResponse,
+    RatingTimePoint,
+    StringsResponse,
+)
 
 
 class AoE2NetAPI:
@@ -38,7 +46,7 @@ class AoE2NetAPI:
     def __repr__(self) -> str:
         return f"Client for <{self.API_BASE_URL}>"
 
-    def strings(self, game: str = "aoe2de") -> dict:
+    def strings(self, game: str = "aoe2de") -> StringsResponse:
         """
         Requests a list of strings used by the API.
 
@@ -48,18 +56,19 @@ class AoE2NetAPI:
                 Empires 2: Definitive Edition).
 
         Returns:
-            A dictionnary with different strings used by the API, each with their list of possible
-            values (also a dict each).
+            A StringsResponse validated object encapsulating the strings used by the API.
         """
         logger.debug("Preparing parameters for strings query")
         query_params = {"game": game}
 
-        return _get_request_response_json(
+        processed_response = _get_request_response_json(
             session=self.session,
             url=self.STRINGS_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
+        logger.trace(f"Validating response from '{self.STRINGS_ENDPOINT}'")
+        return StringsResponse(**processed_response)
 
     def leaderboard(
         self,
@@ -70,7 +79,7 @@ class AoE2NetAPI:
         search: str = None,
         steam_id: int = None,
         profile_id: int = None,
-    ) -> dict:
+    ) -> LeaderBoardResponse:
         """
         Request the current leaderboards.
 
@@ -85,18 +94,19 @@ class AoE2NetAPI:
                 Defaults to 1.
             count (int): Number of leaderboard entries to get (warning: must be 10000 or less).
                 Defaults to 10.
-            search (str): To perform the search for a specific player, from their name.
-            steam_id (int): To perform the search for a specific player, from their steamID64
-                (ex: 76561199003184910).
-            profile_id (int): To perform the search for a specific player, from their profile ID
-                (ex: 459658).
+            search (str): Optional. To perform the search for a specific player, from their name.
+            steam_id (int): Optional. To perform the search for a specific player, from their
+                steamID64 (ex: 76561199003184910).
+            profile_id (int): Optional. To perform the search for a specific player, from their
+                profile ID (ex: 459658).
 
         Raises:
             Aoe2NetException: if the 'count' parameter exceeds 10 000.
 
         Returns:
-            A dictionnary with the different parameters used for the query, the 'total' amount of
-            hits, and the leaderboard as a list profile entries for each ranking (a dict each).
+            A LeaderBoardResponse validated object with the different parameters used for the
+            query, the total amount of hits, and the leaderboard as a list profile entries for
+            each ranking.
         """
         if count > 10_000:
             logger.error(f"'count' has to be 10000 or less, but {count} was provided.")
@@ -113,14 +123,16 @@ class AoE2NetAPI:
             "profile_id": profile_id,
         }
 
-        return _get_request_response_json(
+        processed_response = _get_request_response_json(
             session=self.session,
             url=self.LEADERBOARD_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
+        logger.trace(f"Validating response from '{self.LEADERBOARD_ENDPOINT}'")
+        return LeaderBoardResponse(**processed_response)
 
-    def lobbies(self, game: str = "aoe2de") -> List[dict]:
+    def lobbies(self, game: str = "aoe2de") -> List[MatchLobby]:
         """
         Request all open lobbies.
 
@@ -130,21 +142,24 @@ class AoE2NetAPI:
                 Empires 2: Definitive Edition).
 
         Returns:
-            A list of dictionaries, each one encapsulating the data for a currently open lobby.
+            A list of MatchLobby valideted objects, each one encapsulating the data for a currently
+            open lobby.
         """
         logger.debug("Preparing parameters for open lobbies query")
         query_params = {"game": game}
 
-        return _get_request_response_json(
+        processed_response = _get_request_response_json(
             session=self.session,
             url=self.LOBBIES_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
+        logger.trace(f"Validating response from '{self.LOBBIES_ENDPOINT}'")
+        return [MatchLobby(**lobby) for lobby in processed_response]
 
     def last_match(
         self, game: str = "aoe2de", steam_id: int = None, profile_id: int = None
-    ) -> dict:
+    ) -> LastMatchResponse:
         """
         Request the last match the player started playing, this will be the current match if they
         are still in game. Either 'steam_id' or 'profile_id' required.
@@ -160,9 +175,9 @@ class AoE2NetAPI:
             Aoe2NetException: if the not one of 'steam_id' or 'profile_id' are provided.
 
         Returns:
-            A dictionary with the information of the game, including the following keys:
-            'profile_id', 'steam_id', 'name', 'clan', 'country' & 'last_match', with 'last_match'
-            being a dictionary with the match's information.
+            A LastMatchResponse validated object with the information of the game, including the
+            following attributes: 'profile_id', 'steam_id', 'name', 'clan', 'country' and
+            'last_match'.
         """
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
@@ -173,12 +188,14 @@ class AoE2NetAPI:
         logger.debug("Preparing parameters for last match query")
         query_params = {"game": game, "steam_id": steam_id, "profile_id": profile_id}
 
-        return _get_request_response_json(
+        processed_response = _get_request_response_json(
             session=self.session,
             url=self.LAST_MATCH_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
+        logger.trace(f"Validating response from '{self.LAST_MATCH_ENDPOINT}'")
+        return LastMatchResponse(**processed_response)
 
     def match_history(
         self,
@@ -187,7 +204,7 @@ class AoE2NetAPI:
         count: int = 10,
         steam_id: int = None,
         profile_id: int = None,
-    ) -> List[dict]:
+    ) -> List[MatchLobby]:
         """
         Request the match history for a player. Either 'steam_id' or 'profile_id' required.
 
@@ -205,8 +222,8 @@ class AoE2NetAPI:
             Aoe2NetException: if the not one of 'steam_id' or 'profile_id' are provided.
 
         Returns:
-            A list of dictionaries, each one encapsulating the data for one of the player's
-            previous matches.
+            A list of MatchLobby validated objects, each one encapsulating the data for one of the
+            player's previous matches.
         """
         if count > 1_000:
             logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
@@ -227,22 +244,24 @@ class AoE2NetAPI:
             "profile_id": profile_id,
         }
 
-        return _get_request_response_json(
+        processed_response = _get_request_response_json(
             session=self.session,
             url=self.MATCH_HISTORY_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
+        logger.trace(f"Validating response from '{self.MATCH_HISTORY_ENDPOINT}'")
+        return [MatchLobby(**lobby) for lobby in processed_response]
 
     def rating_history(
         self,
         game: str = "aoe2de",
         leaderboard_id: int = 3,
         start: int = 0,
-        count: int = 100,
+        count: int = 20,
         steam_id: int = None,
         profile_id: int = None,
-    ) -> List[dict]:
+    ) -> List[RatingTimePoint]:
         """
         Requests the rating history for a player. Either 'steam_id' or 'profile_id' required.
 
@@ -264,9 +283,9 @@ class AoE2NetAPI:
             Aoe2NetException: if the not one of 'steam_id' or 'profile_id' are provided.
 
         Returns:
-            A list of dictionaries, each one encapsulating data at a certain point in time
-            corresponding to a match played by the player, including the rating, timestamp of the
-            match, streak etc.
+            A list of RatingTimePoint validated objects, each one encapsulating data at a certain
+            point in time corresponding to a match played by the player, including the rating,
+            timestamp of the match, streaks etc.
         """
         if count > 10_000:
             logger.error(f"'count' has to be 10 000 or less, but {count} was provided.")
@@ -288,14 +307,16 @@ class AoE2NetAPI:
             "profile_id": profile_id,
         }
 
-        return _get_request_response_json(
+        processed_response = _get_request_response_json(
             session=self.session,
             url=self.RATING_HISTORY_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
+        logger.trace(f"Validating response from '{self.RATING_HISTORY_ENDPOINT}'")
+        return [RatingTimePoint(**rating) for rating in processed_response]
 
-    def matches(self, game: str = "aoe2de", count: int = 10, since: int = None) -> List[dict]:
+    def matches(self, game: str = "aoe2de", count: int = 10, since: int = None) -> List[MatchLobby]:
         """
         Request matches after a specific time: the match history in an optionally given time
         window.
@@ -314,8 +335,8 @@ class AoE2NetAPI:
             Aoe2NetException: if the 'count' parameter exceeds 1000.
 
         Returns:
-            A list of dictionaries, each one encapsulating the data for one of the played matches
-            during the time window queried for.
+            A list of MatchLobby validated objects, each one encapsulating the data for one of the
+            played matches during the time window queried for.
         """
         if count > 1000:
             logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
@@ -328,14 +349,16 @@ class AoE2NetAPI:
             "since": since,
         }
 
-        return _get_request_response_json(
+        processed_response = _get_request_response_json(
             session=self.session,
             url=self.MATCHES_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
+        logger.trace(f"Validating response from '{self.MATCHES_ENDPOINT}'")
+        return [MatchLobby(**lobby) for lobby in processed_response]
 
-    def match(self, game: str = "aoe2de", uuid: str = None, match_id: int = None) -> dict:
+    def match(self, game: str = "aoe2de", uuid: str = None, match_id: int = None) -> MatchLobby:
         """
         Request details about a match. Either 'uuid' or 'match_id' required.
 
@@ -350,7 +373,7 @@ class AoE2NetAPI:
             Aoe2NetException: if the not one of 'uuid' or 'match_id' are provided.
 
         Returns:
-            A dictionary with the information of the specific match, including.
+            A MatchLobby validated object with the information of the specific match, including.
         """
         if not uuid and not match_id:
             logger.error("Missing one of 'uuid', 'match_id'.")
@@ -363,14 +386,16 @@ class AoE2NetAPI:
             "match_id": match_id,
         }
 
-        return _get_request_response_json(
+        processed_response = _get_request_response_json(
             session=self.session,
             url=self.MATCH_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
+        logger.trace(f"Validating response from '{self.MATCH_ENDPOINT}'")
+        return MatchLobby(**processed_response)
 
-    def num_online(self, game: str = "aoe2de") -> dict:
+    def num_online(self, game: str = "aoe2de") -> NumOnlineResponse:
         """
         Number of players in game and an estimate of the number current playing multiplayer.
 
@@ -380,19 +405,21 @@ class AoE2NetAPI:
                 Empires 2: Definitive Edition).
 
         Returns:
-            A dictionary with the app id and a list of the estimated 'num_players' metrics at
-            different timestamps ('steam', 'multiplayer', 'looking', 'in_game', 'multiplayer_1h' &
-            'multiplayer_24h').
+            A NumOnlineResponse validated object with the app id and a list of PlayerCountTimePoint
+            validated objects encapsulating estimated metrics at different timestamps ('steam',
+            'multiplayer', 'looking', 'in_game', 'multiplayer_1h' & 'multiplayer_24h').
         """
         logger.debug("Preparing parameters for number of online players query")
         query_params = {"game": game}
 
-        return _get_request_response_json(
+        processed_response = _get_request_response_json(
             session=self.session,
             url=self.NUMBER_ONLINE_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
+        logger.trace(f"Validating response from '{self.NUMBER_ONLINE_ENDPOINT}'")
+        return NumOnlineResponse(**processed_response)
 
 
 # ----- Helpers ----- #

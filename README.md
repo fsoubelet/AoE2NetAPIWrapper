@@ -79,7 +79,7 @@ Each exposed endpoint from the APIs can be queried with a method named after it:
 ```python
 from aoe2netwrapper import AoE2NetAPI
 
-client = AoE2NetAPI(timeout=10)
+client = AoE2NetAPI(timeout=10) # specify timeout limit for ALL requests at instantiation
 
 # Get the first 100 ranked accounts in 1v1 Random Map
 top_accounts = client.leaderboard(game="aoe2de", leaderboard_id=3, start=1, count=100)
@@ -92,7 +92,7 @@ open_lobbies = client.lobbies(game="aoe2de")
 ```python
 from aoe2netwrapper import AoE2NightbotAPI
 
-nightbot = AoE2NightbotAPI(timeout=10)
+nightbot = AoE2NightbotAPI(timeout=10) # specify timeout limit for ALL requests at instantiation
 
 # Get quick rank information on a specific player in 1v1 Random Map
 viper_details = nightbot.rank(leaderboard_id=3, search="GL.TheViper")
