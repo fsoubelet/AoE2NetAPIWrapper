@@ -1,6 +1,6 @@
 # Features
 
-### Simple and Fully Typed
+## Simple and Fully Typed
 
 The packages clients' methods mirror the `aoe2.net` endpoints, making the api objects easy and intuitive to use.
 They also come with sensible defaults everywhere possible.
@@ -10,7 +10,7 @@ No typing the wrong key names, coming back and forth between docs, or scrolling 
 
 ![parameter_autocompletion](assets/parameter_autocompletion.png)
 
-### Validated Response Models
+## Validated Response Models
 
 The models used in `aoe2netwrapper` encapsulate and enhance the data returned by the `aoe2.net` APIs:
 * No mess of confusing nested standard types: the methods all return tailored models encapsulating the returned data, recursively.
@@ -26,13 +26,11 @@ All the validation is handled by the well-established and robust [pydantic][pyda
 ??? tip "Models Integration"
     All the other goodies from the returned pydantic models are available to you: exporting options, deep copies, ORM integration, etc.
 
-### Tested
+## Logging & Testing
 
 * 100% test coverage.
-* 100% type annotated code base.
+* A codebase making use of the amazing logging from [loguru][loguru_repo]{target=_blank}, which can be integrated and extended.
 
-### Logging
-
-Write content.
 
 [pydantic_repo]: https://github.com/samuelcolvin/pydantic
+[loguru_repo]: https://github.com/delgan/loguru
