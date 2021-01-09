@@ -260,15 +260,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tested" class="md-nav__link">
-    Tested
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logging" class="md-nav__link">
-    Logging
+  <a href="#logging-testing" class="md-nav__link">
+    Logging &amp; Testing
   </a>
   
 </li>
@@ -564,15 +557,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tested" class="md-nav__link">
-    Tested
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logging" class="md-nav__link">
-    Logging
+  <a href="#logging-testing" class="md-nav__link">
+    Logging &amp; Testing
   </a>
   
 </li>
@@ -598,13 +584,13 @@
                 
                 
                 <h1 id="features">Features</h1>
-<h3 id="simple-and-fully-typed">Simple and Fully Typed</h3>
+<h2 id="simple-and-fully-typed">Simple and Fully Typed</h2>
 <p>The packages clients' methods mirror the <code>aoe2.net</code> endpoints, making the api objects easy and intuitive to use.
 They also come with sensible defaults everywhere possible.</p>
 <p>All of <code>aoe2netwrapper</code> is type hinted, providing autocompletion and return insights everywhere.
 No typing the wrong key names, coming back and forth between docs, or scrolling up and down to find if you need <code>matchid</code> or <code>match_id</code>.</p>
 <p><img alt="parameter_autocompletion" src="../assets/parameter_autocompletion.png" /></p>
-<h3 id="validated-response-models">Validated Response Models</h3>
+<h2 id="validated-response-models">Validated Response Models</h2>
 <p>The models used in <code>aoe2netwrapper</code> encapsulate and enhance the data returned by the <code>aoe2.net</code> APIs:
 * No mess of confusing nested standard types: the methods all return tailored models encapsulating the returned data, recursively.
 * No surprises: Data returned from the API is parsed and validated before being given back to you as custom models.
@@ -614,13 +600,11 @@ No typing the wrong key names, coming back and forth between docs, or scrolling 
 <p>All the validation is handled by the well-established and robust <a href="https://github.com/samuelcolvin/pydantic" target="_blank">pydantic</a>.</p>
 <details class="tip"><summary>Models Integration</summary><p>All the other goodies from the returned pydantic models are available to you: exporting options, deep copies, ORM integration, etc.</p>
 </details>
-<h3 id="tested">Tested</h3>
+<h2 id="logging-testing">Logging &amp; Testing</h2>
 <ul>
 <li>100% test coverage.</li>
-<li>100% type annotated code base.</li>
+<li>A codebase making use of the amazing logging from <a href="https://github.com/delgan/loguru" target="_blank">loguru</a>, which can be integrated and extended.</li>
 </ul>
-<h3 id="logging">Logging</h3>
-<p>Write content.</p>
                 
               
               
