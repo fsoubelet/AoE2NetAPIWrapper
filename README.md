@@ -54,7 +54,7 @@
 </p>
 
 <p align="center">
-  A simple, efficient and typed wrapper to interact query the https://aoe2.net APIs with Python 3.6+
+  A simple, efficient and typed wrapper to query the https://aoe2.net APIs with Python 3.6+
 </p>
 
 <p align="center">

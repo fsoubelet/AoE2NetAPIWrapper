@@ -31,5 +31,8 @@ All the validation is handled by the well-established and robust [pydantic][pyda
 * 100% test coverage.
 * 100% type annotated code base.
 
+### Logging
+
+Write content.
 
 [pydantic_repo]: https://github.com/samuelcolvin/pydantic
