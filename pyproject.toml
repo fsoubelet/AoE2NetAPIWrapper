@@ -27,17 +27,19 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.6.1"
 requests = "^2.25.1"
 loguru = "^0.5.3"
 pydantic = "^1.7.3"
 
 # Defining optional dependencies for extras
 portray = { version = "^1.4.0", optional = true }
+pandas = { version = "^1.0", optional = true }
 
 # Defining the extras
 [tool.poetry.extras]
 docs = ["portray"]
+dataframe = ["pandas"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.1"
