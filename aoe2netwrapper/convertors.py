@@ -50,7 +50,7 @@ class Convert:
             dframe[attribute] = dframe[i].apply(lambda x: x[1])
             del dframe[i]
 
-        logger.trace("Inserting LeaderBoardResponse attributes as column")
+        logger.trace("Inserting LeaderBoardResponse attributes as columns")
         dframe["leaderboard_id"] = leaderboard_response.leaderboard_id
         dframe["start"] = leaderboard_response.start
         dframe["count"] = leaderboard_response.count
@@ -84,6 +84,34 @@ class Convert:
             dframe[attribute] = dframe[i].apply(lambda x: x[1])
             del dframe[i]
 
+        return dframe
+
+    @staticmethod
+    def last_match(last_match_response: LastMatchResponse) -> pd.DataFrame:
+        """
+        Convert the result given by a call to AoE2NetAPI().last_match to a pandas DataFrame. There is not
+        much use to this as the DataFrame will only have one row, but the method is provided nonetheless in
+        case users want to concatenate several of these results in a DataFrame.
+
+        Args:
+            last_match_response (LastMatchResponse): the response directly returned by your AoE2NetAPI
+                client.
+
+        Returns:
+            A pandas DataFrame from the list of LastMatchResponse attributes. Beware: the 'players'
+            column is directly the content of the 'LastMatchResponse.last_match.players' attribute and as
+            such holds a list of LobbyMember objects.
+        """
+        logger.debug("Converting LastMatchResponse last_match to DataFrame")
+        dframe = pd.DataFrame(last_match_response.last_match).transpose()
+        dframe.columns = dframe.iloc[0]
+        dframe = dframe.drop(0).reset_index()
+
+        logger.trace("Inserting LastMatchResponse attributes as columns")
+        dframe["profile_id"] = last_match_response.profile_id
+        dframe["steam_id"] = last_match_response.steam_id
+        dframe["name"] = last_match_response.name
+        dframe["country"] = last_match_response.country
         return dframe
 
     @staticmethod
