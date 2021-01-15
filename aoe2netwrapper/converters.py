@@ -15,7 +15,7 @@ try:
     import pandas as pd
 except ImportError:
     logger.error(
-        "The 'aoe2netwrapper.convertors' module exports results to 'pandas.DataFrame' objects and "
+        "The 'aoe2netwrapper.converters' module exports results to 'pandas.DataFrame' objects and "
         "needs the 'pandas' library installed to function."
     )
     raise NotImplementedError("The 'pandas' library is required but not installed.")
