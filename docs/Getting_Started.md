@@ -2,7 +2,7 @@
 
 ## Installation
 
-This code is compatible with `Python 3.6+`.
+This code is compatible with `Python 3.6.1+`.
 This package is installable from PyPI with [pip]{target=_blank} in a virtual environment with:
 
 ```bash
