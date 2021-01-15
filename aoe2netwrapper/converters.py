@@ -59,20 +59,26 @@ class Convert:
     @staticmethod
     def lobbies(lobbies_response: List[MatchLobby]) -> pd.DataFrame:
         """
-        Convert the result given by a call to AoE2NetAPI().lobbies to a pandas DataFrame.
+        Convert the result given by a call to AoE2NetAPI().lobbies to a pandas DataFrame. The resulting
+        DataFrame will contain several rows for each lobby, namely as many as there are players in said
+        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.
+
+        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
+        make use of the groupby functionality of pandas DataFrames.
 
         Args:
             lobbies_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
                 client.
 
         Returns:
-            A pandas DataFrame from the list of MatchLobby elements, each row being the information from
-            one MatchLobby in the list. Beware: the 'players' column is directly the content of the
-            'MatchLobby.players' attribute and as such holds lists of LobbyMember objects.
+            A pandas DataFrame from the list of MatchLobby elements..
         """
         logger.debug("Converting Lobbies response to DataFrame")
-        dframe = pd.DataFrame(lobbies_response)
-        return _export_tuple_elements_to_column_values_format(dframe)
+        dframe = pd.DataFrame()
+        for match_lobby in lobbies_response:
+            dframe = pd.concat([dframe, _unfold_match_lobby_to_dataframe(match_lobby)])
+        dframe = dframe.reset_index(drop=True)
+        return dframe
 
     @staticmethod
     def last_match(last_match_response: LastMatchResponse) -> pd.DataFrame:
@@ -105,20 +111,26 @@ class Convert:
     @staticmethod
     def match_history(match_history_response: List[MatchLobby]) -> pd.DataFrame:
         """
-        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame.
+        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting
+        DataFrame will contain several rows for each lobby, namely as many as there are players in said
+        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.
+
+        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
+        make use of the groupby functionality of pandas DataFrames.
 
         Args:
             match_history_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
                 client.
 
         Returns:
-            A pandas DataFrame from the list of MatchLobby elements, each row being the information from
-            one MatchLobby in the list. Beware: the 'players' column is directly the content of the
-            'MatchLobby.players' attribute and as such holds lists of LobbyMember objects.
+            A pandas DataFrame from the list of MatchLobby elements.
         """
         logger.debug("Converting Match History response to DataFrame")
-        dframe = pd.DataFrame(match_history_response)
-        return _export_tuple_elements_to_column_values_format(dframe)
+        dframe = pd.DataFrame()
+        for match_lobby in match_history_response:
+            dframe = pd.concat([dframe, _unfold_match_lobby_to_dataframe(match_lobby)])
+        dframe = dframe.reset_index(drop=True)
+        return dframe
 
     @staticmethod
     def rating_history(rating_history_response: List[RatingTimePoint]) -> pd.DataFrame:
@@ -145,20 +157,26 @@ class Convert:
     @staticmethod
     def matches(matches_response: List[MatchLobby]) -> pd.DataFrame:
         """
-        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame.
+        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting
+        DataFrame will contain several rows for each lobby, namely as many as there are players in said
+        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.
+
+        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
+        make use of the groupby functionality of pandas DataFrames.
 
         Args:
             matches_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
                 client.
 
         Returns:
-            A pandas DataFrame from the list of MatchLobby elements, each row being the information from
-            one MatchLobby in the list. Beware: the 'players' column is directly the content of the
-            'MatchLobby.players' attribute and as such holds lists of LobbyMember objects.
+            A pandas DataFrame from the list of MatchLobby elements.
         """
         logger.debug("Converting Match History response to DataFrame")
-        dframe = pd.DataFrame(match_history_response)
-        return _export_tuple_elements_to_column_values_format(dframe)
+        dframe = pd.DataFrame()
+        for match_lobby in matches_response:
+            dframe = pd.concat([dframe, _unfold_match_lobby_to_dataframe(match_lobby)])
+        dframe = dframe.reset_index(drop=True)
+        return dframe
 
     @staticmethod
     def match(match_response: MatchLobby) -> pd.DataFrame:
