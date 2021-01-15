@@ -143,6 +143,24 @@ class Convert:
         return dframe
 
     @staticmethod
+    def matches(matches_response: List[MatchLobby]) -> pd.DataFrame:
+        """
+        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame.
+
+        Args:
+            matches_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
+                client.
+
+        Returns:
+            A pandas DataFrame from the list of MatchLobby elements, each row being the information from
+            one MatchLobby in the list. Beware: the 'players' column is directly the content of the
+            'MatchLobby.players' attribute and as such holds lists of LobbyMember objects.
+        """
+        logger.debug("Converting Match History response to DataFrame")
+        dframe = pd.DataFrame(match_history_response)
+        return _export_tuple_elements_to_column_values_format(dframe)
+
+    @staticmethod
     def num_online(num_online_response: NumOnlineResponse) -> pd.DataFrame:
         """
         Convert the result given by a call to AoE2NetAPI().num_online to a pandas DataFrame.
