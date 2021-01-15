@@ -54,7 +54,7 @@ class Convert:
         logger.trace("Converting datetimes")
         dframe["last_match"] = pd.to_datetime(dframe["last_match"], unit="s")
         dframe["last_match_time"] = pd.to_datetime(dframe["last_match_time"], unit="s")
-        return dframe
+        return dframe.convert_dtypes()
 
     @staticmethod
     def lobbies(lobbies_response: List[MatchLobby]) -> pd.DataFrame:
@@ -100,7 +100,7 @@ class Convert:
         dframe["steam_id"] = last_match_response.steam_id
         dframe["name"] = last_match_response.name
         dframe["country"] = last_match_response.country
-        return dframe
+        return dframe.convert_dtypes()
 
     @staticmethod
     def match_history(match_history_response: List[MatchLobby]) -> pd.DataFrame:
@@ -137,10 +137,10 @@ class Convert:
         dframe = pd.DataFrame(rating_history_response)
         dframe = _export_tuple_elements_to_column_values_format(dframe)
 
-        logger.trace("Converting datetimes")
+        logger.trace("Converting timestamps to datetime objects")
         dframe["time"] = pd.to_datetime(dframe["timestamp"], unit="s")
         dframe = dframe.drop(columns=["timestamp"])
-        return dframe
+        return dframe.convert_dtypes()
 
     @staticmethod
     def matches(matches_response: List[MatchLobby]) -> pd.DataFrame:
@@ -159,6 +159,22 @@ class Convert:
         logger.debug("Converting Match History response to DataFrame")
         dframe = pd.DataFrame(match_history_response)
         return _export_tuple_elements_to_column_values_format(dframe)
+
+    @staticmethod
+    def match(match_response: MatchLobby) -> pd.DataFrame:
+        """
+        Convert the content of a MatchLobby to a pandas DataFrame. The resulting DataFrame will have as many
+        rows as there are players in the lobby, and all global attributes will be broadcasted to columns of
+        the same length, making them duplicates.
+
+        Args:
+            match_response (MatchLobby): a MatchLobby object.
+
+        Returns:
+            A pandas DataFrame from the MatchLobby attributes, each row being global information from the
+            MatchLobby as well as one of the players in the lobby.
+        """
+        return _unfold_matchlobby_to_dataframe(match_response)
 
     @staticmethod
     def num_online(num_online_response: NumOnlineResponse) -> pd.DataFrame:
@@ -188,7 +204,7 @@ class Convert:
 
         logger.trace("Removing 'player_stats' column to avoid nested & duplicate data")
         dframe = dframe.drop(columns=["player_stats"])
-        return dframe
+        return dframe.convert_dtypes()
 
 
 # ----- Helpers ----- #
@@ -207,11 +223,39 @@ def _export_tuple_elements_to_column_values_format(dataframe: pd.DataFrame) -> p
         The refactored pandas DataFrame.
     """
     dframe = dataframe.copy(deep=True)
-
     logger.trace("Exporting attributes to columns and removing duplicate data")
     for _, col_index in enumerate(dframe.columns):
         attribute = dframe[col_index][0][0]
         dframe[attribute] = dframe[col_index].apply(lambda x: x[1])
         dframe = dframe.drop(columns=[col_index])
+    return dframe.convert_dtypes()
 
-    return dframe
+
+def _unfold_matchlobby_to_dataframe(match_lobby: MatchLobby) -> pd.DataFrame:
+    """
+    Convert the content of a MatchLobby to a pandas DataFrame. The resulting DataFrame will have as many
+    rows as there are players in the lobby, and all global attributes will be broadcasted to columns of the
+    same length, making them duplicates.
+
+    Args:
+        match_lobby (MatchLobby): a MatchLobby object.
+
+    Returns:
+        A pandas DataFrame from the MatchLobby attributes, each row being global information from the
+        MatchLobby as well as one of the players in the lobby.
+    """
+    logger.trace("Unfolding MatchLobby.players contents to DataFrame")
+    dframe = pd.DataFrame(match_lobby.players)
+    dframe = _export_tuple_elements_to_column_values_format(dframe)
+
+    logger.trace("Broadcasting global MatchLobby attributes")
+    for attribute, value in matches.dict().items():
+        if attribute != "players":
+            e[attribute] = value
+
+    logger.trace("Converting timestamps to datetime objects")
+    dframe["opened"] = pd.to_datetime(dframe["opened"], unit="s")
+    dframe["started"] = pd.to_datetime(dframe["started"], unit="s")
+    dframe["finished"] = pd.to_datetime(dframe["finished"], unit="s")
+
+    return dframe.convert_dtypes()
