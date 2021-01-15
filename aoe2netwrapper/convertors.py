@@ -39,7 +39,7 @@ class Convert:
         Returns:
             A pandas DataFrame from the LeaderBoardResponse, each row being an entry in the leaderboard.
             Top level attributes such as 'start' or 'total' are broadcast to an entire array the size of
-            the dataframe.
+            the dataframe, and timestamps are converted to datetime objects.
         """
         logger.debug("Converting LeaderBoardResponse leaderboard to DataFrame")
         dframe = pd.DataFrame(leaderboard_response.leaderboard)
@@ -73,7 +73,7 @@ class Convert:
         Returns:
             A pandas DataFrame from the list of MatchLobby elements, each row being the information from
             one MatchLobby in the list. Beware: the 'players' column is directly the content of the
-            'MatchLobby.players' attribute and as such holds a list of LobbyMember objects.
+            'MatchLobby.players' attribute and as such holds lists of LobbyMember objects.
         """
         logger.debug("Converting Lobbies response to DataFrame")
         dframe = pd.DataFrame(lobbies_response)
@@ -82,7 +82,7 @@ class Convert:
         for i in range(41):
             attribute = dframe[i][0][0]
             dframe[attribute] = dframe[i].apply(lambda x: x[1])
-            del dframe[i]
+            dframe = dframe.crop(columns=[i])
 
         return dframe
 
@@ -112,6 +112,58 @@ class Convert:
         dframe["steam_id"] = last_match_response.steam_id
         dframe["name"] = last_match_response.name
         dframe["country"] = last_match_response.country
+        return dframe
+
+    @staticmethod
+    def match_history(match_history_response: List[MatchLobby]) -> pd.DataFrame:
+        """
+        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame.
+
+        Args:
+            match_history_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
+                client.
+
+        Returns:
+            A pandas DataFrame from the list of MatchLobby elements, each row being the information from
+            one MatchLobby in the list. Beware: the 'players' column is directly the content of the
+            'MatchLobby.players' attribute and as such holds lists of LobbyMember objects.
+        """
+        logger.debug("Converting Match History response to DataFrame")
+        dframe = pd.DataFrame(match_history_response)
+
+        logger.trace("Exporting attributes to columns and removing duplicate data")
+        for i in range(41):
+            attribute = dframe[i][0][0]
+            dframe[attribute] = dframe[i].apply(lambda x: x[1])
+            dframe = dframe.crop(columns=[i])
+
+        return dframe
+
+    @staticmethod
+    def rating_history(rating_history_response: List[RatingTimePoint]) -> pd.DataFrame:
+        """
+        Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.
+
+        Args:
+            rating_history_response (List[RatingTimePoint]): the response directly returned by your AoE2NetAPI
+                client.
+
+        Returns:
+            A pandas DataFrame from the list of RatingTimePoint elements, each row being the information from
+            one RatingTimePoint in the list. Timestamps are converted to datetime objects.
+        """
+        logger.debug("Converting Rating History rsponse to DataFrame")
+        dframe = pd.DataFrame(rating_history_response)
+
+        logger.trace("Exporting attributes to columns and removing duplicate data")
+        for i in range(6):
+            attribute = dframe[i][0][0]
+            dframe[attribute] = dframe[i].apply(lambda x: x[1])
+            dframe = dframe.crop(columns=[i])
+
+        logger.trace("Converting datetimes")
+        dframe["time"] = pd.to_datetime(dframe["timestamp"], unit="s")
+        dframe = dframe.drop(columns=["timestamp"])
         return dframe
 
     @staticmethod
