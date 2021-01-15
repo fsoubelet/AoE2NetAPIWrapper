@@ -43,12 +43,7 @@ class Convert:
         """
         logger.debug("Converting LeaderBoardResponse leaderboard to DataFrame")
         dframe = pd.DataFrame(leaderboard_response.leaderboard)
-
-        logger.trace("Exporting attributes to columns and removing duplicate data")
-        for i in range(19):
-            attribute = dframe[i][0][0]
-            dframe[attribute] = dframe[i].apply(lambda x: x[1])
-            del dframe[i]
+        dframe = _export_tuple_elements_to_column_values_format(dframe)
 
         logger.trace("Inserting LeaderBoardResponse attributes as columns")
         dframe["leaderboard_id"] = leaderboard_response.leaderboard_id
@@ -77,14 +72,7 @@ class Convert:
         """
         logger.debug("Converting Lobbies response to DataFrame")
         dframe = pd.DataFrame(lobbies_response)
-
-        logger.trace("Exporting attributes to columns and removing duplicate data")
-        for i in range(41):
-            attribute = dframe[i][0][0]
-            dframe[attribute] = dframe[i].apply(lambda x: x[1])
-            dframe = dframe.crop(columns=[i])
-
-        return dframe
+        return _export_tuple_elements_to_column_values_format(dframe)
 
     @staticmethod
     def last_match(last_match_response: LastMatchResponse) -> pd.DataFrame:
@@ -130,14 +118,7 @@ class Convert:
         """
         logger.debug("Converting Match History response to DataFrame")
         dframe = pd.DataFrame(match_history_response)
-
-        logger.trace("Exporting attributes to columns and removing duplicate data")
-        for i in range(41):
-            attribute = dframe[i][0][0]
-            dframe[attribute] = dframe[i].apply(lambda x: x[1])
-            dframe = dframe.crop(columns=[i])
-
-        return dframe
+        return _export_tuple_elements_to_column_values_format(dframe)
 
     @staticmethod
     def rating_history(rating_history_response: List[RatingTimePoint]) -> pd.DataFrame:
@@ -154,12 +135,7 @@ class Convert:
         """
         logger.debug("Converting Rating History rsponse to DataFrame")
         dframe = pd.DataFrame(rating_history_response)
-
-        logger.trace("Exporting attributes to columns and removing duplicate data")
-        for i in range(6):
-            attribute = dframe[i][0][0]
-            dframe[attribute] = dframe[i].apply(lambda x: x[1])
-            dframe = dframe.crop(columns=[i])
+        dframe = _export_tuple_elements_to_column_values_format(dframe)
 
         logger.trace("Converting datetimes")
         dframe["time"] = pd.to_datetime(dframe["timestamp"], unit="s")
@@ -193,5 +169,31 @@ class Convert:
         dframe["multiplayer_24h"] = dframe.player_stats.apply(lambda x: x["num_players"]["multiplayer_24h"])
 
         logger.trace("Removing 'player_stats' column to avoid nested & duplicate data")
-        del dframe["player_stats"]
+        dframe = dframe.drop(columns=["player_stats"])
         return dframe
+
+
+# ----- Helpers ----- #
+
+
+def _export_tuple_elements_to_column_values_format(dataframe: pd.DataFrame) -> pd.DataFrame:
+    """
+    Take in a pandas DataFrame with simple int values as columns, and elements being a tuple of
+    (attribute_name, value) and cast it to have the attribute_name as column names, and the values as values.
+    The original columns will be dropped in the process.
+
+    Args:
+        dataframe (pd.DataFrame): your pandas DataFrame.
+
+    Returns:
+        The refactored pandas DataFrame.
+    """
+    dframe = dataframe.copy(deep=True)
+
+    logger.trace("Exporting attributes to columns and removing duplicate data")
+    for _, col_index in enumerate(dframe.columns):
+        attribute = dframe[col_index][0][0]
+        dframe[attribute] = dframe[col_index].apply(lambda x: x[1])
+        dframe = dframe.drop(columns=[col_index])
+
+    return dframe
