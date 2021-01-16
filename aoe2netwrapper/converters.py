@@ -1,3 +1,10 @@
+"""
+aoe2netwrapper.converters
+-------------------------
+
+This module implements a high-level class with static methods to convert result of AoENetAPI methods to
+pandas DataFrames.
+"""
 from typing import List
 
 from loguru import logger
@@ -13,12 +20,12 @@ from aoe2netwrapper.models import (
 
 try:
     import pandas as pd
-except ImportError:
+except ImportError as error:
     logger.error(
         "The 'aoe2netwrapper.converters' module exports results to 'pandas.DataFrame' objects and "
         "needs the 'pandas' library installed to function."
     )
-    raise NotImplementedError("The 'pandas' library is required but not installed.")
+    raise NotImplementedError("The 'pandas' library is required but not installed.") from error
 
 
 class Convert:
@@ -74,11 +81,8 @@ class Convert:
             A pandas DataFrame from the list of MatchLobby elements..
         """
         logger.debug("Converting Lobbies response to DataFrame")
-        dframe = pd.DataFrame()
-        for match_lobby in lobbies_response:
-            dframe = pd.concat([dframe, _unfold_match_lobby_to_dataframe(match_lobby)])
-        dframe = dframe.reset_index(drop=True)
-        return dframe
+        unfolded_lobbies = [_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in lobbies_response]
+        return pd.concat(unfolded_lobbies).reset_index(drop=True)
 
     @staticmethod
     def last_match(last_match_response: LastMatchResponse) -> pd.DataFrame:
@@ -126,11 +130,10 @@ class Convert:
             A pandas DataFrame from the list of MatchLobby elements.
         """
         logger.debug("Converting Match History response to DataFrame")
-        dframe = pd.DataFrame()
-        for match_lobby in match_history_response:
-            dframe = pd.concat([dframe, _unfold_match_lobby_to_dataframe(match_lobby)])
-        dframe = dframe.reset_index(drop=True)
-        return dframe
+        unfolded_lobbies = [
+            _unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in match_history_response
+        ]
+        return pd.concat(unfolded_lobbies).reset_index(drop=True)
 
     @staticmethod
     def rating_history(rating_history_response: List[RatingTimePoint]) -> pd.DataFrame:
@@ -172,11 +175,8 @@ class Convert:
             A pandas DataFrame from the list of MatchLobby elements.
         """
         logger.debug("Converting Match History response to DataFrame")
-        dframe = pd.DataFrame()
-        for match_lobby in matches_response:
-            dframe = pd.concat([dframe, _unfold_match_lobby_to_dataframe(match_lobby)])
-        dframe = dframe.reset_index(drop=True)
-        return dframe
+        unfolded_lobbies = [_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in matches_response]
+        return pd.concat(unfolded_lobbies).reset_index(drop=True)
 
     @staticmethod
     def match(match_response: MatchLobby) -> pd.DataFrame:
