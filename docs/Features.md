@@ -26,6 +26,11 @@ All the validation is handled by the well-established and robust [pydantic][pyda
 ??? tip "Models Integration"
     All the other goodies from the returned pydantic models are available to you: exporting options, deep copies, ORM integration, etc.
 
+## Built-In Results Conversion to Pandas DataFrames
+
+Installing the package with the `dataframe` extra gives access to the `converters` submodule, providing a high-level class to export results to `pandas` DataFrames.
+The class, `Convert`, provides static methods taking in the direct output given by the `AoENetAPI`'s query methods, and named after them.
+
 ## Logging & Testing
 
 * 100% test coverage.
