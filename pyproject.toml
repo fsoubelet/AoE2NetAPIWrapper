@@ -179,6 +179,7 @@ exclude = '''
         "logging-format-interpolation",
         "no-name-in-module",
         "protected-access",
+        "reimported",
         "too-few-public-methods",
         "too-many-instance-attributes",
         "format",  # handled by black
