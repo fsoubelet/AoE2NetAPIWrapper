@@ -179,7 +179,8 @@ class Convert:
         Returns:
             A pandas DataFrame from the list of MatchLobby elements.
         """
-        if not isinstance(match_history_response, list):  # move list to List[MatchLobby] when supporting > 3.9
+        # move list to List[MatchLobby] when supporting > 3.9
+        if not isinstance(match_history_response, list):
             logger.error("Tried to use method with a parameter of type != List[MatchLobby]")
             raise TypeError("Provided parameter should be an instance of 'List[MatchLobby]'")
 
