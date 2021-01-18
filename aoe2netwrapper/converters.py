@@ -22,10 +22,12 @@ try:
     import pandas as pd
 except ImportError as error:
     logger.error(
+        "User tried to use the 'converters' submodule without havinig installed the 'pandas' library."
+    )
+    raise NotImplementedError(
         "The 'aoe2netwrapper.converters' module exports results to 'pandas.DataFrame' objects and "
         "needs the 'pandas' library installed to function."
-    )
-    raise NotImplementedError("The 'pandas' library is required but not installed.") from error
+    ) from error
 
 
 class Convert:
@@ -33,6 +35,38 @@ class Convert:
     This is a convenience class providing methods to convert the outputs from the AoE2NetAPI query methods
     into pandas DataFrame objects. Every method below is a staticmethod, so no object has to be instantiated.
     """
+
+    @staticmethod
+    def strings(strings_response: StringsResponse) -> pd.DataFrame:
+        """
+        Convert the result given by a call to AoE2NetAPI().strings to a pandas DataFrame.
+
+        Args:
+            strings_response (StringsResponse): the response directly returned by your AoE2NetAPI
+                client.
+
+        Returns:
+            A pandas DataFrame from the StringsResponse, each column being the values for a 'string' used
+            by the API, and the index being the ID numbers. Since this is the result of a join for many
+            'strings' that do not have the same amount of values, the resulting dataframe will contain NaNs
+            wherever a given 'string' does not have a value for the given index ID.
+        """
+        logger.debug("Converting StringsResponse to DataFrame")
+        dframe = pd.DataFrame(strings_response).transpose()
+        dframe.columns = dframe.iloc[0]
+        dframe = dframe.drop(index=[0]).reset_index(drop=True)
+        dframe = dframe.drop(columns=["language"])
+
+        logger.trace("Exporting each string attribute to its own dataframe and joining")
+        result = pd.DataFrame()
+        for col in dframe.columns:
+            intermediate = pd.DataFrame()
+            intermediate[col] = dframe[col][0]
+            intermediate["id"] = intermediate[col].apply(lambda x: x.id)
+            intermediate[col] = intermediate[col].apply(lambda x: x.string)
+            result = result.join(intermediate.set_index("id"), how="outer")
+
+        return result
 
     @staticmethod
     def leaderboard(leaderboard_response: LeaderBoardResponse) -> pd.DataFrame:
