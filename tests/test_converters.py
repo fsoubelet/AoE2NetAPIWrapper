@@ -2,25 +2,85 @@ import json
 import pathlib
 
 import pytest
-import responses
 
-from aoe2netwrapper.api import AoE2NetAPI, _get_request_response_json
-from aoe2netwrapper.exceptions import Aoe2NetException
-from aoe2netwrapper.models import (
-    LastMatchResponse,
-    LeaderBoardResponse,
-    MatchLobby,
-    NumOnlineResponse,
-    RatingTimePoint,
-    StringsResponse,
-)
+from aoe2netwrapper.converters import Convert
 
 CURRENT_DIR = pathlib.Path(__file__).parent
 INPUTS_DIR = CURRENT_DIR / "inputs"
 
 
 class TestExceptions:
-    pass
+    def test_strings_fail_on_wrong_type(self, caplog):
+        with pytest.raises(TypeError):
+            _ = Convert.strings(10)
+
+        for record in caplog.records:
+            assert record.levelname == "ERROR"
+            assert "Tried to use method with a parameter of type != 'StringsResponse'" in caplog.text
+
+    def test_leaderboard_fail_on_wrong_type(self, caplog):
+        with pytest.raises(TypeError):
+            _ = Convert.leaderboard("not a LeaderBoardResponse")
+
+        for record in caplog.records:
+            assert record.levelname == "ERROR"
+            assert "Tried to use method with a parameter of type != 'LeaderBoardResponse'" in caplog.text
+
+    def test_lobbies_fail_on_wrong_type(self, caplog):
+        with pytest.raises(TypeError):
+            _ = Convert.lobbies(None)
+
+        for record in caplog.records:
+            assert record.levelname == "ERROR"
+            assert "Tried to use method with a parameter of type != 'List[MatchLobby]'" in caplog.text
+
+    def test_last_match_fail_on_wrong_type(self, caplog):
+        with pytest.raises(TypeError):
+            _ = Convert.last_match(json)
+
+        for record in caplog.records:
+            assert record.levelname == "ERROR"
+            assert "Tried to use method with a parameter of type != 'LastMatchResponse'" in caplog.text
+
+    def test_match_history_fail_on_wrong_type(self, caplog):
+        with pytest.raises(TypeError):
+            _ = Convert.match_history(True)
+
+        for record in caplog.records:
+            assert record.levelname == "ERROR"
+            assert "Tried to use method with a parameter of type != 'List[MatchLobby]'" in caplog.text
+
+    def test_rating_history_fail_on_wrong_type(self, caplog):
+        with pytest.raises(TypeError):
+            _ = Convert.rating_history(4.5)
+
+        for record in caplog.records:
+            assert record.levelname == "ERROR"
+            assert "Tried to use method with a parameter of type != 'List[RatingTimePoint]'" in caplog.text
+
+    def test_matches_fail_on_wrong_type(self, caplog):
+        with pytest.raises(TypeError):
+            _ = Convert.matches(TypeError)
+
+        for record in caplog.records:
+            assert record.levelname == "ERROR"
+            assert "Tried to use method with a parameter of type != 'List[MatchLobby]'" in caplog.text
+
+    def test_match_fail_on_wrong_type(self, caplog):
+        with pytest.raises(TypeError):
+            _ = Convert.match(CURRENT_DIR)
+
+        for record in caplog.records:
+            assert record.levelname == "ERROR"
+            assert "Tried to use method with a parameter of type != 'MatchLobby'" in caplog.text
+
+    def test_num_online_fail_on_wrong_type(self, caplog):
+        with pytest.raises(TypeError):
+            _ = Convert.num_online(self)
+
+        for record in caplog.records:
+            assert record.levelname == "ERROR"
+            assert "Tried to use method with a parameter of type != 'NumOnlineResponse'" in caplog.text
 
 
 class TestConvert:
