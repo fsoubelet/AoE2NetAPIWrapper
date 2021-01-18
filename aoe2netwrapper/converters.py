@@ -51,6 +51,10 @@ class Convert:
             'strings' that do not have the same amount of values, the resulting dataframe will contain NaNs
             wherever a given 'string' does not have a value for the given index ID.
         """
+        if not isinstance(strings_response, StringsResponse):
+            logger.error("Tried to use method with a parameter of type != StringsResponse")
+            raise TypeError("Provided parameter should be an instance of 'StringsResponse'")
+
         logger.debug("Converting StringsResponse to DataFrame")
         dframe = pd.DataFrame(strings_response).transpose()
         dframe.columns = dframe.iloc[0]
@@ -82,6 +86,10 @@ class Convert:
             Top level attributes such as 'start' or 'total' are broadcast to an entire array the size of
             the dataframe, and timestamps are converted to datetime objects.
         """
+        if not isinstance(leaderboard_response, LeaderBoardResponse):
+            logger.error("Tried to use method with a parameter of type != LeaderBoardResponse")
+            raise TypeError("Provided parameter should be an instance of 'LeaderBoardResponse'")
+
         logger.debug("Converting LeaderBoardResponse leaderboard to DataFrame")
         dframe = pd.DataFrame(leaderboard_response.leaderboard)
         dframe = _export_tuple_elements_to_column_values_format(dframe)
@@ -114,6 +122,10 @@ class Convert:
         Returns:
             A pandas DataFrame from the list of MatchLobby elements..
         """
+        if not isinstance(lobbies_response, list):  # move list to List[MatchLobby] when supporting > 3.9
+            logger.error("Tried to use method with a parameter of type != List[MatchLobby]")
+            raise TypeError("Provided parameter should be an instance of 'List[MatchLobby]'")
+
         logger.debug("Converting Lobbies response to DataFrame")
         unfolded_lobbies = [_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in lobbies_response]
         return pd.concat(unfolded_lobbies).reset_index(drop=True)
@@ -134,6 +146,10 @@ class Convert:
             column is directly the content of the 'LastMatchResponse.last_match.players' attribute and as
             such holds a list of LobbyMember objects.
         """
+        if not isinstance(last_match_response, LastMatchResponse):
+            logger.error("Tried to use method with a parameter of type != LastMatchResponse")
+            raise TypeError("Provided parameter should be an instance of 'LastMatchResponse'")
+
         logger.debug("Converting LastMatchResponse last_match to DataFrame")
         dframe = pd.DataFrame(last_match_response.last_match).transpose()
         dframe.columns = dframe.iloc[0]
@@ -163,6 +179,10 @@ class Convert:
         Returns:
             A pandas DataFrame from the list of MatchLobby elements.
         """
+        if not isinstance(match_history_response, list):  # move list to List[MatchLobby] when supporting > 3.9
+            logger.error("Tried to use method with a parameter of type != List[MatchLobby]")
+            raise TypeError("Provided parameter should be an instance of 'List[MatchLobby]'")
+
         logger.debug("Converting Match History response to DataFrame")
         unfolded_lobbies = [
             _unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in match_history_response
@@ -182,6 +202,11 @@ class Convert:
             A pandas DataFrame from the list of RatingTimePoint elements, each row being the information from
             one RatingTimePoint in the list. Timestamps are converted to datetime objects.
         """
+        # move list to List[RatingTimePoint] when supporting > 3.9
+        if not isinstance(rating_history_response, list):
+            logger.error("Tried to use method with a parameter of type != List[RatingTimePoint]")
+            raise TypeError("Provided parameter should be an instance of 'List[RatingTimePoint]'")
+
         logger.debug("Converting Rating History rsponse to DataFrame")
         dframe = pd.DataFrame(rating_history_response)
         dframe = _export_tuple_elements_to_column_values_format(dframe)
@@ -208,6 +233,10 @@ class Convert:
         Returns:
             A pandas DataFrame from the list of MatchLobby elements.
         """
+        if not isinstance(matches_response, list):  # move list to List[MatchLobby] when supporting > 3.9
+            logger.error("Tried to use method with a parameter of type != List[MatchLobby]")
+            raise TypeError("Provided parameter should be an instance of 'List[MatchLobby]'")
+
         logger.debug("Converting Match History response to DataFrame")
         unfolded_lobbies = [_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in matches_response]
         return pd.concat(unfolded_lobbies).reset_index(drop=True)
@@ -242,6 +271,10 @@ class Convert:
             Top level attributes such as 'app_id' are broadcast to an entire array the size of the
             dataframe, and timestamps are converted to datetime objects.
         """
+        if not isinstance(num_online_response, NumOnlineResponse):
+            logger.error("Tried to use method with a parameter of type != NumOnlineResponse")
+            raise TypeError("Provided parameter should be an instance of 'NumOnlineResponse'")
+
         logger.debug("Converting NumOnlineResponse to DataFrame")
         dframe = pd.DataFrame(num_online_response.dict())
 
@@ -296,6 +329,10 @@ def _unfold_match_lobby_to_dataframe(match_lobby: MatchLobby) -> pd.DataFrame:
         A pandas DataFrame from the MatchLobby attributes, each row being global information from the
         MatchLobby as well as one of the players in the lobby.
     """
+    if not isinstance(match_lobby, MatchLobby):
+        logger.error("Tried to use method with a parameter of type != MatchLobby")
+        raise TypeError("Provided parameter should be an instance of 'MatchLobby'")
+
     logger.trace("Unfolding MatchLobby.players contents to DataFrame")
     dframe = pd.DataFrame(match_lobby.players)
     dframe = _export_tuple_elements_to_column_values_format(dframe)
