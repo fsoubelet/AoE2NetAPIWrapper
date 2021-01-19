@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aoe2netwrapper"
-version = "0.2.0"
+version = "0.3.0"
 description = "My Python wrapper for the aoe2.net data API"
 authors = ["Felix Soubelet <felix.soubelet@liverpool.ac.uk>"]
 license = "MIT"
@@ -27,17 +27,19 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.6.1"
 requests = "^2.25.1"
 loguru = "^0.5.3"
 pydantic = "^1.7.3"
 
 # Defining optional dependencies for extras
 portray = { version = "^1.4.0", optional = true }
+pandas = { version = "^1.0", optional = true }
 
 # Defining the extras
 [tool.poetry.extras]
 docs = ["portray"]
+dataframe = ["pandas"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.1"
@@ -177,6 +179,7 @@ exclude = '''
         "logging-format-interpolation",
         "no-name-in-module",
         "protected-access",
+        "reimported",
         "too-few-public-methods",
         "too-many-instance-attributes",
         "format",  # handled by black

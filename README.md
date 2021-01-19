@@ -16,8 +16,8 @@
   <br/>
 
   <!-- Github Actions Build -->
-  <a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/actions?query=workflow%3A%22Cron+Testing%22">
-    <img alt="Github Actions" src="https://github.com/fsoubelet/AoE2NetAPIWrapper/workflows/Cron%20Testing/badge.svg">
+  <a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/actions?query=workflow%3A%22Tests%22">
+    <img alt="Github Actions" src="https://github.com/fsoubelet/AoE2NetAPIWrapper/workflows/Tests/badge.svg?branch=master">
   </a>
 
   <!-- Code Coverage -->
@@ -54,7 +54,7 @@
 </p>
 
 <p align="center">
-  A simple, efficient and typed wrapper to query the https://aoe2.net APIs with Python 3.6+
+  A simple, efficient and typed wrapper to query the https://aoe2.net APIs with Python 3.6.1+
 </p>
 
 <p align="center">

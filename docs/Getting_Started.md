@@ -2,7 +2,7 @@
 
 ## Installation
 
-This code is compatible with `Python 3.6+`.
+This code is compatible with `Python 3.6.1+`.
 This package is installable from PyPI with [pip]{target=_blank} in a virtual environment with:
 
 ```bash
@@ -12,6 +12,12 @@ pip install aoe2netwrapper
 !!! tip "Installation in a virtual environment"
     Don't know what a **virtual environment** is or how to set it up? Here is a good
     [primer on virtual environments][virtual_env_primer]{target=_blank} by RealPython.
+
+??? info "Extra Dependencies"
+    It is also possible to install with extra dependencies to access export functionnality from the package, with:
+    ```bash
+    pip install aoe2netwrapper[dataframe]
+    ```
 
 ??? question "How about a development environment?"
 
@@ -62,6 +68,19 @@ nightbot = AoE2NightbotAPI(timeout=10)
 viper_details = nightbot.rank(leaderboard_id=3, search="GL.TheViper")
 print(viper_details)
 # '🇳🇴 GL.TheViper (2501) Rank #1, has played 762 games with a 69% winrate, -1 streak, and 2 drops'
+```
+
+* __Converting Results to Pandas DataFrames__
+
+```python
+from aoe2netwrapper import AoE2NetAPI
+from aoe2netwrapper.converters import Convert
+
+client = AoE2NetAPI(timeout=10)
+
+# Get the list of currently open lobbies, as a pandas dataframe
+open_lobbies = client.lobbies(game="aoe2de")
+lobbies_dframe = Convert.lobbies(open_lobbies)
 ```
 
 The full documentation for the API endpoints can be found at https://aoe2.net/#api and https://aoe2.net/#nightbot.
