@@ -149,67 +149,67 @@ exclude = '''
 '''
 
 [tool.pylint]
-    [tool.pylint.master]
-    jobs="1"    # Auto-detect the number of processors
-    ignore-patterns='''
-        \.eggs
-        |\.git
-        |build
-        |dist
-        |conf.py
-    '''
-    persistent="no"
-    load-plugins=""
-    limit-inference-results="100"
-    suggestion-mode="yes"
-    unsafe-load-any-extension="no"
-    extension-pkg-whitelist=""
-    exit-zero="no"
-    from-stdin="no"
-    extension_pkg_whitelist="pydantic"
+[tool.pylint.master]
+jobs="1"    # Auto-detect the number of processors
+ignore-patterns='''
+    \.eggs
+    |\.git
+    |build
+    |dist
+    |conf.py
+'''
+persistent="no"
+load-plugins=""
+limit-inference-results="100"
+suggestion-mode="yes"
+unsafe-load-any-extension="no"
+extension-pkg-whitelist=""
+exit-zero="no"
+from-stdin="no"
+extension_pkg_whitelist="pydantic"
 
-    [tool.pylint.messages_control]
-    disable = [
-        "attribute-defined-outside-init",
-        "bad-whitespace",
-        "bad-continuation",
-        "expression-not-assigned",
-        "invalid-name",
-        "import-error",
-        "logging-format-interpolation",
-        "no-name-in-module",
-        "protected-access",
-        "reimported",
-        "too-few-public-methods",
-        "too-many-instance-attributes",
-        "format",  # handled by black
-    ]
+[tool.pylint.messages_control]
+disable = [
+    "attribute-defined-outside-init",
+    "bad-whitespace",
+    "bad-continuation",
+    "expression-not-assigned",
+    "invalid-name",
+    "import-error",
+    "logging-format-interpolation",
+    "no-name-in-module",
+    "protected-access",
+    "reimported",
+    "too-few-public-methods",
+    "too-many-instance-attributes",
+    "format",  # handled by black
+]
 
-    [tool.pylint.reports]
-    output-format="text"
-    msg-template="{path}:{line}:{column}: Pylint: {msg}. [{msg_id}: {symbol}]"
+[tool.pylint.reports]
+output-format="text"
+msg-template="{path}:{line}:{column}: Pylint: {msg}. [{msg_id}: {symbol}]"
 
-    [tool.pylint.basic]
-    argument-naming-style="snake_case"
-    attr-naming-style="snake_case"
-    class-attribute-naming-style="snake_case"
-    class-naming-style="PascalCase"
-    const-naming-style="UPPER_CASE"
-    function-naming-style="snake_case"
-    inlinevar-naming-style="snake_case"
-    method-naming-style="snake_case"
-    module-naming-style="snake_case"
-    variable-naming-style="snake_case"
+[tool.pylint.basic]
+argument-naming-style="snake_case"
+attr-naming-style="snake_case"
+class-attribute-naming-style="snake_case"
+class-naming-style="PascalCase"
+const-naming-style="UPPER_CASE"
+function-naming-style="snake_case"
+inlinevar-naming-style="snake_case"
+method-naming-style="snake_case"
+module-naming-style="snake_case"
+variable-naming-style="snake_case"
 
-    [tool.pylint.design]
-    max-args="10"
-    max-attributes="10"
-    max-locals="15"
-    max-public-methods="20"
-    max-returns="5"
+[tool.pylint.design]
+max-args="10"
+max-attributes="10"
+max-locals="15"
+max-public-methods="20"
+max-returns="5"
 
-    [tool.pylint.'SIMILARITIES']
-    ignore-comments=['yes']
-    ignore-docstrings=['yes']
-    ignore-imports=['no']
-    min-similarity-lines=4
+[tool.pylint.'SIMILARITIES']
+ignore-comments=['yes']
+ignore-docstrings=['yes']
+ignore-imports=['no']
+min-similarity-lines=4
