@@ -260,6 +260,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#built-in-results-conversion-to-pandas-dataframes" class="md-nav__link">
+    Built-In Results Conversion to Pandas DataFrames
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#logging-testing" class="md-nav__link">
     Logging &amp; Testing
   </a>
@@ -333,6 +340,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../reference/aoe2netwrapper/converters/" title="Converters" class="md-nav__link">
+      Converters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../reference/aoe2netwrapper/exceptions/" title="Exceptions" class="md-nav__link">
       Exceptions
     </a>
@@ -370,14 +389,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1-5" type="checkbox" id="nav-4-1-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1-6" type="checkbox" id="nav-4-1-6">
     
-    <label class="md-nav__link" for="nav-4-1-5">
+    <label class="md-nav__link" for="nav-4-1-6">
       Models
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Models" data-md-level="3">
-      <label class="md-nav__title" for="nav-4-1-5">
+      <label class="md-nav__title" for="nav-4-1-6">
         <span class="md-nav__icon md-icon"></span>
         Models
       </label>
@@ -557,6 +576,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#built-in-results-conversion-to-pandas-dataframes" class="md-nav__link">
+    Built-In Results Conversion to Pandas DataFrames
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#logging-testing" class="md-nav__link">
     Logging &amp; Testing
   </a>
@@ -600,6 +626,9 @@ No typing the wrong key names, coming back and forth between docs, or scrolling 
 <p>All the validation is handled by the well-established and robust <a href="https://github.com/samuelcolvin/pydantic" target="_blank">pydantic</a>.</p>
 <details class="tip"><summary>Models Integration</summary><p>All the other goodies from the returned pydantic models are available to you: exporting options, deep copies, ORM integration, etc.</p>
 </details>
+<h2 id="built-in-results-conversion-to-pandas-dataframes">Built-In Results Conversion to Pandas DataFrames</h2>
+<p>Installing the package with the <code>dataframe</code> extra gives access to the <code>converters</code> submodule, providing a high-level class to export results to <code>pandas</code> DataFrames.
+The class, <code>Convert</code>, provides static methods taking in the direct output given by the <code>AoENetAPI</code>'s query methods, and named after them.</p>
 <h2 id="logging-testing">Logging &amp; Testing</h2>
 <ul>
 <li>100% test coverage.</li>

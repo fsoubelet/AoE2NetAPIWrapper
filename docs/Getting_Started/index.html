@@ -326,6 +326,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../reference/aoe2netwrapper/converters/" title="Converters" class="md-nav__link">
+      Converters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../reference/aoe2netwrapper/exceptions/" title="Exceptions" class="md-nav__link">
       Exceptions
     </a>
@@ -363,14 +375,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1-5" type="checkbox" id="nav-4-1-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1-6" type="checkbox" id="nav-4-1-6">
     
-    <label class="md-nav__link" for="nav-4-1-5">
+    <label class="md-nav__link" for="nav-4-1-6">
       Models
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Models" data-md-level="3">
-      <label class="md-nav__title" for="nav-4-1-5">
+      <label class="md-nav__title" for="nav-4-1-6">
         <span class="md-nav__icon md-icon"></span>
         Models
       </label>
@@ -571,7 +583,7 @@
                 
                 <h1 id="getting-started">Getting Started</h1>
 <h2 id="installation">Installation</h2>
-<p>This code is compatible with <code>Python 3.6+</code>.
+<p>This code is compatible with <code>Python 3.6.1+</code>.
 This package is installable from PyPI with <a href="https://pip.pypa.io/en/stable/" target="_blank">pip</a> in a virtual environment with:</p>
 <div class="highlight"><pre><span></span><code>pip install aoe2netwrapper
 </code></pre></div>
@@ -580,6 +592,10 @@ This package is installable from PyPI with <a href="https://pip.pypa.io/en/stabl
 <p>Don't know what a <strong>virtual environment</strong> is or how to set it up? Here is a good
 <a href="https://realpython.com/python-virtual-environments-a-primer/" target="_blank">primer on virtual environments</a> by RealPython.</p>
 </div>
+<details class="info"><summary>Extra Dependencies</summary><p>It is also possible to install with extra dependencies to access export functionnality from the package, with:
+<div class="highlight"><pre><span></span><code>pip install aoe2netwrapper<span class="o">[</span>dataframe<span class="o">]</span>
+</code></pre></div></p>
+</details>
 <details class="question"><summary>How about a development environment?</summary><p>Sure thing. This repository uses <a href="https://python-poetry.org/" target="_blank">Poetry</a> as a packaging and build tool. 
 To set yourself up, get a local copy through VCS and run:</p>
 <div class="highlight"><pre><span></span><code>poetry install
@@ -620,6 +636,18 @@ Each exposed endpoint from the APIs can be queried with a dedicated method named
 <span class="n">viper_details</span> <span class="o">=</span> <span class="n">nightbot</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">leaderboard_id</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">search</span><span class="o">=</span><span class="s2">&quot;GL.TheViper&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">viper_details</span><span class="p">)</span>
 <span class="c1"># &#39;🇳🇴 GL.TheViper (2501) Rank #1, has played 762 games with a 69% winrate, -1 streak, and 2 drops&#39;</span>
+</code></pre></div>
+<ul>
+<li><strong>Converting Results to Pandas DataFrames</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aoe2netwrapper</span> <span class="kn">import</span> <span class="n">AoE2NetAPI</span>
+<span class="kn">from</span> <span class="nn">aoe2netwrapper.converters</span> <span class="kn">import</span> <span class="n">Convert</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">AoE2NetAPI</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Get the list of currently open lobbies, as a pandas dataframe</span>
+<span class="n">open_lobbies</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">lobbies</span><span class="p">(</span><span class="n">game</span><span class="o">=</span><span class="s2">&quot;aoe2de&quot;</span><span class="p">)</span>
+<span class="n">lobbies_dframe</span> <span class="o">=</span> <span class="n">Convert</span><span class="o">.</span><span class="n">lobbies</span><span class="p">(</span><span class="n">open_lobbies</span><span class="p">)</span>
 </code></pre></div>
 <p>The full documentation for the API endpoints can be found at <a href="https://aoe2.net/#api">https://aoe2.net/#api</a> and <a href="https://aoe2.net/#nightbot">https://aoe2.net/#nightbot</a>.
 For convenience, it is also included in the methods' docstrings, and can be accessed in the <code>Reference</code> section.</p>

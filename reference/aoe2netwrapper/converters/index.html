@@ -1,0 +1,2456 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://fsoubelet.github.io/AoE2NetAPIWrapper/reference/aoe2netwrapper/converters/">
+      
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+    
+    
+      
+        <title>Converters - AoE2NetAPIWrapper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d3202873.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ff0a5ce4.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546d78">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:300,400,400i,700%7CFira+Code&display=fallback">
+        <style>body,input{font-family:"Ubuntu Mono",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Code",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-aoe2netwrapperconverters" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://fsoubelet.github.io/AoE2NetAPIWrapper/" title="AoE2NetAPIWrapper" class="md-header-nav__button md-logo" aria-label="AoE2NetAPIWrapper">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            AoE2NetAPIWrapper
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Converters
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AoE2NetAPIWrapper
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://fsoubelet.github.io/AoE2NetAPIWrapper/" title="AoE2NetAPIWrapper" class="md-nav__button md-logo" aria-label="AoE2NetAPIWrapper">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    AoE2NetAPIWrapper
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AoE2NetAPIWrapper
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../docs/Getting_Started/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../docs/Features/" title="Features" class="md-nav__link">
+      Features
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Reference
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" checked>
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Aoe2Netwrapper
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Aoe2Netwrapper" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Aoe2Netwrapper
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/" title="API" class="md-nav__link">
+      API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Converters
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Converters" class="md-nav__link md-nav__link--active">
+      Converters
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aoe2netwrapperconverters" class="md-nav__link">
+    aoe2netwrapper.converters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convert" class="md-nav__link">
+    Convert
+  </a>
+  
+    <nav class="md-nav" aria-label="Convert">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-methods" class="md-nav__link">
+    Static methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Static methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#last_match" class="md-nav__link">
+    last_match
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaderboard" class="md-nav__link">
+    leaderboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lobbies" class="md-nav__link">
+    lobbies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#match" class="md-nav__link">
+    match
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#match_history" class="md-nav__link">
+    match_history
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matches" class="md-nav__link">
+    matches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#num_online" class="md-nav__link">
+    num_online
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rating_history" class="md-nav__link">
+    rating_history
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    strings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../exceptions/" title="Exceptions" class="md-nav__link">
+      Exceptions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nightbot/" title="Nightbot" class="md-nav__link">
+      Nightbot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1-6" type="checkbox" id="nav-4-1-6">
+    
+    <label class="md-nav__link" for="nav-4-1-6">
+      Models
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Models" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-1-6">
+        <span class="md-nav__icon md-icon"></span>
+        Models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/last_match/" title="Last Match" class="md-nav__link">
+      Last Match
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/leaderboard/" title="Leaderboard" class="md-nav__link">
+      Leaderboard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/lobbies/" title="Lobbies" class="md-nav__link">
+      Lobbies
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/match/" title="Match" class="md-nav__link">
+      Match
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/match_history/" title="Match History" class="md-nav__link">
+      Match History
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/matches/" title="Matches" class="md-nav__link">
+      Matches
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/num_online/" title="Num Online" class="md-nav__link">
+      Num Online
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/rating_history/" title="Rating History" class="md-nav__link">
+      Rating History
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/strings/" title="Strings" class="md-nav__link">
+      Strings
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aoe2netwrapperconverters" class="md-nav__link">
+    aoe2netwrapper.converters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convert" class="md-nav__link">
+    Convert
+  </a>
+  
+    <nav class="md-nav" aria-label="Convert">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-methods" class="md-nav__link">
+    Static methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Static methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#last_match" class="md-nav__link">
+    last_match
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaderboard" class="md-nav__link">
+    leaderboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lobbies" class="md-nav__link">
+    lobbies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#match" class="md-nav__link">
+    match
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#match_history" class="md-nav__link">
+    match_history
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matches" class="md-nav__link">
+    matches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#num_online" class="md-nav__link">
+    num_online
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rating_history" class="md-nav__link">
+    rating_history
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    strings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/edit/master/reference/aoe2netwrapper/converters.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="module-aoe2netwrapperconverters">Module aoe2netwrapper.converters</h1>
+<h2 id="aoe2netwrapperconverters">aoe2netwrapper.converters</h2>
+<p>This module implements a high-level class with static methods to convert result of AoENetAPI methods to
+pandas DataFrames.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">aoe2netwrapper.converters</span>
+
+<span class="sd">-------------------------</span>
+
+<span class="sd">This module implements a high-level class with static methods to convert result of AoENetAPI methods to</span>
+
+<span class="sd">pandas DataFrames.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">loguru</span> <span class="kn">import</span> <span class="n">logger</span>
+
+<span class="kn">from</span> <span class="nn">aoe2netwrapper.models</span> <span class="kn">import</span> <span class="p">(</span>
+
+    <span class="n">LastMatchResponse</span><span class="p">,</span>
+
+    <span class="n">LeaderBoardResponse</span><span class="p">,</span>
+
+    <span class="n">MatchLobby</span><span class="p">,</span>
+
+    <span class="n">NumOnlineResponse</span><span class="p">,</span>
+
+    <span class="n">RatingTimePoint</span><span class="p">,</span>
+
+    <span class="n">StringsResponse</span><span class="p">,</span>
+
+<span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+
+        <span class="s2">&quot;User tried to use the &#39;converters&#39; submodule without havinig installed the &#39;pandas&#39; library.&quot;</span>
+
+    <span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+
+        <span class="s2">&quot;The &#39;aoe2netwrapper.converters&#39; module exports results to &#39;pandas.DataFrame&#39; objects and &quot;</span>
+
+        <span class="s2">&quot;needs the &#39;pandas&#39; library installed to function.&quot;</span>
+
+    <span class="p">)</span> <span class="kn">from</span> <span class="nn">error</span>
+
+<span class="k">class</span> <span class="nc">Convert</span><span class="p">:</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    This is a convenience class providing methods to convert the outputs from the AoE2NetAPI query methods</span>
+
+<span class="sd">    into pandas DataFrame objects. Every method below is a staticmethod, so no object has to be instantiated.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">strings</span><span class="p">(</span><span class="n">strings_response</span><span class="p">:</span> <span class="n">StringsResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Convert the result given by a call to AoE2NetAPI().strings to a pandas DataFrame.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            strings_response (StringsResponse): the response directly returned by your AoE2NetAPI</span>
+
+<span class="sd">                client.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            A pandas DataFrame from the StringsResponse, each column being the values for a &#39;string&#39; used</span>
+
+<span class="sd">            by the API, and the index being the ID numbers. Since this is the result of a join for many</span>
+
+<span class="sd">            &#39;strings&#39; that do not have the same amount of values, the resulting dataframe will contain NaNs</span>
+
+<span class="sd">            wherever a given &#39;string&#39; does not have a value for the given index ID.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">strings_response</span><span class="p">,</span> <span class="n">StringsResponse</span><span class="p">):</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Tried to use method with a parameter of type != StringsResponse&quot;</span><span class="p">)</span>
+
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Provided parameter should be an instance of &#39;StringsResponse&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Converting StringsResponse to DataFrame&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">strings_response</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+        <span class="n">dframe</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;language&quot;</span><span class="p">])</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Exporting each string attribute to its own dataframe and joining&quot;</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">dframe</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+
+            <span class="n">intermediate</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+            <span class="n">intermediate</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">dframe</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="n">intermediate</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">intermediate</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+            <span class="n">intermediate</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">intermediate</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">intermediate</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">leaderboard</span><span class="p">(</span><span class="n">leaderboard_response</span><span class="p">:</span> <span class="n">LeaderBoardResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            leaderboard_response (LeaderBoardResponse): the response directly returned by your AoE2NetAPI</span>
+
+<span class="sd">                client.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            A pandas DataFrame from the LeaderBoardResponse, each row being an entry in the leaderboard.</span>
+
+<span class="sd">            Top level attributes such as &#39;start&#39; or &#39;total&#39; are broadcast to an entire array the size of</span>
+
+<span class="sd">            the dataframe, and timestamps are converted to datetime objects.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">leaderboard_response</span><span class="p">,</span> <span class="n">LeaderBoardResponse</span><span class="p">):</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Tried to use method with a parameter of type != LeaderBoardResponse&quot;</span><span class="p">)</span>
+
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Provided parameter should be an instance of &#39;LeaderBoardResponse&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Converting LeaderBoardResponse leaderboard to DataFrame&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">leaderboard_response</span><span class="o">.</span><span class="n">leaderboard</span><span class="p">)</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">_export_tuple_elements_to_column_values_format</span><span class="p">(</span><span class="n">dframe</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Inserting LeaderBoardResponse attributes as columns&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;leaderboard_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">leaderboard_response</span><span class="o">.</span><span class="n">leaderboard_id</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">leaderboard_response</span><span class="o">.</span><span class="n">start</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">leaderboard_response</span><span class="o">.</span><span class="n">count</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">leaderboard_response</span><span class="o">.</span><span class="n">total</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Converting datetimes&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;last_match&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;last_match&quot;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;last_match_time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;last_match_time&quot;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">dframe</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">lobbies</span><span class="p">(</span><span class="n">lobbies_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MatchLobby</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Convert the result given by a call to AoE2NetAPI().lobbies to a pandas DataFrame. The resulting</span>
+
+<span class="sd">        DataFrame will contain several rows for each lobby, namely as many as there are players in said</span>
+
+<span class="sd">        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</span>
+
+<span class="sd">        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby&#39;s UUID or</span>
+
+<span class="sd">        make use of the groupby functionality of pandas DataFrames.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            lobbies_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI</span>
+
+<span class="sd">                client.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            A pandas DataFrame from the list of MatchLobby elements..</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lobbies_response</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>  <span class="c1"># move list to List[MatchLobby] when supporting &gt; 3.9</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Tried to use method with a parameter of type != List[MatchLobby]&quot;</span><span class="p">)</span>
+
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Provided parameter should be an instance of &#39;List[MatchLobby]&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Converting Lobbies response to DataFrame&quot;</span><span class="p">)</span>
+
+        <span class="n">unfolded_lobbies</span> <span class="o">=</span> <span class="p">[</span><span class="n">_unfold_match_lobby_to_dataframe</span><span class="p">(</span><span class="n">match_lobby</span><span class="p">)</span> <span class="k">for</span> <span class="n">match_lobby</span> <span class="ow">in</span> <span class="n">lobbies_response</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">unfolded_lobbies</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">last_match</span><span class="p">(</span><span class="n">last_match_response</span><span class="p">:</span> <span class="n">LastMatchResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Convert the result given by a call to AoE2NetAPI().last_match to a pandas DataFrame. There is not</span>
+
+<span class="sd">        much use to this as the DataFrame will only have one row, but the method is provided nonetheless in</span>
+
+<span class="sd">        case users want to concatenate several of these results in a DataFrame.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            last_match_response (LastMatchResponse): the response directly returned by your AoE2NetAPI</span>
+
+<span class="sd">                client.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            A pandas DataFrame from the list of LastMatchResponse attributes. Beware: the &#39;players&#39;</span>
+
+<span class="sd">            column is directly the content of the &#39;LastMatchResponse.last_match.players&#39; attribute and as</span>
+
+<span class="sd">            such holds a list of LobbyMember objects.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">last_match_response</span><span class="p">,</span> <span class="n">LastMatchResponse</span><span class="p">):</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Tried to use method with a parameter of type != LastMatchResponse&quot;</span><span class="p">)</span>
+
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Provided parameter should be an instance of &#39;LastMatchResponse&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Converting LastMatchResponse last_match to DataFrame&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">last_match_response</span><span class="o">.</span><span class="n">last_match</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+        <span class="n">dframe</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Inserting LastMatchResponse attributes as columns&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;profile_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">last_match_response</span><span class="o">.</span><span class="n">profile_id</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;steam_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">last_match_response</span><span class="o">.</span><span class="n">steam_id</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">last_match_response</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">last_match_response</span><span class="o">.</span><span class="n">country</span>
+
+        <span class="k">return</span> <span class="n">dframe</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">match_history</span><span class="p">(</span><span class="n">match_history_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MatchLobby</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting</span>
+
+<span class="sd">        DataFrame will contain several rows for each lobby, namely as many as there are players in said</span>
+
+<span class="sd">        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</span>
+
+<span class="sd">        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby&#39;s UUID or</span>
+
+<span class="sd">        make use of the groupby functionality of pandas DataFrames.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            match_history_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI</span>
+
+<span class="sd">                client.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            A pandas DataFrame from the list of MatchLobby elements.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># move list to List[MatchLobby] when supporting &gt; 3.9</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">match_history_response</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Tried to use method with a parameter of type != List[MatchLobby]&quot;</span><span class="p">)</span>
+
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Provided parameter should be an instance of &#39;List[MatchLobby]&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Converting Match History response to DataFrame&quot;</span><span class="p">)</span>
+
+        <span class="n">unfolded_lobbies</span> <span class="o">=</span> <span class="p">[</span>
+
+            <span class="n">_unfold_match_lobby_to_dataframe</span><span class="p">(</span><span class="n">match_lobby</span><span class="p">)</span> <span class="k">for</span> <span class="n">match_lobby</span> <span class="ow">in</span> <span class="n">match_history_response</span>
+
+        <span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">unfolded_lobbies</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">rating_history</span><span class="p">(</span><span class="n">rating_history_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">RatingTimePoint</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            rating_history_response (List[RatingTimePoint]): the response directly returned by your AoE2NetAPI</span>
+
+<span class="sd">                client.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            A pandas DataFrame from the list of RatingTimePoint elements, each row being the information from</span>
+
+<span class="sd">            one RatingTimePoint in the list. Timestamps are converted to datetime objects.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># move list to List[RatingTimePoint] when supporting &gt; 3.9</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rating_history_response</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Tried to use method with a parameter of type != List[RatingTimePoint]&quot;</span><span class="p">)</span>
+
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Provided parameter should be an instance of &#39;List[RatingTimePoint]&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Converting Rating History rsponse to DataFrame&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rating_history_response</span><span class="p">)</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">_export_tuple_elements_to_column_values_format</span><span class="p">(</span><span class="n">dframe</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Converting timestamps to datetime objects&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">dframe</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">matches</span><span class="p">(</span><span class="n">matches_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MatchLobby</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting</span>
+
+<span class="sd">        DataFrame will contain several rows for each lobby, namely as many as there are players in said</span>
+
+<span class="sd">        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</span>
+
+<span class="sd">        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby&#39;s UUID or</span>
+
+<span class="sd">        make use of the groupby functionality of pandas DataFrames.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            matches_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI</span>
+
+<span class="sd">                client.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            A pandas DataFrame from the list of MatchLobby elements.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matches_response</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>  <span class="c1"># move list to List[MatchLobby] when supporting &gt; 3.9</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Tried to use method with a parameter of type != List[MatchLobby]&quot;</span><span class="p">)</span>
+
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Provided parameter should be an instance of &#39;List[MatchLobby]&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Converting Match History response to DataFrame&quot;</span><span class="p">)</span>
+
+        <span class="n">unfolded_lobbies</span> <span class="o">=</span> <span class="p">[</span><span class="n">_unfold_match_lobby_to_dataframe</span><span class="p">(</span><span class="n">match_lobby</span><span class="p">)</span> <span class="k">for</span> <span class="n">match_lobby</span> <span class="ow">in</span> <span class="n">matches_response</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">unfolded_lobbies</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">match_response</span><span class="p">:</span> <span class="n">MatchLobby</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Convert the content of a MatchLobby to a pandas DataFrame. The resulting DataFrame will have as many</span>
+
+<span class="sd">        rows as there are players in the lobby, and all global attributes will be broadcasted to columns of</span>
+
+<span class="sd">        the same length, making them duplicates.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            match_response (MatchLobby): a MatchLobby object.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            A pandas DataFrame from the MatchLobby attributes, each row being global information from the</span>
+
+<span class="sd">            MatchLobby as well as one of the players in the lobby.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">_unfold_match_lobby_to_dataframe</span><span class="p">(</span><span class="n">match_response</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">num_online</span><span class="p">(</span><span class="n">num_online_response</span><span class="p">:</span> <span class="n">NumOnlineResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Convert the result given by a call to AoE2NetAPI().num_online to a pandas DataFrame.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            num_online_response (NumOnlineResponse): the response directly returned by your AoE2NetAPI</span>
+
+<span class="sd">                client.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            A pandas DataFrame from the NumOnlineResponse, each row being an entry in the leaderboard.</span>
+
+<span class="sd">            Top level attributes such as &#39;app_id&#39; are broadcast to an entire array the size of the</span>
+
+<span class="sd">            dataframe, and timestamps are converted to datetime objects.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">num_online_response</span><span class="p">,</span> <span class="n">NumOnlineResponse</span><span class="p">):</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Tried to use method with a parameter of type != NumOnlineResponse&quot;</span><span class="p">)</span>
+
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Provided parameter should be an instance of &#39;NumOnlineResponse&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Converting NumOnlineResponse to DataFrame&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">num_online_response</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Exporting &#39;player_stats&#39; attribute contents to columns&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">player_stats</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">)</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;steam&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">player_stats</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;num_players&quot;</span><span class="p">][</span><span class="s2">&quot;steam&quot;</span><span class="p">])</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;looking&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">player_stats</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;num_players&quot;</span><span class="p">][</span><span class="s2">&quot;looking&quot;</span><span class="p">])</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;in_game&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">player_stats</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;num_players&quot;</span><span class="p">][</span><span class="s2">&quot;in_game&quot;</span><span class="p">])</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;multiplayer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">player_stats</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;num_players&quot;</span><span class="p">][</span><span class="s2">&quot;multiplayer&quot;</span><span class="p">])</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;multiplayer_1h&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">player_stats</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;num_players&quot;</span><span class="p">][</span><span class="s2">&quot;multiplayer_1h&quot;</span><span class="p">])</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;multiplayer_24h&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">player_stats</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;num_players&quot;</span><span class="p">][</span><span class="s2">&quot;multiplayer_24h&quot;</span><span class="p">])</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Removing &#39;player_stats&#39; column to avoid nested &amp; duplicate data&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;player_stats&quot;</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">dframe</span>
+
+<span class="c1"># ----- Helpers ----- #</span>
+
+<span class="k">def</span> <span class="nf">_export_tuple_elements_to_column_values_format</span><span class="p">(</span><span class="n">dataframe</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Take in a pandas DataFrame with simple int values as columns, and elements being a tuple of</span>
+
+<span class="sd">    (attribute_name, value) and cast it to have the attribute_name as column names, and the values as values.</span>
+
+<span class="sd">    The original columns will be dropped in the process.</span>
+
+<span class="sd">    Args:</span>
+
+<span class="sd">        dataframe (pd.DataFrame): your pandas DataFrame.</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">        The refactored pandas DataFrame.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">dframe</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Exporting attributes to columns and removing duplicate data&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">col_index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dframe</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+
+        <span class="n">attribute</span> <span class="o">=</span> <span class="n">dframe</span><span class="p">[</span><span class="n">col_index</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="n">dframe</span><span class="p">[</span><span class="n">col_index</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col_index</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">dframe</span>
+
+<span class="k">def</span> <span class="nf">_unfold_match_lobby_to_dataframe</span><span class="p">(</span><span class="n">match_lobby</span><span class="p">:</span> <span class="n">MatchLobby</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Convert the content of a MatchLobby to a pandas DataFrame. The resulting DataFrame will have as many</span>
+
+<span class="sd">    rows as there are players in the lobby, and all global attributes will be broadcasted to columns of the</span>
+
+<span class="sd">    same length, making them duplicates.</span>
+
+<span class="sd">    Args:</span>
+
+<span class="sd">        match_lobby (MatchLobby): a MatchLobby object.</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">        A pandas DataFrame from the MatchLobby attributes, each row being global information from the</span>
+
+<span class="sd">        MatchLobby as well as one of the players in the lobby.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">match_lobby</span><span class="p">,</span> <span class="n">MatchLobby</span><span class="p">):</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Tried to use method with a parameter of type != MatchLobby&quot;</span><span class="p">)</span>
+
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Provided parameter should be an instance of &#39;MatchLobby&#39;&quot;</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Unfolding MatchLobby.players contents to DataFrame&quot;</span><span class="p">)</span>
+
+    <span class="n">dframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">match_lobby</span><span class="o">.</span><span class="n">players</span><span class="p">)</span>
+
+    <span class="n">dframe</span> <span class="o">=</span> <span class="n">_export_tuple_elements_to_column_values_format</span><span class="p">(</span><span class="n">dframe</span><span class="p">)</span>
+
+    <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;player&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+
+    <span class="n">dframe</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Broadcasting global MatchLobby attributes&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">match_lobby</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+        <span class="k">if</span> <span class="n">attribute</span> <span class="o">!=</span> <span class="s2">&quot;players&quot;</span><span class="p">:</span>
+
+            <span class="n">dframe</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Converting timestamps to datetime objects&quot;</span><span class="p">)</span>
+
+    <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;opened&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;opened&quot;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+    <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;started&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;started&quot;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+    <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;finished&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;finished&quot;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Reindexing columns order&quot;</span><span class="p">)</span>
+
+    <span class="n">ordered_columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">match_lobby</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">match_lobby</span><span class="o">.</span><span class="n">players</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="n">ordered_columns</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;players&quot;</span><span class="p">)</span>
+
+    <span class="n">dframe</span> <span class="o">=</span> <span class="n">dframe</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">ordered_columns</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dframe</span>
+</code></pre></div>
+
+</details>
+<h2 id="classes">Classes</h2>
+<h3 id="convert">Convert</h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Convert</span><span class="p">(</span>
+    <span class="o">/</span><span class="p">,</span>
+    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>This is a convenience class providing methods to convert the outputs from the AoE2NetAPI query methods
+into pandas DataFrame objects. Every method below is a staticmethod, so no object has to be instantiated.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nf">Convert</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">    This is a convenience class providing methods to convert the outputs from the AoE2NetAPI query methods</span>
+
+<span class="ss">    into pandas DataFrame objects. Every method below is a staticmethod, so no object has to be instantiated.</span>
+
+<span class="ss">    &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">strings</span><span class="p">(</span><span class="nl">strings_response</span><span class="p">:</span><span class="w"> </span><span class="n">StringsResponse</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().strings to a pandas DataFrame.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            strings_response (StringsResponse): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the StringsResponse, each column being the values for a &#39;string&#39; used</span>
+
+<span class="ss">            by the API, and the index being the ID numbers. Since this is the result of a join for many</span>
+
+<span class="ss">            &#39;strings&#39; that do not have the same amount of values, the resulting dataframe will contain NaNs</span>
+
+<span class="ss">            wherever a given &#39;string&#39; does not have a value for the given index ID.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">strings_response</span><span class="p">,</span><span class="w"> </span><span class="n">StringsResponse</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != StringsResponse&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;StringsResponse&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting StringsResponse to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">strings_response</span><span class="p">).</span><span class="n">transpose</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="p">.</span><span class="n">columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">iloc</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="k">drop</span><span class="p">(</span><span class="k">index</span><span class="o">=[</span><span class="n">0</span><span class="o">]</span><span class="p">).</span><span class="n">reset_index</span><span class="p">(</span><span class="k">drop</span><span class="o">=</span><span class="k">True</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="k">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=[</span><span class="n">&quot;language&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">trace</span><span class="p">(</span><span class="ss">&quot;Exporting each string attribute to its own dataframe and joining&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="nl">columns</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">intermediate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">intermediate</span><span class="o">[</span><span class="n">col</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="o">[</span><span class="n">col</span><span class="o">][</span><span class="n">0</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">intermediate</span><span class="o">[</span><span class="n">&quot;id&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intermediate</span><span class="o">[</span><span class="n">col</span><span class="o">]</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">id</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">intermediate</span><span class="o">[</span><span class="n">col</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intermediate</span><span class="o">[</span><span class="n">col</span><span class="o">]</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">string</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">result</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="n">intermediate</span><span class="p">.</span><span class="n">set_index</span><span class="p">(</span><span class="ss">&quot;id&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">how</span><span class="o">=</span><span class="ss">&quot;outer&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">result</span><span class="w"></span>
+
+<span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">leaderboard</span><span class="p">(</span><span class="nl">leaderboard_response</span><span class="p">:</span><span class="w"> </span><span class="n">LeaderBoardResponse</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            leaderboard_response (LeaderBoardResponse): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the LeaderBoardResponse, each row being an entry in the leaderboard.</span>
+
+<span class="ss">            Top level attributes such as &#39;start&#39; or &#39;total&#39; are broadcast to an entire array the size of</span>
+
+<span class="ss">            the dataframe, and timestamps are converted to datetime objects.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">leaderboard_response</span><span class="p">,</span><span class="w"> </span><span class="n">LeaderBoardResponse</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != LeaderBoardResponse&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;LeaderBoardResponse&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting LeaderBoardResponse leaderboard to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">leaderboard_response</span><span class="p">.</span><span class="n">leaderboard</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_export_tuple_elements_to_column_values_format</span><span class="p">(</span><span class="n">dframe</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">trace</span><span class="p">(</span><span class="ss">&quot;Inserting LeaderBoardResponse attributes as columns&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;leaderboard_id&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">leaderboard_response</span><span class="p">.</span><span class="n">leaderboard_id</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;start&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">leaderboard_response</span><span class="p">.</span><span class="k">start</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;count&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">leaderboard_response</span><span class="p">.</span><span class="nf">count</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;total&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">leaderboard_response</span><span class="p">.</span><span class="n">total</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">trace</span><span class="p">(</span><span class="ss">&quot;Converting datetimes&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;last_match&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;last_match&quot;</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">unit</span><span class="o">=</span><span class="ss">&quot;s&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;last_match_time&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;last_match_time&quot;</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">unit</span><span class="o">=</span><span class="ss">&quot;s&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dframe</span><span class="w"></span>
+
+<span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">lobbies</span><span class="p">(</span><span class="nl">lobbies_response</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().lobbies to a pandas DataFrame. The resulting</span>
+
+<span class="ss">        DataFrame will contain several rows for each lobby, namely as many as there are players in said</span>
+
+<span class="ss">        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</span>
+
+<span class="ss">        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby&#39;s UUID or</span>
+
+<span class="ss">        make use of the groupby functionality of pandas DataFrames.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            lobbies_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the list of MatchLobby elements..</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">lobbies_response</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="err">:</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">supporting</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">3.9</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != List[MatchLobby]&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;List[MatchLobby]&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting Lobbies response to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">unfolded_lobbies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in lobbies_response</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="n">unfolded_lobbies</span><span class="p">).</span><span class="n">reset_index</span><span class="p">(</span><span class="k">drop</span><span class="o">=</span><span class="k">True</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">last_match</span><span class="p">(</span><span class="nl">last_match_response</span><span class="p">:</span><span class="w"> </span><span class="n">LastMatchResponse</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().last_match to a pandas DataFrame. There is not</span>
+
+<span class="ss">        much use to this as the DataFrame will only have one row, but the method is provided nonetheless in</span>
+
+<span class="ss">        case users want to concatenate several of these results in a DataFrame.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            last_match_response (LastMatchResponse): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the list of LastMatchResponse attributes. Beware: the &#39;players&#39;</span>
+
+<span class="ss">            column is directly the content of the &#39;LastMatchResponse.last_match.players&#39; attribute and as</span>
+
+<span class="ss">            such holds a list of LobbyMember objects.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">last_match_response</span><span class="p">,</span><span class="w"> </span><span class="n">LastMatchResponse</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != LastMatchResponse&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;LastMatchResponse&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting LastMatchResponse last_match to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">last_match_response</span><span class="p">.</span><span class="n">last_match</span><span class="p">).</span><span class="n">transpose</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="p">.</span><span class="n">columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">iloc</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="k">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">reset_index</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">trace</span><span class="p">(</span><span class="ss">&quot;Inserting LastMatchResponse attributes as columns&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;profile_id&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last_match_response</span><span class="p">.</span><span class="n">profile_id</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;steam_id&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last_match_response</span><span class="p">.</span><span class="n">steam_id</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;name&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last_match_response</span><span class="p">.</span><span class="n">name</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;country&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last_match_response</span><span class="p">.</span><span class="n">country</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dframe</span><span class="w"></span>
+
+<span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">match_history</span><span class="p">(</span><span class="nl">match_history_response</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting</span>
+
+<span class="ss">        DataFrame will contain several rows for each lobby, namely as many as there are players in said</span>
+
+<span class="ss">        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</span>
+
+<span class="ss">        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby&#39;s UUID or</span>
+
+<span class="ss">        make use of the groupby functionality of pandas DataFrames.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            match_history_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the list of MatchLobby elements.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">supporting</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">3.9</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">match_history_response</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != List[MatchLobby]&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;List[MatchLobby]&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting Match History response to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">unfolded_lobbies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+
+<span class="n">            _unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in match_history_response</span>
+
+<span class="n">        </span><span class="o">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="n">unfolded_lobbies</span><span class="p">).</span><span class="n">reset_index</span><span class="p">(</span><span class="k">drop</span><span class="o">=</span><span class="k">True</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">rating_history</span><span class="p">(</span><span class="nl">rating_history_response</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">RatingTimePoint</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            rating_history_response (List[RatingTimePoint]): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the list of RatingTimePoint elements, each row being the information from</span>
+
+<span class="ss">            one RatingTimePoint in the list. Timestamps are converted to datetime objects.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">RatingTimePoint</span><span class="o">]</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">supporting</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">3.9</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">rating_history_response</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != List[RatingTimePoint]&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;List[RatingTimePoint]&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting Rating History rsponse to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rating_history_response</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_export_tuple_elements_to_column_values_format</span><span class="p">(</span><span class="n">dframe</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">trace</span><span class="p">(</span><span class="ss">&quot;Converting timestamps to datetime objects&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;time&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;timestamp&quot;</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">unit</span><span class="o">=</span><span class="ss">&quot;s&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="k">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=[</span><span class="n">&quot;timestamp&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dframe</span><span class="w"></span>
+
+<span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">matches</span><span class="p">(</span><span class="nl">matches_response</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting</span>
+
+<span class="ss">        DataFrame will contain several rows for each lobby, namely as many as there are players in said</span>
+
+<span class="ss">        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</span>
+
+<span class="ss">        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby&#39;s UUID or</span>
+
+<span class="ss">        make use of the groupby functionality of pandas DataFrames.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            matches_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the list of MatchLobby elements.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">matches_response</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="err">:</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">supporting</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">3.9</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != List[MatchLobby]&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;List[MatchLobby]&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting Match History response to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">unfolded_lobbies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in matches_response</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="n">unfolded_lobbies</span><span class="p">).</span><span class="n">reset_index</span><span class="p">(</span><span class="k">drop</span><span class="o">=</span><span class="k">True</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="k">match</span><span class="p">(</span><span class="nl">match_response</span><span class="p">:</span><span class="w"> </span><span class="n">MatchLobby</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the content of a MatchLobby to a pandas DataFrame. The resulting DataFrame will have as many</span>
+
+<span class="ss">        rows as there are players in the lobby, and all global attributes will be broadcasted to columns of</span>
+
+<span class="ss">        the same length, making them duplicates.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            match_response (MatchLobby): a MatchLobby object.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the MatchLobby attributes, each row being global information from the</span>
+
+<span class="ss">            MatchLobby as well as one of the players in the lobby.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">_unfold_match_lobby_to_dataframe</span><span class="p">(</span><span class="n">match_response</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">num_online</span><span class="p">(</span><span class="nl">num_online_response</span><span class="p">:</span><span class="w"> </span><span class="n">NumOnlineResponse</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().num_online to a pandas DataFrame.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            num_online_response (NumOnlineResponse): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the NumOnlineResponse, each row being an entry in the leaderboard.</span>
+
+<span class="ss">            Top level attributes such as &#39;app_id&#39; are broadcast to an entire array the size of the</span>
+
+<span class="ss">            dataframe, and timestamps are converted to datetime objects.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">num_online_response</span><span class="p">,</span><span class="w"> </span><span class="n">NumOnlineResponse</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != NumOnlineResponse&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;NumOnlineResponse&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting NumOnlineResponse to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">num_online_response</span><span class="p">.</span><span class="n">dict</span><span class="p">())</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">trace</span><span class="p">(</span><span class="ss">&quot;Exporting &#39;player_stats&#39; attribute contents to columns&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;time&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;time&quot;</span><span class="o">]</span><span class="p">).</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;steam&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;num_players&quot;</span><span class="o">][</span><span class="n">&quot;steam&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;looking&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;num_players&quot;</span><span class="o">][</span><span class="n">&quot;looking&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;in_game&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;num_players&quot;</span><span class="o">][</span><span class="n">&quot;in_game&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;multiplayer&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;num_players&quot;</span><span class="o">][</span><span class="n">&quot;multiplayer&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;multiplayer_1h&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;num_players&quot;</span><span class="o">][</span><span class="n">&quot;multiplayer_1h&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;multiplayer_24h&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;num_players&quot;</span><span class="o">][</span><span class="n">&quot;multiplayer_24h&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">trace</span><span class="p">(</span><span class="ss">&quot;Removing &#39;player_stats&#39; column to avoid nested &amp; duplicate data&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="k">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=[</span><span class="n">&quot;player_stats&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dframe</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="static-methods">Static methods</h4>
+<h5 id="last_match">last_match</h5>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">last_match</span><span class="p">(</span>
+    <span class="n">last_match_response</span><span class="p">:</span> <span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">last_match</span><span class="o">.</span><span class="n">LastMatchResponse</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</code></pre></div>
+Convert the result given by a call to AoE2NetAPI().last_match to a pandas DataFrame. There is not
+much use to this as the DataFrame will only have one row, but the method is provided nonetheless in
+case users want to concatenate several of these results in a DataFrame.</p>
+<p>Args:
+    last_match_response (LastMatchResponse): the response directly returned by your AoE2NetAPI
+        client.</p>
+<p>Returns:
+    A pandas DataFrame from the list of LastMatchResponse attributes. Beware: the 'players'
+    column is directly the content of the 'LastMatchResponse.last_match.players' attribute and as
+    such holds a list of LobbyMember objects.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">last_match</span><span class="p">(</span><span class="nl">last_match_response</span><span class="p">:</span><span class="w"> </span><span class="n">LastMatchResponse</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().last_match to a pandas DataFrame. There is not</span>
+
+<span class="ss">        much use to this as the DataFrame will only have one row, but the method is provided nonetheless in</span>
+
+<span class="ss">        case users want to concatenate several of these results in a DataFrame.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            last_match_response (LastMatchResponse): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the list of LastMatchResponse attributes. Beware: the &#39;players&#39;</span>
+
+<span class="ss">            column is directly the content of the &#39;LastMatchResponse.last_match.players&#39; attribute and as</span>
+
+<span class="ss">            such holds a list of LobbyMember objects.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">last_match_response</span><span class="p">,</span><span class="w"> </span><span class="n">LastMatchResponse</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != LastMatchResponse&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;LastMatchResponse&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting LastMatchResponse last_match to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">last_match_response</span><span class="p">.</span><span class="n">last_match</span><span class="p">).</span><span class="n">transpose</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="p">.</span><span class="n">columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">iloc</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="k">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">reset_index</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">trace</span><span class="p">(</span><span class="ss">&quot;Inserting LastMatchResponse attributes as columns&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;profile_id&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last_match_response</span><span class="p">.</span><span class="n">profile_id</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;steam_id&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last_match_response</span><span class="p">.</span><span class="n">steam_id</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;name&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last_match_response</span><span class="p">.</span><span class="n">name</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;country&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last_match_response</span><span class="p">.</span><span class="n">country</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dframe</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h5 id="leaderboard">leaderboard</h5>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">leaderboard</span><span class="p">(</span>
+    <span class="n">leaderboard_response</span><span class="p">:</span> <span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">leaderboard</span><span class="o">.</span><span class="n">LeaderBoardResponse</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</code></pre></div>
+Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.</p>
+<p>Args:
+    leaderboard_response (LeaderBoardResponse): the response directly returned by your AoE2NetAPI
+        client.</p>
+<p>Returns:
+    A pandas DataFrame from the LeaderBoardResponse, each row being an entry in the leaderboard.
+    Top level attributes such as 'start' or 'total' are broadcast to an entire array the size of
+    the dataframe, and timestamps are converted to datetime objects.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="err">@</span><span class="n">staticmethod</span>
+
+    <span class="n">def</span> <span class="n">leaderboard</span><span class="p">(</span><span class="n">leaderboard_response</span><span class="p">:</span> <span class="n">LeaderBoardResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            leaderboard_response (LeaderBoardResponse): the response directly returned by your AoE2NetAPI</span>
+
+<span class="sd">                client.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            A pandas DataFrame from the LeaderBoardResponse, each row being an entry in the leaderboard.</span>
+
+<span class="sd">            Top level attributes such as &#39;start&#39; or &#39;total&#39; are broadcast to an entire array the size of</span>
+
+<span class="sd">            the dataframe, and timestamps are converted to datetime objects.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">isinstance</span><span class="p">(</span><span class="n">leaderboard_response</span><span class="p">,</span> <span class="n">LeaderBoardResponse</span><span class="p">):</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Tried to use method with a parameter of type != LeaderBoardResponse&quot;</span><span class="p">)</span>
+
+            <span class="n">raise</span> <span class="n">TypeError</span><span class="p">(</span><span class="s2">&quot;Provided parameter should be an instance of &#39;LeaderBoardResponse&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Converting LeaderBoardResponse leaderboard to DataFrame&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">leaderboard_response</span><span class="o">.</span><span class="n">leaderboard</span><span class="p">)</span>
+
+        <span class="n">dframe</span> <span class="o">=</span> <span class="n">_export_tuple_elements_to_column_values_format</span><span class="p">(</span><span class="n">dframe</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Inserting LeaderBoardResponse attributes as columns&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;leaderboard_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">leaderboard_response</span><span class="o">.</span><span class="n">leaderboard_id</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">leaderboard_response</span><span class="o">.</span><span class="n">start</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">leaderboard_response</span><span class="o">.</span><span class="n">count</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">leaderboard_response</span><span class="o">.</span><span class="n">total</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;Converting datetimes&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;last_match&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;last_match&quot;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+        <span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;last_match_time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dframe</span><span class="p">[</span><span class="s2">&quot;last_match_time&quot;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">dframe</span>
+</code></pre></div>
+
+</details>
+<h5 id="lobbies">lobbies</h5>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">lobbies</span><span class="p">(</span>
+    <span class="n">lobbies_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">lobbies</span><span class="o">.</span><span class="n">MatchLobby</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</code></pre></div>
+Convert the result given by a call to AoE2NetAPI().lobbies to a pandas DataFrame. The resulting
+DataFrame will contain several rows for each lobby, namely as many as there are players in said
+lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</p>
+<p>To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
+make use of the groupby functionality of pandas DataFrames.</p>
+<p>Args:
+    lobbies_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
+        client.</p>
+<p>Returns:
+    A pandas DataFrame from the list of MatchLobby elements..</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">lobbies</span><span class="p">(</span><span class="nl">lobbies_response</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().lobbies to a pandas DataFrame. The resulting</span>
+
+<span class="ss">        DataFrame will contain several rows for each lobby, namely as many as there are players in said</span>
+
+<span class="ss">        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</span>
+
+<span class="ss">        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby&#39;s UUID or</span>
+
+<span class="ss">        make use of the groupby functionality of pandas DataFrames.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            lobbies_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the list of MatchLobby elements..</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">lobbies_response</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="err">:</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">supporting</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">3.9</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != List[MatchLobby]&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;List[MatchLobby]&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting Lobbies response to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">unfolded_lobbies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in lobbies_response</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="n">unfolded_lobbies</span><span class="p">).</span><span class="n">reset_index</span><span class="p">(</span><span class="k">drop</span><span class="o">=</span><span class="k">True</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h5 id="match">match</h5>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">match</span><span class="p">(</span>
+    <span class="n">match_response</span><span class="p">:</span> <span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">lobbies</span><span class="o">.</span><span class="n">MatchLobby</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</code></pre></div>
+Convert the content of a MatchLobby to a pandas DataFrame. The resulting DataFrame will have as many
+rows as there are players in the lobby, and all global attributes will be broadcasted to columns of
+the same length, making them duplicates.</p>
+<p>Args:
+    match_response (MatchLobby): a MatchLobby object.</p>
+<p>Returns:
+    A pandas DataFrame from the MatchLobby attributes, each row being global information from the
+    MatchLobby as well as one of the players in the lobby.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="k">match</span><span class="p">(</span><span class="nl">match_response</span><span class="p">:</span><span class="w"> </span><span class="n">MatchLobby</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the content of a MatchLobby to a pandas DataFrame. The resulting DataFrame will have as many</span>
+
+<span class="ss">        rows as there are players in the lobby, and all global attributes will be broadcasted to columns of</span>
+
+<span class="ss">        the same length, making them duplicates.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            match_response (MatchLobby): a MatchLobby object.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the MatchLobby attributes, each row being global information from the</span>
+
+<span class="ss">            MatchLobby as well as one of the players in the lobby.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">_unfold_match_lobby_to_dataframe</span><span class="p">(</span><span class="n">match_response</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h5 id="match_history">match_history</h5>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">match_history</span><span class="p">(</span>
+    <span class="n">match_history_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">lobbies</span><span class="o">.</span><span class="n">MatchLobby</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</code></pre></div>
+Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting
+DataFrame will contain several rows for each lobby, namely as many as there are players in said
+lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</p>
+<p>To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
+make use of the groupby functionality of pandas DataFrames.</p>
+<p>Args:
+    match_history_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
+        client.</p>
+<p>Returns:
+    A pandas DataFrame from the list of MatchLobby elements.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">match_history</span><span class="p">(</span><span class="nl">match_history_response</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting</span>
+
+<span class="ss">        DataFrame will contain several rows for each lobby, namely as many as there are players in said</span>
+
+<span class="ss">        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</span>
+
+<span class="ss">        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby&#39;s UUID or</span>
+
+<span class="ss">        make use of the groupby functionality of pandas DataFrames.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            match_history_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the list of MatchLobby elements.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">supporting</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">3.9</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">match_history_response</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != List[MatchLobby]&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;List[MatchLobby]&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting Match History response to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">unfolded_lobbies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+
+<span class="n">            _unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in match_history_response</span>
+
+<span class="n">        </span><span class="o">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="n">unfolded_lobbies</span><span class="p">).</span><span class="n">reset_index</span><span class="p">(</span><span class="k">drop</span><span class="o">=</span><span class="k">True</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h5 id="matches">matches</h5>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">matches</span><span class="p">(</span>
+    <span class="n">matches_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">lobbies</span><span class="o">.</span><span class="n">MatchLobby</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</code></pre></div>
+Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting
+DataFrame will contain several rows for each lobby, namely as many as there are players in said
+lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</p>
+<p>To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
+make use of the groupby functionality of pandas DataFrames.</p>
+<p>Args:
+    matches_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
+        client.</p>
+<p>Returns:
+    A pandas DataFrame from the list of MatchLobby elements.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">matches</span><span class="p">(</span><span class="nl">matches_response</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting</span>
+
+<span class="ss">        DataFrame will contain several rows for each lobby, namely as many as there are players in said</span>
+
+<span class="ss">        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</span>
+
+<span class="ss">        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby&#39;s UUID or</span>
+
+<span class="ss">        make use of the groupby functionality of pandas DataFrames.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            matches_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the list of MatchLobby elements.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">matches_response</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="err">:</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">supporting</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">3.9</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != List[MatchLobby]&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;List[MatchLobby]&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting Match History response to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">unfolded_lobbies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in matches_response</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="n">unfolded_lobbies</span><span class="p">).</span><span class="n">reset_index</span><span class="p">(</span><span class="k">drop</span><span class="o">=</span><span class="k">True</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h5 id="num_online">num_online</h5>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">num_online</span><span class="p">(</span>
+    <span class="n">num_online_response</span><span class="p">:</span> <span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">num_online</span><span class="o">.</span><span class="n">NumOnlineResponse</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</code></pre></div>
+Convert the result given by a call to AoE2NetAPI().num_online to a pandas DataFrame.</p>
+<p>Args:
+    num_online_response (NumOnlineResponse): the response directly returned by your AoE2NetAPI
+        client.</p>
+<p>Returns:
+    A pandas DataFrame from the NumOnlineResponse, each row being an entry in the leaderboard.
+    Top level attributes such as 'app_id' are broadcast to an entire array the size of the
+    dataframe, and timestamps are converted to datetime objects.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">num_online</span><span class="p">(</span><span class="nl">num_online_response</span><span class="p">:</span><span class="w"> </span><span class="n">NumOnlineResponse</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().num_online to a pandas DataFrame.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            num_online_response (NumOnlineResponse): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the NumOnlineResponse, each row being an entry in the leaderboard.</span>
+
+<span class="ss">            Top level attributes such as &#39;app_id&#39; are broadcast to an entire array the size of the</span>
+
+<span class="ss">            dataframe, and timestamps are converted to datetime objects.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">num_online_response</span><span class="p">,</span><span class="w"> </span><span class="n">NumOnlineResponse</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != NumOnlineResponse&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;NumOnlineResponse&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting NumOnlineResponse to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">num_online_response</span><span class="p">.</span><span class="n">dict</span><span class="p">())</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">trace</span><span class="p">(</span><span class="ss">&quot;Exporting &#39;player_stats&#39; attribute contents to columns&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;time&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;time&quot;</span><span class="o">]</span><span class="p">).</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;steam&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;num_players&quot;</span><span class="o">][</span><span class="n">&quot;steam&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;looking&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;num_players&quot;</span><span class="o">][</span><span class="n">&quot;looking&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;in_game&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;num_players&quot;</span><span class="o">][</span><span class="n">&quot;in_game&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;multiplayer&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;num_players&quot;</span><span class="o">][</span><span class="n">&quot;multiplayer&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;multiplayer_1h&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;num_players&quot;</span><span class="o">][</span><span class="n">&quot;multiplayer_1h&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;multiplayer_24h&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">player_stats</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">&quot;num_players&quot;</span><span class="o">][</span><span class="n">&quot;multiplayer_24h&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">trace</span><span class="p">(</span><span class="ss">&quot;Removing &#39;player_stats&#39; column to avoid nested &amp; duplicate data&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="k">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=[</span><span class="n">&quot;player_stats&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dframe</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h5 id="rating_history">rating_history</h5>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rating_history</span><span class="p">(</span>
+    <span class="n">rating_history_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">rating_history</span><span class="o">.</span><span class="n">RatingTimePoint</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</code></pre></div>
+Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.</p>
+<p>Args:
+    rating_history_response (List[RatingTimePoint]): the response directly returned by your AoE2NetAPI
+        client.</p>
+<p>Returns:
+    A pandas DataFrame from the list of RatingTimePoint elements, each row being the information from
+    one RatingTimePoint in the list. Timestamps are converted to datetime objects.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">rating_history</span><span class="p">(</span><span class="nl">rating_history_response</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">RatingTimePoint</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            rating_history_response (List[RatingTimePoint]): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the list of RatingTimePoint elements, each row being the information from</span>
+
+<span class="ss">            one RatingTimePoint in the list. Timestamps are converted to datetime objects.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">move</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">RatingTimePoint</span><span class="o">]</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">supporting</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">3.9</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">rating_history_response</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != List[RatingTimePoint]&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;List[RatingTimePoint]&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting Rating History rsponse to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rating_history_response</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_export_tuple_elements_to_column_values_format</span><span class="p">(</span><span class="n">dframe</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">trace</span><span class="p">(</span><span class="ss">&quot;Converting timestamps to datetime objects&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;time&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dframe</span><span class="o">[</span><span class="n">&quot;timestamp&quot;</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">unit</span><span class="o">=</span><span class="ss">&quot;s&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="k">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=[</span><span class="n">&quot;timestamp&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dframe</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h5 id="strings">strings</h5>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">strings</span><span class="p">(</span>
+    <span class="n">strings_response</span><span class="p">:</span> <span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">StringsResponse</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</code></pre></div>
+Convert the result given by a call to AoE2NetAPI().strings to a pandas DataFrame.</p>
+<p>Args:
+    strings_response (StringsResponse): the response directly returned by your AoE2NetAPI
+        client.</p>
+<p>Returns:
+    A pandas DataFrame from the StringsResponse, each column being the values for a 'string' used
+    by the API, and the index being the ID numbers. Since this is the result of a join for many
+    'strings' that do not have the same amount of values, the resulting dataframe will contain NaNs
+    wherever a given 'string' does not have a value for the given index ID.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">strings</span><span class="p">(</span><span class="nl">strings_response</span><span class="p">:</span><span class="w"> </span><span class="n">StringsResponse</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Convert the result given by a call to AoE2NetAPI().strings to a pandas DataFrame.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            strings_response (StringsResponse): the response directly returned by your AoE2NetAPI</span>
+
+<span class="ss">                client.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            A pandas DataFrame from the StringsResponse, each column being the values for a &#39;string&#39; used</span>
+
+<span class="ss">            by the API, and the index being the ID numbers. Since this is the result of a join for many</span>
+
+<span class="ss">            &#39;strings&#39; that do not have the same amount of values, the resulting dataframe will contain NaNs</span>
+
+<span class="ss">            wherever a given &#39;string&#39; does not have a value for the given index ID.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">strings_response</span><span class="p">,</span><span class="w"> </span><span class="n">StringsResponse</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="ss">&quot;Tried to use method with a parameter of type != StringsResponse&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">TypeError</span><span class="p">(</span><span class="ss">&quot;Provided parameter should be an instance of &#39;StringsResponse&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;Converting StringsResponse to DataFrame&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">strings_response</span><span class="p">).</span><span class="n">transpose</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="p">.</span><span class="n">columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="n">iloc</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="k">drop</span><span class="p">(</span><span class="k">index</span><span class="o">=[</span><span class="n">0</span><span class="o">]</span><span class="p">).</span><span class="n">reset_index</span><span class="p">(</span><span class="k">drop</span><span class="o">=</span><span class="k">True</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="k">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=[</span><span class="n">&quot;language&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="n">trace</span><span class="p">(</span><span class="ss">&quot;Exporting each string attribute to its own dataframe and joining&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">dframe</span><span class="p">.</span><span class="nl">columns</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">intermediate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">intermediate</span><span class="o">[</span><span class="n">col</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dframe</span><span class="o">[</span><span class="n">col</span><span class="o">][</span><span class="n">0</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">intermediate</span><span class="o">[</span><span class="n">&quot;id&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intermediate</span><span class="o">[</span><span class="n">col</span><span class="o">]</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">id</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">intermediate</span><span class="o">[</span><span class="n">col</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intermediate</span><span class="o">[</span><span class="n">col</span><span class="o">]</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">string</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">result</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="n">intermediate</span><span class="p">.</span><span class="n">set_index</span><span class="p">(</span><span class="ss">&quot;id&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">how</span><span class="o">=</span><span class="ss">&quot;outer&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">result</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../api/" title="API" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                API
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../exceptions/" title="Exceptions" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Exceptions
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Powered by
+        <a href="http://timothycrosley.github.io/portray">portray.</a>
+        You too can
+        <a href="http://timothycrosley.github.io/portray">
+          portray</a>
+        your Python project well using automatic documentation.
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
