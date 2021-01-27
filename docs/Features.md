@@ -13,6 +13,7 @@ No typing the wrong key names, coming back and forth between docs, or scrolling 
 ## Validated Response Models
 
 The models used in `aoe2netwrapper` encapsulate and enhance the data returned by the `aoe2.net` APIs:
+
 * No mess of confusing nested standard types: the methods all return tailored models encapsulating the returned data, recursively.
 * No surprises: Data returned from the API is parsed and validated before being given back to you as custom models.
 * Convenience: all models returned by the clients provide auto-completion on attributes, recursively.
