@@ -337,21 +337,18 @@ def _unfold_match_lobby_to_dataframe(match_lobby: MatchLobby) -> pd.DataFrame:
     logger.trace("Unfolding MatchLobby.players contents to DataFrame")
     dframe = pd.DataFrame(match_lobby.players)
     dframe = _export_tuple_elements_to_column_values_format(dframe)
-    dframe["player"] = dframe["name"]
-    dframe = dframe.drop(columns=["name"])
+    dframe = dframe.rename(columns={"name": "player"})
 
     logger.trace("Broadcasting global MatchLobby attributes")
+    attributes_df = pd.DataFrame()
     for attribute, value in match_lobby.dict().items():
         if attribute != "players":
-            dframe[attribute] = value
+            attributes_df[attribute] = [value] * len(dframe)
+    dframe = attributes_df.join(dframe, how="outer")
 
     logger.trace("Converting timestamps to datetime objects")
     dframe["opened"] = pd.to_datetime(dframe["opened"], unit="s")
     dframe["started"] = pd.to_datetime(dframe["started"], unit="s")
     dframe["finished"] = pd.to_datetime(dframe["finished"], unit="s")
 
-    logger.trace("Reindexing columns order")
-    ordered_columns = list(match_lobby.dict().keys()) + list(match_lobby.players[0].dict().keys())
-    ordered_columns.remove("players")
-    dframe = dframe.reindex(columns=ordered_columns)
     return dframe
