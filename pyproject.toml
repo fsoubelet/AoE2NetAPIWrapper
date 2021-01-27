@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aoe2netwrapper"
-version = "0.3.0"
+version = "0.3.1"
 description = "My Python wrapper for the aoe2.net data API"
 authors = ["Felix Soubelet <felix.soubelet@liverpool.ac.uk>"]
 license = "MIT"
