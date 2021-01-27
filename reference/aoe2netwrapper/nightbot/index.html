@@ -352,13 +352,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aoe2netwrappernightbot" class="md-nav__link">
-    aoe2netwrapper.nightbot
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#classes" class="md-nav__link">
     Classes
   </a>
@@ -386,8 +379,7 @@
     Methods
   </a>
   
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#civs" class="md-nav__link">
@@ -421,11 +413,6 @@
   <a href="#rank" class="md-nav__link">
     rank
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -626,13 +613,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aoe2netwrappernightbot" class="md-nav__link">
-    aoe2netwrapper.nightbot
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#classes" class="md-nav__link">
     Classes
   </a>
@@ -660,8 +640,7 @@
     Methods
   </a>
   
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#civs" class="md-nav__link">
@@ -707,11 +686,6 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
     </ul>
   
@@ -734,7 +708,8 @@
                 
                 
                 <h1 id="module-aoe2netwrappernightbot">Module aoe2netwrapper.nightbot</h1>
-<h2 id="aoe2netwrappernightbot">aoe2netwrapper.nightbot</h2>
+<p>aoe2netwrapper.nightbot</p>
+<hr />
 <p>This module implements a high-level client to query the API at <a href="https://aoe2.net/#nightbot">https://aoe2.net/#nightbot</a>.</p>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 
@@ -1420,8 +1395,6 @@
     <span class="n">timeout</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>The 'AoE2NightbotAPI' class is a client that encompasses the <a href="https://aoe2.net/#nightbot">https://aoe2.net/#nightbot</a> API endpoints,
-which only return their requested data as plain text.</p>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="n">AoE2NightbotAPI:</span>
 
     <span class="s">&quot;&quot;&quot;</span>
@@ -2043,8 +2016,8 @@ which only return their requested data as plain text.</p>
 <div class="highlight"><pre><span></span><code><span class="n">RECENT_OPPONENT_ENDPOINT</span>
 </code></pre></div>
 <h4 id="methods">Methods</h4>
-<h5 id="civs">civs</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">civs</span><span class="p">(</span>
+<h4 id="civs">civs</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">civs</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">game</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;aoe2de&#39;</span><span class="p">,</span>
     <span class="n">leaderboard_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -2054,29 +2027,145 @@ which only return their requested data as plain text.</p>
     <span class="n">profile_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
 </code></pre></div>
-Request civilisations from the current or last match. Either 'search', 'steam_id' or
-'profile_id' required.</p>
-<p>Args:
-    game (str): The game for which to extract the list of strings. Defaults to 'aoe2de'.
-        Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of
-        Empires 2: Definitive Edition).
-    leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
-        1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
-        Defaults to 3.
-    language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
-        'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
-        Defaults to 'en'.
-    search (str): To perform the search for a specific player, from their name. Will
-        return the highest rated player that matches the search.
-    steam_id (int): To perform the search for a specific player, from their steamID64
-        (ex: 76561199003184910).
-    profile_id (int): To perform the search for a specific player, from their profile ID
-        (ex: 459658).</p>
-<p>Raises:
-    NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.</p>
-<p>Returns:
-    The text content of the response, as a decoded unicode string, with a quick sentence
-    of information about the player's last opponent.</p>
+<p>Request civilisations from the current or last match. Either 'search', 'steam_id' or</p>
+<p>'profile_id' required.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>game</td>
+<td>str</td>
+<td>The game for which to extract the list of strings. Defaults to 'aoe2de'.</td>
+<td></td>
+</tr>
+<tr>
+<td>Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Empires 2: Definitive Edition).</td>
+<td>'aoe2de'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>leaderboard_id</td>
+<td>int</td>
+<td>Leaderboard to extract the data for (Unranked=0,</td>
+<td></td>
+</tr>
+<tr>
+<td>1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Defaults to 3.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>language</td>
+<td>str</td>
+<td>language for the returned response ('en', 'de', 'el', 'es', 'es-MX',</td>
+<td></td>
+</tr>
+<tr>
+<td>'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Defaults to 'en'.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>search</td>
+<td>str</td>
+<td>To perform the search for a specific player, from their name. Will</td>
+<td></td>
+</tr>
+<tr>
+<td>return the highest rated player that matches the search.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>steam_id</td>
+<td>int</td>
+<td>To perform the search for a specific player, from their steamID64</td>
+<td></td>
+</tr>
+<tr>
+<td>(ex: 76561199003184910).</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>profile_id</td>
+<td>int</td>
+<td>To perform the search for a specific player, from their profile ID</td>
+<td></td>
+</tr>
+<tr>
+<td>(ex: 459658).</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>The text content of the response, as a decoded unicode string, with a quick sentence</td>
+</tr>
+<tr>
+<td>of information about the player's last opponent.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raises:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NightBotException</td>
+<td>if the not one of 'search', 'steam_id' or 'profile_id' are provided.</td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="n">def</span> <span class="n">civs</span><span class="p">(</span>
 
         <span class="n">self</span><span class="p">,</span>
@@ -2187,8 +2276,8 @@ Request civilisations from the current or last match. Either 'search', 'steam_id
 </code></pre></div>
 
 </details>
-<h5 id="map">map</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">map</span><span class="p">(</span>
+<h4 id="map">map</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">map</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">game</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;aoe2de&#39;</span><span class="p">,</span>
     <span class="n">leaderboard_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -2198,29 +2287,145 @@ Request civilisations from the current or last match. Either 'search', 'steam_id
     <span class="n">profile_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
 </code></pre></div>
-Request civilisations from the current or last match. Either 'search', 'steam_id' or
-'profile_id' required.</p>
-<p>Args:
-    game (str): The game for which to extract the list of strings. Defaults to 'aoe2de'.
-        Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of
-        Empires 2: Definitive Edition).
-    leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
-        1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
-        Defaults to 3.
-    language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
-        'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
-        Defaults to 'en'.
-    search (str): To perform the search for a specific player, from their name. Will
-        return the highest rated player that matches the search.
-    steam_id (int): To perform the search for a specific player, from their steamID64
-        (ex: 76561199003184910).
-    profile_id (int): To perform the search for a specific player, from their profile ID
-        (ex: 459658).</p>
-<p>Raises:
-    NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.</p>
-<p>Returns:
-    The text content of the response, as a decoded unicode string, with a quick sentence
-    of information about the player's last opponent.</p>
+<p>Request civilisations from the current or last match. Either 'search', 'steam_id' or</p>
+<p>'profile_id' required.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>game</td>
+<td>str</td>
+<td>The game for which to extract the list of strings. Defaults to 'aoe2de'.</td>
+<td></td>
+</tr>
+<tr>
+<td>Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Empires 2: Definitive Edition).</td>
+<td>'aoe2de'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>leaderboard_id</td>
+<td>int</td>
+<td>Leaderboard to extract the data for (Unranked=0,</td>
+<td></td>
+</tr>
+<tr>
+<td>1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Defaults to 3.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>language</td>
+<td>str</td>
+<td>language for the returned response ('en', 'de', 'el', 'es', 'es-MX',</td>
+<td></td>
+</tr>
+<tr>
+<td>'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Defaults to 'en'.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>search</td>
+<td>str</td>
+<td>To perform the search for a specific player, from their name. Will</td>
+<td></td>
+</tr>
+<tr>
+<td>return the highest rated player that matches the search.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>steam_id</td>
+<td>int</td>
+<td>To perform the search for a specific player, from their steamID64</td>
+<td></td>
+</tr>
+<tr>
+<td>(ex: 76561199003184910).</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>profile_id</td>
+<td>int</td>
+<td>To perform the search for a specific player, from their profile ID</td>
+<td></td>
+</tr>
+<tr>
+<td>(ex: 459658).</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>The text content of the response, as a decoded unicode string, with a quick sentence</td>
+</tr>
+<tr>
+<td>of information about the player's last opponent.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raises:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NightBotException</td>
+<td>if the not one of 'search', 'steam_id' or 'profile_id' are provided.</td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="n">def</span> <span class="n">map</span><span class="p">(</span>
 
         <span class="n">self</span><span class="p">,</span>
@@ -2331,8 +2536,8 @@ Request civilisations from the current or last match. Either 'search', 'steam_id
 </code></pre></div>
 
 </details>
-<h5 id="match">match</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">match</span><span class="p">(</span>
+<h4 id="match">match</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">match</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">game</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;aoe2de&#39;</span><span class="p">,</span>
     <span class="n">leaderboard_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -2344,33 +2549,169 @@ Request civilisations from the current or last match. Either 'search', 'steam_id
     <span class="n">profile_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
 </code></pre></div>
-Request details about the current or last match. Either 'search', 'steam_id' or
-'profile_id' required.</p>
-<p>Args:
-    game (str): The game for which to extract the list of strings. Defaults to 'aoe2de'.
-        Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of
-        Empires 2: Definitive Edition).
-    leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
-        1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
-        Defaults to 3.
-    language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
-        'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
-        Defaults to 'en'.
-    color (str): boolean to show player colors. Defaults to 'true'. Needs to be a string
-        for now since requests transforms True boolean to 'True' and the API rejects that.
-    flag (str): boolean to show the player flag. Defaults to 'true'. Needs to be a string
-        for now since requests transforms True boolean to 'True' and the API rejects that.
-    search (str): To perform the search for a specific player, from their name. Will
-        return the highest rated player that matches the search.
-    steam_id (int): To perform the search for a specific player, from their steamID64
-        (ex: 76561199003184910).
-    profile_id (int): To perform the search for a specific player, from their profile ID
-        (ex: 459658).</p>
-<p>Raises:
-    NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.</p>
-<p>Returns:
-    The text content of the response, as a decoded unicode string, with a quick sentence
-    of information about the players in the match.</p>
+<p>Request details about the current or last match. Either 'search', 'steam_id' or</p>
+<p>'profile_id' required.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>game</td>
+<td>str</td>
+<td>The game for which to extract the list of strings. Defaults to 'aoe2de'.</td>
+<td></td>
+</tr>
+<tr>
+<td>Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Empires 2: Definitive Edition).</td>
+<td>'aoe2de'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>leaderboard_id</td>
+<td>int</td>
+<td>Leaderboard to extract the data for (Unranked=0,</td>
+<td></td>
+</tr>
+<tr>
+<td>1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Defaults to 3.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>language</td>
+<td>str</td>
+<td>language for the returned response ('en', 'de', 'el', 'es', 'es-MX',</td>
+<td></td>
+</tr>
+<tr>
+<td>'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Defaults to 'en'.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>color</td>
+<td>str</td>
+<td>boolean to show player colors. Defaults to 'true'. Needs to be a string</td>
+<td></td>
+</tr>
+<tr>
+<td>for now since requests transforms True boolean to 'True' and the API rejects that.</td>
+<td>'true'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>flag</td>
+<td>str</td>
+<td>boolean to show the player flag. Defaults to 'true'. Needs to be a string</td>
+<td></td>
+</tr>
+<tr>
+<td>for now since requests transforms True boolean to 'True' and the API rejects that.</td>
+<td>'true'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>search</td>
+<td>str</td>
+<td>To perform the search for a specific player, from their name. Will</td>
+<td></td>
+</tr>
+<tr>
+<td>return the highest rated player that matches the search.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>steam_id</td>
+<td>int</td>
+<td>To perform the search for a specific player, from their steamID64</td>
+<td></td>
+</tr>
+<tr>
+<td>(ex: 76561199003184910).</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>profile_id</td>
+<td>int</td>
+<td>To perform the search for a specific player, from their profile ID</td>
+<td></td>
+</tr>
+<tr>
+<td>(ex: 459658).</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>The text content of the response, as a decoded unicode string, with a quick sentence</td>
+</tr>
+<tr>
+<td>of information about the players in the match.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raises:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NightBotException</td>
+<td>if the not one of 'search', 'steam_id' or 'profile_id' are provided.</td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="n">def</span> <span class="n">match</span><span class="p">(</span>
 
         <span class="n">self</span><span class="p">,</span>
@@ -2497,8 +2838,8 @@ Request details about the current or last match. Either 'search', 'steam_id' or
 </code></pre></div>
 
 </details>
-<h5 id="opponent">opponent</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">opponent</span><span class="p">(</span>
+<h4 id="opponent">opponent</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">opponent</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">game</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;aoe2de&#39;</span><span class="p">,</span>
     <span class="n">leaderboard_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -2509,31 +2850,157 @@ Request details about the current or last match. Either 'search', 'steam_id' or
     <span class="n">profile_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
 </code></pre></div>
-Request rank details about a player's most recent opponent (1v1 only). Either 'search',
-'steam_id' or 'profile_id' required.</p>
-<p>Args:
-    game (str): The game for which to extract the list of strings. Defaults to 'aoe2de'.
-        Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of
-        Empires 2: Definitive Edition).
-    leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
-        1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
-        Defaults to 3.
-    language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
-        'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
-        Defaults to 'en'.
-    flag (str): boolean to show the player flag. Defaults to 'true'. Needs to be a string
-        for now since requests transforms True boolean to 'True' and the API rejects that.
-    search (str): To perform the search for a specific player, from their name. Will
-        return the highest rated player that matches the search.
-    steam_id (int): To perform the search for a specific player, from their steamID64
-        (ex: 76561199003184910).
-    profile_id (int): To perform the search for a specific player, from their profile ID
-        (ex: 459658).</p>
-<p>Raises:
-    NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.</p>
-<p>Returns:
-    The text content of the response, as a decoded unicode string, with a quick sentence
-    of information about the player's last opponent.</p>
+<p>Request rank details about a player's most recent opponent (1v1 only). Either 'search',</p>
+<p>'steam_id' or 'profile_id' required.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>game</td>
+<td>str</td>
+<td>The game for which to extract the list of strings. Defaults to 'aoe2de'.</td>
+<td></td>
+</tr>
+<tr>
+<td>Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Empires 2: Definitive Edition).</td>
+<td>'aoe2de'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>leaderboard_id</td>
+<td>int</td>
+<td>Leaderboard to extract the data for (Unranked=0,</td>
+<td></td>
+</tr>
+<tr>
+<td>1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Defaults to 3.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>language</td>
+<td>str</td>
+<td>language for the returned response ('en', 'de', 'el', 'es', 'es-MX',</td>
+<td></td>
+</tr>
+<tr>
+<td>'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Defaults to 'en'.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>flag</td>
+<td>str</td>
+<td>boolean to show the player flag. Defaults to 'true'. Needs to be a string</td>
+<td></td>
+</tr>
+<tr>
+<td>for now since requests transforms True boolean to 'True' and the API rejects that.</td>
+<td>'true'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>search</td>
+<td>str</td>
+<td>To perform the search for a specific player, from their name. Will</td>
+<td></td>
+</tr>
+<tr>
+<td>return the highest rated player that matches the search.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>steam_id</td>
+<td>int</td>
+<td>To perform the search for a specific player, from their steamID64</td>
+<td></td>
+</tr>
+<tr>
+<td>(ex: 76561199003184910).</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>profile_id</td>
+<td>int</td>
+<td>To perform the search for a specific player, from their profile ID</td>
+<td></td>
+</tr>
+<tr>
+<td>(ex: 459658).</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>The text content of the response, as a decoded unicode string, with a quick sentence</td>
+</tr>
+<tr>
+<td>of information about the player's last opponent.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raises:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NightBotException</td>
+<td>if the not one of 'search', 'steam_id' or 'profile_id' are provided.</td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="n">def</span> <span class="n">opponent</span><span class="p">(</span>
 
         <span class="n">self</span><span class="p">,</span>
@@ -2652,8 +3119,8 @@ Request rank details about a player's most recent opponent (1v1 only). Either 's
 </code></pre></div>
 
 </details>
-<h5 id="rank">rank</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rank</span><span class="p">(</span>
+<h4 id="rank">rank</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rank</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">game</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;aoe2de&#39;</span><span class="p">,</span>
     <span class="n">leaderboard_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -2664,30 +3131,156 @@ Request rank details about a player's most recent opponent (1v1 only). Either 's
     <span class="n">profile_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
 </code></pre></div>
-Request rank details about a player. Either 'search', 'steam_id' or 'profile_id' required.</p>
-<p>Args:
-    game (str): The game for which to extract the list of strings. Defaults to 'aoe2de'.
-        Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of
-        Empires 2: Definitive Edition).
-    leaderboard_id (int): Leaderboard to extract the data for (Unranked=0,
-        1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).
-        Defaults to 3.
-    language (str): language for the returned response ('en', 'de', 'el', 'es', 'es-MX',
-        'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').
-        Defaults to 'en'.
-    flag (str): boolean to show the player flag. Defaults to 'true'. Needs to be a string
-        for now since requests transforms True boolean to 'True' and the API rejects that.
-    search (str): To perform the search for a specific player, from their name. Will
-        return the highest rated player that matches the search.
-    steam_id (int): To perform the search for a specific player, from their steamID64
-        (ex: 76561199003184910).
-    profile_id (int): To perform the search for a specific player, from their profile ID
-        (ex: 459658).</p>
-<p>Raises:
-    NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.</p>
-<p>Returns:
-    The text content of the response, as a decoded unicode string, with a quick sentence
-    of information about the player.</p>
+<p>Request rank details about a player. Either 'search', 'steam_id' or 'profile_id' required.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>game</td>
+<td>str</td>
+<td>The game for which to extract the list of strings. Defaults to 'aoe2de'.</td>
+<td></td>
+</tr>
+<tr>
+<td>Possibilities are 'aoe2hd' (Age of Empires 2: HD Edition) and 'aoe2de' (Age of</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Empires 2: Definitive Edition).</td>
+<td>'aoe2de'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>leaderboard_id</td>
+<td>int</td>
+<td>Leaderboard to extract the data for (Unranked=0,</td>
+<td></td>
+</tr>
+<tr>
+<td>1v1 Deathmatch=1, Team Deathmatch=2, 1v1 Random Map=3, Team Random Map=4).</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Defaults to 3.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>language</td>
+<td>str</td>
+<td>language for the returned response ('en', 'de', 'el', 'es', 'es-MX',</td>
+<td></td>
+</tr>
+<tr>
+<td>'fr', 'hi', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'ru', 'tr', 'vi', 'zh', 'zh-TW').</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Defaults to 'en'.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>flag</td>
+<td>str</td>
+<td>boolean to show the player flag. Defaults to 'true'. Needs to be a string</td>
+<td></td>
+</tr>
+<tr>
+<td>for now since requests transforms True boolean to 'True' and the API rejects that.</td>
+<td>'true'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>search</td>
+<td>str</td>
+<td>To perform the search for a specific player, from their name. Will</td>
+<td></td>
+</tr>
+<tr>
+<td>return the highest rated player that matches the search.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>steam_id</td>
+<td>int</td>
+<td>To perform the search for a specific player, from their steamID64</td>
+<td></td>
+</tr>
+<tr>
+<td>(ex: 76561199003184910).</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>profile_id</td>
+<td>int</td>
+<td>To perform the search for a specific player, from their profile ID</td>
+<td></td>
+</tr>
+<tr>
+<td>(ex: 459658).</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>The text content of the response, as a decoded unicode string, with a quick sentence</td>
+</tr>
+<tr>
+<td>of information about the player.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raises:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NightBotException</td>
+<td>if the not one of 'search', 'steam_id' or 'profile_id' are provided.</td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="n">def</span> <span class="n">rank</span><span class="p">(</span>
 
         <span class="n">self</span><span class="p">,</span>

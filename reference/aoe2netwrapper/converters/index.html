@@ -316,13 +316,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aoe2netwrapperconverters" class="md-nav__link">
-    aoe2netwrapper.converters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#classes" class="md-nav__link">
     Classes
   </a>
@@ -343,8 +336,7 @@
     Static methods
   </a>
   
-    <nav class="md-nav" aria-label="Static methods">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#last_match" class="md-nav__link">
@@ -406,11 +398,6 @@
   <a href="#strings" class="md-nav__link">
     strings
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -647,13 +634,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aoe2netwrapperconverters" class="md-nav__link">
-    aoe2netwrapper.converters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#classes" class="md-nav__link">
     Classes
   </a>
@@ -674,8 +654,7 @@
     Static methods
   </a>
   
-    <nav class="md-nav" aria-label="Static methods">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#last_match" class="md-nav__link">
@@ -749,11 +728,6 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
     </ul>
   
@@ -776,7 +750,8 @@
                 
                 
                 <h1 id="module-aoe2netwrapperconverters">Module aoe2netwrapper.converters</h1>
-<h2 id="aoe2netwrapperconverters">aoe2netwrapper.converters</h2>
+<p>aoe2netwrapper.converters</p>
+<hr />
 <p>This module implements a high-level class with static methods to convert result of AoENetAPI methods to
 pandas DataFrames.</p>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
@@ -1371,8 +1346,6 @@ pandas DataFrames.</p>
     <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>This is a convenience class providing methods to convert the outputs from the AoE2NetAPI query methods
-into pandas DataFrame objects. Every method below is a staticmethod, so no object has to be instantiated.</p>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nf">Convert</span><span class="err">:</span><span class="w"></span>
 
 <span class="w">    </span><span class="ss">&quot;&quot;&quot;</span>
@@ -1807,21 +1780,62 @@ into pandas DataFrame objects. Every method below is a staticmethod, so no objec
 </details>
 <hr />
 <h4 id="static-methods">Static methods</h4>
-<h5 id="last_match">last_match</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">last_match</span><span class="p">(</span>
+<h4 id="last_match">last_match</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">last_match</span><span class="p">(</span>
     <span class="n">last_match_response</span><span class="p">:</span> <span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">last_match</span><span class="o">.</span><span class="n">LastMatchResponse</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
 </code></pre></div>
-Convert the result given by a call to AoE2NetAPI().last_match to a pandas DataFrame. There is not
-much use to this as the DataFrame will only have one row, but the method is provided nonetheless in
+<p>Convert the result given by a call to AoE2NetAPI().last_match to a pandas DataFrame. There is not</p>
+<p>much use to this as the DataFrame will only have one row, but the method is provided nonetheless in
 case users want to concatenate several of these results in a DataFrame.</p>
-<p>Args:
-    last_match_response (LastMatchResponse): the response directly returned by your AoE2NetAPI
-        client.</p>
-<p>Returns:
-    A pandas DataFrame from the list of LastMatchResponse attributes. Beware: the 'players'
-    column is directly the content of the 'LastMatchResponse.last_match.players' attribute and as
-    such holds a list of LobbyMember objects.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>last_match_response</td>
+<td>LastMatchResponse</td>
+<td>the response directly returned by your AoE2NetAPI</td>
+<td></td>
+</tr>
+<tr>
+<td>client.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>A pandas DataFrame from the list of LastMatchResponse attributes. Beware: the 'players'</td>
+</tr>
+<tr>
+<td>column is directly the content of the 'LastMatchResponse.last_match.players' attribute and as</td>
+<td></td>
+</tr>
+<tr>
+<td>such holds a list of LobbyMember objects.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">last_match</span><span class="p">(</span><span class="nl">last_match_response</span><span class="p">:</span><span class="w"> </span><span class="n">LastMatchResponse</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
@@ -1878,19 +1892,60 @@ case users want to concatenate several of these results in a DataFrame.</p>
 </code></pre></div>
 
 </details>
-<h5 id="leaderboard">leaderboard</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">leaderboard</span><span class="p">(</span>
+<h4 id="leaderboard">leaderboard</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">leaderboard</span><span class="p">(</span>
     <span class="n">leaderboard_response</span><span class="p">:</span> <span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">leaderboard</span><span class="o">.</span><span class="n">LeaderBoardResponse</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
 </code></pre></div>
-Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.</p>
-<p>Args:
-    leaderboard_response (LeaderBoardResponse): the response directly returned by your AoE2NetAPI
-        client.</p>
-<p>Returns:
-    A pandas DataFrame from the LeaderBoardResponse, each row being an entry in the leaderboard.
-    Top level attributes such as 'start' or 'total' are broadcast to an entire array the size of
-    the dataframe, and timestamps are converted to datetime objects.</p>
+<p>Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>leaderboard_response</td>
+<td>LeaderBoardResponse</td>
+<td>the response directly returned by your AoE2NetAPI</td>
+<td></td>
+</tr>
+<tr>
+<td>client.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>A pandas DataFrame from the LeaderBoardResponse, each row being an entry in the leaderboard.</td>
+</tr>
+<tr>
+<td>Top level attributes such as 'start' or 'total' are broadcast to an entire array the size of</td>
+<td></td>
+</tr>
+<tr>
+<td>the dataframe, and timestamps are converted to datetime objects.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="err">@</span><span class="n">staticmethod</span>
 
     <span class="n">def</span> <span class="n">leaderboard</span><span class="p">(</span><span class="n">leaderboard_response</span><span class="p">:</span> <span class="n">LeaderBoardResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
@@ -1947,21 +2002,56 @@ Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataF
 </code></pre></div>
 
 </details>
-<h5 id="lobbies">lobbies</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">lobbies</span><span class="p">(</span>
+<h4 id="lobbies">lobbies</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">lobbies</span><span class="p">(</span>
     <span class="n">lobbies_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">lobbies</span><span class="o">.</span><span class="n">MatchLobby</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
 </code></pre></div>
-Convert the result given by a call to AoE2NetAPI().lobbies to a pandas DataFrame. The resulting
-DataFrame will contain several rows for each lobby, namely as many as there are players in said
+<p>Convert the result given by a call to AoE2NetAPI().lobbies to a pandas DataFrame. The resulting</p>
+<p>DataFrame will contain several rows for each lobby, namely as many as there are players in said
 lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</p>
 <p>To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
 make use of the groupby functionality of pandas DataFrames.</p>
-<p>Args:
-    lobbies_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
-        client.</p>
-<p>Returns:
-    A pandas DataFrame from the list of MatchLobby elements..</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lobbies_response</td>
+<td>List[MatchLobby]</td>
+<td>the response directly returned by your AoE2NetAPI</td>
+<td></td>
+</tr>
+<tr>
+<td>client.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>A pandas DataFrame from the list of MatchLobby elements..</td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">lobbies</span><span class="p">(</span><span class="nl">lobbies_response</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
@@ -2004,19 +2094,52 @@ make use of the groupby functionality of pandas DataFrames.</p>
 </code></pre></div>
 
 </details>
-<h5 id="match">match</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">match</span><span class="p">(</span>
+<h4 id="match">match</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">match</span><span class="p">(</span>
     <span class="n">match_response</span><span class="p">:</span> <span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">lobbies</span><span class="o">.</span><span class="n">MatchLobby</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
 </code></pre></div>
-Convert the content of a MatchLobby to a pandas DataFrame. The resulting DataFrame will have as many
-rows as there are players in the lobby, and all global attributes will be broadcasted to columns of
+<p>Convert the content of a MatchLobby to a pandas DataFrame. The resulting DataFrame will have as many</p>
+<p>rows as there are players in the lobby, and all global attributes will be broadcasted to columns of
 the same length, making them duplicates.</p>
-<p>Args:
-    match_response (MatchLobby): a MatchLobby object.</p>
-<p>Returns:
-    A pandas DataFrame from the MatchLobby attributes, each row being global information from the
-    MatchLobby as well as one of the players in the lobby.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>match_response</td>
+<td>MatchLobby</td>
+<td>a MatchLobby object.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>A pandas DataFrame from the MatchLobby attributes, each row being global information from the</td>
+</tr>
+<tr>
+<td>MatchLobby as well as one of the players in the lobby.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="k">match</span><span class="p">(</span><span class="nl">match_response</span><span class="p">:</span><span class="w"> </span><span class="n">MatchLobby</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
@@ -2045,21 +2168,56 @@ the same length, making them duplicates.</p>
 </code></pre></div>
 
 </details>
-<h5 id="match_history">match_history</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">match_history</span><span class="p">(</span>
+<h4 id="match_history">match_history</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">match_history</span><span class="p">(</span>
     <span class="n">match_history_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">lobbies</span><span class="o">.</span><span class="n">MatchLobby</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
 </code></pre></div>
-Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting
-DataFrame will contain several rows for each lobby, namely as many as there are players in said
+<p>Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting</p>
+<p>DataFrame will contain several rows for each lobby, namely as many as there are players in said
 lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</p>
 <p>To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
 make use of the groupby functionality of pandas DataFrames.</p>
-<p>Args:
-    match_history_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
-        client.</p>
-<p>Returns:
-    A pandas DataFrame from the list of MatchLobby elements.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>match_history_response</td>
+<td>List[MatchLobby]</td>
+<td>the response directly returned by your AoE2NetAPI</td>
+<td></td>
+</tr>
+<tr>
+<td>client.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>A pandas DataFrame from the list of MatchLobby elements.</td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">match_history</span><span class="p">(</span><span class="nl">match_history_response</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
@@ -2108,21 +2266,56 @@ make use of the groupby functionality of pandas DataFrames.</p>
 </code></pre></div>
 
 </details>
-<h5 id="matches">matches</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">matches</span><span class="p">(</span>
+<h4 id="matches">matches</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">matches</span><span class="p">(</span>
     <span class="n">matches_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">lobbies</span><span class="o">.</span><span class="n">MatchLobby</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
 </code></pre></div>
-Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting
-DataFrame will contain several rows for each lobby, namely as many as there are players in said
+<p>Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting</p>
+<p>DataFrame will contain several rows for each lobby, namely as many as there are players in said
 lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.</p>
 <p>To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
 make use of the groupby functionality of pandas DataFrames.</p>
-<p>Args:
-    matches_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
-        client.</p>
-<p>Returns:
-    A pandas DataFrame from the list of MatchLobby elements.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>matches_response</td>
+<td>List[MatchLobby]</td>
+<td>the response directly returned by your AoE2NetAPI</td>
+<td></td>
+</tr>
+<tr>
+<td>client.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>A pandas DataFrame from the list of MatchLobby elements.</td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">matches</span><span class="p">(</span><span class="nl">matches_response</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">MatchLobby</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
@@ -2165,19 +2358,60 @@ make use of the groupby functionality of pandas DataFrames.</p>
 </code></pre></div>
 
 </details>
-<h5 id="num_online">num_online</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">num_online</span><span class="p">(</span>
+<h4 id="num_online">num_online</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">num_online</span><span class="p">(</span>
     <span class="n">num_online_response</span><span class="p">:</span> <span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">num_online</span><span class="o">.</span><span class="n">NumOnlineResponse</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
 </code></pre></div>
-Convert the result given by a call to AoE2NetAPI().num_online to a pandas DataFrame.</p>
-<p>Args:
-    num_online_response (NumOnlineResponse): the response directly returned by your AoE2NetAPI
-        client.</p>
-<p>Returns:
-    A pandas DataFrame from the NumOnlineResponse, each row being an entry in the leaderboard.
-    Top level attributes such as 'app_id' are broadcast to an entire array the size of the
-    dataframe, and timestamps are converted to datetime objects.</p>
+<p>Convert the result given by a call to AoE2NetAPI().num_online to a pandas DataFrame.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>num_online_response</td>
+<td>NumOnlineResponse</td>
+<td>the response directly returned by your AoE2NetAPI</td>
+<td></td>
+</tr>
+<tr>
+<td>client.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>A pandas DataFrame from the NumOnlineResponse, each row being an entry in the leaderboard.</td>
+</tr>
+<tr>
+<td>Top level attributes such as 'app_id' are broadcast to an entire array the size of the</td>
+<td></td>
+</tr>
+<tr>
+<td>dataframe, and timestamps are converted to datetime objects.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">num_online</span><span class="p">(</span><span class="nl">num_online_response</span><span class="p">:</span><span class="w"> </span><span class="n">NumOnlineResponse</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
@@ -2236,18 +2470,56 @@ Convert the result given by a call to AoE2NetAPI().num_online to a pandas DataFr
 </code></pre></div>
 
 </details>
-<h5 id="rating_history">rating_history</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rating_history</span><span class="p">(</span>
+<h4 id="rating_history">rating_history</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rating_history</span><span class="p">(</span>
     <span class="n">rating_history_response</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">rating_history</span><span class="o">.</span><span class="n">RatingTimePoint</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
 </code></pre></div>
-Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.</p>
-<p>Args:
-    rating_history_response (List[RatingTimePoint]): the response directly returned by your AoE2NetAPI
-        client.</p>
-<p>Returns:
-    A pandas DataFrame from the list of RatingTimePoint elements, each row being the information from
-    one RatingTimePoint in the list. Timestamps are converted to datetime objects.</p>
+<p>Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rating_history_response</td>
+<td>List[RatingTimePoint]</td>
+<td>the response directly returned by your AoE2NetAPI</td>
+<td></td>
+</tr>
+<tr>
+<td>client.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>A pandas DataFrame from the list of RatingTimePoint elements, each row being the information from</td>
+</tr>
+<tr>
+<td>one RatingTimePoint in the list. Timestamps are converted to datetime objects.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">rating_history</span><span class="p">(</span><span class="nl">rating_history_response</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">RatingTimePoint</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>
@@ -2294,20 +2566,64 @@ Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataF
 </code></pre></div>
 
 </details>
-<h5 id="strings">strings</h5>
-<p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">strings</span><span class="p">(</span>
+<h4 id="strings">strings</h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">strings</span><span class="p">(</span>
     <span class="n">strings_response</span><span class="p">:</span> <span class="n">aoe2netwrapper</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">StringsResponse</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
 </code></pre></div>
-Convert the result given by a call to AoE2NetAPI().strings to a pandas DataFrame.</p>
-<p>Args:
-    strings_response (StringsResponse): the response directly returned by your AoE2NetAPI
-        client.</p>
-<p>Returns:
-    A pandas DataFrame from the StringsResponse, each column being the values for a 'string' used
-    by the API, and the index being the ID numbers. Since this is the result of a join for many
-    'strings' that do not have the same amount of values, the resulting dataframe will contain NaNs
-    wherever a given 'string' does not have a value for the given index ID.</p>
+<p>Convert the result given by a call to AoE2NetAPI().strings to a pandas DataFrame.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>strings_response</td>
+<td>StringsResponse</td>
+<td>the response directly returned by your AoE2NetAPI</td>
+<td></td>
+</tr>
+<tr>
+<td>client.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>A pandas DataFrame from the StringsResponse, each column being the values for a 'string' used</td>
+</tr>
+<tr>
+<td>by the API, and the index being the ID numbers. Since this is the result of a join for many</td>
+<td></td>
+</tr>
+<tr>
+<td>'strings' that do not have the same amount of values, the resulting dataframe will contain NaNs</td>
+<td></td>
+</tr>
+<tr>
+<td>wherever a given 'string' does not have a value for the given index ID.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">strings</span><span class="p">(</span><span class="nl">strings_response</span><span class="p">:</span><span class="w"> </span><span class="n">StringsResponse</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">pd</span><span class="p">.</span><span class="nl">DataFrame</span><span class="p">:</span><span class="w"></span>

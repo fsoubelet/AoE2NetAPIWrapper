@@ -617,10 +617,12 @@ They also come with sensible defaults everywhere possible.</p>
 No typing the wrong key names, coming back and forth between docs, or scrolling up and down to find if you need <code>matchid</code> or <code>match_id</code>.</p>
 <p><img alt="parameter_autocompletion" src="../assets/parameter_autocompletion.png" /></p>
 <h2 id="validated-response-models">Validated Response Models</h2>
-<p>The models used in <code>aoe2netwrapper</code> encapsulate and enhance the data returned by the <code>aoe2.net</code> APIs:
-* No mess of confusing nested standard types: the methods all return tailored models encapsulating the returned data, recursively.
-* No surprises: Data returned from the API is parsed and validated before being given back to you as custom models.
-* Convenience: all models returned by the clients provide auto-completion on attributes, recursively.</p>
+<p>The models used in <code>aoe2netwrapper</code> encapsulate and enhance the data returned by the <code>aoe2.net</code> APIs:</p>
+<ul>
+<li>No mess of confusing nested standard types: the methods all return tailored models encapsulating the returned data, recursively.</li>
+<li>No surprises: Data returned from the API is parsed and validated before being given back to you as custom models.</li>
+<li>Convenience: all models returned by the clients provide auto-completion on attributes, recursively.</li>
+</ul>
 <p>As for example below, the <code>profile_id</code> key inside a <code>LeaderBoardSpot</code> inside a <code>LeaderBoardResponse</code> that come from the <code>https://aoe2.net/api/leaderboard</code> endpoint.</p>
 <p><img alt="attribute_autocompletion" src="../assets/attribute_autocompletion.png" /></p>
 <p>All the validation is handled by the well-established and robust <a href="https://github.com/samuelcolvin/pydantic" target="_blank">pydantic</a>.</p>
