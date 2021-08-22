@@ -1,7 +1,4 @@
 
-
-
-
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -10,11 +7,12 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
+      
+      
         <link rel="canonical" href="https://fsoubelet.github.io/AoE2NetAPIWrapper/reference/aoe2netwrapper/models/strings/">
       
-      
-      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -22,22 +20,24 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.d3202873.min.css">
-      
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ff0a5ce4.min.css">
-      
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.f7f47774.min.css">
       
         
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
-        <meta name="theme-color" content="#546d78">
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
       
     
     
     
       
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:300,400,400i,700%7CFira+Code&display=fallback">
-        <style>body,input{font-family:"Ubuntu Mono",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Code",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <style>:root{--md-text-font-family:"Ubuntu Mono";--md-code-font-family:"Fira Code"}</style>
       
     
     
@@ -46,6 +46,8 @@
     
     
       
+
+
     
     
   </head>
@@ -54,8 +56,12 @@
     
     
     
+    
+    
     <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber">
   
+    
+    <script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -73,47 +79,55 @@
     </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="https://fsoubelet.github.io/AoE2NetAPIWrapper/" title="AoE2NetAPIWrapper" class="md-header-nav__button md-logo" aria-label="AoE2NetAPIWrapper">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="AoE2NetAPIWrapper" class="md-header__button md-logo" aria-label="AoE2NetAPIWrapper" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    <label class="md-header-nav__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
     </label>
-    <div class="md-header-nav__title" data-md-component="header-title">
-      
-        <div class="md-header-nav__ellipsis">
-          <span class="md-header-nav__topic md-ellipsis">
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
             AoE2NetAPIWrapper
           </span>
-          <span class="md-header-nav__topic md-ellipsis">
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
             
               Strings
             
           </span>
         </div>
-      
+      </div>
     </div>
     
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
       
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -129,12 +143,12 @@
 </div>
     
     
-      <div class="md-header-nav__source">
+      <div class="md-header__source">
         
-<a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/" title="Go to repository" class="md-source">
+<a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     AoE2NetAPIWrapper
@@ -147,8 +161,6 @@
     
     <div class="md-container" data-md-component="container">
       
-        
-      
       
         
       
@@ -156,15 +168,19 @@
         <div class="md-main__inner md-grid">
           
             
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://fsoubelet.github.io/AoE2NetAPIWrapper/" title="AoE2NetAPIWrapper" class="md-nav__button md-logo" aria-label="AoE2NetAPIWrapper">
+    <a href="../../../.." title="AoE2NetAPIWrapper" class="md-nav__button md-logo" aria-label="AoE2NetAPIWrapper" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
     AoE2NetAPIWrapper
@@ -172,10 +188,10 @@
   
     <div class="md-nav__source">
       
-<a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/" title="Go to repository" class="md-source">
+<a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     AoE2NetAPIWrapper
@@ -189,36 +205,15 @@
       
       
 
-
-  <li class="md-nav__item">
-    <a href="../../../.." title="Home" class="md-nav__link">
-      Home
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../../../docs/Getting_Started/" title="Getting Started" class="md-nav__link">
-      Getting Started
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../../../docs/Features/" title="Features" class="md-nav__link">
-      Features
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
 
     
       
@@ -226,263 +221,297 @@
       
 
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/Getting_Started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
 
+    
+      
+      
+      
 
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../docs/Features/" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      
+      
+
+  
+  
     
-    <label class="md-nav__link" for="nav-4">
-      Reference
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Reference" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        <span class="md-nav__icon md-icon"></span>
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
         Reference
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" checked>
-    
-    <label class="md-nav__link" for="nav-4-1">
-      Aoe2Netwrapper
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Aoe2Netwrapper" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-1">
         <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      <label class="md-nav__link" for="__nav_4_1">
         Aoe2Netwrapper
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="Aoe2Netwrapper" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Aoe2Netwrapper
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../api/" title="API" class="md-nav__link">
-      API
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../converters/" title="Converters" class="md-nav__link">
-      Converters
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../exceptions/" title="Exceptions" class="md-nav__link">
-      Exceptions
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../" title="Index" class="md-nav__link">
-      Index
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../nightbot/" title="Nightbot" class="md-nav__link">
-      Nightbot
-    </a>
-  </li>
-
-        
-          
-          
-          
-
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        API
+      </a>
+    </li>
   
 
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../converters/" class="md-nav__link">
+        Converters
+      </a>
+    </li>
+  
 
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nightbot/" class="md-nav__link">
+        Nightbot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1-6" type="checkbox" id="nav-4-1-6" checked>
+  
+  
     
-    <label class="md-nav__link" for="nav-4-1-6">
-      Models
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Models" data-md-level="3">
-      <label class="md-nav__title" for="nav-4-1-6">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_6" type="checkbox" id="__nav_4_1_6" checked>
+      
+      <label class="md-nav__link" for="__nav_4_1_6">
         Models
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../" title="Index" class="md-nav__link">
-      Index
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../last_match/" title="Last Match" class="md-nav__link">
-      Last Match
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../leaderboard/" title="Leaderboard" class="md-nav__link">
-      Leaderboard
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../lobbies/" title="Lobbies" class="md-nav__link">
-      Lobbies
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../match/" title="Match" class="md-nav__link">
-      Match
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../match_history/" title="Match History" class="md-nav__link">
-      Match History
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../matches/" title="Matches" class="md-nav__link">
-      Matches
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../num_online/" title="Num Online" class="md-nav__link">
-      Num Online
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../rating_history/" title="Rating History" class="md-nav__link">
-      Rating History
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Strings
         <span class="md-nav__icon md-icon"></span>
       </label>
+      <nav class="md-nav" aria-label="Models" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          Models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../last_match/" class="md-nav__link">
+        Last Match
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../leaderboard/" class="md-nav__link">
+        Leaderboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lobbies/" class="md-nav__link">
+        Lobbies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../match/" class="md-nav__link">
+        Match
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../match_history/" class="md-nav__link">
+        Match History
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matches/" class="md-nav__link">
+        Matches
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../num_online/" class="md-nav__link">
+        Num Online
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rating_history/" class="md-nav__link">
+        Rating History
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
-    <a href="./" title="Strings" class="md-nav__link md-nav__link--active">
-      Strings
-    </a>
-    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
       
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Strings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Strings
+      </a>
+      
+        
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
     
@@ -492,7 +521,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#classes" class="md-nav__link">
@@ -595,13 +624,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods" class="md-nav__link">
     Methods
   </a>
@@ -625,13 +647,6 @@
           <li class="md-nav__item">
   <a href="#json" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -734,13 +749,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_1" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_1" class="md-nav__link">
     Methods
   </a>
@@ -764,13 +772,6 @@
           <li class="md-nav__item">
   <a href="#json_1" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_1" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -873,13 +874,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_2" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_2" class="md-nav__link">
     Methods
   </a>
@@ -903,13 +897,6 @@
           <li class="md-nav__item">
   <a href="#json_2" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_2" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -1012,13 +999,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_3" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_3" class="md-nav__link">
     Methods
   </a>
@@ -1042,13 +1022,6 @@
           <li class="md-nav__item">
   <a href="#json_3" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_3" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -1151,13 +1124,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_4" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_4" class="md-nav__link">
     Methods
   </a>
@@ -1181,13 +1147,6 @@
           <li class="md-nav__item">
   <a href="#json_4" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_4" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -1290,13 +1249,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_5" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_5" class="md-nav__link">
     Methods
   </a>
@@ -1320,13 +1272,6 @@
           <li class="md-nav__item">
   <a href="#json_5" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_5" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -1429,13 +1374,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_6" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_6" class="md-nav__link">
     Methods
   </a>
@@ -1459,13 +1397,6 @@
           <li class="md-nav__item">
   <a href="#json_6" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_6" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -1568,13 +1499,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_7" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_7" class="md-nav__link">
     Methods
   </a>
@@ -1598,13 +1522,6 @@
           <li class="md-nav__item">
   <a href="#json_7" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_7" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -1707,13 +1624,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_8" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_8" class="md-nav__link">
     Methods
   </a>
@@ -1737,13 +1647,6 @@
           <li class="md-nav__item">
   <a href="#json_8" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_8" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -1846,13 +1749,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_9" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_9" class="md-nav__link">
     Methods
   </a>
@@ -1876,13 +1772,6 @@
           <li class="md-nav__item">
   <a href="#json_9" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_9" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -1985,13 +1874,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_10" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_10" class="md-nav__link">
     Methods
   </a>
@@ -2015,13 +1897,6 @@
           <li class="md-nav__item">
   <a href="#json_10" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_10" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -2124,13 +1999,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_11" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_11" class="md-nav__link">
     Methods
   </a>
@@ -2158,13 +2026,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#to_string_11" class="md-nav__link">
-    to_string
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2178,23 +2039,27 @@
     </ul>
   
 </nav>
-    
-  </li>
+      
+    </li>
+  
 
-        
-      </ul>
-    </nav>
-  </li>
+          
+        </ul>
+      </nav>
+    </li>
+  
 
-        
-      </ul>
-    </nav>
-  </li>
+          
+        </ul>
+      </nav>
+    </li>
+  
 
-        
-      </ul>
-    </nav>
-  </li>
+          
+        </ul>
+      </nav>
+    </li>
+  
 
     
   </ul>
@@ -2204,11 +2069,13 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
     
@@ -2218,7 +2085,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#classes" class="md-nav__link">
@@ -2321,13 +2188,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods" class="md-nav__link">
     Methods
   </a>
@@ -2351,13 +2211,6 @@
           <li class="md-nav__item">
   <a href="#json" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -2460,13 +2313,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_1" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_1" class="md-nav__link">
     Methods
   </a>
@@ -2490,13 +2336,6 @@
           <li class="md-nav__item">
   <a href="#json_1" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_1" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -2599,13 +2438,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_2" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_2" class="md-nav__link">
     Methods
   </a>
@@ -2629,13 +2461,6 @@
           <li class="md-nav__item">
   <a href="#json_2" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_2" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -2738,13 +2563,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_3" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_3" class="md-nav__link">
     Methods
   </a>
@@ -2768,13 +2586,6 @@
           <li class="md-nav__item">
   <a href="#json_3" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_3" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -2877,13 +2688,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_4" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_4" class="md-nav__link">
     Methods
   </a>
@@ -2907,13 +2711,6 @@
           <li class="md-nav__item">
   <a href="#json_4" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_4" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -3016,13 +2813,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_5" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_5" class="md-nav__link">
     Methods
   </a>
@@ -3046,13 +2836,6 @@
           <li class="md-nav__item">
   <a href="#json_5" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_5" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -3155,13 +2938,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_6" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_6" class="md-nav__link">
     Methods
   </a>
@@ -3185,13 +2961,6 @@
           <li class="md-nav__item">
   <a href="#json_6" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_6" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -3294,13 +3063,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_7" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_7" class="md-nav__link">
     Methods
   </a>
@@ -3324,13 +3086,6 @@
           <li class="md-nav__item">
   <a href="#json_7" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_7" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -3433,13 +3188,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_8" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_8" class="md-nav__link">
     Methods
   </a>
@@ -3463,13 +3211,6 @@
           <li class="md-nav__item">
   <a href="#json_8" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_8" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -3572,13 +3313,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_9" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_9" class="md-nav__link">
     Methods
   </a>
@@ -3602,13 +3336,6 @@
           <li class="md-nav__item">
   <a href="#json_9" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_9" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -3711,13 +3438,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_10" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_10" class="md-nav__link">
     Methods
   </a>
@@ -3741,13 +3461,6 @@
           <li class="md-nav__item">
   <a href="#json_10" class="md-nav__link">
     json
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to_string_10" class="md-nav__link">
-    to_string
   </a>
   
 </li>
@@ -3850,13 +3563,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-variables_11" class="md-nav__link">
-    Instance variables
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_11" class="md-nav__link">
     Methods
   </a>
@@ -3884,13 +3590,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#to_string_11" class="md-nav__link">
-    to_string
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -3909,16 +3608,13 @@
               </div>
             
           
-          <div class="md-content">
+          <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/edit/master/reference/aoe2netwrapper/models/strings.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/edit/main/reference/aoe2netwrapper/models/strings.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
-                
-                
-                  
                 
                 
                 <h1 id="module-aoe2netwrappermodelsstrings">Module aoe2netwrapper.models.strings</h1>
@@ -3952,155 +3648,155 @@ corresponding string the API / system attributes to this ID.</p>
 
     <span class="sd">&quot;&quot;&quot;An object to encapsulate any entry for the available age strings and their respective IDs.&quot;&quot;&quot;</span>
 
-    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
 
-    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;age&#39; ID&quot;</span><span class="p">)</span>
+    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;age&#39; ID&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">CivilizationString</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;An object to encapsulate any entry for the available civilization strings and their respective IDs.&quot;&quot;&quot;</span>
 
-    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
 
-    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;civ&#39; ID&quot;</span><span class="p">)</span>
+    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;civ&#39; ID&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">GameTypeString</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;An object to encapsulate any entry for the available game type strings and their respective IDs.&quot;&quot;&quot;</span>
 
-    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
 
-    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;game_type&#39; ID&quot;</span><span class="p">)</span>
+    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;game_type&#39; ID&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">LeaderBoardString</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;An object to encapsulate any entry for the available leaderboard strings and their respective IDs.&quot;&quot;&quot;</span>
 
-    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
 
-    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;leaderboard&#39; ID&quot;</span><span class="p">)</span>
+    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;leaderboard&#39; ID&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">MapSizeString</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;An object to encapsulate any entry for the available map size strings and their respective IDs.&quot;&quot;&quot;</span>
 
-    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
 
-    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;map_size&#39; ID&quot;</span><span class="p">)</span>
+    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;map_size&#39; ID&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">MapTypeString</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;An object to encapsulate any entry for the available map type strings and their respective IDs.&quot;&quot;&quot;</span>
 
-    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
 
-    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;map_type&#39; ID&quot;</span><span class="p">)</span>
+    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;map_type&#39; ID&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">RatingTypeString</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;An object to encapsulate any entry for the available rating type strings and their respective IDs.&quot;&quot;&quot;</span>
 
-    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
 
-    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;rating_type&#39; ID&quot;</span><span class="p">)</span>
+    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;rating_type&#39; ID&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">ResourcesString</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;An object to encapsulate any entry for the available resources strings and their respective IDs.&quot;&quot;&quot;</span>
 
-    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
 
-    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;resources&#39; ID&quot;</span><span class="p">)</span>
+    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;resources&#39; ID&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">SpeedString</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;An object to encapsulate any entry for the available speed strings and their respective IDs.&quot;&quot;&quot;</span>
 
-    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
 
-    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;speed&#39; ID&quot;</span><span class="p">)</span>
+    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;speed&#39; ID&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">VictoryString</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;An object to encapsulate any entry for the available victory strings and their respective IDs.&quot;&quot;&quot;</span>
 
-    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
 
-    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;victory&#39; ID&quot;</span><span class="p">)</span>
+    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;victory&#39; ID&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">VisibilityString</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;An object to encapsulate any entry for the available visibiliity strings and their respective IDs.&quot;&quot;&quot;</span>
 
-    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ID for this specific string value&quot;</span><span class="p">)</span>
 
-    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;visibility&#39; ID&quot;</span><span class="p">)</span>
+    <span class="n">string</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;String value for this specific &#39;visibility&#39; ID&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">StringsResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;An object to encapsulate the response from the strings API endpoint.&quot;&quot;&quot;</span>
 
-    <span class="n">language</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Language of the returned strings&quot;</span><span class="p">)</span>
+    <span class="n">language</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Language of the returned strings&quot;</span><span class="p">)</span>
 
-    <span class="n">age</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">AgeString</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for ages&quot;</span><span class="p">)</span>
+    <span class="n">age</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">AgeString</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for ages&quot;</span><span class="p">)</span>
 
     <span class="n">civ</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">CivilizationString</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
 
-        <span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for civilizations&quot;</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for civilizations&quot;</span>
 
     <span class="p">)</span>
 
     <span class="n">game_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">GameTypeString</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
 
-        <span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for game types&quot;</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for game types&quot;</span>
 
     <span class="p">)</span>
 
     <span class="n">leaderboard</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">LeaderBoardString</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
 
-        <span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for leaderboards&quot;</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for leaderboards&quot;</span>
 
     <span class="p">)</span>
 
     <span class="n">map_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">MapSizeString</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
 
-        <span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for map sizes&quot;</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for map sizes&quot;</span>
 
     <span class="p">)</span>
 
     <span class="n">map_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">MapTypeString</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
 
-        <span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for map types&quot;</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for map types&quot;</span>
 
     <span class="p">)</span>
 
     <span class="n">rating_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">RatingTypeString</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
 
-        <span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for rating types&quot;</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for rating types&quot;</span>
 
     <span class="p">)</span>
 
     <span class="n">resources</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ResourcesString</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
 
-        <span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for resources&quot;</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for resources&quot;</span>
 
     <span class="p">)</span>
 
     <span class="n">speed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">SpeedString</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
 
-        <span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for game speeds&quot;</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for game speeds&quot;</span>
 
     <span class="p">)</span>
 
     <span class="n">victory</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">VictoryString</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
 
-        <span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for victory types&quot;</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for victory types&quot;</span>
 
     <span class="p">)</span>
 
     <span class="n">visibility</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">VisibilityString</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
 
-        <span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for visibility&quot;</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List of all strings and their IDs for visibility&quot;</span>
 
     <span class="p">)</span>
 </code></pre></div>
@@ -4140,7 +3836,8 @@ corresponding string the API / system attributes to this ID.</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
 </code></pre></div>
 <p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.</p>
-<p>Default values are respected, but no other validation is performed.</p>
+<p>Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p>
 <h4 id="from_orm">from_orm</h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_orm</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span>
@@ -4195,9 +3892,6 @@ corresponding string the API / system attributes to this ID.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
-</code></pre></div>
-<h4 id="instance-variables">Instance variables</h4>
-<div class="highlight"><pre><span></span><code><span class="n">fields</span>
 </code></pre></div>
 <h4 id="methods">Methods</h4>
 <h4 id="copy">copy</h4>
@@ -4300,12 +3994,6 @@ corresponding string the API / system attributes to this ID.</p>
 </code></pre></div>
 <p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
 <p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p>
-<h4 id="to_string">to_string</h4>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;unicode&#39;</span>
-</code></pre></div>
 <h3 id="civilizationstring">CivilizationString</h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CivilizationString</span><span class="p">(</span>
     <span class="n">__pydantic_self__</span><span class="p">,</span>
@@ -4339,7 +4027,8 @@ corresponding string the API / system attributes to this ID.</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
 </code></pre></div>
 <p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.</p>
-<p>Default values are respected, but no other validation is performed.</p>
+<p>Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p>
 <h4 id="from_orm_1">from_orm</h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_orm</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span>
@@ -4394,9 +4083,6 @@ corresponding string the API / system attributes to this ID.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
-</code></pre></div>
-<h4 id="instance-variables_1">Instance variables</h4>
-<div class="highlight"><pre><span></span><code><span class="n">fields</span>
 </code></pre></div>
 <h4 id="methods_1">Methods</h4>
 <h4 id="copy_1">copy</h4>
@@ -4499,12 +4185,6 @@ corresponding string the API / system attributes to this ID.</p>
 </code></pre></div>
 <p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
 <p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p>
-<h4 id="to_string_1">to_string</h4>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;unicode&#39;</span>
-</code></pre></div>
 <h3 id="gametypestring">GameTypeString</h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">GameTypeString</span><span class="p">(</span>
     <span class="n">__pydantic_self__</span><span class="p">,</span>
@@ -4538,7 +4218,8 @@ corresponding string the API / system attributes to this ID.</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
 </code></pre></div>
 <p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.</p>
-<p>Default values are respected, but no other validation is performed.</p>
+<p>Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p>
 <h4 id="from_orm_2">from_orm</h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_orm</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span>
@@ -4593,9 +4274,6 @@ corresponding string the API / system attributes to this ID.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
-</code></pre></div>
-<h4 id="instance-variables_2">Instance variables</h4>
-<div class="highlight"><pre><span></span><code><span class="n">fields</span>
 </code></pre></div>
 <h4 id="methods_2">Methods</h4>
 <h4 id="copy_2">copy</h4>
@@ -4698,12 +4376,6 @@ corresponding string the API / system attributes to this ID.</p>
 </code></pre></div>
 <p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
 <p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p>
-<h4 id="to_string_2">to_string</h4>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;unicode&#39;</span>
-</code></pre></div>
 <h3 id="leaderboardstring">LeaderBoardString</h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LeaderBoardString</span><span class="p">(</span>
     <span class="n">__pydantic_self__</span><span class="p">,</span>
@@ -4737,7 +4409,8 @@ corresponding string the API / system attributes to this ID.</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
 </code></pre></div>
 <p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.</p>
-<p>Default values are respected, but no other validation is performed.</p>
+<p>Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p>
 <h4 id="from_orm_3">from_orm</h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_orm</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span>
@@ -4792,9 +4465,6 @@ corresponding string the API / system attributes to this ID.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
-</code></pre></div>
-<h4 id="instance-variables_3">Instance variables</h4>
-<div class="highlight"><pre><span></span><code><span class="n">fields</span>
 </code></pre></div>
 <h4 id="methods_3">Methods</h4>
 <h4 id="copy_3">copy</h4>
@@ -4897,12 +4567,6 @@ corresponding string the API / system attributes to this ID.</p>
 </code></pre></div>
 <p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
 <p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p>
-<h4 id="to_string_3">to_string</h4>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;unicode&#39;</span>
-</code></pre></div>
 <h3 id="mapsizestring">MapSizeString</h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MapSizeString</span><span class="p">(</span>
     <span class="n">__pydantic_self__</span><span class="p">,</span>
@@ -4936,7 +4600,8 @@ corresponding string the API / system attributes to this ID.</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
 </code></pre></div>
 <p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.</p>
-<p>Default values are respected, but no other validation is performed.</p>
+<p>Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p>
 <h4 id="from_orm_4">from_orm</h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_orm</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span>
@@ -4991,9 +4656,6 @@ corresponding string the API / system attributes to this ID.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
-</code></pre></div>
-<h4 id="instance-variables_4">Instance variables</h4>
-<div class="highlight"><pre><span></span><code><span class="n">fields</span>
 </code></pre></div>
 <h4 id="methods_4">Methods</h4>
 <h4 id="copy_4">copy</h4>
@@ -5096,12 +4758,6 @@ corresponding string the API / system attributes to this ID.</p>
 </code></pre></div>
 <p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
 <p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p>
-<h4 id="to_string_4">to_string</h4>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;unicode&#39;</span>
-</code></pre></div>
 <h3 id="maptypestring">MapTypeString</h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MapTypeString</span><span class="p">(</span>
     <span class="n">__pydantic_self__</span><span class="p">,</span>
@@ -5135,7 +4791,8 @@ corresponding string the API / system attributes to this ID.</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
 </code></pre></div>
 <p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.</p>
-<p>Default values are respected, but no other validation is performed.</p>
+<p>Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p>
 <h4 id="from_orm_5">from_orm</h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_orm</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span>
@@ -5190,9 +4847,6 @@ corresponding string the API / system attributes to this ID.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
-</code></pre></div>
-<h4 id="instance-variables_5">Instance variables</h4>
-<div class="highlight"><pre><span></span><code><span class="n">fields</span>
 </code></pre></div>
 <h4 id="methods_5">Methods</h4>
 <h4 id="copy_5">copy</h4>
@@ -5295,12 +4949,6 @@ corresponding string the API / system attributes to this ID.</p>
 </code></pre></div>
 <p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
 <p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p>
-<h4 id="to_string_5">to_string</h4>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;unicode&#39;</span>
-</code></pre></div>
 <h3 id="ratingtypestring">RatingTypeString</h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">RatingTypeString</span><span class="p">(</span>
     <span class="n">__pydantic_self__</span><span class="p">,</span>
@@ -5334,7 +4982,8 @@ corresponding string the API / system attributes to this ID.</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
 </code></pre></div>
 <p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.</p>
-<p>Default values are respected, but no other validation is performed.</p>
+<p>Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p>
 <h4 id="from_orm_6">from_orm</h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_orm</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span>
@@ -5389,9 +5038,6 @@ corresponding string the API / system attributes to this ID.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
-</code></pre></div>
-<h4 id="instance-variables_6">Instance variables</h4>
-<div class="highlight"><pre><span></span><code><span class="n">fields</span>
 </code></pre></div>
 <h4 id="methods_6">Methods</h4>
 <h4 id="copy_6">copy</h4>
@@ -5494,12 +5140,6 @@ corresponding string the API / system attributes to this ID.</p>
 </code></pre></div>
 <p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
 <p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p>
-<h4 id="to_string_6">to_string</h4>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;unicode&#39;</span>
-</code></pre></div>
 <h3 id="resourcesstring">ResourcesString</h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ResourcesString</span><span class="p">(</span>
     <span class="n">__pydantic_self__</span><span class="p">,</span>
@@ -5533,7 +5173,8 @@ corresponding string the API / system attributes to this ID.</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
 </code></pre></div>
 <p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.</p>
-<p>Default values are respected, but no other validation is performed.</p>
+<p>Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p>
 <h4 id="from_orm_7">from_orm</h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_orm</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span>
@@ -5588,9 +5229,6 @@ corresponding string the API / system attributes to this ID.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
-</code></pre></div>
-<h4 id="instance-variables_7">Instance variables</h4>
-<div class="highlight"><pre><span></span><code><span class="n">fields</span>
 </code></pre></div>
 <h4 id="methods_7">Methods</h4>
 <h4 id="copy_7">copy</h4>
@@ -5693,12 +5331,6 @@ corresponding string the API / system attributes to this ID.</p>
 </code></pre></div>
 <p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
 <p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p>
-<h4 id="to_string_7">to_string</h4>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;unicode&#39;</span>
-</code></pre></div>
 <h3 id="speedstring">SpeedString</h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SpeedString</span><span class="p">(</span>
     <span class="n">__pydantic_self__</span><span class="p">,</span>
@@ -5732,7 +5364,8 @@ corresponding string the API / system attributes to this ID.</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
 </code></pre></div>
 <p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.</p>
-<p>Default values are respected, but no other validation is performed.</p>
+<p>Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p>
 <h4 id="from_orm_8">from_orm</h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_orm</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span>
@@ -5787,9 +5420,6 @@ corresponding string the API / system attributes to this ID.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
-</code></pre></div>
-<h4 id="instance-variables_8">Instance variables</h4>
-<div class="highlight"><pre><span></span><code><span class="n">fields</span>
 </code></pre></div>
 <h4 id="methods_8">Methods</h4>
 <h4 id="copy_8">copy</h4>
@@ -5892,12 +5522,6 @@ corresponding string the API / system attributes to this ID.</p>
 </code></pre></div>
 <p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
 <p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p>
-<h4 id="to_string_8">to_string</h4>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;unicode&#39;</span>
-</code></pre></div>
 <h3 id="stringsresponse">StringsResponse</h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">StringsResponse</span><span class="p">(</span>
     <span class="n">__pydantic_self__</span><span class="p">,</span>
@@ -5991,7 +5615,8 @@ corresponding string the API / system attributes to this ID.</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
 </code></pre></div>
 <p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.</p>
-<p>Default values are respected, but no other validation is performed.</p>
+<p>Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p>
 <h4 id="from_orm_9">from_orm</h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_orm</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span>
@@ -6046,9 +5671,6 @@ corresponding string the API / system attributes to this ID.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
-</code></pre></div>
-<h4 id="instance-variables_9">Instance variables</h4>
-<div class="highlight"><pre><span></span><code><span class="n">fields</span>
 </code></pre></div>
 <h4 id="methods_9">Methods</h4>
 <h4 id="copy_9">copy</h4>
@@ -6151,12 +5773,6 @@ corresponding string the API / system attributes to this ID.</p>
 </code></pre></div>
 <p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
 <p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p>
-<h4 id="to_string_9">to_string</h4>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;unicode&#39;</span>
-</code></pre></div>
 <h3 id="victorystring">VictoryString</h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">VictoryString</span><span class="p">(</span>
     <span class="n">__pydantic_self__</span><span class="p">,</span>
@@ -6190,7 +5806,8 @@ corresponding string the API / system attributes to this ID.</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
 </code></pre></div>
 <p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.</p>
-<p>Default values are respected, but no other validation is performed.</p>
+<p>Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p>
 <h4 id="from_orm_10">from_orm</h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_orm</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span>
@@ -6245,9 +5862,6 @@ corresponding string the API / system attributes to this ID.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
-</code></pre></div>
-<h4 id="instance-variables_10">Instance variables</h4>
-<div class="highlight"><pre><span></span><code><span class="n">fields</span>
 </code></pre></div>
 <h4 id="methods_10">Methods</h4>
 <h4 id="copy_10">copy</h4>
@@ -6350,12 +5964,6 @@ corresponding string the API / system attributes to this ID.</p>
 </code></pre></div>
 <p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
 <p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p>
-<h4 id="to_string_10">to_string</h4>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;unicode&#39;</span>
-</code></pre></div>
 <h3 id="visibilitystring">VisibilityString</h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">VisibilityString</span><span class="p">(</span>
     <span class="n">__pydantic_self__</span><span class="p">,</span>
@@ -6389,7 +5997,8 @@ corresponding string the API / system attributes to this ID.</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
 </code></pre></div>
 <p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.</p>
-<p>Default values are respected, but no other validation is performed.</p>
+<p>Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p>
 <h4 id="from_orm_11">from_orm</h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">from_orm</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span>
@@ -6444,9 +6053,6 @@ corresponding string the API / system attributes to this ID.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Model&#39;</span>
-</code></pre></div>
-<h4 id="instance-variables_11">Instance variables</h4>
-<div class="highlight"><pre><span></span><code><span class="n">fields</span>
 </code></pre></div>
 <h4 id="methods_11">Methods</h4>
 <h4 id="copy_11">copy</h4>
@@ -6549,12 +6155,6 @@ corresponding string the API / system attributes to this ID.</p>
 </code></pre></div>
 <p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
 <p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p>
-<h4 id="to_string_11">to_string</h4>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;unicode&#39;</span>
-</code></pre></div>
                 
               
               
@@ -6565,6 +6165,7 @@ corresponding string the API / system attributes to this ID.</p>
             </article>
           </div>
         </div>
+        
       </main>
       
         
@@ -6608,19 +6209,13 @@ corresponding string the API / system attributes to this ID.</p>
 </footer>
       
     </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
-      <script src="../../../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
-      <script src="../../../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
-      
-      <script>
-        app = initialize({
-          base: "../../../..",
-          features: [],
-          search: Object.assign({
-            worker: "../../../../assets/javascripts/worker/search.5eca75d3.min.js"
-          }, typeof search !== "undefined" && search)
-        })
-      </script>
+    
+      <script src="../../../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
     
   </body>
