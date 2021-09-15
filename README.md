@@ -67,9 +67,15 @@ Link to [documentation][package_doc].
 
 Link to [source code][package_source].
 
-## License
+---
 
-Copyright &copy; 2021 Felix Soubelet. [MIT License](LICENSE)
+<div align="center">
+  <sub><strong>Made with ♥︎ by fsoubelet</strong></sub>
+  <br>
+  <sub><strong>MIT &copy 2021 Felix Soubelet</strong></sub>
+</div>
+
+
 
 [package_doc]: https://fsoubelet.github.io/AoE2NetAPIWrapper/
 [package_source]: https://github.com/fsoubelet/AoE2NetAPIWrapper
