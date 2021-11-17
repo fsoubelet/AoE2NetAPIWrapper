@@ -9,6 +9,12 @@ This package is installable from PyPI with [pip]{target=_blank} in a virtual env
 pip install aoe2netwrapper
 ```
 
+The package is also accessible from the `conda-forge` channel, and can be installed in a `cnoda` environment with:
+
+```bash
+conda install -c conda-forge aoe2netwrapper
+```
+
 !!! tip "Installation in a virtual environment"
     Don't know what a **virtual environment** is or how to set it up? Here is a good
     [primer on virtual environments][virtual_env_primer]{target=_blank} by RealPython.
