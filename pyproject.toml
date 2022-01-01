@@ -27,7 +27,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6.1"
+python = "^3.7"
 requests = "^2.25.1"
 loguru = "^0.5.3"
 pydantic = "^1.7.3"
