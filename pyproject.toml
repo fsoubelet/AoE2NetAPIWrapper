@@ -54,18 +54,18 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = [
+dataframe = [
+    "pandas >= 2.0",
+]
+test = [
+    "aoe2netwrapper[dataframe]",
     "pytest >= 7.0",
     "pytest-cov >= 2.9",
     "responses >= 0.20",
-
 ]
 docs = [
     "numpy < 2.0",  # portray needs hug which does not have compatibility
     "portray >= 1.4",
-]
-dataframe = [
-    "pandas >= 2.0",
 ]
 
 all = [
