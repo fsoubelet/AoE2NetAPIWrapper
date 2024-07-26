@@ -26,8 +26,8 @@ class LobbyMember(BaseModel):
     wins: Optional[int] = Field(None, description="Total amount of wins of the member")
     streak: Optional[int] = Field(None, description="Current number of consecutive wins of the member")
     drops: Optional[int] = Field(None, description="Number of games the member dropped out of")
-    color: Optional[str] = Field(None, description="The member's in-game color")
-    team: Optional[str] = Field(None, description="The member's team number for the game")
+    color: Optional[str | int] = Field(None, description="The member's in-game color")
+    team: Optional[int] = Field(None, description="The member's team number for the game")
     civ: Optional[int] = Field(None, description="The member's civilization pick for the game")
     won: Optional[int] = Field(None, description="Unclear")
 
