@@ -69,7 +69,7 @@ docs = [
 ]
 
 all = [
-    "aoe2netwrapper[dev]",
+    "aoe2netwrapper[test]",
     "aoe2netwrapper[docs]",
     "aoe2netwrapper[dataframe]",
 ]
