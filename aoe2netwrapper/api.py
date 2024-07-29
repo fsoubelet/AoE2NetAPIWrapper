@@ -30,16 +30,16 @@ class AoE2NetAPI:
     parsing and validating the response before returning it.
     """
 
-    API_BASE_URL: str = "https://aoe2.net/api"
-    STRINGS_ENDPOINT: str = API_BASE_URL + "/strings"
-    LEADERBOARD_ENDPOINT: str = API_BASE_URL + "/leaderboard"
-    LOBBIES_ENDPOINT: str = API_BASE_URL + "/lobbies"
-    LAST_MATCH_ENDPOINT: str = API_BASE_URL + "/player/lastmatch"
-    MATCH_HISTORY_ENDPOINT: str = API_BASE_URL + "/player/matches"
-    RATING_HISTORY_ENDPOINT: str = API_BASE_URL + "/player/ratinghistory"
-    MATCHES_ENDPOINT: str = API_BASE_URL + "/matches"
-    MATCH_ENDPOINT: str = API_BASE_URL + "/match"
-    NUMBER_ONLINE_ENDPOINT: str = API_BASE_URL + "/stats/players"
+    _API_BASE_URL: str = "https://aoe2.net/api"
+    _STRINGS_ENDPOINT: str = _API_BASE_URL + "/strings"
+    _LEADERBOARD_ENDPOINT: str = _API_BASE_URL + "/leaderboard"
+    _LOBBIES_ENDPOINT: str = _API_BASE_URL + "/lobbies"
+    _LAST_MATCH_ENDPOINT: str = _API_BASE_URL + "/player/lastmatch"
+    _MATCH_HISTORY_ENDPOINT: str = _API_BASE_URL + "/player/matches"
+    _RATING_HISTORY_ENDPOINT: str = _API_BASE_URL + "/player/ratinghistory"
+    _MATCHES_ENDPOINT: str = _API_BASE_URL + "/matches"
+    _MATCH_ENDPOINT: str = _API_BASE_URL + "/match"
+    _NUMBER_ONLINE_ENDPOINT: str = _API_BASE_URL + "/stats/players"
 
     def __init__(self, timeout: Union[float, Tuple[float, float]] = 5):
         """Creating a Session for connection pooling since we're always querying the same host."""
@@ -47,7 +47,7 @@ class AoE2NetAPI:
         self.timeout = timeout
 
     def __repr__(self) -> str:
-        return f"Client for <{self.API_BASE_URL}>"
+        return f"Client for <{self._API_BASE_URL}>"
 
     def strings(self, game: str = "aoe2de") -> StringsResponse:
         """
@@ -66,11 +66,11 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.STRINGS_ENDPOINT,
+            url=self._STRINGS_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.STRINGS_ENDPOINT}'")
+        logger.trace(f"Validating response from '{self._STRINGS_ENDPOINT}'")
         return StringsResponse(**processed_response)
 
     def leaderboard(
@@ -128,11 +128,11 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.LEADERBOARD_ENDPOINT,
+            url=self._LEADERBOARD_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.LEADERBOARD_ENDPOINT}'")
+        logger.trace(f"Validating response from '{self._LEADERBOARD_ENDPOINT}'")
         return LeaderBoardResponse(**processed_response)
 
     def lobbies(self, game: str = "aoe2de") -> List[MatchLobby]:
@@ -153,11 +153,11 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.LOBBIES_ENDPOINT,
+            url=self._LOBBIES_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.LOBBIES_ENDPOINT}'")
+        logger.trace(f"Validating response from '{self._LOBBIES_ENDPOINT}'")
         return parse_obj_as(List[MatchLobby], processed_response)
 
     def last_match(
@@ -191,11 +191,11 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.LAST_MATCH_ENDPOINT,
+            url=self._LAST_MATCH_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.LAST_MATCH_ENDPOINT}'")
+        logger.trace(f"Validating response from '{self._LAST_MATCH_ENDPOINT}'")
         return LastMatchResponse(**processed_response)
 
     def match_history(
@@ -245,11 +245,11 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.MATCH_HISTORY_ENDPOINT,
+            url=self._MATCH_HISTORY_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.MATCH_HISTORY_ENDPOINT}'")
+        logger.trace(f"Validating response from '{self._MATCH_HISTORY_ENDPOINT}'")
         return parse_obj_as(List[MatchLobby], processed_response)
 
     def rating_history(
@@ -306,11 +306,11 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.RATING_HISTORY_ENDPOINT,
+            url=self._RATING_HISTORY_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.RATING_HISTORY_ENDPOINT}'")
+        logger.trace(f"Validating response from '{self._RATING_HISTORY_ENDPOINT}'")
         return parse_obj_as(List[RatingTimePoint], processed_response)
 
     def matches(self, game: str = "aoe2de", count: int = 10, since: int = None) -> List[MatchLobby]:
@@ -348,11 +348,11 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.MATCHES_ENDPOINT,
+            url=self._MATCHES_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.MATCHES_ENDPOINT}'")
+        logger.trace(f"Validating response from '{self._MATCHES_ENDPOINT}'")
         return parse_obj_as(List[MatchLobby], processed_response)
 
     def match(self, game: str = "aoe2de", uuid: str = None, match_id: int = None) -> MatchLobby:
@@ -385,11 +385,11 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.MATCH_ENDPOINT,
+            url=self._MATCH_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.MATCH_ENDPOINT}'")
+        logger.trace(f"Validating response from '{self._MATCH_ENDPOINT}'")
         return MatchLobby(**processed_response)
 
     def num_online(self, game: str = "aoe2de") -> NumOnlineResponse:
@@ -411,11 +411,11 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.NUMBER_ONLINE_ENDPOINT,
+            url=self._NUMBER_ONLINE_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.NUMBER_ONLINE_ENDPOINT}'")
+        logger.trace(f"Validating response from '{self._NUMBER_ONLINE_ENDPOINT}'")
         return NumOnlineResponse(**processed_response)
 
 
