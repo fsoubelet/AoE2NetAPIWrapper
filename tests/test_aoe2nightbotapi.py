@@ -125,7 +125,7 @@ class TestMethods:
 
     @responses.activate
     @pytest.mark.parametrize(
-        "flag, search, steam_id, profile_id, returned_text",
+    ("flag", "search", "steam_id", "profile_id", "returned_text"),
         [
             ("true", "GL.TheViper", None, None, RANKS["viper_flag"]),
             ("false", "GL.TheViper", None, None, RANKS["viper"]),
@@ -152,7 +152,7 @@ class TestMethods:
 
     @responses.activate
     @pytest.mark.parametrize(
-        "flag, search, steam_id, profile_id, returned_text",
+        ("flag", "search", "steam_id", "profile_id", "returned_text"),
         [
             ("true", "GL.TheViper", None, None, OPPONENTS["viper_flag"]),
             ("false", "GL.TheViper", None, None, OPPONENTS["viper"]),
@@ -179,7 +179,7 @@ class TestMethods:
 
     @responses.activate
     @pytest.mark.parametrize(
-        "flag, search, steam_id, profile_id, returned_text",
+        ("flag", "search", "steam_id", "profile_id", "returned_text"),
         [
             ("true", "GL.TheViper", None, None, MATCH["viper_flag"]),
             ("false", "GL.TheViper", None, None, MATCH["viper"]),
@@ -206,7 +206,7 @@ class TestMethods:
 
     @responses.activate
     @pytest.mark.parametrize(
-        "search, steam_id, profile_id, returned_text",
+        ("search", "steam_id", "profile_id", "returned_text"),
         [
             ("GL.TheViper", None, None, CIVS["viper"]),
             (None, 76561199003184910, None, CIVS["hoang"]),
@@ -231,7 +231,7 @@ class TestMethods:
 
     @responses.activate
     @pytest.mark.parametrize(
-        "search, steam_id, profile_id, returned_text",
+        ("search", "steam_id", "profile_id", "returned_text"),
         [
             ("GL.TheViper", None, None, MAP["viper"]),
             (None, 76561199003184910, None, MAP["hoang"]),
