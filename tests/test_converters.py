@@ -123,39 +123,41 @@ class TestConvert:
         assert dframe.shape == (10, 23)
         pd.testing.assert_frame_equal(dframe, leaderboard_converted)
 
-    @responses.activate
-    def test_lobbies(self, lobbies_defaults_payload, lobbies_converted):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/lobbies",
-            json=lobbies_defaults_payload,
-            status=200,
-        )
+    # @responses.activate
+    # def test_lobbies(self, lobbies_defaults_payload, lobbies_converted):
+    #     # No longer tested as endpoint and method have been removed
+    #     responses.add(
+    #         responses.GET,
+    #         "https://aoe2.net/api/lobbies",
+    #         json=lobbies_defaults_payload,
+    #         status=200,
+    #     )
 
-        result = self.client.lobbies()
-        dframe = Convert.lobbies(result)
+    #     result = self.client.lobbies()
+    #     dframe = Convert.lobbies(result)
 
-        assert isinstance(dframe, pd.DataFrame)
-        assert dframe.size == 34086
-        assert dframe.shape == (598, 57)
-        pd.testing.assert_frame_equal(dframe, lobbies_converted)
+    #     assert isinstance(dframe, pd.DataFrame)
+    #     assert dframe.size == 34086
+    #     assert dframe.shape == (598, 57)
+    #     pd.testing.assert_frame_equal(dframe, lobbies_converted)
 
-    @responses.activate
-    def test_last_match_endpoint_with_steamid(self, last_match_steamid_payload, last_match_converted):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/player/lastmatch",
-            json=last_match_steamid_payload,
-            status=200,
-        )
+    # @responses.activate
+    # def test_last_match_endpoint_with_steamid(self, last_match_steamid_payload, last_match_converted):
+    #     # No longer tested as endpoint and method have been removed
+    #     responses.add(
+    #         responses.GET,
+    #         "https://aoe2.net/api/player/lastmatch",
+    #         json=last_match_steamid_payload,
+    #         status=200,
+    #     )
 
-        result = self.client.last_match(steam_id=76561199003184910)
-        dframe = Convert.last_match(result)
+    #     result = self.client.last_match(steam_id=76561199003184910)
+    #     dframe = Convert.last_match(result)
 
-        assert isinstance(dframe, pd.DataFrame)
-        assert dframe.size == 45
-        assert dframe.shape == (1, 45)
-        pd.testing.assert_frame_equal(dframe, last_match_converted)
+    #     assert isinstance(dframe, pd.DataFrame)
+    #     assert dframe.size == 45
+    #     assert dframe.shape == (1, 45)
+    #     pd.testing.assert_frame_equal(dframe, last_match_converted)
 
     @responses.activate
     def test_match_history(self, match_history_steamid_payload, match_history_converted):
@@ -191,53 +193,56 @@ class TestConvert:
         assert dframe.shape == (100, 6)
         pd.testing.assert_frame_equal(dframe, rating_history_converted)
 
-    @responses.activate
-    def test_matches(self, matches_defaults_payload, matches_converted):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/matches",
-            json=matches_defaults_payload,
-            status=200,
-        )
+    # @responses.activate
+    # def test_matches(self, matches_defaults_payload, matches_converted):
+    #     # No longer tested as endpoint and method have been removed
+    #     responses.add(
+    #         responses.GET,
+    #         "https://aoe2.net/api/matches",
+    #         json=matches_defaults_payload,
+    #         status=200,
+    #     )
 
-        result = self.client.matches()
-        dframe = Convert.matches(result)
+    #     result = self.client.matches()
+    #     dframe = Convert.matches(result)
 
-        assert isinstance(dframe, pd.DataFrame)
-        assert dframe.size == 2622
-        assert dframe.shape == (46, 57)
-        pd.testing.assert_frame_equal(dframe, matches_converted)
+    #     assert isinstance(dframe, pd.DataFrame)
+    #     assert dframe.size == 2622
+    #     assert dframe.shape == (46, 57)
+    #     pd.testing.assert_frame_equal(dframe, matches_converted)
 
-    @responses.activate
-    def test_match(self, match_uuid_payload, match_converted):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/match",
-            json=match_uuid_payload,
-            status=200,
-        )
+    # @responses.activate
+    # def test_match(self, match_uuid_payload, match_converted):
+    #     # No longer tested as endpoint and method have been removed
+    #     responses.add(
+    #         responses.GET,
+    #         "https://aoe2.net/api/match",
+    #         json=match_uuid_payload,
+    #         status=200,
+    #     )
 
-        result = self.client.match(uuid="66ec2575-5ee4-d241-a1fc-d7ffeffb48b6")
-        dframe = Convert.match(result)
+    #     result = self.client.match(uuid="66ec2575-5ee4-d241-a1fc-d7ffeffb48b6")
+    #     dframe = Convert.match(result)
 
-        assert isinstance(dframe, pd.DataFrame)
-        assert dframe.size == 456
-        assert dframe.shape == (8, 57)
-        pd.testing.assert_frame_equal(dframe, match_converted)
+    #     assert isinstance(dframe, pd.DataFrame)
+    #     assert dframe.size == 456
+    #     assert dframe.shape == (8, 57)
+    #     pd.testing.assert_frame_equal(dframe, match_converted)
 
-    @responses.activate
-    def test_num_online(self, num_online_defaults_payload, num_online_converted):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/stats/players",
-            json=num_online_defaults_payload,
-            status=200,
-        )
+    # @responses.activate
+    # def test_num_online(self, num_online_defaults_payload, num_online_converted):
+    #     # No longer tested as endpoint and method have been removed
+    #     responses.add(
+    #         responses.GET,
+    #         "https://aoe2.net/api/stats/players",
+    #         json=num_online_defaults_payload,
+    #         status=200,
+    #     )
 
-        result = self.client.num_online()
-        dframe = Convert.num_online(result)
+    #     result = self.client.num_online()
+    #     dframe = Convert.num_online(result)
 
-        assert isinstance(dframe, pd.DataFrame)
-        assert dframe.size == 5752
-        assert dframe.shape == (719, 8)
-        pd.testing.assert_frame_equal(dframe, num_online_converted)
+    #     assert isinstance(dframe, pd.DataFrame)
+    #     assert dframe.size == 5752
+    #     assert dframe.shape == (719, 8)
+    #     pd.testing.assert_frame_equal(dframe, num_online_converted)
