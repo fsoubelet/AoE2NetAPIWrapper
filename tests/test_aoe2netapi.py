@@ -5,7 +5,7 @@ import pytest
 import responses
 
 from aoe2netwrapper.api import AoE2NetAPI, _get_request_response_json
-from aoe2netwrapper.exceptions import Aoe2NetError
+from aoe2netwrapper.exceptions import Aoe2NetError, RemovedApiEndpointError
 from aoe2netwrapper.models import (
     LastMatchResponse,
     LeaderBoardResponse,
@@ -30,13 +30,13 @@ class TestExceptions:
             assert record.levelname == "ERROR"
             assert "'count' has to be 10000 or less, but 11000 was provided" in caplog.text
 
-    def test_last_match_misses_required_param(self, caplog):
-        with pytest.raises(Aoe2NetError):
-            self.client.last_match()
+    # def test_last_match_misses_required_param(self, caplog):
+    #     with pytest.raises(Aoe2NetError):
+    #         self.client.last_match()
 
-        for record in caplog.records:
-            assert record.levelname == "ERROR"
-            assert "Missing one of 'steam_id', 'profile_id'" in caplog.text
+    #     for record in caplog.records:
+    #         assert record.levelname == "ERROR"
+    #         assert "Missing one of 'steam_id', 'profile_id'" in caplog.text
 
     def test_match_history_invalid_count_parameter(self, caplog):
         with pytest.raises(Aoe2NetError):
@@ -70,21 +70,21 @@ class TestExceptions:
             assert record.levelname == "ERROR"
             assert "Missing one of 'steam_id', 'profile_id'" in caplog.text
 
-    def test_matches_invalid_count_parameter(self, caplog):
-        with pytest.raises(Aoe2NetError):
-            self.client.matches(count=2000)
+    # def test_matches_invalid_count_parameter(self, caplog):
+    #     with pytest.raises(Aoe2NetError):
+    #         self.client.matches(count=2000)
 
-        for record in caplog.records:
-            assert record.levelname == "ERROR"
-            assert "'count' has to be 1000 or less, but 2000 was provided." in caplog.text
+    #     for record in caplog.records:
+    #         assert record.levelname == "ERROR"
+    #         assert "'count' has to be 1000 or less, but 2000 was provided." in caplog.text
 
-    def test_match_misses_required_param(self, caplog):
-        with pytest.raises(Aoe2NetError):
-            self.client.match()
+    # def test_match_misses_required_param(self, caplog):
+    #     with pytest.raises(Aoe2NetError):
+    #         self.client.match()
 
-        for record in caplog.records:
-            assert record.levelname == "ERROR"
-            assert "Missing one of 'uuid', 'match_id'" in caplog.text
+    #     for record in caplog.records:
+    #         assert record.levelname == "ERROR"
+    #         assert "Missing one of 'uuid', 'match_id'" in caplog.text
 
     @responses.activate
     def test_raise_on_invalid_status_codes(self, caplog):
@@ -241,69 +241,81 @@ class TestMethods:
             "profile_id=459658"
         )
 
-    @responses.activate
+    # @responses.activate
     def test_lobbies_endpoint(self, lobbies_defaults_payload):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/lobbies",
-            json=lobbies_defaults_payload,
-            status=200,
-        )
+        # This was removed from the aoe2.net API, just test we raise
+        with pytest.raises(RemovedApiEndpointError):
+            self.client.lobbies()
 
-        result = self.client.lobbies()
-        assert isinstance(result, list)
-        assert isinstance(result[0], MatchLobby)
-        assert result == [MatchLobby(**lobby) for lobby in lobbies_defaults_payload]
+        # responses.add(
+        #     responses.GET,
+        #     "https://aoe2.net/api/lobbies",
+        #     json=lobbies_defaults_payload,
+        #     status=200,
+        # )
 
-        assert len(responses.calls) == 1
-        assert responses.calls[0].request.params == {"game": "aoe2de"}
-        assert responses.calls[0].request.url == "https://aoe2.net/api/lobbies?game=aoe2de"
+        # result = self.client.lobbies()
+        # assert isinstance(result, list)
+        # assert isinstance(result[0], MatchLobby)
+        # assert result == [MatchLobby(**lobby) for lobby in lobbies_defaults_payload]
 
-    @responses.activate
+        # assert len(responses.calls) == 1
+        # assert responses.calls[0].request.params == {"game": "aoe2de"}
+        # assert responses.calls[0].request.url == "https://aoe2.net/api/lobbies?game=aoe2de"
+
+    # @responses.activate
     def test_last_match_endpoint_with_steamid(self, last_match_steamid_payload):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/player/lastmatch",
-            json=last_match_steamid_payload,
-            status=200,
-        )
+        # This was removed from the aoe2.net API, just test we raise
+        with pytest.raises(RemovedApiEndpointError):
+            self.client.last_match(steam_id=76561199003184910)
 
-        result = self.client.last_match(steam_id=76561199003184910)
-        assert isinstance(result, LastMatchResponse)
-        assert result == LastMatchResponse(**last_match_steamid_payload)
+        # responses.add(
+        #     responses.GET,
+        #     "https://aoe2.net/api/player/lastmatch",
+        #     json=last_match_steamid_payload,
+        #     status=200,
+        # )
 
-        assert len(responses.calls) == 1
-        assert responses.calls[0].request.params == {
-            "game": "aoe2de",
-            "steam_id": "76561199003184910",
-        }
-        assert (
-            responses.calls[0].request.url == "https://aoe2.net/api/player/lastmatch?"
-            "game=aoe2de&steam_id=76561199003184910"
-        )
+        # result = self.client.last_match(steam_id=76561199003184910)
+        # assert isinstance(result, LastMatchResponse)
+        # assert result == LastMatchResponse(**last_match_steamid_payload)
 
-    @responses.activate
+        # assert len(responses.calls) == 1
+        # assert responses.calls[0].request.params == {
+        #     "game": "aoe2de",
+        #     "steam_id": "76561199003184910",
+        # }
+        # assert (
+        #     responses.calls[0].request.url == "https://aoe2.net/api/player/lastmatch?"
+        #     "game=aoe2de&steam_id=76561199003184910"
+        # )
+
+    # @responses.activate
     def test_last_match_endpoint_with_profileid(self, last_match_profileid_payload):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/player/lastmatch",
-            json=last_match_profileid_payload,
-            status=200,
-        )
+        # This was removed from the aoe2.net API, just test we raise
+        with pytest.raises(RemovedApiEndpointError):
+            self.client.last_match(profile_id=459658)
 
-        result = self.client.last_match(profile_id=459658)
-        assert isinstance(result, LastMatchResponse)
-        assert result == LastMatchResponse(**last_match_profileid_payload)
+        # responses.add(
+        #     responses.GET,
+        #     "https://aoe2.net/api/player/lastmatch",
+        #     json=last_match_profileid_payload,
+        #     status=200,
+        # )
 
-        assert len(responses.calls) == 1
-        assert responses.calls[0].request.params == {
-            "game": "aoe2de",
-            "profile_id": "459658",
-        }
-        assert (
-            responses.calls[0].request.url == "https://aoe2.net/api/player/lastmatch?"
-            "game=aoe2de&profile_id=459658"
-        )
+        # result = self.client.last_match(profile_id=459658)
+        # assert isinstance(result, LastMatchResponse)
+        # assert result == LastMatchResponse(**last_match_profileid_payload)
+
+        # assert len(responses.calls) == 1
+        # assert responses.calls[0].request.params == {
+        #     "game": "aoe2de",
+        #     "profile_id": "459658",
+        # }
+        # assert (
+        #     responses.calls[0].request.url == "https://aoe2.net/api/player/lastmatch?"
+        #     "game=aoe2de&profile_id=459658"
+        # )
 
     @responses.activate
     def test_match_history_endpoint_with_steamid(self, match_history_steamid_payload):
@@ -414,108 +426,128 @@ class TestMethods:
             "count=20&profile_id=459658"
         )
 
-    @responses.activate
+    # @responses.activate
     def test_matches_endpoint_defaults(self, matches_defaults_payload):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/matches",
-            json=matches_defaults_payload,
-            status=200,
-        )
+        # This was removed from the aoe2.net API, just test we raise
+        with pytest.raises(RemovedApiEndpointError):
+            self.client.matches()
 
-        result = self.client.matches()
-        assert isinstance(result, list)
-        assert isinstance(result[0], MatchLobby)
-        assert result == [MatchLobby(**lobby) for lobby in matches_defaults_payload]
+        # responses.add(
+        #     responses.GET,
+        #     "https://aoe2.net/api/matches",
+        #     json=matches_defaults_payload,
+        #     status=200,
+        # )
 
-        assert len(responses.calls) == 1
-        assert responses.calls[0].request.params == {
-            "game": "aoe2de",
-            "count": "10",
-        }
-        assert responses.calls[0].request.url == "https://aoe2.net/api/matches?game=aoe2de&count=10"
+        # result = self.client.matches()
+        # assert isinstance(result, list)
+        # assert isinstance(result[0], MatchLobby)
+        # assert result == [MatchLobby(**lobby) for lobby in matches_defaults_payload]
 
-    @responses.activate
+        # assert len(responses.calls) == 1
+        # assert responses.calls[0].request.params == {
+        #     "game": "aoe2de",
+        #     "count": "10",
+        # }
+        # assert responses.calls[0].request.url == "https://aoe2.net/api/matches?game=aoe2de&count=10"
+
+    # @responses.activate
     def test_matches_endpoint_with_since(self, matches_since_payload):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/matches",
-            json=matches_since_payload,
-            status=200,
-        )
+        # This was removed from the aoe2.net API, just test we raise
+        with pytest.raises(RemovedApiEndpointError):
+            self.client.matches()
 
-        result = self.client.matches(since=1596775000)
-        assert isinstance(result, list)
-        assert isinstance(result[0], MatchLobby)
-        assert result == [MatchLobby(**lobby) for lobby in matches_since_payload]
+        # responses.add(
+        #     responses.GET,
+        #     "https://aoe2.net/api/matches",
+        #     json=matches_since_payload,
+        #     status=200,
+        # )
 
-        assert len(responses.calls) == 1
-        assert responses.calls[0].request.params == {
-            "game": "aoe2de",
-            "count": "10",
-            "since": "1596775000",
-        }
-        assert (
-            responses.calls[0].request.url
-            == "https://aoe2.net/api/matches?game=aoe2de&count=10&since=1596775000"
-        )
+        # result = self.client.matches(since=1596775000)
+        # assert isinstance(result, list)
+        # assert isinstance(result[0], MatchLobby)
+        # assert result == [MatchLobby(**lobby) for lobby in matches_since_payload]
 
-    @responses.activate
+        # assert len(responses.calls) == 1
+        # assert responses.calls[0].request.params == {
+        #     "game": "aoe2de",
+        #     "count": "10",
+        #     "since": "1596775000",
+        # }
+        # assert (
+        #     responses.calls[0].request.url
+        #     == "https://aoe2.net/api/matches?game=aoe2de&count=10&since=1596775000"
+        # )
+
+    # @responses.activate
     def test_match_endpoint_with_uuid(self, match_uuid_payload):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/match",
-            json=match_uuid_payload,
-            status=200,
-        )
+        # This was removed from the aoe2.net API, just test we raise
+        with pytest.raises(RemovedApiEndpointError):
+            self.client.match(uuid="66ec2575-5ee4-d241-a1fc-d7ffeffb48b6")
 
-        result = self.client.match(uuid="66ec2575-5ee4-d241-a1fc-d7ffeffb48b6")
-        assert isinstance(result, MatchLobby)
-        assert result == MatchLobby(**match_uuid_payload)
+        # responses.add(
+        #     responses.GET,
+        #     "https://aoe2.net/api/match",
+        #     json=match_uuid_payload,
+        #     status=200,
+        # )
 
-        assert len(responses.calls) == 1
-        assert responses.calls[0].request.params == {
-            "game": "aoe2de",
-            "uuid": "66ec2575-5ee4-d241-a1fc-d7ffeffb48b6",
-        }
-        assert (
-            responses.calls[0].request.url
-            == "https://aoe2.net/api/match?game=aoe2de&uuid=66ec2575-5ee4-d241-a1fc-d7ffeffb48b6"
-        )
+        # result = self.client.match(uuid="66ec2575-5ee4-d241-a1fc-d7ffeffb48b6")
+        # assert isinstance(result, MatchLobby)
+        # assert result == MatchLobby(**match_uuid_payload)
 
-    @responses.activate
+        # assert len(responses.calls) == 1
+        # assert responses.calls[0].request.params == {
+        #     "game": "aoe2de",
+        #     "uuid": "66ec2575-5ee4-d241-a1fc-d7ffeffb48b6",
+        # }
+        # assert (
+        #     responses.calls[0].request.url
+        #     == "https://aoe2.net/api/match?game=aoe2de&uuid=66ec2575-5ee4-d241-a1fc-d7ffeffb48b6"
+        # )
+
+    # @responses.activate
     def test_match_endpoint_with_matchid(self, match_matchid_payload):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/match",
-            json=match_matchid_payload,
-            status=200,
-        )
+        # This was removed from the aoe2.net API, just test we raise
+        with pytest.raises(RemovedApiEndpointError):
+            self.client.match(uuid="66ec2575-5ee4-d241-a1fc-d7ffeffb48b6")
 
-        result = self.client.match(match_id=32435313)
-        assert isinstance(result, MatchLobby)
-        assert result == MatchLobby(**match_matchid_payload)
+        # responses.add(
+        #     responses.GET,
+        #     "https://aoe2.net/api/match",
+        #     json=match_matchid_payload,
+        #     status=200,
+        # )
 
-        assert len(responses.calls) == 1
-        assert responses.calls[0].request.params == {
-            "game": "aoe2de",
-            "match_id": "32435313",
-        }
-        assert responses.calls[0].request.url == "https://aoe2.net/api/match?game=aoe2de&match_id=32435313"
+        # result = self.client.match(match_id=32435313)
+        # assert isinstance(result, MatchLobby)
+        # assert result == MatchLobby(**match_matchid_payload)
 
-    @responses.activate
+        # assert len(responses.calls) == 1
+        # assert responses.calls[0].request.params == {
+        #     "game": "aoe2de",
+        #     "match_id": "32435313",
+        # }
+        # assert responses.calls[0].request.url == "https://aoe2.net/api/match?game=aoe2de&match_id=32435313"
+
+    # @responses.activate
     def test_num_online_endpoint(self, num_online_defaults_payload):
-        responses.add(
-            responses.GET,
-            "https://aoe2.net/api/stats/players",
-            json=num_online_defaults_payload,
-            status=200,
-        )
+        # This was removed from the aoe2.net API, just test we raise
+        with pytest.raises(RemovedApiEndpointError):
+            self.client.num_online()
 
-        result = self.client.num_online()
-        assert isinstance(result, NumOnlineResponse)
-        assert result == NumOnlineResponse(**num_online_defaults_payload)
+        # responses.add(
+        #     responses.GET,
+        #     "https://aoe2.net/api/stats/players",
+        #     json=num_online_defaults_payload,
+        #     status=200,
+        # )
 
-        assert len(responses.calls) == 1
-        assert responses.calls[0].request.params == {"game": "aoe2de"}
-        assert responses.calls[0].request.url == "https://aoe2.net/api/stats/players?game=aoe2de"
+        # result = self.client.num_online()
+        # assert isinstance(result, NumOnlineResponse)
+        # assert result == NumOnlineResponse(**num_online_defaults_payload)
+
+        # assert len(responses.calls) == 1
+        # assert responses.calls[0].request.params == {"game": "aoe2de"}
+        # assert responses.calls[0].request.url == "https://aoe2.net/api/stats/players?game=aoe2de"
