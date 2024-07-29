@@ -32,7 +32,6 @@ class TestExceptions:
     #         assert record.levelname == "ERROR"
     #         assert "Tried to use method with a parameter of type != 'List[MatchLobby]'" in caplog.text
 
-    
     # def test_last_match_fail_on_wrong_type(self, caplog):
     #     # No longer tested as endpoint and method have been removed
     #     with pytest.raises(TypeError):
