@@ -12,7 +12,7 @@ from typing import Any
 import requests
 
 from loguru import logger
-from pydantic import parse_obj_as
+from pydantic import TypeAdapter
 
 from aoe2netwrapper.exceptions import Aoe2NetError
 from aoe2netwrapper.models import (
@@ -29,6 +29,9 @@ _MAX_MATCH_HISTORY_COUNT: int = 1_000
 _MAX_RATING_HISTORY_COUNT: int = 10_000
 _MAX_MATCHES_COUNT: int = 1_000
 _OK_STATUS_CODE: int = 200
+
+_LIST_MATCHLOBBY_ADAPTER = TypeAdapter(list[MatchLobby])
+_LIST_RATINGTIMEPOINT_ADAPTER = TypeAdapter(list[RatingTimePoint])
 
 
 class AoE2NetAPI:
@@ -167,7 +170,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self._LOBBIES_ENDPOINT}'")
-        return parse_obj_as(list[MatchLobby], processed_response)
+        return _LIST_MATCHLOBBY_ADAPTER.validate_python(processed_response)
 
     def last_match(
         self, game: str = "aoe2de", steam_id: int | None = None, profile_id: int | None = None
@@ -262,7 +265,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self._MATCH_HISTORY_ENDPOINT}'")
-        return parse_obj_as(list[MatchLobby], processed_response)
+        return _LIST_MATCHLOBBY_ADAPTER.validate_python(processed_response)
 
     def rating_history(
         self,
@@ -325,7 +328,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self._RATING_HISTORY_ENDPOINT}'")
-        return parse_obj_as(list[RatingTimePoint], processed_response)
+        return _LIST_RATINGTIMEPOINT_ADAPTER.validate_python(processed_response)
 
     def matches(self, game: str = "aoe2de", count: int = 10, since: int | None = None) -> list[MatchLobby]:
         """
@@ -368,7 +371,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self._MATCHES_ENDPOINT}'")
-        return parse_obj_as(list[MatchLobby], processed_response)
+        return _LIST_MATCHLOBBY_ADAPTER.validate_python(processed_response)
 
     def match(self, game: str = "aoe2de", uuid: str | None = None, match_id: int | None = None) -> MatchLobby:
         """
