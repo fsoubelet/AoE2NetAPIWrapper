@@ -12,6 +12,6 @@ query the APIs provided by aoe2.net, and get data about the Age of Empires II vi
 from .api import AoE2NetAPI
 from .nightbot import AoE2NightbotAPI
 
-__version__ = "0.3.1"
+__version__ = "0.4.0"
 
 __all__ = ["AoE2NetAPI", "AoE2NightbotAPI"]
