@@ -26,8 +26,8 @@ jobs:
           cache: 'pip'
           cache-dependency-path: '**/pyproject.toml'
 
-      - name: Upgrade pip and distutils
-        run: python -m pip install --upgrade pip distutils
+      - name: Upgrade pip and setuptools
+        run: python -m pip install --upgrade pip setuptools  # setuptools to have distutils, required by portray / hug
 
       - name: Install package with doc dependencies
         run: python -m pip install ".[docs]"
