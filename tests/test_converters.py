@@ -23,21 +23,24 @@ class TestExceptions:
             assert record.levelname == "ERROR"
             assert "Tried to use method with a parameter of type != 'LeaderBoardResponse'" in caplog.text
 
-    def test_lobbies_fail_on_wrong_type(self, caplog):
-        with pytest.raises(TypeError):
-            _ = Convert.lobbies(None)
+    # def test_lobbies_fail_on_wrong_type(self, caplog):
+    #     # No longer tested as endpoint and method have been removed
+    #     with pytest.raises(TypeError):
+    #         _ = Convert.lobbies(None)
 
-        for record in caplog.records:
-            assert record.levelname == "ERROR"
-            assert "Tried to use method with a parameter of type != 'List[MatchLobby]'" in caplog.text
+    #     for record in caplog.records:
+    #         assert record.levelname == "ERROR"
+    #         assert "Tried to use method with a parameter of type != 'List[MatchLobby]'" in caplog.text
 
-    def test_last_match_fail_on_wrong_type(self, caplog):
-        with pytest.raises(TypeError):
-            _ = Convert.last_match({"a": 1})
+    
+    # def test_last_match_fail_on_wrong_type(self, caplog):
+    #     # No longer tested as endpoint and method have been removed
+    #     with pytest.raises(TypeError):
+    #         _ = Convert.last_match({"a": 1})
 
-        for record in caplog.records:
-            assert record.levelname == "ERROR"
-            assert "Tried to use method with a parameter of type != 'LastMatchResponse'" in caplog.text
+    #     for record in caplog.records:
+    #         assert record.levelname == "ERROR"
+    #         assert "Tried to use method with a parameter of type != 'LastMatchResponse'" in caplog.text
 
     def test_match_history_fail_on_wrong_type(self, caplog):
         with pytest.raises(TypeError):
@@ -55,29 +58,32 @@ class TestExceptions:
             assert record.levelname == "ERROR"
             assert "Tried to use method with a parameter of type != 'List[RatingTimePoint]'" in caplog.text
 
-    def test_matches_fail_on_wrong_type(self, caplog):
-        with pytest.raises(TypeError):
-            _ = Convert.matches(TypeError)
+    # def test_matches_fail_on_wrong_type(self, caplog):
+    #     # No longer tested as endpoint and method have been removed
+    #     with pytest.raises(TypeError):
+    #         _ = Convert.matches(TypeError)
 
-        for record in caplog.records:
-            assert record.levelname == "ERROR"
-            assert "Tried to use method with a parameter of type != 'List[MatchLobby]'" in caplog.text
+    #     for record in caplog.records:
+    #         assert record.levelname == "ERROR"
+    #         assert "Tried to use method with a parameter of type != 'List[MatchLobby]'" in caplog.text
 
-    def test_match_fail_on_wrong_type(self, caplog):
-        with pytest.raises(TypeError):
-            _ = Convert.match({"a": 1})
+    # def test_match_fail_on_wrong_type(self, caplog):
+    #     # No longer tested as endpoint and method have been removed
+    #     with pytest.raises(TypeError):
+    #         _ = Convert.match({"a": 1})
 
-        for record in caplog.records:
-            assert record.levelname == "ERROR"
-            assert "Tried to use method with a parameter of type != 'MatchLobby'" in caplog.text
+    #     for record in caplog.records:
+    #         assert record.levelname == "ERROR"
+    #         assert "Tried to use method with a parameter of type != 'MatchLobby'" in caplog.text
 
-    def test_num_online_fail_on_wrong_type(self, caplog):
-        with pytest.raises(TypeError):
-            _ = Convert.num_online(self)
+    # def test_num_online_fail_on_wrong_type(self, caplog):
+    #     # No longer tested as endpoint and method have been removed
+    #     with pytest.raises(TypeError):
+    #         _ = Convert.num_online(self)
 
-        for record in caplog.records:
-            assert record.levelname == "ERROR"
-            assert "Tried to use method with a parameter of type != 'NumOnlineResponse'" in caplog.text
+    #     for record in caplog.records:
+    #         assert record.levelname == "ERROR"
+    #         assert "Tried to use method with a parameter of type != 'NumOnlineResponse'" in caplog.text
 
 
 class TestConvert:
