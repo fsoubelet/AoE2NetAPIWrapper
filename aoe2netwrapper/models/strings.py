@@ -8,6 +8,7 @@ https://aoe2.net/api/strings
 Any confusing with a specific attribute being an INTEGER in the models can be cleared by checking the
 corresponding string the API / system attributes to this ID.
 """
+
 from __future__ import annotations
 
 from pydantic import BaseModel, Field

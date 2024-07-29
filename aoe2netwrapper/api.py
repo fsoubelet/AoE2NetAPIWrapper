@@ -4,11 +4,13 @@ aoe2netwrapper.api
 
 This module implements a high-level client to query the API at https://aoe2.net/#api.
 """
+
 from __future__ import annotations
 
 from typing import Any
 
 import requests
+
 from loguru import logger
 from pydantic import parse_obj_as
 
@@ -113,7 +115,8 @@ class AoE2NetAPI:
         """
         if count > 10_000:
             logger.error(f"'count' has to be 10000 or less, but {count} was provided.")
-            raise Aoe2NetError("Invalid value for parameter 'count'.")
+            msg = "Invalid value for parameter 'count'."
+            raise Aoe2NetError(msg)
 
         logger.debug("Preparing parameters for leaderboard query")
         query_params = {
@@ -184,7 +187,8 @@ class AoE2NetAPI:
         """
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetError("Either 'steam_id' or 'profile_id' required, please provide one.")
+            msg = "Either 'steam_id' or 'profile_id' required, please provide one."
+            raise Aoe2NetError(msg)
 
         logger.debug("Preparing parameters for last match query")
         query_params = {"game": game, "steam_id": steam_id, "profile_id": profile_id}
@@ -228,11 +232,13 @@ class AoE2NetAPI:
         """
         if count > 1_000:
             logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
-            raise Aoe2NetError("Invalid value for parameter 'count'.")
+            msg = "Invalid value for parameter 'count'."
+            raise Aoe2NetError(msg)
 
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetError("Either 'steam_id' or 'profile_id' required, please provide one.")
+            msg = "Either 'steam_id' or 'profile_id' required, please provide one."
+            raise Aoe2NetError(msg)
 
         logger.debug("Preparing parameters for match history query")
         query_params = {
@@ -288,11 +294,13 @@ class AoE2NetAPI:
         """
         if count > 10_000:
             logger.error(f"'count' has to be 10 000 or less, but {count} was provided.")
-            raise Aoe2NetError("Invalid value for parameter 'count'.")
+            msg = "Invalid value for parameter 'count'."
+            raise Aoe2NetError(msg)
 
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetError("Either 'steam_id' or 'profile_id' required, please provide one.")
+            msg = "Either 'steam_id' or 'profile_id' required, please provide one."
+            raise Aoe2NetError(msg)
 
         logger.debug("Preparing parameters for rating history query")
         query_params = {
@@ -337,7 +345,8 @@ class AoE2NetAPI:
         """
         if count > 1000:
             logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
-            raise Aoe2NetError("Invalid value for parameter 'count'.")
+            msg = "Invalid value for parameter 'count'."
+            raise Aoe2NetError(msg)
 
         logger.debug("Preparing parameters for matches query")
         query_params = {
@@ -374,7 +383,8 @@ class AoE2NetAPI:
         """
         if not uuid and not match_id:
             logger.error("Missing one of 'uuid', 'match_id'.")
-            raise Aoe2NetError("Either 'uuid' or 'match_id' required, please provide one.")
+            msg = "Either 'uuid' or 'match_id' required, please provide one."
+            raise Aoe2NetError(msg)
 
         logger.debug("Preparing parameters for single match query")
         query_params = {
@@ -450,5 +460,6 @@ def _get_request_response_json(
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
     if response.status_code != 200:
         logger.error(f"GET request at '{response.url}' returned a {response.status_code} status code")
-        raise Aoe2NetError(f"Expected status code 200 - got {response.status_code} instead.")
+        msg = f"Expected status code 200 - got {response.status_code} instead"
+        raise Aoe2NetError(msg)
     return response.json()

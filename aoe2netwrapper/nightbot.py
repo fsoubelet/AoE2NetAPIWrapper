@@ -4,11 +4,13 @@ aoe2netwrapper.nightbot
 
 This module implements a high-level client to query the API at https://aoe2.net/#nightbot.
 """
+
 from __future__ import annotations
 
 from typing import Any
 
 import requests
+
 from loguru import logger
 
 from aoe2netwrapper.exceptions import NightBotError
@@ -76,9 +78,8 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotError(
-                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
-            )
+            msg = "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            raise NightBotError(msg)
 
         logger.debug("Preparing parameters for rank details query")
         query_params = {
@@ -267,9 +268,8 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotError(
-                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
-            )
+            msg = "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            raise NightBotError(msg)
 
         logger.debug("Preparing parameters for civilisations details query")
         query_params = {
@@ -327,9 +327,8 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotError(
-                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
-            )
+            msg = "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            raise NightBotError(msg)
 
         logger.debug("Preparing parameters for civilisations details query")
         query_params = {
@@ -380,5 +379,6 @@ def _get_request_text_response_decoded(
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
     if response.status_code != 200:
         logger.error(f"GET request at '{response.url}' returned a {response.status_code} status code")
-        raise NightBotError(f"Expected status code 200 - got {response.status_code} instead.")
+        msg = f"Expected status code 200 - got {response.status_code} instead."
+        raise NightBotError(msg)
     return response.text

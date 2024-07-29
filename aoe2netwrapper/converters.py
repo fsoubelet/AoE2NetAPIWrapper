@@ -52,7 +52,8 @@ class Convert:
         """
         if not isinstance(strings_response, StringsResponse):
             logger.error("Tried to use method with a parameter of type != StringsResponse")
-            raise TypeError("Provided parameter should be an instance of 'StringsResponse'")
+            msg = "Provided parameter should be an instance of 'StringsResponse'"
+            raise TypeError(msg)
 
         logger.debug("Converting StringsResponse to DataFrame")
         dframe = pd.DataFrame(strings_response).transpose()
@@ -87,7 +88,8 @@ class Convert:
         """
         if not isinstance(leaderboard_response, LeaderBoardResponse):
             logger.error("Tried to use method with a parameter of type != LeaderBoardResponse")
-            raise TypeError("Provided parameter should be an instance of 'LeaderBoardResponse'")
+            msg = "Provided parameter should be an instance of 'LeaderBoardResponse'"
+            raise TypeError(msg)
 
         logger.debug("Converting LeaderBoardResponse leaderboard to DataFrame")
         dframe = pd.DataFrame(leaderboard_response.leaderboard)
@@ -123,7 +125,8 @@ class Convert:
         """
         if not isinstance(lobbies_response, list):  # move list to list[MatchLobby] when supporting > 3.9
             logger.error("Tried to use method with a parameter of type != list[MatchLobby]")
-            raise TypeError("Provided parameter should be an instance of 'list[MatchLobby]'")
+            msg = "Provided parameter should be an instance of 'list[MatchLobby]'"
+            raise TypeError(msg)
 
         logger.debug("Converting Lobbies response to DataFrame")
         unfolded_lobbies = [_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in lobbies_response]
@@ -147,7 +150,8 @@ class Convert:
         """
         if not isinstance(last_match_response, LastMatchResponse):
             logger.error("Tried to use method with a parameter of type != LastMatchResponse")
-            raise TypeError("Provided parameter should be an instance of 'LastMatchResponse'")
+            msg = "Provided parameter should be an instance of 'LastMatchResponse'"
+            raise TypeError(msg)
 
         logger.debug("Converting LastMatchResponse last_match to DataFrame")
         dframe = pd.DataFrame(last_match_response.last_match).transpose()
@@ -181,7 +185,8 @@ class Convert:
         # move list to list[MatchLobby] when supporting > 3.9
         if not isinstance(match_history_response, list):
             logger.error("Tried to use method with a parameter of type != list[MatchLobby]")
-            raise TypeError("Provided parameter should be an instance of 'list[MatchLobby]'")
+            msg = "Provided parameter should be an instance of 'list[MatchLobby]'"
+            raise TypeError(msg)
 
         logger.debug("Converting Match History response to DataFrame")
         unfolded_lobbies = [
@@ -205,7 +210,8 @@ class Convert:
         # move list to list[RatingTimePoint] when supporting > 3.9
         if not isinstance(rating_history_response, list):
             logger.error("Tried to use method with a parameter of type != list[RatingTimePoint]")
-            raise TypeError("Provided parameter should be an instance of 'list[RatingTimePoint]'")
+            msg = "Provided parameter should be an instance of 'list[RatingTimePoint]'"
+            raise TypeError(msg)
 
         logger.debug("Converting Rating History rsponse to DataFrame")
         dframe = pd.DataFrame(rating_history_response)
@@ -234,7 +240,8 @@ class Convert:
         """
         if not isinstance(matches_response, list):  # move list to list[MatchLobby] when supporting > 3.9
             logger.error("Tried to use method with a parameter of type != list[MatchLobby]")
-            raise TypeError("Provided parameter should be an instance of 'list[MatchLobby]'")
+            msg = "Provided parameter should be an instance of 'list[MatchLobby]'"
+            raise TypeError(msg)
 
         logger.debug("Converting Match History response to DataFrame")
         unfolded_lobbies = [_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in matches_response]
@@ -272,7 +279,8 @@ class Convert:
         """
         if not isinstance(num_online_response, NumOnlineResponse):
             logger.error("Tried to use method with a parameter of type != NumOnlineResponse")
-            raise TypeError("Provided parameter should be an instance of 'NumOnlineResponse'")
+            msg = "Provided parameter should be an instance of 'NumOnlineResponse'"
+            raise TypeError(msg)
 
         logger.debug("Converting NumOnlineResponse to DataFrame")
         dframe = pd.DataFrame(num_online_response.dict())
@@ -329,7 +337,8 @@ def _unfold_match_lobby_to_dataframe(match_lobby: MatchLobby) -> pd.DataFrame:
     """
     if not isinstance(match_lobby, MatchLobby):
         logger.error("Tried to use method with a parameter of type != MatchLobby")
-        raise TypeError("Provided parameter should be an instance of 'MatchLobby'")
+        msg = "Provided parameter should be an instance of 'MatchLobby'"
+        raise TypeError(msg)
 
     logger.trace("Unfolding MatchLobby.players contents to DataFrame")
     dframe = pd.DataFrame(match_lobby.players)

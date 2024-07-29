@@ -5,6 +5,7 @@ aoe2netwrapper.models.lobbies
 This module contains the model objects to encapsulate the responses from the endpoint at
 https://aoe2.net/api/lobbies
 """
+
 from __future__ import annotations
 
 from pydantic import BaseModel, Field
