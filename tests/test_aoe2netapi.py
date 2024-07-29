@@ -7,10 +7,10 @@ import responses
 from aoe2netwrapper.api import AoE2NetAPI, _get_request_response_json
 from aoe2netwrapper.exceptions import Aoe2NetError, RemovedApiEndpointError
 from aoe2netwrapper.models import (
-    LastMatchResponse,
+    # LastMatchResponse,
     LeaderBoardResponse,
     MatchLobby,
-    NumOnlineResponse,
+    # NumOnlineResponse,
     RatingTimePoint,
     StringsResponse,
 )

@@ -90,7 +90,11 @@ source = ["aoe2netwrapper/"]
 
 [tool.coverage.report]
 ignore_errors = true
-
+omit = [
+  "aoe2netwrapper/models/match.py",
+  "aoe2netwrapper/models/match_history.py",
+  "aoe2netwrapper/models/matches.py",
+]
 
 # ----- Documentation Configuration ----- #
 
