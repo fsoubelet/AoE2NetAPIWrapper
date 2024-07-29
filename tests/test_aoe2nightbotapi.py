@@ -127,10 +127,10 @@ class TestMethods:
     @pytest.mark.parametrize(
         "flag, search, steam_id, profile_id, returned_text",
         [
-            ["true", "GL.TheViper", None, None, RANKS["viper_flag"]],
-            ["false", "GL.TheViper", None, None, RANKS["viper"]],
-            ["true", None, 76561199003184910, None, RANKS["hoang_flag"]],
-            ["false", None, None, 459658, RANKS["hoang"]],
+            ("true", "GL.TheViper", None, None, RANKS["viper_flag"]),
+            ("false", "GL.TheViper", None, None, RANKS["viper"]),
+            ("true", None, 76561199003184910, None, RANKS["hoang_flag"]),
+            ("false", None, None, 459658, RANKS["hoang"]),
         ],
     )
     def test_rank_endpoint(self, flag, search, steam_id, profile_id, returned_text):
@@ -154,10 +154,10 @@ class TestMethods:
     @pytest.mark.parametrize(
         "flag, search, steam_id, profile_id, returned_text",
         [
-            ["true", "GL.TheViper", None, None, OPPONENTS["viper_flag"]],
-            ["false", "GL.TheViper", None, None, OPPONENTS["viper"]],
-            ["true", None, 76561199003184910, None, OPPONENTS["hoang_flag"]],
-            ["false", None, None, 459658, OPPONENTS["hoang"]],
+            ("true", "GL.TheViper", None, None, OPPONENTS["viper_flag"]),
+            ("false", "GL.TheViper", None, None, OPPONENTS["viper"]),
+            ("true", None, 76561199003184910, None, OPPONENTS["hoang_flag"]),
+            ("false", None, None, 459658, OPPONENTS["hoang"]),
         ],
     )
     def test_opponent_endpoint(self, flag, search, steam_id, profile_id, returned_text):
@@ -181,10 +181,10 @@ class TestMethods:
     @pytest.mark.parametrize(
         "flag, search, steam_id, profile_id, returned_text",
         [
-            ["true", "GL.TheViper", None, None, MATCH["viper_flag"]],
-            ["false", "GL.TheViper", None, None, MATCH["viper"]],
-            ["true", None, 76561199003184910, None, MATCH["hoang_flag"]],
-            ["false", None, None, 459658, MATCH["hoang"]],
+            ("true", "GL.TheViper", None, None, MATCH["viper_flag"]),
+            ("false", "GL.TheViper", None, None, MATCH["viper"]),
+            ("true", None, 76561199003184910, None, MATCH["hoang_flag"]),
+            ("false", None, None, 459658, MATCH["hoang"]),
         ],
     )
     def test_match_endpoint(self, flag, search, steam_id, profile_id, returned_text):
@@ -208,9 +208,9 @@ class TestMethods:
     @pytest.mark.parametrize(
         "search, steam_id, profile_id, returned_text",
         [
-            ["GL.TheViper", None, None, CIVS["viper"]],
-            [None, 76561199003184910, None, CIVS["hoang"]],
-            [None, None, 459658, CIVS["hoang"]],
+            ("GL.TheViper", None, None, CIVS["viper"]),
+            (None, 76561199003184910, None, CIVS["hoang"]),
+            (None, None, 459658, CIVS["hoang"]),
         ],
     )
     def test_civs_endpoint(self, search, steam_id, profile_id, returned_text):
@@ -233,9 +233,9 @@ class TestMethods:
     @pytest.mark.parametrize(
         "search, steam_id, profile_id, returned_text",
         [
-            ["GL.TheViper", None, None, MAP["viper"]],
-            [None, 76561199003184910, None, MAP["hoang"]],
-            [None, None, 459658, MAP["hoang"]],
+            ("GL.TheViper", None, None, MAP["viper"]),
+            (None, 76561199003184910, None, MAP["hoang"]),
+            (None, None, 459658, MAP["hoang"]),
         ],
     )
     def test_map_endpoint(self, search, steam_id, profile_id, returned_text):
