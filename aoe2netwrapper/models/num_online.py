@@ -7,8 +7,6 @@ https://aoe2.net/api/stats/players
 """
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import BaseModel, Field
 
 
@@ -34,6 +32,6 @@ class NumOnlineResponse(BaseModel):
     """A model to encapsulate the response from the num_online API."""
 
     app_id: int | None = Field(None, description="Unclear")
-    player_stats: List[PlayerCountTimePoint] | None = Field(
+    player_stats: list[PlayerCountTimePoint] | None = Field(
         None, description="List of metrics at different points in time"
     )

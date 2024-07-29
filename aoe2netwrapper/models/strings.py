@@ -10,8 +10,6 @@ corresponding string the API / system attributes to this ID.
 """
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import BaseModel, Field
 
 
@@ -96,34 +94,34 @@ class StringsResponse(BaseModel):
     """An object to encapsulate the response from the strings API endpoint."""
 
     language: str | None = Field(None, description="Language of the returned strings")
-    age: List[AgeString] | None = Field(None, description="List of all strings and their IDs for ages")
-    civ: List[CivilizationString] | None = Field(
+    age: list[AgeString] | None = Field(None, description="List of all strings and their IDs for ages")
+    civ: list[CivilizationString] | None = Field(
         None, description="List of all strings and their IDs for civilizations"
     )
-    game_type: List[GameTypeString] | None = Field(
+    game_type: list[GameTypeString] | None = Field(
         None, description="List of all strings and their IDs for game types"
     )
-    leaderboard: List[LeaderBoardString] | None = Field(
+    leaderboard: list[LeaderBoardString] | None = Field(
         None, description="List of all strings and their IDs for leaderboards"
     )
-    map_size: List[MapSizeString] | None = Field(
+    map_size: list[MapSizeString] | None = Field(
         None, description="List of all strings and their IDs for map sizes"
     )
-    map_type: List[MapTypeString] | None = Field(
+    map_type: list[MapTypeString] | None = Field(
         None, description="List of all strings and their IDs for map types"
     )
-    rating_type: List[RatingTypeString] | None = Field(
+    rating_type: list[RatingTypeString] | None = Field(
         None, description="List of all strings and their IDs for rating types"
     )
-    resources: List[ResourcesString] | None = Field(
+    resources: list[ResourcesString] | None = Field(
         None, description="List of all strings and their IDs for resources"
     )
-    speed: List[SpeedString] | None = Field(
+    speed: list[SpeedString] | None = Field(
         None, description="List of all strings and their IDs for game speeds"
     )
-    victory: List[VictoryString] | None = Field(
+    victory: list[VictoryString] | None = Field(
         None, description="List of all strings and their IDs for victory types"
     )
-    visibility: List[VisibilityString] | None = Field(
+    visibility: list[VisibilityString] | None = Field(
         None, description="List of all strings and their IDs for visibility"
     )

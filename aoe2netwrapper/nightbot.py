@@ -6,7 +6,7 @@ This module implements a high-level client to query the API at https://aoe2.net/
 """
 from __future__ import annotations
 
-from typing import Any, Dict, Tuple
+from typing import Any
 
 import requests
 from loguru import logger
@@ -27,7 +27,7 @@ class AoE2NightbotAPI:
     CURRENT_CIVS_ENDPOINT = NIGHTBOT_BASE_URL + "/civs"
     CURRENT_MAP_ENDPOINT = NIGHTBOT_BASE_URL + "/map"
 
-    def __init__(self, timeout: float | Tuple[float, float] = 5):
+    def __init__(self, timeout: float | tuple[float, float] = 5):
         """Creating a Session for connection pooling since we're always querying the same host."""
         self.session = requests.Session()
         self.timeout = timeout
@@ -357,8 +357,8 @@ class AoE2NightbotAPI:
 def _get_request_text_response_decoded(
     session: requests.Session,
     url: str,
-    params: Dict[str, Any] = None,
-    timeout: float | Tuple[float, float] = None,
+    params: dict[str, Any] = None,
+    timeout: float | tuple[float, float] = None,
 ) -> str:
     """
     Helper function to handle a GET request to an endpoint and return the response JSON content

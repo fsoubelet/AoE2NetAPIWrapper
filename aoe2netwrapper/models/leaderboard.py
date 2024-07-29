@@ -7,7 +7,7 @@ https://aoe2.net/api/leaderboard
 """
 from __future__ import annotations
 
-from typing import Any, List
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -43,4 +43,4 @@ class LeaderBoardResponse(BaseModel):
     leaderboard_id: int | None = Field(None, description="ID of the leaderboard queried, aka game type")
     start: int | None = Field(None, description="Starting rank of the first entry in the response")
     count: int | None = Field(None, description="Number of entries returned")
-    leaderboard: List[LeaderBoardSpot] | None = Field(None, description="List of LeaderBoardSport entries")
+    leaderboard: list[LeaderBoardSpot] | None = Field(None, description="List of LeaderBoardSport entries")

@@ -5,7 +5,6 @@ aoe2netwrapper.converters
 This module implements a high-level class with static methods to convert result of AoENetAPI methods to
 pandas DataFrames.
 """
-from typing import List
 
 from loguru import logger
 
@@ -106,7 +105,7 @@ class Convert:
         return dframe
 
     @staticmethod
-    def lobbies(lobbies_response: List[MatchLobby]) -> pd.DataFrame:
+    def lobbies(lobbies_response: list[MatchLobby]) -> pd.DataFrame:
         """
         Convert the result given by a call to AoE2NetAPI().lobbies to a pandas DataFrame. The resulting
         DataFrame will contain several rows for each lobby, namely as many as there are players in said
@@ -116,15 +115,15 @@ class Convert:
         make use of the groupby functionality of pandas DataFrames.
 
         Args:
-            lobbies_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
+            lobbies_response (list[MatchLobby]): the response directly returned by your AoE2NetAPI
                 client.
 
         Returns:
             A pandas DataFrame from the list of MatchLobby elements..
         """
-        if not isinstance(lobbies_response, list):  # move list to List[MatchLobby] when supporting > 3.9
-            logger.error("Tried to use method with a parameter of type != List[MatchLobby]")
-            raise TypeError("Provided parameter should be an instance of 'List[MatchLobby]'")
+        if not isinstance(lobbies_response, list):  # move list to list[MatchLobby] when supporting > 3.9
+            logger.error("Tried to use method with a parameter of type != list[MatchLobby]")
+            raise TypeError("Provided parameter should be an instance of 'list[MatchLobby]'")
 
         logger.debug("Converting Lobbies response to DataFrame")
         unfolded_lobbies = [_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in lobbies_response]
@@ -163,7 +162,7 @@ class Convert:
         return dframe
 
     @staticmethod
-    def match_history(match_history_response: List[MatchLobby]) -> pd.DataFrame:
+    def match_history(match_history_response: list[MatchLobby]) -> pd.DataFrame:
         """
         Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting
         DataFrame will contain several rows for each lobby, namely as many as there are players in said
@@ -173,16 +172,16 @@ class Convert:
         make use of the groupby functionality of pandas DataFrames.
 
         Args:
-            match_history_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
+            match_history_response (list[MatchLobby]): the response directly returned by your AoE2NetAPI
                 client.
 
         Returns:
             A pandas DataFrame from the list of MatchLobby elements.
         """
-        # move list to List[MatchLobby] when supporting > 3.9
+        # move list to list[MatchLobby] when supporting > 3.9
         if not isinstance(match_history_response, list):
-            logger.error("Tried to use method with a parameter of type != List[MatchLobby]")
-            raise TypeError("Provided parameter should be an instance of 'List[MatchLobby]'")
+            logger.error("Tried to use method with a parameter of type != list[MatchLobby]")
+            raise TypeError("Provided parameter should be an instance of 'list[MatchLobby]'")
 
         logger.debug("Converting Match History response to DataFrame")
         unfolded_lobbies = [
@@ -191,22 +190,22 @@ class Convert:
         return pd.concat(unfolded_lobbies).reset_index(drop=True)
 
     @staticmethod
-    def rating_history(rating_history_response: List[RatingTimePoint]) -> pd.DataFrame:
+    def rating_history(rating_history_response: list[RatingTimePoint]) -> pd.DataFrame:
         """
         Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.
 
         Args:
-            rating_history_response (List[RatingTimePoint]): the response directly returned by your AoE2NetAPI
+            rating_history_response (list[RatingTimePoint]): the response directly returned by your AoE2NetAPI
                 client.
 
         Returns:
             A pandas DataFrame from the list of RatingTimePoint elements, each row being the information from
             one RatingTimePoint in the list. Timestamps are converted to datetime objects.
         """
-        # move list to List[RatingTimePoint] when supporting > 3.9
+        # move list to list[RatingTimePoint] when supporting > 3.9
         if not isinstance(rating_history_response, list):
-            logger.error("Tried to use method with a parameter of type != List[RatingTimePoint]")
-            raise TypeError("Provided parameter should be an instance of 'List[RatingTimePoint]'")
+            logger.error("Tried to use method with a parameter of type != list[RatingTimePoint]")
+            raise TypeError("Provided parameter should be an instance of 'list[RatingTimePoint]'")
 
         logger.debug("Converting Rating History rsponse to DataFrame")
         dframe = pd.DataFrame(rating_history_response)
@@ -217,7 +216,7 @@ class Convert:
         return dframe.drop(columns=["timestamp"])
 
     @staticmethod
-    def matches(matches_response: List[MatchLobby]) -> pd.DataFrame:
+    def matches(matches_response: list[MatchLobby]) -> pd.DataFrame:
         """
         Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting
         DataFrame will contain several rows for each lobby, namely as many as there are players in said
@@ -227,15 +226,15 @@ class Convert:
         make use of the groupby functionality of pandas DataFrames.
 
         Args:
-            matches_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
+            matches_response (list[MatchLobby]): the response directly returned by your AoE2NetAPI
                 client.
 
         Returns:
             A pandas DataFrame from the list of MatchLobby elements.
         """
-        if not isinstance(matches_response, list):  # move list to List[MatchLobby] when supporting > 3.9
-            logger.error("Tried to use method with a parameter of type != List[MatchLobby]")
-            raise TypeError("Provided parameter should be an instance of 'List[MatchLobby]'")
+        if not isinstance(matches_response, list):  # move list to list[MatchLobby] when supporting > 3.9
+            logger.error("Tried to use method with a parameter of type != list[MatchLobby]")
+            raise TypeError("Provided parameter should be an instance of 'list[MatchLobby]'")
 
         logger.debug("Converting Match History response to DataFrame")
         unfolded_lobbies = [_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in matches_response]

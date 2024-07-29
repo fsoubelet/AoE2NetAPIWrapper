@@ -6,7 +6,7 @@ This module implements a high-level client to query the API at https://aoe2.net/
 """
 from __future__ import annotations
 
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 import requests
 from loguru import logger
@@ -41,7 +41,7 @@ class AoE2NetAPI:
     _MATCH_ENDPOINT: str = _API_BASE_URL + "/match"
     _NUMBER_ONLINE_ENDPOINT: str = _API_BASE_URL + "/stats/players"
 
-    def __init__(self, timeout: float | Tuple[float, float] = 5):
+    def __init__(self, timeout: float | tuple[float, float] = 5):
         """Creating a Session for connection pooling since we're always querying the same host."""
         self.session = requests.Session()
         self.timeout = timeout
@@ -135,7 +135,7 @@ class AoE2NetAPI:
         logger.trace(f"Validating response from '{self._LEADERBOARD_ENDPOINT}'")
         return LeaderBoardResponse(**processed_response)
 
-    def lobbies(self, game: str = "aoe2de") -> List[MatchLobby]:
+    def lobbies(self, game: str = "aoe2de") -> list[MatchLobby]:
         """
         Request all open lobbies.
 
@@ -158,7 +158,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self._LOBBIES_ENDPOINT}'")
-        return parse_obj_as(List[MatchLobby], processed_response)
+        return parse_obj_as(list[MatchLobby], processed_response)
 
     def last_match(
         self, game: str = "aoe2de", steam_id: int = None, profile_id: int = None
@@ -205,7 +205,7 @@ class AoE2NetAPI:
         count: int = 10,
         steam_id: int = None,
         profile_id: int = None,
-    ) -> List[MatchLobby]:
+    ) -> list[MatchLobby]:
         """
         Request the match history for a player. Either 'steam_id' or 'profile_id' required.
 
@@ -250,7 +250,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self._MATCH_HISTORY_ENDPOINT}'")
-        return parse_obj_as(List[MatchLobby], processed_response)
+        return parse_obj_as(list[MatchLobby], processed_response)
 
     def rating_history(
         self,
@@ -260,7 +260,7 @@ class AoE2NetAPI:
         count: int = 20,
         steam_id: int = None,
         profile_id: int = None,
-    ) -> List[RatingTimePoint]:
+    ) -> list[RatingTimePoint]:
         """
         Requests the rating history for a player. Either 'steam_id' or 'profile_id' required.
 
@@ -311,9 +311,9 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self._RATING_HISTORY_ENDPOINT}'")
-        return parse_obj_as(List[RatingTimePoint], processed_response)
+        return parse_obj_as(list[RatingTimePoint], processed_response)
 
-    def matches(self, game: str = "aoe2de", count: int = 10, since: int = None) -> List[MatchLobby]:
+    def matches(self, game: str = "aoe2de", count: int = 10, since: int = None) -> list[MatchLobby]:
         """
         Request matches after a specific time: the match history in an optionally given time
         window.
@@ -353,7 +353,7 @@ class AoE2NetAPI:
             timeout=self.timeout,
         )
         logger.trace(f"Validating response from '{self._MATCHES_ENDPOINT}'")
-        return parse_obj_as(List[MatchLobby], processed_response)
+        return parse_obj_as(list[MatchLobby], processed_response)
 
     def match(self, game: str = "aoe2de", uuid: str = None, match_id: int = None) -> MatchLobby:
         """
@@ -425,8 +425,8 @@ class AoE2NetAPI:
 def _get_request_response_json(
     session: requests.Session,
     url: str,
-    params: Dict[str, Any] = None,
-    timeout: float | Tuple[float, float] = None,
+    params: dict[str, Any] = None,
+    timeout: float | tuple[float, float] = None,
 ) -> dict:
     """
     Helper function to handle a GET request to an endpoint and return the response JSON content

@@ -7,7 +7,7 @@ https://aoe2.net/api/lobbies
 """
 from __future__ import annotations
 
-from typing import Any, List
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -77,4 +77,4 @@ class MatchLobby(BaseModel):
     opened: int | None = Field(None, description="Timestamp of the lobby's creation")
     started: Any | None = Field(None, description="Timestamp of the game's start")
     finished: Any | None = Field(None, description="Timestamp of the game's end")
-    players: List[LobbyMember] | None = Field(None, description="List of members in the lobby")
+    players: list[LobbyMember] | None = Field(None, description="List of members in the lobby")
