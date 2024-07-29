@@ -4,6 +4,7 @@ aoe2netwrapper.nightbot
 
 This module implements a high-level client to query the API at https://aoe2.net/#nightbot.
 """
+from __future__ import annotations
 
 from typing import Any, Dict, Tuple, Union
 

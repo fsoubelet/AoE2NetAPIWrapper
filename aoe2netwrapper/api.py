@@ -4,6 +4,7 @@ aoe2netwrapper.api
 
 This module implements a high-level client to query the API at https://aoe2.net/#api.
 """
+from __future__ import annotations
 
 from typing import Any, Dict, List, Tuple, Union
 

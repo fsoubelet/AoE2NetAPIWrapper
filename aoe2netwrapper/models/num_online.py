@@ -5,6 +5,8 @@ aoe2netwrapper.models.num_online
 This module contains the model objects to encapsulate the responses from the endpoint at
 https://aoe2.net/api/stats/players
 """
+from __future__ import annotations
+
 from typing import List, Optional
 
 from pydantic import BaseModel, Field

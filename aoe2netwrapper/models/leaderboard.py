@@ -5,6 +5,8 @@ aoe2netwrapper.models.leaderboard
 This module contains the model objects to encapsulate the responses from the endpoint at
 https://aoe2.net/api/leaderboard
 """
+from __future__ import annotations
+
 from typing import Any, List, Optional
 
 from pydantic import BaseModel, Field
