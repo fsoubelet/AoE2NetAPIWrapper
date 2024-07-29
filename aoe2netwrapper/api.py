@@ -14,7 +14,7 @@ import requests
 from loguru import logger
 from pydantic import TypeAdapter
 
-from aoe2netwrapper.exceptions import Aoe2NetError
+from aoe2netwrapper.exceptions import Aoe2NetError, RemovedApiEndpointError
 from aoe2netwrapper.models import (
     LastMatchResponse,
     LeaderBoardResponse,
@@ -32,6 +32,8 @@ _OK_STATUS_CODE: int = 200
 
 _LIST_MATCHLOBBY_ADAPTER = TypeAdapter(list[MatchLobby])
 _LIST_RATINGTIMEPOINT_ADAPTER = TypeAdapter(list[RatingTimePoint])
+
+_ENDPOINT_REMOVED_MSG = "This endpoint was removed from the aoe2.net API."
 
 
 class AoE2NetAPI:
@@ -160,17 +162,19 @@ class AoE2NetAPI:
             A list of MatchLobby valideted objects, each one encapsulating the data for a currently
             open lobby.
         """
-        logger.debug("Preparing parameters for open lobbies query")
-        query_params = {"game": game}
+        # logger.debug("Preparing parameters for open lobbies query")
+        # query_params = {"game": game}
 
-        processed_response = _get_request_response_json(
-            session=self.session,
-            url=self._LOBBIES_ENDPOINT,
-            params=query_params,
-            timeout=self.timeout,
-        )
-        logger.trace(f"Validating response from '{self._LOBBIES_ENDPOINT}'")
-        return _LIST_MATCHLOBBY_ADAPTER.validate_python(processed_response)
+        # processed_response = _get_request_response_json(
+        #     session=self.session,
+        #     url=self._LOBBIES_ENDPOINT,
+        #     params=query_params,
+        #     timeout=self.timeout,
+        # )
+        # logger.trace(f"Validating response from '{self._LOBBIES_ENDPOINT}'")
+        # return _LIST_MATCHLOBBY_ADAPTER.validate_python(processed_response)
+        logger.error(f"Tried to query {self._LOBBIES_ENDPOINT} endpoint, which was removed by aoe2.net")
+        raise RemovedApiEndpointError(self._LOBBIES_ENDPOINT)
 
     def last_match(
         self, game: str = "aoe2de", steam_id: int | None = None, profile_id: int | None = None
@@ -194,22 +198,24 @@ class AoE2NetAPI:
             following attributes: 'profile_id', 'steam_id', 'name', 'clan', 'country' and
             'last_match'.
         """
-        if not steam_id and not profile_id:
-            logger.error("Missing one of 'steam_id', 'profile_id'.")
-            msg = "Either 'steam_id' or 'profile_id' required, please provide one."
-            raise Aoe2NetError(msg)
+        # if not steam_id and not profile_id:
+        #     logger.error("Missing one of 'steam_id', 'profile_id'.")
+        #     msg = "Either 'steam_id' or 'profile_id' required, please provide one."
+        #     raise Aoe2NetError(msg)
 
-        logger.debug("Preparing parameters for last match query")
-        query_params = {"game": game, "steam_id": steam_id, "profile_id": profile_id}
+        # logger.debug("Preparing parameters for last match query")
+        # query_params = {"game": game, "steam_id": steam_id, "profile_id": profile_id}
 
-        processed_response = _get_request_response_json(
-            session=self.session,
-            url=self._LAST_MATCH_ENDPOINT,
-            params=query_params,
-            timeout=self.timeout,
-        )
-        logger.trace(f"Validating response from '{self._LAST_MATCH_ENDPOINT}'")
-        return LastMatchResponse(**processed_response)
+        # processed_response = _get_request_response_json(
+        #     session=self.session,
+        #     url=self._LAST_MATCH_ENDPOINT,
+        #     params=query_params,
+        #     timeout=self.timeout,
+        # )
+        # logger.trace(f"Validating response from '{self._LAST_MATCH_ENDPOINT}'")
+        # return LastMatchResponse(**processed_response)
+        logger.error(f"Tried to query {self._LAST_MATCH_ENDPOINT} endpoint, which was removed by aoe2.net")
+        raise RemovedApiEndpointError(self._LAST_MATCH_ENDPOINT)
 
     def match_history(
         self,
@@ -352,26 +358,28 @@ class AoE2NetAPI:
             A list of MatchLobby validated objects, each one encapsulating the data for one of the
             played matches during the time window queried for.
         """
-        if count > _MAX_MATCHES_COUNT:
-            logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
-            msg = "Invalid value for parameter 'count'."
-            raise Aoe2NetError(msg)
+        # if count > _MAX_MATCHES_COUNT:
+        #     logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
+        #     msg = "Invalid value for parameter 'count'."
+        #     raise Aoe2NetError(msg)
 
-        logger.debug("Preparing parameters for matches query")
-        query_params = {
-            "game": game,
-            "count": count,
-            "since": since,
-        }
+        # logger.debug("Preparing parameters for matches query")
+        # query_params = {
+        #     "game": game,
+        #     "count": count,
+        #     "since": since,
+        # }
 
-        processed_response = _get_request_response_json(
-            session=self.session,
-            url=self._MATCHES_ENDPOINT,
-            params=query_params,
-            timeout=self.timeout,
-        )
-        logger.trace(f"Validating response from '{self._MATCHES_ENDPOINT}'")
-        return _LIST_MATCHLOBBY_ADAPTER.validate_python(processed_response)
+        # processed_response = _get_request_response_json(
+        #     session=self.session,
+        #     url=self._MATCHES_ENDPOINT,
+        #     params=query_params,
+        #     timeout=self.timeout,
+        # )
+        # logger.trace(f"Validating response from '{self._MATCHES_ENDPOINT}'")
+        # return _LIST_MATCHLOBBY_ADAPTER.validate_python(processed_response)
+        logger.error(f"Tried to query {self._MATCHES_ENDPOINT} endpoint, which was removed by aoe2.net")
+        raise RemovedApiEndpointError(self._MATCHES_ENDPOINT)
 
     def match(self, game: str = "aoe2de", uuid: str | None = None, match_id: int | None = None) -> MatchLobby:
         """
@@ -390,26 +398,28 @@ class AoE2NetAPI:
         Returns:
             A MatchLobby validated object with the information of the specific match, including.
         """
-        if not uuid and not match_id:
-            logger.error("Missing one of 'uuid', 'match_id'.")
-            msg = "Either 'uuid' or 'match_id' required, please provide one."
-            raise Aoe2NetError(msg)
+        # if not uuid and not match_id:
+        #     logger.error("Missing one of 'uuid', 'match_id'.")
+        #     msg = "Either 'uuid' or 'match_id' required, please provide one."
+        #     raise Aoe2NetError(msg)
 
-        logger.debug("Preparing parameters for single match query")
-        query_params = {
-            "game": game,
-            "uuid": uuid,
-            "match_id": match_id,
-        }
+        # logger.debug("Preparing parameters for single match query")
+        # query_params = {
+        #     "game": game,
+        #     "uuid": uuid,
+        #     "match_id": match_id,
+        # }
 
-        processed_response = _get_request_response_json(
-            session=self.session,
-            url=self._MATCH_ENDPOINT,
-            params=query_params,
-            timeout=self.timeout,
-        )
-        logger.trace(f"Validating response from '{self._MATCH_ENDPOINT}'")
-        return MatchLobby(**processed_response)
+        # processed_response = _get_request_response_json(
+        #     session=self.session,
+        #     url=self._MATCH_ENDPOINT,
+        #     params=query_params,
+        #     timeout=self.timeout,
+        # )
+        # logger.trace(f"Validating response from '{self._MATCH_ENDPOINT}'")
+        # return MatchLobby(**processed_response)
+        logger.error(f"Tried to query {self._MATCH_ENDPOINT} endpoint, which was removed by aoe2.net")
+        raise RemovedApiEndpointError(self._MATCH_ENDPOINT)
 
     def num_online(self, game: str = "aoe2de") -> NumOnlineResponse:
         """
@@ -425,17 +435,19 @@ class AoE2NetAPI:
             validated objects encapsulating estimated metrics at different timestamps ('steam',
             'multiplayer', 'looking', 'in_game', 'multiplayer_1h' & 'multiplayer_24h').
         """
-        logger.debug("Preparing parameters for number of online players query")
-        query_params = {"game": game}
+        # logger.debug("Preparing parameters for number of online players query")
+        # query_params = {"game": game}
 
-        processed_response = _get_request_response_json(
-            session=self.session,
-            url=self._NUMBER_ONLINE_ENDPOINT,
-            params=query_params,
-            timeout=self.timeout,
-        )
-        logger.trace(f"Validating response from '{self._NUMBER_ONLINE_ENDPOINT}'")
-        return NumOnlineResponse(**processed_response)
+        # processed_response = _get_request_response_json(
+        #     session=self.session,
+        #     url=self._NUMBER_ONLINE_ENDPOINT,
+        #     params=query_params,
+        #     timeout=self.timeout,
+        # )
+        # logger.trace(f"Validating response from '{self._NUMBER_ONLINE_ENDPOINT}'")
+        # return NumOnlineResponse(**processed_response)
+        logger.error(f"Tried to query {self._NUMBER_ONLINE_ENDPOINT} endpoint, which was removed by aoe2.net")
+        raise RemovedApiEndpointError(self._NUMBER_ONLINE_ENDPOINT)
 
 
 # ----- Helpers ----- #
