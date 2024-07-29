@@ -16,6 +16,7 @@ from aoe2netwrapper.exceptions import NightBotError
 
 _OK_STATUS_CODE: int = 200
 
+
 class AoE2NightbotAPI:
     """
     The 'AoE2NightbotAPI' class is a client that encompasses the https://aoe2.net/#nightbot API endpoints,
