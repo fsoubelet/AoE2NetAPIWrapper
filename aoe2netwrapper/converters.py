@@ -214,8 +214,7 @@ class Convert:
 
         logger.trace("Converting timestamps to datetime objects")
         dframe["time"] = pd.to_datetime(dframe["timestamp"], unit="s")
-        dframe = dframe.drop(columns=["timestamp"])
-        return dframe
+        return dframe.drop(columns=["timestamp"])
 
     @staticmethod
     def matches(matches_response: List[MatchLobby]) -> pd.DataFrame:
@@ -289,8 +288,7 @@ class Convert:
         dframe["multiplayer_24h"] = dframe.player_stats.apply(lambda x: x["num_players"]["multiplayer_24h"])
 
         logger.trace("Removing 'player_stats' column to avoid nested & duplicate data")
-        dframe = dframe.drop(columns=["player_stats"])
-        return dframe
+        return dframe.drop(columns=["player_stats"])
 
 
 # ----- Helpers ----- #

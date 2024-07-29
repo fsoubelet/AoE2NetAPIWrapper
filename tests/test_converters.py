@@ -250,8 +250,7 @@ class TestConvert:
 def strings_defaults_payload() -> dict:
     strings_response_file = INPUTS_DIR / "strings.json"
     with strings_response_file.open("r") as fileobj:
-        payload = json.load(fileobj)
-    return payload
+        return json.load(fileobj)
 
 
 @pytest.fixture
@@ -264,8 +263,7 @@ def strings_converted() -> pd.DataFrame:
 def leaderboard_defaults_payload() -> dict:
     leaderboard_defaults_file = INPUTS_DIR / "leaderboard_defaults.json"
     with leaderboard_defaults_file.open("r") as fileobj:
-        payload = json.load(fileobj)
-    return payload
+        return json.load(fileobj)
 
 
 @pytest.fixture
@@ -278,8 +276,7 @@ def leaderboard_converted() -> pd.DataFrame:
 def lobbies_defaults_payload() -> dict:
     lobbies_defaults_file = INPUTS_DIR / "lobbies.json"
     with lobbies_defaults_file.open("r") as fileobj:
-        payload = json.load(fileobj)
-    return payload
+        return json.load(fileobj)
 
 
 @pytest.fixture
@@ -292,8 +289,7 @@ def lobbies_converted() -> pd.DataFrame:
 def last_match_steamid_payload() -> dict:
     last_match_steamid_file = INPUTS_DIR / "last_match_steamid.json"
     with last_match_steamid_file.open("r") as fileobj:
-        payload = json.load(fileobj)
-    return payload
+        return json.load(fileobj)
 
 
 @pytest.fixture
@@ -306,8 +302,7 @@ def last_match_converted() -> pd.DataFrame:
 def match_history_steamid_payload() -> dict:
     match_history_steamid_file = INPUTS_DIR / "match_history_steamid.json"
     with match_history_steamid_file.open("r") as fileobj:
-        payload = json.load(fileobj)
-    return payload
+        return json.load(fileobj)
 
 
 @pytest.fixture
@@ -320,8 +315,7 @@ def match_history_converted() -> pd.DataFrame:
 def rating_history_profileid_payload() -> dict:
     rating_history_profileid_file = INPUTS_DIR / "rating_history_profileid.json"
     with rating_history_profileid_file.open("r") as fileobj:
-        payload = json.load(fileobj)
-    return payload
+        return json.load(fileobj)
 
 
 @pytest.fixture
@@ -334,8 +328,7 @@ def rating_history_converted() -> pd.DataFrame:
 def matches_defaults_payload() -> dict:
     matches_defaults_file = INPUTS_DIR / "matches_defaults.json"
     with matches_defaults_file.open("r") as fileobj:
-        payload = json.load(fileobj)
-    return payload
+        return json.load(fileobj)
 
 
 @pytest.fixture
@@ -348,8 +341,7 @@ def matches_converted() -> pd.DataFrame:
 def match_uuid_payload() -> dict:
     match_uuid_file = INPUTS_DIR / "match_uuid.json"
     with match_uuid_file.open("r") as fileobj:
-        payload = json.load(fileobj)
-    return payload
+        return json.load(fileobj)
 
 
 @pytest.fixture
@@ -362,8 +354,7 @@ def match_converted() -> pd.DataFrame:
 def num_online_defaults_payload() -> dict:
     num_online_defaults_file = INPUTS_DIR / "num_online.json"
     with num_online_defaults_file.open("r") as fileobj:
-        payload = json.load(fileobj)
-    return payload
+        return json.load(fileobj)
 
 
 @pytest.fixture
