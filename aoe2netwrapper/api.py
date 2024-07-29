@@ -33,8 +33,6 @@ _OK_STATUS_CODE: int = 200
 _LIST_MATCHLOBBY_ADAPTER = TypeAdapter(list[MatchLobby])
 _LIST_RATINGTIMEPOINT_ADAPTER = TypeAdapter(list[RatingTimePoint])
 
-_ENDPOINT_REMOVED_MSG = "This endpoint was removed from the aoe2.net API."
-
 
 class AoE2NetAPI:
     """
