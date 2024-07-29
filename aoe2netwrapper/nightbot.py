@@ -11,7 +11,7 @@ from typing import Any
 import requests
 from loguru import logger
 
-from aoe2netwrapper.exceptions import NightBotException
+from aoe2netwrapper.exceptions import NightBotError
 
 
 class AoE2NightbotAPI:
@@ -76,7 +76,7 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotException(
+            raise NightBotError(
                 "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
             )
 
@@ -140,7 +140,7 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotException(
+            raise NightBotError(
                 "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
             )
 
@@ -207,7 +207,7 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotException(
+            raise NightBotError(
                 "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
             )
 
@@ -269,7 +269,7 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotException(
+            raise NightBotError(
                 "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
             )
 
@@ -329,7 +329,7 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotException(
+            raise NightBotError(
                 "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
             )
 
@@ -382,5 +382,5 @@ def _get_request_text_response_decoded(
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
     if response.status_code != 200:
         logger.error(f"GET request at '{response.url}' returned a {response.status_code} status code")
-        raise NightBotException(f"Expected status code 200 - got {response.status_code} instead.")
+        raise NightBotError(f"Expected status code 200 - got {response.status_code} instead.")
     return response.text

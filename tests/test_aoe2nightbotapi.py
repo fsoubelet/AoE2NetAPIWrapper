@@ -3,7 +3,7 @@ import pathlib
 import pytest
 import responses
 
-from aoe2netwrapper.exceptions import NightBotException
+from aoe2netwrapper.exceptions import NightBotError
 from aoe2netwrapper.nightbot import AoE2NightbotAPI, _get_request_text_response_decoded
 
 CURRENT_DIR = pathlib.Path(__file__).parent
@@ -53,7 +53,7 @@ class TestExceptions:
     client = AoE2NightbotAPI()
 
     def test_rank_misses_required_param(self, caplog):
-        with pytest.raises(NightBotException):
+        with pytest.raises(NightBotError):
             self.client.rank()
 
         for record in caplog.records:
@@ -61,7 +61,7 @@ class TestExceptions:
             assert "Missing one of 'search', 'steam_id', 'profile_id'" in caplog.text
 
     def test_opponent_misses_required_param(self, caplog):
-        with pytest.raises(NightBotException):
+        with pytest.raises(NightBotError):
             self.client.opponent()
 
         for record in caplog.records:
@@ -69,7 +69,7 @@ class TestExceptions:
             assert "Missing one of 'search', 'steam_id', 'profile_id'" in caplog.text
 
     def test_match_misses_required_param(self, caplog):
-        with pytest.raises(NightBotException):
+        with pytest.raises(NightBotError):
             self.client.match()
 
         for record in caplog.records:
@@ -77,7 +77,7 @@ class TestExceptions:
             assert "Missing one of 'search', 'steam_id', 'profile_id'" in caplog.text
 
     def test_civs_misses_required_param(self, caplog):
-        with pytest.raises(NightBotException):
+        with pytest.raises(NightBotError):
             self.client.civs()
 
         for record in caplog.records:
@@ -85,7 +85,7 @@ class TestExceptions:
             assert "Missing one of 'search', 'steam_id', 'profile_id'" in caplog.text
 
     def test_ma_misses_required_param(self, caplog):
-        with pytest.raises(NightBotException):
+        with pytest.raises(NightBotError):
             self.client.map()
 
         for record in caplog.records:
@@ -101,7 +101,7 @@ class TestExceptions:
             status=404,
         )
 
-        with pytest.raises(NightBotException):
+        with pytest.raises(NightBotError):
             _ = _get_request_text_response_decoded(self.client.session, url="https://local/test/endpoint")
 
         for record in caplog.records:

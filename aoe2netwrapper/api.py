@@ -12,7 +12,7 @@ import requests
 from loguru import logger
 from pydantic import parse_obj_as
 
-from aoe2netwrapper.exceptions import Aoe2NetException
+from aoe2netwrapper.exceptions import Aoe2NetEroor
 from aoe2netwrapper.models import (
     LastMatchResponse,
     LeaderBoardResponse,
@@ -113,7 +113,7 @@ class AoE2NetAPI:
         """
         if count > 10_000:
             logger.error(f"'count' has to be 10000 or less, but {count} was provided.")
-            raise Aoe2NetException("Invalid value for parameter 'count'.")
+            raise Aoe2NetEroor("Invalid value for parameter 'count'.")
 
         logger.debug("Preparing parameters for leaderboard query")
         query_params = {
@@ -184,7 +184,7 @@ class AoE2NetAPI:
         """
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetException("Either 'steam_id' or 'profile_id' required, please provide one.")
+            raise Aoe2NetEroor("Either 'steam_id' or 'profile_id' required, please provide one.")
 
         logger.debug("Preparing parameters for last match query")
         query_params = {"game": game, "steam_id": steam_id, "profile_id": profile_id}
@@ -228,11 +228,11 @@ class AoE2NetAPI:
         """
         if count > 1_000:
             logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
-            raise Aoe2NetException("Invalid value for parameter 'count'.")
+            raise Aoe2NetEroor("Invalid value for parameter 'count'.")
 
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetException("Either 'steam_id' or 'profile_id' required, please provide one.")
+            raise Aoe2NetEroor("Either 'steam_id' or 'profile_id' required, please provide one.")
 
         logger.debug("Preparing parameters for match history query")
         query_params = {
@@ -288,11 +288,11 @@ class AoE2NetAPI:
         """
         if count > 10_000:
             logger.error(f"'count' has to be 10 000 or less, but {count} was provided.")
-            raise Aoe2NetException("Invalid value for parameter 'count'.")
+            raise Aoe2NetEroor("Invalid value for parameter 'count'.")
 
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetException("Either 'steam_id' or 'profile_id' required, please provide one.")
+            raise Aoe2NetEroor("Either 'steam_id' or 'profile_id' required, please provide one.")
 
         logger.debug("Preparing parameters for rating history query")
         query_params = {
@@ -337,7 +337,7 @@ class AoE2NetAPI:
         """
         if count > 1000:
             logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
-            raise Aoe2NetException("Invalid value for parameter 'count'.")
+            raise Aoe2NetEroor("Invalid value for parameter 'count'.")
 
         logger.debug("Preparing parameters for matches query")
         query_params = {
@@ -374,7 +374,7 @@ class AoE2NetAPI:
         """
         if not uuid and not match_id:
             logger.error("Missing one of 'uuid', 'match_id'.")
-            raise Aoe2NetException("Either 'uuid' or 'match_id' required, please provide one.")
+            raise Aoe2NetEroor("Either 'uuid' or 'match_id' required, please provide one.")
 
         logger.debug("Preparing parameters for single match query")
         query_params = {
@@ -450,5 +450,5 @@ def _get_request_response_json(
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
     if response.status_code != 200:
         logger.error(f"GET request at '{response.url}' returned a {response.status_code} status code")
-        raise Aoe2NetException(f"Expected status code 200 - got {response.status_code} instead.")
+        raise Aoe2NetEroor(f"Expected status code 200 - got {response.status_code} instead.")
     return response.json()
