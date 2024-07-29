@@ -1,15 +1,9 @@
-import json
-import pathlib
-
 import pandas as pd
 import pytest
 import responses
 
 from aoe2netwrapper import AoE2NetAPI
 from aoe2netwrapper.converters import Convert
-
-CURRENT_DIR = pathlib.Path(__file__).parent
-INPUTS_DIR = CURRENT_DIR / "inputs"
 
 
 class TestExceptions:
@@ -39,7 +33,7 @@ class TestExceptions:
 
     def test_last_match_fail_on_wrong_type(self, caplog):
         with pytest.raises(TypeError):
-            _ = Convert.last_match(json)
+            _ = Convert.last_match({"a": 1})
 
         for record in caplog.records:
             assert record.levelname == "ERROR"
@@ -71,7 +65,7 @@ class TestExceptions:
 
     def test_match_fail_on_wrong_type(self, caplog):
         with pytest.raises(TypeError):
-            _ = Convert.match(CURRENT_DIR)
+            _ = Convert.match({"a": 1})
 
         for record in caplog.records:
             assert record.levelname == "ERROR"
