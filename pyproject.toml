@@ -22,7 +22,7 @@ description = "My Python wrapper for the aoe2.net data API"
 authors = [{name = "Felix Soubelet", email = "felix.soubelet@cern.ch"},]
 license = "MIT"
 dynamic = ["version"]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 
 keywords = [
     "API",
