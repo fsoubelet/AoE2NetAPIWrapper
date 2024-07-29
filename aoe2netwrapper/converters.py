@@ -18,9 +18,7 @@ from aoe2netwrapper.models import (  # LastMatchResponse, NumOnlineResponse,
 try:
     import pandas as pd
 except ImportError as error:
-    logger.error(
-        "User tried to use the 'converters' submodule without havinig installed the 'pandas' library."
-    )
+    logger.error("User tried to use the 'converters' submodule without the 'pandas' library.")
     msg = "The 'converters' submodule requires the 'pandas' library to function."
     raise NotImplementedError(msg) from error
 
