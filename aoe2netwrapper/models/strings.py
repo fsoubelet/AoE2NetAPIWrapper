@@ -8,7 +8,8 @@ https://aoe2.net/api/strings
 Any confusing with a specific attribute being an INTEGER in the models can be cleared by checking the
 corresponding string the API / system attributes to this ID.
 """
-from typing import List, Optional
+
+from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
@@ -16,112 +17,112 @@ from pydantic import BaseModel, Field
 class AgeString(BaseModel):
     """An object to encapsulate any entry for the available age strings and their respective IDs."""
 
-    id: Optional[int] = Field(None, description="ID for this specific string value")
-    string: Optional[str] = Field(None, description="String value for this specific 'age' ID")
+    id: int | None = Field(None, description="ID for this specific string value")
+    string: str | None = Field(None, description="String value for this specific 'age' ID")
 
 
 class CivilizationString(BaseModel):
     """An object to encapsulate any entry for the available civilization strings and their respective IDs."""
 
-    id: Optional[int] = Field(None, description="ID for this specific string value")
-    string: Optional[str] = Field(None, description="String value for this specific 'civ' ID")
+    id: int | None = Field(None, description="ID for this specific string value")
+    string: str | None = Field(None, description="String value for this specific 'civ' ID")
 
 
 class GameTypeString(BaseModel):
     """An object to encapsulate any entry for the available game type strings and their respective IDs."""
 
-    id: Optional[int] = Field(None, description="ID for this specific string value")
-    string: Optional[str] = Field(None, description="String value for this specific 'game_type' ID")
+    id: int | None = Field(None, description="ID for this specific string value")
+    string: str | None = Field(None, description="String value for this specific 'game_type' ID")
 
 
 class LeaderBoardString(BaseModel):
     """An object to encapsulate any entry for the available leaderboard strings and their respective IDs."""
 
-    id: Optional[int] = Field(None, description="ID for this specific string value")
-    string: Optional[str] = Field(None, description="String value for this specific 'leaderboard' ID")
+    id: int | None = Field(None, description="ID for this specific string value")
+    string: str | None = Field(None, description="String value for this specific 'leaderboard' ID")
 
 
 class MapSizeString(BaseModel):
     """An object to encapsulate any entry for the available map size strings and their respective IDs."""
 
-    id: Optional[int] = Field(None, description="ID for this specific string value")
-    string: Optional[str] = Field(None, description="String value for this specific 'map_size' ID")
+    id: int | None = Field(None, description="ID for this specific string value")
+    string: str | None = Field(None, description="String value for this specific 'map_size' ID")
 
 
 class MapTypeString(BaseModel):
     """An object to encapsulate any entry for the available map type strings and their respective IDs."""
 
-    id: Optional[int] = Field(None, description="ID for this specific string value")
-    string: Optional[str] = Field(None, description="String value for this specific 'map_type' ID")
+    id: int | None = Field(None, description="ID for this specific string value")
+    string: str | None = Field(None, description="String value for this specific 'map_type' ID")
 
 
 class RatingTypeString(BaseModel):
     """An object to encapsulate any entry for the available rating type strings and their respective IDs."""
 
-    id: Optional[int] = Field(None, description="ID for this specific string value")
-    string: Optional[str] = Field(None, description="String value for this specific 'rating_type' ID")
+    id: int | None = Field(None, description="ID for this specific string value")
+    string: str | None = Field(None, description="String value for this specific 'rating_type' ID")
 
 
 class ResourcesString(BaseModel):
     """An object to encapsulate any entry for the available resources strings and their respective IDs."""
 
-    id: Optional[int] = Field(None, description="ID for this specific string value")
-    string: Optional[str] = Field(None, description="String value for this specific 'resources' ID")
+    id: int | None = Field(None, description="ID for this specific string value")
+    string: str | None = Field(None, description="String value for this specific 'resources' ID")
 
 
 class SpeedString(BaseModel):
     """An object to encapsulate any entry for the available speed strings and their respective IDs."""
 
-    id: Optional[int] = Field(None, description="ID for this specific string value")
-    string: Optional[str] = Field(None, description="String value for this specific 'speed' ID")
+    id: int | None = Field(None, description="ID for this specific string value")
+    string: str | None = Field(None, description="String value for this specific 'speed' ID")
 
 
 class VictoryString(BaseModel):
     """An object to encapsulate any entry for the available victory strings and their respective IDs."""
 
-    id: Optional[int] = Field(None, description="ID for this specific string value")
-    string: Optional[str] = Field(None, description="String value for this specific 'victory' ID")
+    id: int | None = Field(None, description="ID for this specific string value")
+    string: str | None = Field(None, description="String value for this specific 'victory' ID")
 
 
 class VisibilityString(BaseModel):
     """An object to encapsulate any entry for the available visibiliity strings and their respective IDs."""
 
-    id: Optional[int] = Field(None, description="ID for this specific string value")
-    string: Optional[str] = Field(None, description="String value for this specific 'visibility' ID")
+    id: int | None = Field(None, description="ID for this specific string value")
+    string: str | None = Field(None, description="String value for this specific 'visibility' ID")
 
 
 class StringsResponse(BaseModel):
     """An object to encapsulate the response from the strings API endpoint."""
 
-    language: Optional[str] = Field(None, description="Language of the returned strings")
-    age: Optional[List[AgeString]] = Field(None, description="List of all strings and their IDs for ages")
-    civ: Optional[List[CivilizationString]] = Field(
+    language: str | None = Field(None, description="Language of the returned strings")
+    age: list[AgeString] | None = Field(None, description="List of all strings and their IDs for ages")
+    civ: list[CivilizationString] | None = Field(
         None, description="List of all strings and their IDs for civilizations"
     )
-    game_type: Optional[List[GameTypeString]] = Field(
+    game_type: list[GameTypeString] | None = Field(
         None, description="List of all strings and their IDs for game types"
     )
-    leaderboard: Optional[List[LeaderBoardString]] = Field(
+    leaderboard: list[LeaderBoardString] | None = Field(
         None, description="List of all strings and their IDs for leaderboards"
     )
-    map_size: Optional[List[MapSizeString]] = Field(
+    map_size: list[MapSizeString] | None = Field(
         None, description="List of all strings and their IDs for map sizes"
     )
-    map_type: Optional[List[MapTypeString]] = Field(
+    map_type: list[MapTypeString] | None = Field(
         None, description="List of all strings and their IDs for map types"
     )
-    rating_type: Optional[List[RatingTypeString]] = Field(
+    rating_type: list[RatingTypeString] | None = Field(
         None, description="List of all strings and their IDs for rating types"
     )
-    resources: Optional[List[ResourcesString]] = Field(
+    resources: list[ResourcesString] | None = Field(
         None, description="List of all strings and their IDs for resources"
     )
-    speed: Optional[List[SpeedString]] = Field(
+    speed: list[SpeedString] | None = Field(
         None, description="List of all strings and their IDs for game speeds"
     )
-    victory: Optional[List[VictoryString]] = Field(
+    victory: list[VictoryString] | None = Field(
         None, description="List of all strings and their IDs for victory types"
     )
-    visibility: Optional[List[VisibilityString]] = Field(
+    visibility: list[VisibilityString] | None = Field(
         None, description="List of all strings and their IDs for visibility"
     )

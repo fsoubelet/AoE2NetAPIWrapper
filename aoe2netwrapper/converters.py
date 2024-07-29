@@ -5,15 +5,12 @@ aoe2netwrapper.converters
 This module implements a high-level class with static methods to convert result of AoENetAPI methods to
 pandas DataFrames.
 """
-from typing import List
 
 from loguru import logger
 
-from aoe2netwrapper.models import (
-    LastMatchResponse,
+from aoe2netwrapper.models import (  # LastMatchResponse, NumOnlineResponse,
     LeaderBoardResponse,
     MatchLobby,
-    NumOnlineResponse,
     RatingTimePoint,
     StringsResponse,
 )
@@ -21,13 +18,9 @@ from aoe2netwrapper.models import (
 try:
     import pandas as pd
 except ImportError as error:
-    logger.error(
-        "User tried to use the 'converters' submodule without havinig installed the 'pandas' library."
-    )
-    raise NotImplementedError(
-        "The 'aoe2netwrapper.converters' module exports results to 'pandas.DataFrame' objects and "
-        "needs the 'pandas' library installed to function."
-    ) from error
+    logger.error("User tried to use the 'converters' submodule without the 'pandas' library.")
+    msg = "The 'converters' submodule requires the 'pandas' library to function."
+    raise NotImplementedError(msg) from error
 
 
 class Convert:
@@ -53,7 +46,8 @@ class Convert:
         """
         if not isinstance(strings_response, StringsResponse):
             logger.error("Tried to use method with a parameter of type != StringsResponse")
-            raise TypeError("Provided parameter should be an instance of 'StringsResponse'")
+            msg = "Provided parameter should be an instance of 'StringsResponse'"
+            raise TypeError(msg)
 
         logger.debug("Converting StringsResponse to DataFrame")
         dframe = pd.DataFrame(strings_response).transpose()
@@ -88,7 +82,8 @@ class Convert:
         """
         if not isinstance(leaderboard_response, LeaderBoardResponse):
             logger.error("Tried to use method with a parameter of type != LeaderBoardResponse")
-            raise TypeError("Provided parameter should be an instance of 'LeaderBoardResponse'")
+            msg = "Provided parameter should be an instance of 'LeaderBoardResponse'"
+            raise TypeError(msg)
 
         logger.debug("Converting LeaderBoardResponse leaderboard to DataFrame")
         dframe = pd.DataFrame(leaderboard_response.leaderboard)
@@ -105,65 +100,67 @@ class Convert:
         dframe["last_match_time"] = pd.to_datetime(dframe["last_match_time"], unit="s")
         return dframe
 
+    # @staticmethod
+    # def lobbies(lobbies_response: list[MatchLobby]) -> pd.DataFrame:
+    #     """
+    #     Convert the result given by a call to AoE2NetAPI().lobbies to a pandas DataFrame. The resulting
+    #     DataFrame will contain several rows for each lobby, namely as many as there are players in said
+    #     lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.
+
+    #     To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
+    #     make use of the groupby functionality of pandas DataFrames.
+
+    #     Args:
+    #         lobbies_response (list[MatchLobby]): the response directly returned by your AoE2NetAPI
+    #             client.
+
+    #     Returns:
+    #         A pandas DataFrame from the list of MatchLobby elements..
+    #     """
+    #     if not isinstance(lobbies_response, list):  # move list to list[MatchLobby] when supporting > 3.9
+    #         logger.error("Tried to use method with a parameter of type != list[MatchLobby]")
+    #         msg = "Provided parameter should be an instance of 'list[MatchLobby]'"
+    #         raise TypeError(msg)
+
+    #     logger.debug("Converting Lobbies response to DataFrame")
+    #     unfolded_lobbies = [_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in lobbies_response]
+    #     return pd.concat(unfolded_lobbies).reset_index(drop=True)
+
+    # @staticmethod
+    # def last_match(last_match_response: LastMatchResponse) -> pd.DataFrame:
+    #     """
+    #     Convert the result given by a call to AoE2NetAPI().last_match to a pandas DataFrame. There is not
+    #     much use to this as the DataFrame will only have one row, but the method is provided nonetheless in
+    #     case users want to concatenate several of these results in a DataFrame.
+
+    #     Args:
+    #         last_match_response (LastMatchResponse): the response directly returned by your AoE2NetAPI
+    #             client.
+
+    #     Returns:
+    #         A pandas DataFrame from the list of LastMatchResponse attributes. Beware: the 'players'
+    #         column is directly the content of the 'LastMatchResponse.last_match.players' attribute and as
+    #         such holds a list of LobbyMember objects.
+    #     """
+    #     if not isinstance(last_match_response, LastMatchResponse):
+    #         logger.error("Tried to use method with a parameter of type != LastMatchResponse")
+    #         msg = "Provided parameter should be an instance of 'LastMatchResponse'"
+    #         raise TypeError(msg)
+
+    #     logger.debug("Converting LastMatchResponse last_match to DataFrame")
+    #     dframe = pd.DataFrame(last_match_response.last_match).transpose()
+    #     dframe.columns = dframe.iloc[0]
+    #     dframe = dframe.drop(0).reset_index()
+
+    #     logger.trace("Inserting LastMatchResponse attributes as columns")
+    #     dframe["profile_id"] = last_match_response.profile_id
+    #     dframe["steam_id"] = last_match_response.steam_id
+    #     dframe["name"] = last_match_response.name
+    #     dframe["country"] = last_match_response.country
+    #     return dframe
+
     @staticmethod
-    def lobbies(lobbies_response: List[MatchLobby]) -> pd.DataFrame:
-        """
-        Convert the result given by a call to AoE2NetAPI().lobbies to a pandas DataFrame. The resulting
-        DataFrame will contain several rows for each lobby, namely as many as there are players in said
-        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.
-
-        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
-        make use of the groupby functionality of pandas DataFrames.
-
-        Args:
-            lobbies_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
-                client.
-
-        Returns:
-            A pandas DataFrame from the list of MatchLobby elements..
-        """
-        if not isinstance(lobbies_response, list):  # move list to List[MatchLobby] when supporting > 3.9
-            logger.error("Tried to use method with a parameter of type != List[MatchLobby]")
-            raise TypeError("Provided parameter should be an instance of 'List[MatchLobby]'")
-
-        logger.debug("Converting Lobbies response to DataFrame")
-        unfolded_lobbies = [_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in lobbies_response]
-        return pd.concat(unfolded_lobbies).reset_index(drop=True)
-
-    @staticmethod
-    def last_match(last_match_response: LastMatchResponse) -> pd.DataFrame:
-        """
-        Convert the result given by a call to AoE2NetAPI().last_match to a pandas DataFrame. There is not
-        much use to this as the DataFrame will only have one row, but the method is provided nonetheless in
-        case users want to concatenate several of these results in a DataFrame.
-
-        Args:
-            last_match_response (LastMatchResponse): the response directly returned by your AoE2NetAPI
-                client.
-
-        Returns:
-            A pandas DataFrame from the list of LastMatchResponse attributes. Beware: the 'players'
-            column is directly the content of the 'LastMatchResponse.last_match.players' attribute and as
-            such holds a list of LobbyMember objects.
-        """
-        if not isinstance(last_match_response, LastMatchResponse):
-            logger.error("Tried to use method with a parameter of type != LastMatchResponse")
-            raise TypeError("Provided parameter should be an instance of 'LastMatchResponse'")
-
-        logger.debug("Converting LastMatchResponse last_match to DataFrame")
-        dframe = pd.DataFrame(last_match_response.last_match).transpose()
-        dframe.columns = dframe.iloc[0]
-        dframe = dframe.drop(0).reset_index()
-
-        logger.trace("Inserting LastMatchResponse attributes as columns")
-        dframe["profile_id"] = last_match_response.profile_id
-        dframe["steam_id"] = last_match_response.steam_id
-        dframe["name"] = last_match_response.name
-        dframe["country"] = last_match_response.country
-        return dframe
-
-    @staticmethod
-    def match_history(match_history_response: List[MatchLobby]) -> pd.DataFrame:
+    def match_history(match_history_response: list[MatchLobby]) -> pd.DataFrame:
         """
         Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting
         DataFrame will contain several rows for each lobby, namely as many as there are players in said
@@ -173,16 +170,17 @@ class Convert:
         make use of the groupby functionality of pandas DataFrames.
 
         Args:
-            match_history_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
+            match_history_response (list[MatchLobby]): the response directly returned by your AoE2NetAPI
                 client.
 
         Returns:
             A pandas DataFrame from the list of MatchLobby elements.
         """
-        # move list to List[MatchLobby] when supporting > 3.9
+        # move list to list[MatchLobby] when supporting > 3.9
         if not isinstance(match_history_response, list):
-            logger.error("Tried to use method with a parameter of type != List[MatchLobby]")
-            raise TypeError("Provided parameter should be an instance of 'List[MatchLobby]'")
+            logger.error("Tried to use method with a parameter of type != list[MatchLobby]")
+            msg = "Provided parameter should be an instance of 'list[MatchLobby]'"
+            raise TypeError(msg)
 
         logger.debug("Converting Match History response to DataFrame")
         unfolded_lobbies = [
@@ -191,22 +189,23 @@ class Convert:
         return pd.concat(unfolded_lobbies).reset_index(drop=True)
 
     @staticmethod
-    def rating_history(rating_history_response: List[RatingTimePoint]) -> pd.DataFrame:
+    def rating_history(rating_history_response: list[RatingTimePoint]) -> pd.DataFrame:
         """
         Convert the result given by a call to AoE2NetAPI().leaderboard to a pandas DataFrame.
 
         Args:
-            rating_history_response (List[RatingTimePoint]): the response directly returned by your AoE2NetAPI
+            rating_history_response (list[RatingTimePoint]): the response directly returned by your AoE2NetAPI
                 client.
 
         Returns:
             A pandas DataFrame from the list of RatingTimePoint elements, each row being the information from
             one RatingTimePoint in the list. Timestamps are converted to datetime objects.
         """
-        # move list to List[RatingTimePoint] when supporting > 3.9
+        # move list to list[RatingTimePoint] when supporting > 3.9
         if not isinstance(rating_history_response, list):
-            logger.error("Tried to use method with a parameter of type != List[RatingTimePoint]")
-            raise TypeError("Provided parameter should be an instance of 'List[RatingTimePoint]'")
+            logger.error("Tried to use method with a parameter of type != list[RatingTimePoint]")
+            msg = "Provided parameter should be an instance of 'list[RatingTimePoint]'"
+            raise TypeError(msg)
 
         logger.debug("Converting Rating History rsponse to DataFrame")
         dframe = pd.DataFrame(rating_history_response)
@@ -214,83 +213,83 @@ class Convert:
 
         logger.trace("Converting timestamps to datetime objects")
         dframe["time"] = pd.to_datetime(dframe["timestamp"], unit="s")
-        dframe = dframe.drop(columns=["timestamp"])
-        return dframe
+        return dframe.drop(columns=["timestamp"])
 
-    @staticmethod
-    def matches(matches_response: List[MatchLobby]) -> pd.DataFrame:
-        """
-        Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting
-        DataFrame will contain several rows for each lobby, namely as many as there are players in said
-        lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.
+    # @staticmethod
+    # def matches(matches_response: list[MatchLobby]) -> pd.DataFrame:
+    #     """
+    #     Convert the result given by a call to AoE2NetAPI().match_history to a pandas DataFrame. The resulting
+    #     DataFrame will contain several rows for each lobby, namely as many as there are players in said
+    #     lobby. All global attributes of each lobby are broadcasted to arrays, making them duplicates.
 
-        To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
-        make use of the groupby functionality of pandas DataFrames.
+    #     To isolate a specific lobby, either call the AoE2NetAPI().match method with the lobby's UUID or
+    #     make use of the groupby functionality of pandas DataFrames.
 
-        Args:
-            matches_response (List[MatchLobby]): the response directly returned by your AoE2NetAPI
-                client.
+    #     Args:
+    #         matches_response (list[MatchLobby]): the response directly returned by your AoE2NetAPI
+    #             client.
 
-        Returns:
-            A pandas DataFrame from the list of MatchLobby elements.
-        """
-        if not isinstance(matches_response, list):  # move list to List[MatchLobby] when supporting > 3.9
-            logger.error("Tried to use method with a parameter of type != List[MatchLobby]")
-            raise TypeError("Provided parameter should be an instance of 'List[MatchLobby]'")
+    #     Returns:
+    #         A pandas DataFrame from the list of MatchLobby elements.
+    #     """
+    #     if not isinstance(matches_response, list):  # move list to list[MatchLobby] when supporting > 3.9
+    #         logger.error("Tried to use method with a parameter of type != list[MatchLobby]")
+    #         msg = "Provided parameter should be an instance of 'list[MatchLobby]'"
+    #         raise TypeError(msg)
 
-        logger.debug("Converting Match History response to DataFrame")
-        unfolded_lobbies = [_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in matches_response]
-        return pd.concat(unfolded_lobbies).reset_index(drop=True)
+    #     logger.debug("Converting Match History response to DataFrame")
+    #     unfolded_lobbies = [_unfold_match_lobby_to_dataframe(match_lobby) for match_lobby in matches_response]
+    #     return pd.concat(unfolded_lobbies).reset_index(drop=True)
 
-    @staticmethod
-    def match(match_response: MatchLobby) -> pd.DataFrame:
-        """
-        Convert the content of a MatchLobby to a pandas DataFrame. The resulting DataFrame will have as many
-        rows as there are players in the lobby, and all global attributes will be broadcasted to columns of
-        the same length, making them duplicates.
+    # @staticmethod
+    # def match(match_response: MatchLobby) -> pd.DataFrame:
+    #     """
+    #     Convert the content of a MatchLobby to a pandas DataFrame. The resulting DataFrame will have as many
+    #     rows as there are players in the lobby, and all global attributes will be broadcasted to columns of
+    #     the same length, making them duplicates.
 
-        Args:
-            match_response (MatchLobby): a MatchLobby object.
+    #     Args:
+    #         match_response (MatchLobby): a MatchLobby object.
 
-        Returns:
-            A pandas DataFrame from the MatchLobby attributes, each row being global information from the
-            MatchLobby as well as one of the players in the lobby.
-        """
-        return _unfold_match_lobby_to_dataframe(match_response)
+    #     Returns:
+    #         A pandas DataFrame from the MatchLobby attributes, each row being global information from the
+    #         MatchLobby as well as one of the players in the lobby.
+    #     """
+    #     return _unfold_match_lobby_to_dataframe(match_response)
 
-    @staticmethod
-    def num_online(num_online_response: NumOnlineResponse) -> pd.DataFrame:
-        """
-        Convert the result given by a call to AoE2NetAPI().num_online to a pandas DataFrame.
+    # @staticmethod
+    # def num_online(num_online_response: NumOnlineResponse) -> pd.DataFrame:
+    #     """
+    #     Convert the result given by a call to AoE2NetAPI().num_online to a pandas DataFrame.
 
-        Args:
-            num_online_response (NumOnlineResponse): the response directly returned by your AoE2NetAPI
-                client.
+    #     Args:
+    #         num_online_response (NumOnlineResponse): the response directly returned by your AoE2NetAPI
+    #             client.
 
-        Returns:
-            A pandas DataFrame from the NumOnlineResponse, each row being an entry in the leaderboard.
-            Top level attributes such as 'app_id' are broadcast to an entire array the size of the
-            dataframe, and timestamps are converted to datetime objects.
-        """
-        if not isinstance(num_online_response, NumOnlineResponse):
-            logger.error("Tried to use method with a parameter of type != NumOnlineResponse")
-            raise TypeError("Provided parameter should be an instance of 'NumOnlineResponse'")
+    #     Returns:
+    #         A pandas DataFrame from the NumOnlineResponse, each row being an entry in the leaderboard.
+    #         Top level attributes such as 'app_id' are broadcast to an entire array the size of the
+    #         dataframe, and timestamps are converted to datetime objects.
+    #     """
+    #     if not isinstance(num_online_response, NumOnlineResponse):
+    #         logger.error("Tried to use method with a parameter of type != NumOnlineResponse")
+    #         msg = "Provided parameter should be an instance of 'NumOnlineResponse'"
+    #         raise TypeError(msg)
 
-        logger.debug("Converting NumOnlineResponse to DataFrame")
-        dframe = pd.DataFrame(num_online_response.dict())
+    #     logger.debug("Converting NumOnlineResponse to DataFrame")
+    #     dframe = pd.DataFrame(num_online_response.dict())
 
-        logger.trace("Exporting 'player_stats' attribute contents to columns")
-        dframe["time"] = dframe.player_stats.apply(lambda x: x["time"]).apply(pd.to_datetime)
-        dframe["steam"] = dframe.player_stats.apply(lambda x: x["num_players"]["steam"])
-        dframe["looking"] = dframe.player_stats.apply(lambda x: x["num_players"]["looking"])
-        dframe["in_game"] = dframe.player_stats.apply(lambda x: x["num_players"]["in_game"])
-        dframe["multiplayer"] = dframe.player_stats.apply(lambda x: x["num_players"]["multiplayer"])
-        dframe["multiplayer_1h"] = dframe.player_stats.apply(lambda x: x["num_players"]["multiplayer_1h"])
-        dframe["multiplayer_24h"] = dframe.player_stats.apply(lambda x: x["num_players"]["multiplayer_24h"])
+    #     logger.trace("Exporting 'player_stats' attribute contents to columns")
+    #     dframe["time"] = dframe.player_stats.apply(lambda x: x["time"]).apply(pd.to_datetime)
+    #     dframe["steam"] = dframe.player_stats.apply(lambda x: x["num_players"]["steam"])
+    #     dframe["looking"] = dframe.player_stats.apply(lambda x: x["num_players"]["looking"])
+    #     dframe["in_game"] = dframe.player_stats.apply(lambda x: x["num_players"]["in_game"])
+    #     dframe["multiplayer"] = dframe.player_stats.apply(lambda x: x["num_players"]["multiplayer"])
+    #     dframe["multiplayer_1h"] = dframe.player_stats.apply(lambda x: x["num_players"]["multiplayer_1h"])
+    #     dframe["multiplayer_24h"] = dframe.player_stats.apply(lambda x: x["num_players"]["multiplayer_24h"])
 
-        logger.trace("Removing 'player_stats' column to avoid nested & duplicate data")
-        dframe = dframe.drop(columns=["player_stats"])
-        return dframe
+    #     logger.trace("Removing 'player_stats' column to avoid nested & duplicate data")
+    #     return dframe.drop(columns=["player_stats"])
 
 
 # ----- Helpers ----- #
@@ -332,7 +331,8 @@ def _unfold_match_lobby_to_dataframe(match_lobby: MatchLobby) -> pd.DataFrame:
     """
     if not isinstance(match_lobby, MatchLobby):
         logger.error("Tried to use method with a parameter of type != MatchLobby")
-        raise TypeError("Provided parameter should be an instance of 'MatchLobby'")
+        msg = "Provided parameter should be an instance of 'MatchLobby'"
+        raise TypeError(msg)
 
     logger.trace("Unfolding MatchLobby.players contents to DataFrame")
     dframe = pd.DataFrame(match_lobby.players)

@@ -16,8 +16,8 @@
   <br/>
 
   <!-- Github Actions Build -->
-  <a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/actions?query=workflow%3A%22Tests%22">
-    <img alt="Github Actions" src="https://github.com/fsoubelet/AoE2NetAPIWrapper/workflows/Tests/badge.svg?branch=master">
+  <a href="https://github.com/fsoubelet/AoE2NetAPIWrapper/actions?query=workflow%3A%22Cron+Testing%22">
+    <img alt="Github Actions" src="https://github.com/fsoubelet/AoE2NetAPIWrapper/workflows/Tests/badge.svg">
   </a>
 
   <!-- Code Coverage -->
@@ -26,20 +26,19 @@
   </a>
 
   <br/>
-
   <!-- Code style -->
   <a href="https://github.com/psf/Black">
     <img alt="Code Style" src="https://img.shields.io/badge/Code%20Style-Black-9cf.svg">
   </a>
 
   <!-- Linter -->
-  <a href="https://github.com/PyCQA/pylint">
-    <img alt="Linter" src="https://img.shields.io/badge/Linter-Pylint-ce963f.svg">
+  <a href="https://github.com/astral-sh/ruff">
+    <img alt="Linter" src="https://img.shields.io/badge/Linter-Ruff-ce963f.svg">
   </a>
 
   <!-- Build tool -->
-  <a href="https://github.com/python-poetry/poetry">
-    <img alt="Build tool" src="https://img.shields.io/badge/Build%20Tool-Poetry-4e5dc8.svg">
+  <a href="https://github.com/pypa/hatch">
+    <img alt="Build tool" src="https://img.shields.io/badge/Build%20Tool-Hatch-4e5dc8.svg">
   </a>
 
   <!-- Test runner -->
@@ -54,7 +53,7 @@
 </p>
 
 <p align="center">
-  A simple, efficient and typed wrapper to query the https://aoe2.net APIs with Python 3.7+
+  A simple, efficient and typed Python wrapper to query the https://aoe2.net APIs
 </p>
 
 <p align="center">
@@ -74,8 +73,6 @@ Link to [source code][package_source].
   <br>
   <sub><strong>MIT &copy 2021 Felix Soubelet</strong></sub>
 </div>
-
-
 
 [package_doc]: https://fsoubelet.github.io/AoE2NetAPIWrapper/
 [package_source]: https://github.com/fsoubelet/AoE2NetAPIWrapper

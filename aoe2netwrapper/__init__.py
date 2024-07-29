@@ -9,5 +9,9 @@ query the APIs provided by aoe2.net, and get data about the Age of Empires II vi
 :license: MIT, see LICENSE file for more details.
 """
 
-from .api import AoE2NetAPI
-from .nightbot import AoE2NightbotAPI
+from .api import AoE2NetAPI  # noqa: TID252
+from .nightbot import AoE2NightbotAPI  # noqa: TID252
+
+__version__ = "0.4.0"
+
+__all__ = ["AoE2NetAPI", "AoE2NightbotAPI"]

@@ -5,14 +5,16 @@ aoe2netwrapper.api
 This module implements a high-level client to query the API at https://aoe2.net/#api.
 """
 
-from typing import Any, Dict, List, Tuple, Union
+from __future__ import annotations
+
+from typing import Any
 
 import requests
 
 from loguru import logger
-from pydantic import parse_obj_as
+from pydantic import TypeAdapter
 
-from aoe2netwrapper.exceptions import Aoe2NetException
+from aoe2netwrapper.exceptions import Aoe2NetError, RemovedApiEndpointError
 from aoe2netwrapper.models import (
     LastMatchResponse,
     LeaderBoardResponse,
@@ -22,6 +24,15 @@ from aoe2netwrapper.models import (
     StringsResponse,
 )
 
+_MAX_LEADERBOARD_COUNT: int = 10_000
+_MAX_MATCH_HISTORY_COUNT: int = 1_000
+_MAX_RATING_HISTORY_COUNT: int = 10_000
+_MAX_MATCHES_COUNT: int = 1_000
+_OK_STATUS_CODE: int = 200
+
+_LIST_MATCHLOBBY_ADAPTER = TypeAdapter(list[MatchLobby])
+_LIST_RATINGTIMEPOINT_ADAPTER = TypeAdapter(list[RatingTimePoint])
+
 
 class AoE2NetAPI:
     """
@@ -30,24 +41,24 @@ class AoE2NetAPI:
     parsing and validating the response before returning it.
     """
 
-    API_BASE_URL: str = "https://aoe2.net/api"
-    STRINGS_ENDPOINT: str = API_BASE_URL + "/strings"
-    LEADERBOARD_ENDPOINT: str = API_BASE_URL + "/leaderboard"
-    LOBBIES_ENDPOINT: str = API_BASE_URL + "/lobbies"
-    LAST_MATCH_ENDPOINT: str = API_BASE_URL + "/player/lastmatch"
-    MATCH_HISTORY_ENDPOINT: str = API_BASE_URL + "/player/matches"
-    RATING_HISTORY_ENDPOINT: str = API_BASE_URL + "/player/ratinghistory"
-    MATCHES_ENDPOINT: str = API_BASE_URL + "/matches"
-    MATCH_ENDPOINT: str = API_BASE_URL + "/match"
-    NUMBER_ONLINE_ENDPOINT: str = API_BASE_URL + "/stats/players"
+    _API_BASE_URL: str = "https://aoe2.net/api"
+    _STRINGS_ENDPOINT: str = _API_BASE_URL + "/strings"
+    _LEADERBOARD_ENDPOINT: str = _API_BASE_URL + "/leaderboard"
+    _LOBBIES_ENDPOINT: str = _API_BASE_URL + "/lobbies"
+    _LAST_MATCH_ENDPOINT: str = _API_BASE_URL + "/player/lastmatch"
+    _MATCH_HISTORY_ENDPOINT: str = _API_BASE_URL + "/player/matches"
+    _RATING_HISTORY_ENDPOINT: str = _API_BASE_URL + "/player/ratinghistory"
+    _MATCHES_ENDPOINT: str = _API_BASE_URL + "/matches"
+    _MATCH_ENDPOINT: str = _API_BASE_URL + "/match"
+    _NUMBER_ONLINE_ENDPOINT: str = _API_BASE_URL + "/stats/players"
 
-    def __init__(self, timeout: Union[float, Tuple[float, float]] = 5):
+    def __init__(self, timeout: float | tuple[float, float] = 5):
         """Creating a Session for connection pooling since we're always querying the same host."""
         self.session = requests.Session()
         self.timeout = timeout
 
     def __repr__(self) -> str:
-        return f"Client for <{self.API_BASE_URL}>"
+        return f"Client for <{self._API_BASE_URL}>"
 
     def strings(self, game: str = "aoe2de") -> StringsResponse:
         """
@@ -66,11 +77,11 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.STRINGS_ENDPOINT,
+            url=self._STRINGS_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.STRINGS_ENDPOINT}'")
+        logger.trace(f"Validating response from '{self._STRINGS_ENDPOINT}'")
         return StringsResponse(**processed_response)
 
     def leaderboard(
@@ -79,9 +90,9 @@ class AoE2NetAPI:
         leaderboard_id: int = 3,
         start: int = 1,
         count: int = 10,
-        search: str = None,
-        steam_id: int = None,
-        profile_id: int = None,
+        search: str | None = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> LeaderBoardResponse:
         """
         Request the current leaderboards.
@@ -104,16 +115,17 @@ class AoE2NetAPI:
                 profile ID (ex: 459658).
 
         Raises:
-            Aoe2NetException: if the 'count' parameter exceeds 10 000.
+            Aoe2NetError: if the 'count' parameter exceeds 10 000.
 
         Returns:
             A LeaderBoardResponse validated object with the different parameters used for the
             query, the total amount of hits, and the leaderboard as a list profile entries for
             each ranking.
         """
-        if count > 10_000:
+        if count > _MAX_LEADERBOARD_COUNT:
             logger.error(f"'count' has to be 10000 or less, but {count} was provided.")
-            raise Aoe2NetException("Invalid value for parameter 'count'.")
+            msg = "Invalid value for parameter 'count'."
+            raise Aoe2NetError(msg)
 
         logger.debug("Preparing parameters for leaderboard query")
         query_params = {
@@ -128,14 +140,14 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.LEADERBOARD_ENDPOINT,
+            url=self._LEADERBOARD_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.LEADERBOARD_ENDPOINT}'")
+        logger.trace(f"Validating response from '{self._LEADERBOARD_ENDPOINT}'")
         return LeaderBoardResponse(**processed_response)
 
-    def lobbies(self, game: str = "aoe2de") -> List[MatchLobby]:
+    def lobbies(self, game: str = "aoe2de") -> list[MatchLobby]:
         """
         Request all open lobbies.
 
@@ -148,20 +160,22 @@ class AoE2NetAPI:
             A list of MatchLobby valideted objects, each one encapsulating the data for a currently
             open lobby.
         """
-        logger.debug("Preparing parameters for open lobbies query")
-        query_params = {"game": game}
+        # logger.debug("Preparing parameters for open lobbies query")
+        # query_params = {"game": game}
 
-        processed_response = _get_request_response_json(
-            session=self.session,
-            url=self.LOBBIES_ENDPOINT,
-            params=query_params,
-            timeout=self.timeout,
-        )
-        logger.trace(f"Validating response from '{self.LOBBIES_ENDPOINT}'")
-        return parse_obj_as(List[MatchLobby], processed_response)
+        # processed_response = _get_request_response_json(
+        #     session=self.session,
+        #     url=self._LOBBIES_ENDPOINT,
+        #     params=query_params,
+        #     timeout=self.timeout,
+        # )
+        # logger.trace(f"Validating response from '{self._LOBBIES_ENDPOINT}'")
+        # return _LIST_MATCHLOBBY_ADAPTER.validate_python(processed_response)
+        logger.error(f"Tried to query {self._LOBBIES_ENDPOINT} endpoint, which was removed by aoe2.net")
+        raise RemovedApiEndpointError(self._LOBBIES_ENDPOINT)
 
     def last_match(
-        self, game: str = "aoe2de", steam_id: int = None, profile_id: int = None
+        self, game: str = "aoe2de", steam_id: int | None = None, profile_id: int | None = None
     ) -> LastMatchResponse:
         """
         Request the last match the player started playing, this will be the current match if they
@@ -175,37 +189,40 @@ class AoE2NetAPI:
             profile_id (int): The player's profile ID (ex: 459658).
 
         Raises:
-            Aoe2NetException: if the not one of 'steam_id' or 'profile_id' are provided.
+            Aoe2NetError: if the not one of 'steam_id' or 'profile_id' are provided.
 
         Returns:
             A LastMatchResponse validated object with the information of the game, including the
             following attributes: 'profile_id', 'steam_id', 'name', 'clan', 'country' and
             'last_match'.
         """
-        if not steam_id and not profile_id:
-            logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetException("Either 'steam_id' or 'profile_id' required, please provide one.")
+        # if not steam_id and not profile_id:
+        #     logger.error("Missing one of 'steam_id', 'profile_id'.")
+        #     msg = "Either 'steam_id' or 'profile_id' required, please provide one."
+        #     raise Aoe2NetError(msg)
 
-        logger.debug("Preparing parameters for last match query")
-        query_params = {"game": game, "steam_id": steam_id, "profile_id": profile_id}
+        # logger.debug("Preparing parameters for last match query")
+        # query_params = {"game": game, "steam_id": steam_id, "profile_id": profile_id}
 
-        processed_response = _get_request_response_json(
-            session=self.session,
-            url=self.LAST_MATCH_ENDPOINT,
-            params=query_params,
-            timeout=self.timeout,
-        )
-        logger.trace(f"Validating response from '{self.LAST_MATCH_ENDPOINT}'")
-        return LastMatchResponse(**processed_response)
+        # processed_response = _get_request_response_json(
+        #     session=self.session,
+        #     url=self._LAST_MATCH_ENDPOINT,
+        #     params=query_params,
+        #     timeout=self.timeout,
+        # )
+        # logger.trace(f"Validating response from '{self._LAST_MATCH_ENDPOINT}'")
+        # return LastMatchResponse(**processed_response)
+        logger.error(f"Tried to query {self._LAST_MATCH_ENDPOINT} endpoint, which was removed by aoe2.net")
+        raise RemovedApiEndpointError(self._LAST_MATCH_ENDPOINT)
 
     def match_history(
         self,
         game: str = "aoe2de",
         start: int = 0,
         count: int = 10,
-        steam_id: int = None,
-        profile_id: int = None,
-    ) -> List[MatchLobby]:
+        steam_id: int | None = None,
+        profile_id: int | None = None,
+    ) -> list[MatchLobby]:
         """
         Request the match history for a player. Either 'steam_id' or 'profile_id' required.
 
@@ -219,20 +236,22 @@ class AoE2NetAPI:
             profile_id (int): The player's profile ID (ex: 459658).
 
         Raises:
-            Aoe2NetException: if the 'count' parameter exceeds 1000.
-            Aoe2NetException: if the not one of 'steam_id' or 'profile_id' are provided.
+            Aoe2NetError: if the 'count' parameter exceeds 1000.
+            Aoe2NetError: if the not one of 'steam_id' or 'profile_id' are provided.
 
         Returns:
             A list of MatchLobby validated objects, each one encapsulating the data for one of the
             player's previous matches.
         """
-        if count > 1_000:
+        if count > _MAX_MATCH_HISTORY_COUNT:
             logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
-            raise Aoe2NetException("Invalid value for parameter 'count'.")
+            msg = "Invalid value for parameter 'count'."
+            raise Aoe2NetError(msg)
 
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetException("Either 'steam_id' or 'profile_id' required, please provide one.")
+            msg = "Either 'steam_id' or 'profile_id' required, please provide one."
+            raise Aoe2NetError(msg)
 
         logger.debug("Preparing parameters for match history query")
         query_params = {
@@ -245,12 +264,12 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.MATCH_HISTORY_ENDPOINT,
+            url=self._MATCH_HISTORY_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.MATCH_HISTORY_ENDPOINT}'")
-        return parse_obj_as(List[MatchLobby], processed_response)
+        logger.trace(f"Validating response from '{self._MATCH_HISTORY_ENDPOINT}'")
+        return _LIST_MATCHLOBBY_ADAPTER.validate_python(processed_response)
 
     def rating_history(
         self,
@@ -258,9 +277,9 @@ class AoE2NetAPI:
         leaderboard_id: int = 3,
         start: int = 0,
         count: int = 20,
-        steam_id: int = None,
-        profile_id: int = None,
-    ) -> List[RatingTimePoint]:
+        steam_id: int | None = None,
+        profile_id: int | None = None,
+    ) -> list[RatingTimePoint]:
         """
         Requests the rating history for a player. Either 'steam_id' or 'profile_id' required.
 
@@ -278,21 +297,23 @@ class AoE2NetAPI:
             profile_id (int): The player's profile ID (ex: 459658).
 
         Raises:
-            Aoe2NetException: if the 'count' parameter exceeds 10 000.
-            Aoe2NetException: if the not one of 'steam_id' or 'profile_id' are provided.
+            Aoe2NetError: if the 'count' parameter exceeds 10 000.
+            Aoe2NetError: if the not one of 'steam_id' or 'profile_id' are provided.
 
         Returns:
             A list of RatingTimePoint validated objects, each one encapsulating data at a certain
             point in time corresponding to a match played by the player, including the rating,
             timestamp of the match, streaks etc.
         """
-        if count > 10_000:
+        if count > _MAX_RATING_HISTORY_COUNT:
             logger.error(f"'count' has to be 10 000 or less, but {count} was provided.")
-            raise Aoe2NetException("Invalid value for parameter 'count'.")
+            msg = "Invalid value for parameter 'count'."
+            raise Aoe2NetError(msg)
 
         if not steam_id and not profile_id:
             logger.error("Missing one of 'steam_id', 'profile_id'.")
-            raise Aoe2NetException("Either 'steam_id' or 'profile_id' required, please provide one.")
+            msg = "Either 'steam_id' or 'profile_id' required, please provide one."
+            raise Aoe2NetError(msg)
 
         logger.debug("Preparing parameters for rating history query")
         query_params = {
@@ -306,14 +327,14 @@ class AoE2NetAPI:
 
         processed_response = _get_request_response_json(
             session=self.session,
-            url=self.RATING_HISTORY_ENDPOINT,
+            url=self._RATING_HISTORY_ENDPOINT,
             params=query_params,
             timeout=self.timeout,
         )
-        logger.trace(f"Validating response from '{self.RATING_HISTORY_ENDPOINT}'")
-        return parse_obj_as(List[RatingTimePoint], processed_response)
+        logger.trace(f"Validating response from '{self._RATING_HISTORY_ENDPOINT}'")
+        return _LIST_RATINGTIMEPOINT_ADAPTER.validate_python(processed_response)
 
-    def matches(self, game: str = "aoe2de", count: int = 10, since: int = None) -> List[MatchLobby]:
+    def matches(self, game: str = "aoe2de", count: int = 10, since: int | None = None) -> list[MatchLobby]:
         """
         Request matches after a specific time: the match history in an optionally given time
         window.
@@ -329,33 +350,36 @@ class AoE2NetAPI:
             since (int): only show matches starting after 'since' timestamp (epoch).
 
         Raises:
-            Aoe2NetException: if the 'count' parameter exceeds 1000.
+            Aoe2NetError: if the 'count' parameter exceeds 1000.
 
         Returns:
             A list of MatchLobby validated objects, each one encapsulating the data for one of the
             played matches during the time window queried for.
         """
-        if count > 1000:
-            logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
-            raise Aoe2NetException("Invalid value for parameter 'count'.")
+        # if count > _MAX_MATCHES_COUNT:
+        #     logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
+        #     msg = "Invalid value for parameter 'count'."
+        #     raise Aoe2NetError(msg)
 
-        logger.debug("Preparing parameters for matches query")
-        query_params = {
-            "game": game,
-            "count": count,
-            "since": since,
-        }
+        # logger.debug("Preparing parameters for matches query")
+        # query_params = {
+        #     "game": game,
+        #     "count": count,
+        #     "since": since,
+        # }
 
-        processed_response = _get_request_response_json(
-            session=self.session,
-            url=self.MATCHES_ENDPOINT,
-            params=query_params,
-            timeout=self.timeout,
-        )
-        logger.trace(f"Validating response from '{self.MATCHES_ENDPOINT}'")
-        return parse_obj_as(List[MatchLobby], processed_response)
+        # processed_response = _get_request_response_json(
+        #     session=self.session,
+        #     url=self._MATCHES_ENDPOINT,
+        #     params=query_params,
+        #     timeout=self.timeout,
+        # )
+        # logger.trace(f"Validating response from '{self._MATCHES_ENDPOINT}'")
+        # return _LIST_MATCHLOBBY_ADAPTER.validate_python(processed_response)
+        logger.error(f"Tried to query {self._MATCHES_ENDPOINT} endpoint, which was removed by aoe2.net")
+        raise RemovedApiEndpointError(self._MATCHES_ENDPOINT)
 
-    def match(self, game: str = "aoe2de", uuid: str = None, match_id: int = None) -> MatchLobby:
+    def match(self, game: str = "aoe2de", uuid: str | None = None, match_id: int | None = None) -> MatchLobby:
         """
         Request details about a match. Either 'uuid' or 'match_id' required.
 
@@ -367,30 +391,33 @@ class AoE2NetAPI:
             match_id (int): match ID.
 
         Raises:
-            Aoe2NetException: if the not one of 'uuid' or 'match_id' are provided.
+            Aoe2NetError: if the not one of 'uuid' or 'match_id' are provided.
 
         Returns:
             A MatchLobby validated object with the information of the specific match, including.
         """
-        if not uuid and not match_id:
-            logger.error("Missing one of 'uuid', 'match_id'.")
-            raise Aoe2NetException("Either 'uuid' or 'match_id' required, please provide one.")
+        # if not uuid and not match_id:
+        #     logger.error("Missing one of 'uuid', 'match_id'.")
+        #     msg = "Either 'uuid' or 'match_id' required, please provide one."
+        #     raise Aoe2NetError(msg)
 
-        logger.debug("Preparing parameters for single match query")
-        query_params = {
-            "game": game,
-            "uuid": uuid,
-            "match_id": match_id,
-        }
+        # logger.debug("Preparing parameters for single match query")
+        # query_params = {
+        #     "game": game,
+        #     "uuid": uuid,
+        #     "match_id": match_id,
+        # }
 
-        processed_response = _get_request_response_json(
-            session=self.session,
-            url=self.MATCH_ENDPOINT,
-            params=query_params,
-            timeout=self.timeout,
-        )
-        logger.trace(f"Validating response from '{self.MATCH_ENDPOINT}'")
-        return MatchLobby(**processed_response)
+        # processed_response = _get_request_response_json(
+        #     session=self.session,
+        #     url=self._MATCH_ENDPOINT,
+        #     params=query_params,
+        #     timeout=self.timeout,
+        # )
+        # logger.trace(f"Validating response from '{self._MATCH_ENDPOINT}'")
+        # return MatchLobby(**processed_response)
+        logger.error(f"Tried to query {self._MATCH_ENDPOINT} endpoint, which was removed by aoe2.net")
+        raise RemovedApiEndpointError(self._MATCH_ENDPOINT)
 
     def num_online(self, game: str = "aoe2de") -> NumOnlineResponse:
         """
@@ -406,17 +433,19 @@ class AoE2NetAPI:
             validated objects encapsulating estimated metrics at different timestamps ('steam',
             'multiplayer', 'looking', 'in_game', 'multiplayer_1h' & 'multiplayer_24h').
         """
-        logger.debug("Preparing parameters for number of online players query")
-        query_params = {"game": game}
+        # logger.debug("Preparing parameters for number of online players query")
+        # query_params = {"game": game}
 
-        processed_response = _get_request_response_json(
-            session=self.session,
-            url=self.NUMBER_ONLINE_ENDPOINT,
-            params=query_params,
-            timeout=self.timeout,
-        )
-        logger.trace(f"Validating response from '{self.NUMBER_ONLINE_ENDPOINT}'")
-        return NumOnlineResponse(**processed_response)
+        # processed_response = _get_request_response_json(
+        #     session=self.session,
+        #     url=self._NUMBER_ONLINE_ENDPOINT,
+        #     params=query_params,
+        #     timeout=self.timeout,
+        # )
+        # logger.trace(f"Validating response from '{self._NUMBER_ONLINE_ENDPOINT}'")
+        # return NumOnlineResponse(**processed_response)
+        logger.error(f"Tried to query {self._NUMBER_ONLINE_ENDPOINT} endpoint, which was removed by aoe2.net")
+        raise RemovedApiEndpointError(self._NUMBER_ONLINE_ENDPOINT)
 
 
 # ----- Helpers ----- #
@@ -425,8 +454,8 @@ class AoE2NetAPI:
 def _get_request_response_json(
     session: requests.Session,
     url: str,
-    params: Dict[str, Any] = None,
-    timeout: Union[float, Tuple[float, float]] = None,
+    params: dict[str, Any] | None = None,
+    timeout: float | tuple[float, float] | None = None,
 ) -> dict:
     """
     Helper function to handle a GET request to an endpoint and return the response JSON content
@@ -438,17 +467,18 @@ def _get_request_response_json(
         params (dict): A dictionary of parameters for the GET request.
 
     Raises:
-        Aoe2NetException: if the status code returned is not 200.
+        Aoe2NetError: if the status code returned is not 200.
 
     Returns:
         The request's JSON response as a dictionary.
     """
     default_headers = {"content-type": "application/json;charset=UTF-8"}
     logger.debug(f"Sending GET request at '{url}'")
-    logger.trace(f"Parameters are: {str(params)}")
+    logger.trace(f"Parameters are: {params!s}")
 
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
-    if response.status_code != 200:
+    if response.status_code != _OK_STATUS_CODE:
         logger.error(f"GET request at '{response.url}' returned a {response.status_code} status code")
-        raise Aoe2NetException(f"Expected status code 200 - got {response.status_code} instead.")
+        msg = f"Expected status code 200 - got {response.status_code} instead"
+        raise Aoe2NetError(msg)
     return response.json()

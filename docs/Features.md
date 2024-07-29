@@ -25,7 +25,7 @@ As for example below, the `profile_id` key inside a `LeaderBoardSpot` inside a `
 All the validation is handled by the well-established and robust [pydantic][pydantic_repo]{target=_blank}.
 
 ??? tip "Models Integration"
-    All the other goodies from the returned pydantic models are available to you: exporting options, deep copies, ORM integration, etc.
+    All the other goodies from the returned `pydantic` models are available to you: exporting options, deep copies, ORM integration, etc.
 
 ## Built-In Results Conversion to Pandas DataFrames
 
@@ -36,7 +36,6 @@ The class, `Convert`, provides static methods taking in the direct output given 
 
 * 100% test coverage.
 * A codebase making use of the amazing logging from [loguru][loguru_repo]{target=_blank}, which can be integrated and extended.
-
 
 [pydantic_repo]: https://github.com/samuelcolvin/pydantic
 [loguru_repo]: https://github.com/delgan/loguru

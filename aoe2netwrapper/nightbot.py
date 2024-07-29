@@ -5,13 +5,17 @@ aoe2netwrapper.nightbot
 This module implements a high-level client to query the API at https://aoe2.net/#nightbot.
 """
 
-from typing import Any, Dict, Tuple, Union
+from __future__ import annotations
+
+from typing import Any
 
 import requests
 
 from loguru import logger
 
-from aoe2netwrapper.exceptions import NightBotException
+from aoe2netwrapper.exceptions import NightBotError
+
+_OK_STATUS_CODE: int = 200
 
 
 class AoE2NightbotAPI:
@@ -27,7 +31,7 @@ class AoE2NightbotAPI:
     CURRENT_CIVS_ENDPOINT = NIGHTBOT_BASE_URL + "/civs"
     CURRENT_MAP_ENDPOINT = NIGHTBOT_BASE_URL + "/map"
 
-    def __init__(self, timeout: Union[float, Tuple[float, float]] = 5):
+    def __init__(self, timeout: float | tuple[float, float] = 5):
         """Creating a Session for connection pooling since we're always querying the same host."""
         self.session = requests.Session()
         self.timeout = timeout
@@ -41,9 +45,9 @@ class AoE2NightbotAPI:
         leaderboard_id: int = 3,
         language: str = "en",
         flag: str = "true",
-        search: str = None,
-        steam_id: int = None,
-        profile_id: int = None,
+        search: str | None = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> str:
         """
         Request rank details about a player. Either 'search', 'steam_id' or 'profile_id' required.
@@ -68,7 +72,7 @@ class AoE2NightbotAPI:
                 (ex: 459658).
 
         Raises:
-            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+            NightBotError: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
 
         Returns:
             The text content of the response, as a decoded unicode string, with a quick sentence
@@ -76,9 +80,8 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotException(
-                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
-            )
+            msg = "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            raise NightBotError(msg)
 
         logger.debug("Preparing parameters for rank details query")
         query_params = {
@@ -104,9 +107,9 @@ class AoE2NightbotAPI:
         leaderboard_id: int = 3,
         language: str = "en",
         flag: str = "true",
-        search: str = None,
-        steam_id: int = None,
-        profile_id: int = None,
+        search: str | None = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> str:
         """
         Request rank details about a player's most recent opponent (1v1 only). Either 'search',
@@ -132,7 +135,7 @@ class AoE2NightbotAPI:
                 (ex: 459658).
 
         Raises:
-            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+            NightBotError: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
 
         Returns:
             The text content of the response, as a decoded unicode string, with a quick sentence
@@ -140,9 +143,8 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotException(
-                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
-            )
+            msg = "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            raise NightBotError(msg)
 
         logger.debug("Preparing parameters for opponent details query")
         query_params = {
@@ -169,9 +171,9 @@ class AoE2NightbotAPI:
         language: str = "en",
         color: str = "true",
         flag: str = "true",
-        search: str = None,
-        steam_id: int = None,
-        profile_id: int = None,
+        search: str | None = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> str:
         """
         Request details about the current or last match. Either 'search', 'steam_id' or
@@ -199,7 +201,7 @@ class AoE2NightbotAPI:
                 (ex: 459658).
 
         Raises:
-            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+            NightBotError: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
 
         Returns:
             The text content of the response, as a decoded unicode string, with a quick sentence
@@ -207,9 +209,8 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotException(
-                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
-            )
+            msg = "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            raise NightBotError(msg)
 
         logger.debug("Preparing parameters for match details query")
         query_params = {
@@ -235,9 +236,9 @@ class AoE2NightbotAPI:
         game: str = "aoe2de",
         leaderboard_id: int = 3,
         language: str = "en",
-        search: str = None,
-        steam_id: int = None,
-        profile_id: int = None,
+        search: str | None = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> str:
         """
         Request civilisations from the current or last match. Either 'search', 'steam_id' or
@@ -261,7 +262,7 @@ class AoE2NightbotAPI:
                 (ex: 459658).
 
         Raises:
-            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+            NightBotError: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
 
         Returns:
             The text content of the response, as a decoded unicode string, with a quick sentence
@@ -269,9 +270,8 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotException(
-                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
-            )
+            msg = "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            raise NightBotError(msg)
 
         logger.debug("Preparing parameters for civilisations details query")
         query_params = {
@@ -295,9 +295,9 @@ class AoE2NightbotAPI:
         game: str = "aoe2de",
         leaderboard_id: int = 3,
         language: str = "en",
-        search: str = None,
-        steam_id: int = None,
-        profile_id: int = None,
+        search: str | None = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> str:
         """
         Request civilisations from the current or last match. Either 'search', 'steam_id' or
@@ -321,7 +321,7 @@ class AoE2NightbotAPI:
                 (ex: 459658).
 
         Raises:
-            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+            NightBotError: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
 
         Returns:
             The text content of the response, as a decoded unicode string, with a quick sentence
@@ -329,9 +329,8 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotException(
-                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
-            )
+            msg = "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            raise NightBotError(msg)
 
         logger.debug("Preparing parameters for civilisations details query")
         query_params = {
@@ -357,8 +356,8 @@ class AoE2NightbotAPI:
 def _get_request_text_response_decoded(
     session: requests.Session,
     url: str,
-    params: Dict[str, Any] = None,
-    timeout: Union[float, Tuple[float, float]] = None,
+    params: dict[str, Any] | None = None,
+    timeout: float | tuple[float, float] | None = None,
 ) -> str:
     """
     Helper function to handle a GET request to an endpoint and return the response JSON content
@@ -370,17 +369,18 @@ def _get_request_text_response_decoded(
         params (dict): A dictionary of parameters for the GET request.
 
     Raises:
-        Aoe2NetException: if the status code returned is not 200.
+        NightBotError: if the status code returned is not 200.
 
     Returns:
         The request's JSON response as a dictionary.
     """
     default_headers = {"content-type": "application/json;charset=UTF-8"}
     logger.debug(f"Sending GET request at '{url}'")
-    logger.trace(f"Parameters are: {str(params)}")
+    logger.trace(f"Parameters are: {params!s}")
 
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
-    if response.status_code != 200:
+    if response.status_code != _OK_STATUS_CODE:
         logger.error(f"GET request at '{response.url}' returned a {response.status_code} status code")
-        raise NightBotException(f"Expected status code 200 - got {response.status_code} instead.")
+        msg = f"Expected status code 200 - got {response.status_code} instead."
+        raise NightBotError(msg)
     return response.text

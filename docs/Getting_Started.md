@@ -1,12 +1,17 @@
 # Getting Started
 
+!!! Warning "Supported API Endpoints"
+    Between versions `0.3.1` and `0.4.0` of this package, several API endpoints were removed from `aoe2.net`.
+    As a consequence, the respective methods in this package were deprecated, and now raise an error when called.
+    Should you notice code crashing after updating: please know it is a reflection of `aoe2.net`'s API changes.
+
 ## Installation
 
-This code is compatible with `Python 3.7+`.
-This package is installable from PyPI with [pip]{target=_blank} in a virtual environment with:
+This package is compatible with all currently supported Python versions.
+It is installable from `PyPI` with [pip]{target=_blank} in your virtual environment with:
 
 ```bash
-pip install aoe2netwrapper
+python -m pip install aoe2netwrapper
 ```
 
 The package is also accessible from the `conda-forge` channel, and can be installed in a `conda` environment with:
@@ -22,30 +27,30 @@ conda install -c conda-forge aoe2netwrapper
 ??? info "Extra Dependencies"
     It is also possible to install with extra dependencies to access export functionnality from the package, with:
     ```bash
-    pip install aoe2netwrapper[dataframe]
+    python -m pip install aoe2netwrapper[dataframe]
     ```
 
 ??? question "How about a development environment?"
-
-    Sure thing. This repository uses [Poetry]{target=_blank} as a packaging and build tool. 
+    Sure thing. This repository uses [Hatch](https://github.com/pypa/hatch/){target=_blank} as a packaging and build tool, though it is not strictly necessary.
     To set yourself up, get a local copy through VCS and run:
-    
+
     ```bash
-    poetry install
+    python -m pip install --editable ".[all]"
     ```
     
-    This repository follows the `Google` docstring format, uses [Black][black_formatter] as a code formatter with a default enforced line length of 110 characters, and [Pylint][pylint_ref] as a linter.
-    You can format the code with `make format` and lint it (which will format first) with `make lint`.
+    The package will be installed in editable mode, alongside all dependencies (tests, docs).
+    This repository follows the `Google` docstring format, uses [Black](https://github.com/psf/black/){target=_blank} as a code formatter with a default enforced line length of 110 characters, and [Ruff](https://github.com/astral-sh/ruff/){target=_blank} as a linter.
+    A Makefile is included with some useful commands, which one can list with `make help`.
     
     Testing builds are ensured after each commit through Github Actions.
-    You can run tests locally with the predefined `make tests`, or through `poetry run pytest <options>` for customized options.
+    You can run tests locally with the predefined `make tests`.
 
 ## Quick Start
 
-The package provides a simple, fully-typed high-level object to interact with each API provided by `aoe2.net`.
+The package provides a simple, fully-typed high-level object to interact with each API provided by [aoe2.net](https://aoe2.net/){target=_blank}.
 Each exposed endpoint from the APIs can be queried with a dedicated method named after it:
 
-* __Complete Data API__
+* **Complete Data API**
 
 ```python
 from aoe2netwrapper import AoE2NetAPI
@@ -62,7 +67,7 @@ top_accounts = client.leaderboard(
 open_lobbies = client.lobbies(game="aoe2de")
 ```
 
-* __Nightbot API__
+* **Nightbot API**
 
 ```python
 from aoe2netwrapper import AoE2NightbotAPI
@@ -76,7 +81,7 @@ print(viper_details)
 # '🇳🇴 GL.TheViper (2501) Rank #1, has played 762 games with a 69% winrate, -1 streak, and 2 drops'
 ```
 
-* __Converting Results to Pandas DataFrames__
+* **Converting Results to Pandas DataFrames**
 
 ```python
 from aoe2netwrapper import AoE2NetAPI
@@ -92,9 +97,5 @@ lobbies_dframe = Convert.lobbies(open_lobbies)
 The full documentation for the API endpoints can be found at https://aoe2.net/#api and https://aoe2.net/#nightbot.
 For convenience, it is also included in the methods' docstrings, and can be accessed in the `Reference` section.
 
-
-[virtual_env_primer]: https://realpython.com/python-virtual-environments-a-primer/
-[black_formatter]: https://github.com/psf/black
 [pip]: https://pip.pypa.io/en/stable/
-[Poetry]: https://python-poetry.org/
-[pylint_ref]: https://www.pylint.org/
+[virtual_env_primer]: https://realpython.com/python-virtual-environments-a-primer/

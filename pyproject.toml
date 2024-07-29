@@ -1,14 +1,34 @@
-[tool.poetry]
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "aoe2netwrapper/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/docs",
+  "/tests",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["aoe2netwrapper"]
+
+[project]
 name = "aoe2netwrapper"
-version = "0.3.1"
-description = "My Python wrapper for the aoe2.net data API"
-authors = ["Felix Soubelet <felix.soubelet@liverpool.ac.uk>"]
-license = "MIT"
-
 readme = "README.md"
-repository = "https://github.com/fsoubelet/AoE2NetAPIWrapper"
+description = "My Python wrapper for the aoe2.net data API"
+authors = [{name = "Felix Soubelet", email = "felix.soubelet@cern.ch"},]
+license = "MIT"
+dynamic = ["version"]
+requires-python = ">=3.10"
 
-keywords = ["API", "AoE2", "Utility",]
+keywords = [
+    "API",
+    "AoE2",
+    "Utility",
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -17,45 +37,47 @@ classifiers = [
     "Natural Language :: English",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: Implementation :: CPython",
     "Topic :: Games/Entertainment",
     "Topic :: Utilities",
     "Typing :: Typed",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.7"
-requests = "^2.25"
-loguru = "^0.5"
-pydantic = "^1.7"
+dependencies = [
+    "requests >= 2.30",
+    "loguru < 1.0",
+    "pydantic >= 2.5",
+]
 
-# Defining optional dependencies for extras
-portray = { version = "^1.4", optional = true }
-pandas = { version = "^1.0", optional = true }
+[project.optional-dependencies]
+dataframe = [
+    "pandas >= 2.0",
+]
+test = [
+    "aoe2netwrapper[dataframe]",
+    "pytest >= 7.0",
+    "pytest-cov >= 2.9",
+    "responses >= 0.20",
+]
+docs = [
+    "numpy < 2.0",  # portray needs hug which does not have compatibility
+    "portray >= 1.4",
+]
 
-# Defining the extras
-[tool.poetry.extras]
-docs = ["portray"]
-dataframe = ["pandas"]
+all = [
+    "aoe2netwrapper[test]",
+    "aoe2netwrapper[docs]",
+    "aoe2netwrapper[dataframe]",
+]
 
-[tool.poetry.dev-dependencies]
-pytest = "^6.2"
-pytest-cov = "^2.10"
-responses = "^0.12"
-mypy = "^0.790"
-pylint = "^2.6"
-isort = "^5.7"
-black = "^20.8b1"
-tomli = "^2.0"  # for coverage-py to support pyproject.toml
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
+[project.urls]
+homepage = "https://github.com/fsoubelet/AoE2NetAPIWrapper"
+repository = "https://github.com/fsoubelet/AoE2NetAPIWrapper"
+documentation = "https://fsoubelet.github.io/AoE2NetAPIWrapper/"
 
 # ----- Testing Configuration ----- #
 
@@ -68,7 +90,11 @@ source = ["aoe2netwrapper/"]
 
 [tool.coverage.report]
 ignore_errors = true
-
+omit = [
+  "aoe2netwrapper/models/match.py",
+  "aoe2netwrapper/models/match_history.py",
+  "aoe2netwrapper/models/matches.py",
+]
 
 # ----- Documentation Configuration ----- #
 
@@ -104,7 +130,6 @@ extra_css = ["stylesheets/extra.css"]
 [tool.portray.mkdocs.theme]
 name = "material"
 palette = {scheme = "slate", primary = "blue grey", accent = "amber"}
-font = {text = "Ubuntu Mono", code = "Fira Code"}
 
 [[tool.portray.mkdocs.nav]]
 Home = "README.md"
@@ -150,68 +175,12 @@ exclude = '''
 )/
 '''
 
-[tool.pylint]
-[tool.pylint.master]
-jobs="1"    # Auto-detect the number of processors
-ignore-patterns='''
-    \.eggs
-    |\.git
-    |build
-    |dist
-    |conf.py
-'''
-persistent="no"
-load-plugins=""
-limit-inference-results="100"
-suggestion-mode="yes"
-unsafe-load-any-extension="no"
-extension-pkg-whitelist=""
-exit-zero="no"
-from-stdin="no"
-extension_pkg_whitelist="pydantic"
+[tool.ruff]
+line-length = 110
+# Assume Python 3.9+.
+target-version = "py39"
+include = ["aoe2netwrapper"]
 
-[tool.pylint.messages_control]
-disable = [
-    "attribute-defined-outside-init",
-    "bad-whitespace",
-    "bad-continuation",
-    "expression-not-assigned",
-    "invalid-name",
-    "import-error",
-    "logging-format-interpolation",
-    "no-name-in-module",
-    "protected-access",
-    "reimported",
-    "too-few-public-methods",
-    "too-many-instance-attributes",
-    "format",  # handled by black
-]
-
-[tool.pylint.reports]
-output-format="text"
-msg-template="{path}:{line}:{column}: Pylint: {msg}. [{msg_id}: {symbol}]"
-
-[tool.pylint.basic]
-argument-naming-style="snake_case"
-attr-naming-style="snake_case"
-class-attribute-naming-style="snake_case"
-class-naming-style="PascalCase"
-const-naming-style="UPPER_CASE"
-function-naming-style="snake_case"
-inlinevar-naming-style="snake_case"
-method-naming-style="snake_case"
-module-naming-style="snake_case"
-variable-naming-style="snake_case"
-
-[tool.pylint.design]
-max-args="10"
-max-attributes="10"
-max-locals="15"
-max-public-methods="20"
-max-returns="5"
-
-[tool.pylint.'SIMILARITIES']
-ignore-comments=['yes']
-ignore-docstrings=['yes']
-ignore-imports=['no']
-min-similarity-lines=4
+[tool.ruff.lint]
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"

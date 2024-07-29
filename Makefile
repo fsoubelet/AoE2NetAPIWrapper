@@ -19,13 +19,18 @@ all: install
 
 help:
 	@echo "Please use 'make $(R)<target>$(E)' where $(R)<target>$(E) is one of:"
-	@echo "  $(R) clean $(E)  \t  to recursively remove build, run, and bitecode files/dirs."
-	@echo "  $(R) format $(E)  \t  to recursively apply PEP8 formatting through the $(P)Black$(E) cli tool."
-	@echo "  $(R) install $(E)  \t  to $(D)poetry install$(E) this package into the project's virtual environment."
-	@echo "  $(R) lines $(E)  \t  to count lines of code with the $(P)tokei$(E) tool."
-	@echo "  $(R) lint $(E)  \t  to lint the code though $(P)Pylint$(E)."
+	@echo "  $(R) build $(E)  \t  to build wheel and source distribution with $(P)Hatch$(E)."
+	@echo "  $(R) clean $(E)  \t  to recursively remove build, run and bitecode files/dirs."
+	@echo "  $(R) format $(E)  \t  to check and format code with $(P)Ruff$(E) through $(P)Hatch$(E)."
+	@echo "  $(R) install $(E)  \t  to $(C)pip install$(E) this package into the current environment."
+	@echo "  $(R) lint $(E)  \t  to lint-check the code with $(P)Ruff$(E)."
 	@echo "  $(R) tests $(E)  \t  to run tests with the $(P)pytest$(E) package."
-	@echo "  $(R) type $(E)  \t  to run type checking with the $(P)mypy$(E) package."
+
+build:
+	@echo "Re-building wheel and dist"
+	@rm -rf dist
+	@hatch build --clean
+	@echo "Created build is located in the $(C)dist$(E) folder."
 
 clean:
 	@echo "Cleaning up distutils remains."
@@ -44,30 +49,24 @@ clean:
 	@echo "All cleaned up!\n"
 
 format:
-	@echo "Sorting imports and formatting code to PEP8, default line length is 100 characters."
-	@poetry run isort . && black .
+	@echo "Checking code with Ruff through Hatch."
+	@hatch fmt
 
 install: format clean
-	@echo "Installing through $(D)poetry$(E), with dev dependencies but no extras."
-	@poetry install
+	@echo "Installing (editable) with $(D)pip$(E) in the current environment."
+	@python -m pip install --editable . -v
 
-lines: format
-	@tokei .
+lint:
+	@echo "Checking code with Ruff through Hatch."
+	@hatch fmt
 
-lint: format
-	@echo "Linting code"
-	@poetry run pylint aoe2netwrapper/
-
-tests: format clean
-	@poetry run pytest
-	@make clean
-
-type: format
-	@echo "Checking code typing with mypy"
-	@poetry run mypy --pretty --no-strict-optional --show-error-codes --warn-redundant-casts --ignore-missing-imports --follow-imports skip aoe2netwrapper
+tests: clean
+	@python -m pytest
 	@make clean
 
 # Catch-all unknow targets without returning an error. This is a POSIX-compliant syntax.
 .DEFAULT:
-	@echo "Make caught an invalid target! See help output below for available targets."
+	@echo "Make caught an invalid target."
+	@echo "See help output below for available targets."
+	@echo ""
 	@make help

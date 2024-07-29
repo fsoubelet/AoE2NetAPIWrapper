@@ -3,7 +3,7 @@ import pathlib
 import pytest
 import responses
 
-from aoe2netwrapper.exceptions import NightBotException
+from aoe2netwrapper.exceptions import NightBotError
 from aoe2netwrapper.nightbot import AoE2NightbotAPI, _get_request_text_response_decoded
 
 CURRENT_DIR = pathlib.Path(__file__).parent
@@ -53,7 +53,7 @@ class TestExceptions:
     client = AoE2NightbotAPI()
 
     def test_rank_misses_required_param(self, caplog):
-        with pytest.raises(NightBotException):
+        with pytest.raises(NightBotError):
             self.client.rank()
 
         for record in caplog.records:
@@ -61,7 +61,7 @@ class TestExceptions:
             assert "Missing one of 'search', 'steam_id', 'profile_id'" in caplog.text
 
     def test_opponent_misses_required_param(self, caplog):
-        with pytest.raises(NightBotException):
+        with pytest.raises(NightBotError):
             self.client.opponent()
 
         for record in caplog.records:
@@ -69,7 +69,7 @@ class TestExceptions:
             assert "Missing one of 'search', 'steam_id', 'profile_id'" in caplog.text
 
     def test_match_misses_required_param(self, caplog):
-        with pytest.raises(NightBotException):
+        with pytest.raises(NightBotError):
             self.client.match()
 
         for record in caplog.records:
@@ -77,7 +77,7 @@ class TestExceptions:
             assert "Missing one of 'search', 'steam_id', 'profile_id'" in caplog.text
 
     def test_civs_misses_required_param(self, caplog):
-        with pytest.raises(NightBotException):
+        with pytest.raises(NightBotError):
             self.client.civs()
 
         for record in caplog.records:
@@ -85,7 +85,7 @@ class TestExceptions:
             assert "Missing one of 'search', 'steam_id', 'profile_id'" in caplog.text
 
     def test_ma_misses_required_param(self, caplog):
-        with pytest.raises(NightBotException):
+        with pytest.raises(NightBotError):
             self.client.map()
 
         for record in caplog.records:
@@ -101,7 +101,7 @@ class TestExceptions:
             status=404,
         )
 
-        with pytest.raises(NightBotException):
+        with pytest.raises(NightBotError):
             _ = _get_request_text_response_decoded(self.client.session, url="https://local/test/endpoint")
 
         for record in caplog.records:
@@ -125,12 +125,12 @@ class TestMethods:
 
     @responses.activate
     @pytest.mark.parametrize(
-        "flag, search, steam_id, profile_id, returned_text",
+        ("flag", "search", "steam_id", "profile_id", "returned_text"),
         [
-            ["true", "GL.TheViper", None, None, RANKS["viper_flag"]],
-            ["false", "GL.TheViper", None, None, RANKS["viper"]],
-            ["true", None, 76561199003184910, None, RANKS["hoang_flag"]],
-            ["false", None, None, 459658, RANKS["hoang"]],
+            ("true", "GL.TheViper", None, None, RANKS["viper_flag"]),
+            ("false", "GL.TheViper", None, None, RANKS["viper"]),
+            ("true", None, 76561199003184910, None, RANKS["hoang_flag"]),
+            ("false", None, None, 459658, RANKS["hoang"]),
         ],
     )
     def test_rank_endpoint(self, flag, search, steam_id, profile_id, returned_text):
@@ -152,12 +152,12 @@ class TestMethods:
 
     @responses.activate
     @pytest.mark.parametrize(
-        "flag, search, steam_id, profile_id, returned_text",
+        ("flag", "search", "steam_id", "profile_id", "returned_text"),
         [
-            ["true", "GL.TheViper", None, None, OPPONENTS["viper_flag"]],
-            ["false", "GL.TheViper", None, None, OPPONENTS["viper"]],
-            ["true", None, 76561199003184910, None, OPPONENTS["hoang_flag"]],
-            ["false", None, None, 459658, OPPONENTS["hoang"]],
+            ("true", "GL.TheViper", None, None, OPPONENTS["viper_flag"]),
+            ("false", "GL.TheViper", None, None, OPPONENTS["viper"]),
+            ("true", None, 76561199003184910, None, OPPONENTS["hoang_flag"]),
+            ("false", None, None, 459658, OPPONENTS["hoang"]),
         ],
     )
     def test_opponent_endpoint(self, flag, search, steam_id, profile_id, returned_text):
@@ -179,12 +179,12 @@ class TestMethods:
 
     @responses.activate
     @pytest.mark.parametrize(
-        "flag, search, steam_id, profile_id, returned_text",
+        ("flag", "search", "steam_id", "profile_id", "returned_text"),
         [
-            ["true", "GL.TheViper", None, None, MATCH["viper_flag"]],
-            ["false", "GL.TheViper", None, None, MATCH["viper"]],
-            ["true", None, 76561199003184910, None, MATCH["hoang_flag"]],
-            ["false", None, None, 459658, MATCH["hoang"]],
+            ("true", "GL.TheViper", None, None, MATCH["viper_flag"]),
+            ("false", "GL.TheViper", None, None, MATCH["viper"]),
+            ("true", None, 76561199003184910, None, MATCH["hoang_flag"]),
+            ("false", None, None, 459658, MATCH["hoang"]),
         ],
     )
     def test_match_endpoint(self, flag, search, steam_id, profile_id, returned_text):
@@ -206,11 +206,11 @@ class TestMethods:
 
     @responses.activate
     @pytest.mark.parametrize(
-        "search, steam_id, profile_id, returned_text",
+        ("search", "steam_id", "profile_id", "returned_text"),
         [
-            ["GL.TheViper", None, None, CIVS["viper"]],
-            [None, 76561199003184910, None, CIVS["hoang"]],
-            [None, None, 459658, CIVS["hoang"]],
+            ("GL.TheViper", None, None, CIVS["viper"]),
+            (None, 76561199003184910, None, CIVS["hoang"]),
+            (None, None, 459658, CIVS["hoang"]),
         ],
     )
     def test_civs_endpoint(self, search, steam_id, profile_id, returned_text):
@@ -231,11 +231,11 @@ class TestMethods:
 
     @responses.activate
     @pytest.mark.parametrize(
-        "search, steam_id, profile_id, returned_text",
+        ("search", "steam_id", "profile_id", "returned_text"),
         [
-            ["GL.TheViper", None, None, MAP["viper"]],
-            [None, 76561199003184910, None, MAP["hoang"]],
-            [None, None, 459658, MAP["hoang"]],
+            ("GL.TheViper", None, None, MAP["viper"]),
+            (None, 76561199003184910, None, MAP["hoang"]),
+            (None, None, 459658, MAP["hoang"]),
         ],
     )
     def test_map_endpoint(self, search, steam_id, profile_id, returned_text):
