@@ -79,9 +79,9 @@ class AoE2NetAPI:
         leaderboard_id: int = 3,
         start: int = 1,
         count: int = 10,
-        search: str = None,
-        steam_id: int = None,
-        profile_id: int = None,
+        search: str | None = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> LeaderBoardResponse:
         """
         Request the current leaderboards.
@@ -161,7 +161,7 @@ class AoE2NetAPI:
         return parse_obj_as(list[MatchLobby], processed_response)
 
     def last_match(
-        self, game: str = "aoe2de", steam_id: int = None, profile_id: int = None
+        self, game: str = "aoe2de", steam_id: int | None = None, profile_id: int | None = None
     ) -> LastMatchResponse:
         """
         Request the last match the player started playing, this will be the current match if they
@@ -203,8 +203,8 @@ class AoE2NetAPI:
         game: str = "aoe2de",
         start: int = 0,
         count: int = 10,
-        steam_id: int = None,
-        profile_id: int = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> list[MatchLobby]:
         """
         Request the match history for a player. Either 'steam_id' or 'profile_id' required.
@@ -258,8 +258,8 @@ class AoE2NetAPI:
         leaderboard_id: int = 3,
         start: int = 0,
         count: int = 20,
-        steam_id: int = None,
-        profile_id: int = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> list[RatingTimePoint]:
         """
         Requests the rating history for a player. Either 'steam_id' or 'profile_id' required.
@@ -313,7 +313,7 @@ class AoE2NetAPI:
         logger.trace(f"Validating response from '{self._RATING_HISTORY_ENDPOINT}'")
         return parse_obj_as(list[RatingTimePoint], processed_response)
 
-    def matches(self, game: str = "aoe2de", count: int = 10, since: int = None) -> list[MatchLobby]:
+    def matches(self, game: str = "aoe2de", count: int = 10, since: int | None = None) -> list[MatchLobby]:
         """
         Request matches after a specific time: the match history in an optionally given time
         window.
@@ -355,7 +355,7 @@ class AoE2NetAPI:
         logger.trace(f"Validating response from '{self._MATCHES_ENDPOINT}'")
         return parse_obj_as(list[MatchLobby], processed_response)
 
-    def match(self, game: str = "aoe2de", uuid: str = None, match_id: int = None) -> MatchLobby:
+    def match(self, game: str = "aoe2de", uuid: str | None = None, match_id: int | None = None) -> MatchLobby:
         """
         Request details about a match. Either 'uuid' or 'match_id' required.
 
@@ -425,8 +425,8 @@ class AoE2NetAPI:
 def _get_request_response_json(
     session: requests.Session,
     url: str,
-    params: dict[str, Any] = None,
-    timeout: float | tuple[float, float] = None,
+    params: dict[str, Any] | None = None,
+    timeout: float | tuple[float, float] | None = None,
 ) -> dict:
     """
     Helper function to handle a GET request to an endpoint and return the response JSON content

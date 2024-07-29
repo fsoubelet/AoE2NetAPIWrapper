@@ -41,9 +41,9 @@ class AoE2NightbotAPI:
         leaderboard_id: int = 3,
         language: str = "en",
         flag: str = "true",
-        search: str = None,
-        steam_id: int = None,
-        profile_id: int = None,
+        search: str | None = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> str:
         """
         Request rank details about a player. Either 'search', 'steam_id' or 'profile_id' required.
@@ -104,9 +104,9 @@ class AoE2NightbotAPI:
         leaderboard_id: int = 3,
         language: str = "en",
         flag: str = "true",
-        search: str = None,
-        steam_id: int = None,
-        profile_id: int = None,
+        search: str | None = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> str:
         """
         Request rank details about a player's most recent opponent (1v1 only). Either 'search',
@@ -169,9 +169,9 @@ class AoE2NightbotAPI:
         language: str = "en",
         color: str = "true",
         flag: str = "true",
-        search: str = None,
-        steam_id: int = None,
-        profile_id: int = None,
+        search: str | None = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> str:
         """
         Request details about the current or last match. Either 'search', 'steam_id' or
@@ -235,9 +235,9 @@ class AoE2NightbotAPI:
         game: str = "aoe2de",
         leaderboard_id: int = 3,
         language: str = "en",
-        search: str = None,
-        steam_id: int = None,
-        profile_id: int = None,
+        search: str | None = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> str:
         """
         Request civilisations from the current or last match. Either 'search', 'steam_id' or
@@ -295,9 +295,9 @@ class AoE2NightbotAPI:
         game: str = "aoe2de",
         leaderboard_id: int = 3,
         language: str = "en",
-        search: str = None,
-        steam_id: int = None,
-        profile_id: int = None,
+        search: str | None = None,
+        steam_id: int | None = None,
+        profile_id: int | None = None,
     ) -> str:
         """
         Request civilisations from the current or last match. Either 'search', 'steam_id' or
@@ -357,8 +357,8 @@ class AoE2NightbotAPI:
 def _get_request_text_response_decoded(
     session: requests.Session,
     url: str,
-    params: dict[str, Any] = None,
-    timeout: float | tuple[float, float] = None,
+    params: dict[str, Any] | None = None,
+    timeout: float | tuple[float, float] | None = None,
 ) -> str:
     """
     Helper function to handle a GET request to an endpoint and return the response JSON content
