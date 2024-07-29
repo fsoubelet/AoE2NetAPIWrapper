@@ -23,6 +23,12 @@ from aoe2netwrapper.models import (
     StringsResponse,
 )
 
+_MAX_LEADERBOARD_COUNT: int = 10_000
+_MAX_MATCH_HISTORY_COUNT: int = 1_000
+_MAX_RATING_HISTORY_COUNT: int = 10_000
+_MAX_MATCHES_COUNT: int = 1_000
+_OK_STATUS_CODE: int = 200
+
 
 class AoE2NetAPI:
     """
@@ -112,7 +118,7 @@ class AoE2NetAPI:
             query, the total amount of hits, and the leaderboard as a list profile entries for
             each ranking.
         """
-        if count > 10_000:
+        if count > _MAX_LEADERBOARD_COUNT:
             logger.error(f"'count' has to be 10000 or less, but {count} was provided.")
             msg = "Invalid value for parameter 'count'."
             raise Aoe2NetError(msg)
@@ -229,7 +235,7 @@ class AoE2NetAPI:
             A list of MatchLobby validated objects, each one encapsulating the data for one of the
             player's previous matches.
         """
-        if count > 1_000:
+        if count > _MAX_MATCH_HISTORY_COUNT:
             logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
             msg = "Invalid value for parameter 'count'."
             raise Aoe2NetError(msg)
@@ -291,7 +297,7 @@ class AoE2NetAPI:
             point in time corresponding to a match played by the player, including the rating,
             timestamp of the match, streaks etc.
         """
-        if count > 10_000:
+        if count > _MAX_RATING_HISTORY_COUNT:
             logger.error(f"'count' has to be 10 000 or less, but {count} was provided.")
             msg = "Invalid value for parameter 'count'."
             raise Aoe2NetError(msg)
@@ -342,7 +348,7 @@ class AoE2NetAPI:
             A list of MatchLobby validated objects, each one encapsulating the data for one of the
             played matches during the time window queried for.
         """
-        if count > 1000:
+        if count > _MAX_MATCHES_COUNT:
             logger.error(f"'count' has to be 1000 or less, but {count} was provided.")
             msg = "Invalid value for parameter 'count'."
             raise Aoe2NetError(msg)
@@ -457,7 +463,7 @@ def _get_request_response_json(
     logger.trace(f"Parameters are: {params!s}")
 
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
-    if response.status_code != 200:
+    if response.status_code != _OK_STATUS_CODE:
         logger.error(f"GET request at '{response.url}' returned a {response.status_code} status code")
         msg = f"Expected status code 200 - got {response.status_code} instead"
         raise Aoe2NetError(msg)

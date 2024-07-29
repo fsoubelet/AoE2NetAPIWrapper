@@ -23,10 +23,8 @@ except ImportError as error:
     logger.error(
         "User tried to use the 'converters' submodule without havinig installed the 'pandas' library."
     )
-    raise NotImplementedError(
-        "The 'aoe2netwrapper.converters' module exports results to 'pandas.DataFrame' objects and "
-        "needs the 'pandas' library installed to function."
-    ) from error
+    msg = "The 'converters' submodule requires the 'pandas' library to function."
+    raise NotImplementedError(msg) from error
 
 
 class Convert:

@@ -14,6 +14,7 @@ from loguru import logger
 
 from aoe2netwrapper.exceptions import NightBotError
 
+_OK_STATUS_CODE: int = 200
 
 class AoE2NightbotAPI:
     """
@@ -376,7 +377,7 @@ def _get_request_text_response_decoded(
     logger.trace(f"Parameters are: {params!s}")
 
     response = session.get(url, params=params, headers=default_headers, timeout=timeout)
-    if response.status_code != 200:
+    if response.status_code != _OK_STATUS_CODE:
         logger.error(f"GET request at '{response.url}' returned a {response.status_code} status code")
         msg = f"Expected status code 200 - got {response.status_code} instead."
         raise NightBotError(msg)
