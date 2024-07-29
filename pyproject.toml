@@ -126,7 +126,6 @@ extra_css = ["stylesheets/extra.css"]
 [tool.portray.mkdocs.theme]
 name = "material"
 palette = {scheme = "slate", primary = "blue grey", accent = "amber"}
-# font = {text = "Ubuntu Mono", code = "Fira Code"}
 
 [[tool.portray.mkdocs.nav]]
 Home = "README.md"
@@ -181,4 +180,3 @@ include = ["aoe2netwrapper"]
 [tool.ruff.lint]
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
-

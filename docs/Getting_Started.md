@@ -1,5 +1,10 @@
 # Getting Started
 
+!!! Warning "Supported API Endpoints"
+    Between versions `0.3.1` and `0.4.0` of this package, several API endpoints were removed from `aoe2.net`.
+    As a consequence, the respective methods in this package were deprecated, and now raise an error when called.
+    Should you notice code crashing after updating: please know it is a reflection of `aoe2.net`'s API changes.
+
 ## Installation
 
 This package is compatible with all currently supported Python versions.
