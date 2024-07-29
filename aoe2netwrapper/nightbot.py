@@ -140,9 +140,8 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotError(
-                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
-            )
+            msg = "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            raise NightBotError(msg)
 
         logger.debug("Preparing parameters for opponent details query")
         query_params = {
@@ -207,9 +206,8 @@ class AoE2NightbotAPI:
         """
         if not any((search, steam_id, profile_id)):
             logger.error("Missing one of 'search', 'steam_id', 'profile_id'.")
-            raise NightBotError(
-                "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
-            )
+            msg = "Either 'search', 'steam_id' or 'profile_id' required, please provide one."
+            raise NightBotError(msg)
 
         logger.debug("Preparing parameters for match details query")
         query_params = {

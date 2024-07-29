@@ -5,7 +5,7 @@ This module contains the set of exceptions used in the package.
 """
 
 
-class Aoe2NetEroor(Exception):
+class Aoe2NetError(Exception):
     """Default exception for AoE2.net API interaction."""
 
 

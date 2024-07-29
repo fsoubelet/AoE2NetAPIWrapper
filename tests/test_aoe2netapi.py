@@ -5,7 +5,7 @@ import pytest
 import responses
 
 from aoe2netwrapper.api import AoE2NetAPI, _get_request_response_json
-from aoe2netwrapper.exceptions import Aoe2NetEroor
+from aoe2netwrapper.exceptions import Aoe2NetError
 from aoe2netwrapper.models import (
     LastMatchResponse,
     LeaderBoardResponse,
@@ -23,7 +23,7 @@ class TestExceptions:
     client = AoE2NetAPI()
 
     def test_leaderboard_invalid_count_parameter(self, caplog):
-        with pytest.raises(Aoe2NetEroor):
+        with pytest.raises(Aoe2NetError):
             self.client.leaderboard(count=11_000)
 
         for record in caplog.records:
@@ -31,7 +31,7 @@ class TestExceptions:
             assert "'count' has to be 10000 or less, but 11000 was provided" in caplog.text
 
     def test_last_match_misses_required_param(self, caplog):
-        with pytest.raises(Aoe2NetEroor):
+        with pytest.raises(Aoe2NetError):
             self.client.last_match()
 
         for record in caplog.records:
@@ -39,7 +39,7 @@ class TestExceptions:
             assert "Missing one of 'steam_id', 'profile_id'" in caplog.text
 
     def test_match_history_invalid_count_parameter(self, caplog):
-        with pytest.raises(Aoe2NetEroor):
+        with pytest.raises(Aoe2NetError):
             self.client.match_history(count=1500, steam_id=76561199003184910)
 
         for record in caplog.records:
@@ -47,7 +47,7 @@ class TestExceptions:
             assert "'count' has to be 1000 or less, but 1500 was provided" in caplog.text
 
     def test_match_history_misses_required_param(self, caplog):
-        with pytest.raises(Aoe2NetEroor):
+        with pytest.raises(Aoe2NetError):
             self.client.match_history()
 
         for record in caplog.records:
@@ -55,7 +55,7 @@ class TestExceptions:
             assert "Missing one of 'steam_id', 'profile_id'" in caplog.text
 
     def test_rating_history_invalid_count_parameter(self, caplog):
-        with pytest.raises(Aoe2NetEroor):
+        with pytest.raises(Aoe2NetError):
             self.client.rating_history(count=12_000, steam_id=76561199003184910)
 
         for record in caplog.records:
@@ -63,7 +63,7 @@ class TestExceptions:
             assert "'count' has to be 10 000 or less, but 12000 was provided" in caplog.text
 
     def test_rating_history_misses_required_param(self, caplog):
-        with pytest.raises(Aoe2NetEroor):
+        with pytest.raises(Aoe2NetError):
             self.client.rating_history()
 
         for record in caplog.records:
@@ -71,7 +71,7 @@ class TestExceptions:
             assert "Missing one of 'steam_id', 'profile_id'" in caplog.text
 
     def test_matches_invalid_count_parameter(self, caplog):
-        with pytest.raises(Aoe2NetEroor):
+        with pytest.raises(Aoe2NetError):
             self.client.matches(count=2000)
 
         for record in caplog.records:
@@ -79,7 +79,7 @@ class TestExceptions:
             assert "'count' has to be 1000 or less, but 2000 was provided." in caplog.text
 
     def test_match_misses_required_param(self, caplog):
-        with pytest.raises(Aoe2NetEroor):
+        with pytest.raises(Aoe2NetError):
             self.client.match()
 
         for record in caplog.records:
@@ -95,7 +95,7 @@ class TestExceptions:
             status=404,
         )
 
-        with pytest.raises(Aoe2NetEroor):
+        with pytest.raises(Aoe2NetError):
             _ = _get_request_response_json(self.client.session, url="https://local/test/endpoint")
 
         for record in caplog.records:
