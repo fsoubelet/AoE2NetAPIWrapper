@@ -3,7 +3,7 @@ import pytest
 import responses
 
 from aoe2netwrapper import AoE2NetAPI
-from aoe2netwrapper.converters import Convert
+from aoe2netwrapper.converters import Convert, _unfold_match_lobby_to_dataframe
 
 
 class TestExceptions:
@@ -84,6 +84,13 @@ class TestExceptions:
     #         assert record.levelname == "ERROR"
     #         assert "Tried to use method with a parameter of type != 'NumOnlineResponse'" in caplog.text
 
+    def test_match_lobby_unfolding_raises_on_wrong_type(self, caplog):
+        with pytest.raises(TypeError):
+            _ = _unfold_match_lobby_to_dataframe(10)
+
+        for record in caplog.records:
+            assert record.levelname == "ERROR"
+            assert "Tried to use method with a parameter of type != 'MatchLobby'" in caplog.text
 
 class TestConvert:
     client = AoE2NetAPI()
