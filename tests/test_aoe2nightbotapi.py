@@ -125,7 +125,7 @@ class TestMethods:
 
     @responses.activate
     @pytest.mark.parametrize(
-    ("flag", "search", "steam_id", "profile_id", "returned_text"),
+        ("flag", "search", "steam_id", "profile_id", "returned_text"),
         [
             ("true", "GL.TheViper", None, None, RANKS["viper_flag"]),
             ("false", "GL.TheViper", None, None, RANKS["viper"]),
