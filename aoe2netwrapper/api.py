@@ -10,6 +10,7 @@ from __future__ import annotations
 from typing import Any
 
 import requests
+
 from loguru import logger
 from pydantic import parse_obj_as
 

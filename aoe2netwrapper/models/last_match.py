@@ -8,12 +8,9 @@ https://aoe2.net/api/lobbies
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from pydantic import BaseModel, Field
 
-if TYPE_CHECKING:
-    from aoe2netwrapper.models.lobbies import MatchLobby
+from aoe2netwrapper.models.lobbies import MatchLobby
 
 
 class LastMatchResponse(BaseModel):
