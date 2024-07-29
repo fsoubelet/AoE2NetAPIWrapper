@@ -10,7 +10,6 @@ from __future__ import annotations
 from typing import Any
 
 import requests
-
 from loguru import logger
 from pydantic import parse_obj_as
 
@@ -106,7 +105,7 @@ class AoE2NetAPI:
                 profile ID (ex: 459658).
 
         Raises:
-            Aoe2NetException: if the 'count' parameter exceeds 10 000.
+            Aoe2NetError: if the 'count' parameter exceeds 10 000.
 
         Returns:
             A LeaderBoardResponse validated object with the different parameters used for the
@@ -178,7 +177,7 @@ class AoE2NetAPI:
             profile_id (int): The player's profile ID (ex: 459658).
 
         Raises:
-            Aoe2NetException: if the not one of 'steam_id' or 'profile_id' are provided.
+            Aoe2NetError: if the not one of 'steam_id' or 'profile_id' are provided.
 
         Returns:
             A LastMatchResponse validated object with the information of the game, including the
@@ -223,8 +222,8 @@ class AoE2NetAPI:
             profile_id (int): The player's profile ID (ex: 459658).
 
         Raises:
-            Aoe2NetException: if the 'count' parameter exceeds 1000.
-            Aoe2NetException: if the not one of 'steam_id' or 'profile_id' are provided.
+            Aoe2NetError: if the 'count' parameter exceeds 1000.
+            Aoe2NetError: if the not one of 'steam_id' or 'profile_id' are provided.
 
         Returns:
             A list of MatchLobby validated objects, each one encapsulating the data for one of the
@@ -284,8 +283,8 @@ class AoE2NetAPI:
             profile_id (int): The player's profile ID (ex: 459658).
 
         Raises:
-            Aoe2NetException: if the 'count' parameter exceeds 10 000.
-            Aoe2NetException: if the not one of 'steam_id' or 'profile_id' are provided.
+            Aoe2NetError: if the 'count' parameter exceeds 10 000.
+            Aoe2NetError: if the not one of 'steam_id' or 'profile_id' are provided.
 
         Returns:
             A list of RatingTimePoint validated objects, each one encapsulating data at a certain
@@ -337,7 +336,7 @@ class AoE2NetAPI:
             since (int): only show matches starting after 'since' timestamp (epoch).
 
         Raises:
-            Aoe2NetException: if the 'count' parameter exceeds 1000.
+            Aoe2NetError: if the 'count' parameter exceeds 1000.
 
         Returns:
             A list of MatchLobby validated objects, each one encapsulating the data for one of the
@@ -376,7 +375,7 @@ class AoE2NetAPI:
             match_id (int): match ID.
 
         Raises:
-            Aoe2NetException: if the not one of 'uuid' or 'match_id' are provided.
+            Aoe2NetError: if the not one of 'uuid' or 'match_id' are provided.
 
         Returns:
             A MatchLobby validated object with the information of the specific match, including.
@@ -448,7 +447,7 @@ def _get_request_response_json(
         params (dict): A dictionary of parameters for the GET request.
 
     Raises:
-        Aoe2NetException: if the status code returned is not 200.
+        Aoe2NetError: if the status code returned is not 200.
 
     Returns:
         The request's JSON response as a dictionary.

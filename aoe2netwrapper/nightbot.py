@@ -10,7 +10,6 @@ from __future__ import annotations
 from typing import Any
 
 import requests
-
 from loguru import logger
 
 from aoe2netwrapper.exceptions import NightBotError
@@ -70,7 +69,7 @@ class AoE2NightbotAPI:
                 (ex: 459658).
 
         Raises:
-            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+            NightBotError: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
 
         Returns:
             The text content of the response, as a decoded unicode string, with a quick sentence
@@ -133,7 +132,7 @@ class AoE2NightbotAPI:
                 (ex: 459658).
 
         Raises:
-            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+            NightBotError: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
 
         Returns:
             The text content of the response, as a decoded unicode string, with a quick sentence
@@ -199,7 +198,7 @@ class AoE2NightbotAPI:
                 (ex: 459658).
 
         Raises:
-            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+            NightBotError: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
 
         Returns:
             The text content of the response, as a decoded unicode string, with a quick sentence
@@ -260,7 +259,7 @@ class AoE2NightbotAPI:
                 (ex: 459658).
 
         Raises:
-            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+            NightBotError: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
 
         Returns:
             The text content of the response, as a decoded unicode string, with a quick sentence
@@ -319,7 +318,7 @@ class AoE2NightbotAPI:
                 (ex: 459658).
 
         Raises:
-            NightBotException: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
+            NightBotError: if the not one of 'search', 'steam_id' or 'profile_id' are provided.
 
         Returns:
             The text content of the response, as a decoded unicode string, with a quick sentence
@@ -367,7 +366,7 @@ def _get_request_text_response_decoded(
         params (dict): A dictionary of parameters for the GET request.
 
     Raises:
-        Aoe2NetException: if the status code returned is not 200.
+        NightBotError: if the status code returned is not 200.
 
     Returns:
         The request's JSON response as a dictionary.
