@@ -1,6 +1,6 @@
 > [!IMPORTANT]  
-> Please note that aoe2.net has been sunset on 2024-11-24, including its API.
-> As such this package will no longer work, and the repository has been archived.
+> Please note that aoe2.net has been sunset on `2024-11-24`, including its API.
+> As such, this package no longer works and the repository has been archived.
 
 <h1 align="center">
   <b>aoe2netwrapper</b>
